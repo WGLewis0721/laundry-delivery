@@ -100,6 +100,20 @@
       display: inline-flex; align-items: center; gap: 0.35rem; border-radius: 9999px; background: rgba(5, 150, 105, 0.12); color: #047857;
       padding: 0.35rem 0.75rem; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
     }
+    .image-frame {
+      overflow: hidden; border-radius: 1.9rem; border: 1px solid rgba(226, 232, 240, 0.9);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(244, 251, 255, 0.98));
+      box-shadow: 0 24px 54px -36px rgba(15, 23, 42, 0.34);
+    }
+    .zip-actions { display: none; }
+    .zip-actions.is-visible { display: flex; }
+    .mobile-sticky-cta {
+      display: block;
+      box-shadow: 0 -18px 48px -28px rgba(15, 23, 42, 0.36);
+    }
+    @media (min-width: 768px) {
+      .mobile-sticky-cta { display: none; }
+    }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .site-nav, .reveal, .reveal-group, .hover-lift, .plan-card { transition: none; }
@@ -157,7 +171,7 @@
     </div>
   </nav>
 
-  <main id="main-content">
+  <main id="main-content" class="pb-28 md:pb-0">
     <section class="relative isolate overflow-hidden bg-white pt-28 text-slate-900 lg:pt-32" aria-labelledby="hero-heading">
       <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
         <div class="absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#A9D6F5]/15 blur-3xl"></div>
@@ -205,12 +219,50 @@
               <button type="submit" class="inline-flex h-16 items-center justify-center rounded-full bg-gradient-to-r from-primary to-emerald-500 px-7 text-base font-semibold text-white shadow-lg shadow-emerald-600/30 transition hover:-translate-y-0.5 hover:from-emerald-500 hover:to-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Check availability</button>
             </form>
             <p id="hero-zip-help" class="mt-3 px-2 text-sm text-slate-600">Today's pickup windows available in Montgomery</p>
+            <div class="zip-actions mt-4 flex-col gap-3 sm:flex-row" data-zip-actions>
+              <a href="schedule.html" class="inline-flex h-12 flex-1 items-center justify-center rounded-full bg-slate-900 px-5 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:-translate-y-0.5">Schedule Pickup</a>
+              <a href="#service-area" class="inline-flex h-12 flex-1 items-center justify-center rounded-full border border-slate-200 bg-white px-5 text-sm font-semibold text-slate-900 transition hover:border-primary hover:text-primary">View Pickup Windows</a>
+            </div>
           </div>
 
-          <div class="grid gap-3 sm:grid-cols-3">
-            <div class="glass-card rounded-3xl p-4 text-slate-900"><p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Trust</p><p class="mt-2 text-2xl font-black">4.9</p><p class="text-sm text-slate-600">Average review score</p></div>
-            <div class="glass-card rounded-3xl p-4 text-slate-900"><p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Speed</p><p class="mt-2 text-2xl font-black">SMS</p><p class="text-sm text-slate-600">Status updates at every step</p></div>
-            <div class="glass-card rounded-3xl p-4 text-slate-900"><p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Transparency</p><p class="mt-2 text-2xl font-black">Receipt</p><p class="text-sm text-slate-600">Before any charge posts</p></div>
+          <div class="premium-card overflow-hidden p-6 sm:p-7">
+            <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.3em] text-slate-500">Why families trust FOLD</p>
+                <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-700">
+                  <li class="flex gap-3"><span aria-hidden="true">•</span><span>Locally owned in Montgomery</span></li>
+                  <li class="flex gap-3"><span aria-hidden="true">•</span><span>Transparent weighed-by-the-bag pricing</span></li>
+                  <li class="flex gap-3"><span aria-hidden="true">•</span><span>SMS updates from pickup to delivery</span></li>
+                  <li class="flex gap-3"><span aria-hidden="true">•</span><span>Receipt before charge</span></li>
+                  <li class="flex gap-3"><span aria-hidden="true">•</span><span>Contactless pickup available</span></li>
+                </ul>
+              </div>
+
+              <div class="grid gap-3 sm:grid-cols-2">
+                <div class="rounded-[1.4rem] bg-slate-50 p-4">
+                  <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Editable demo rating</p>
+                  <p class="mt-2 text-3xl font-black text-slate-900">4.9★</p>
+                  <p class="text-sm text-slate-600">Customer rating placeholder</p>
+                </div>
+                <div class="rounded-[1.4rem] bg-slate-50 p-4">
+                  <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Loads handled</p>
+                  <p class="mt-2 text-3xl font-black text-slate-900">100+</p>
+                  <p class="text-sm text-slate-600">Early proof placeholder</p>
+                </div>
+                <div class="rounded-[1.4rem] bg-slate-50 p-4">
+                  <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Turnaround</p>
+                  <p class="mt-2 text-3xl font-black text-slate-900">24h</p>
+                  <p class="text-sm text-slate-600">Average turnaround placeholder</p>
+                </div>
+                <div class="rounded-[1.4rem] bg-slate-50 p-4">
+                  <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Service area</p>
+                  <p class="mt-2 text-3xl font-black text-slate-900">Montgomery</p>
+                  <p class="text-sm text-slate-600">Neighborhood coverage placeholder</p>
+                </div>
+              </div>
+            </div>
+            <p class="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">Editable demo metrics are clearly labeled so they can be replaced with live data later.</p>
+          </div>
           </div>
         </div>
 
@@ -218,18 +270,38 @@
           <div class="absolute -left-6 top-8 h-32 w-32 rounded-full bg-blush/22 blur-3xl" aria-hidden="true"></div>
           <div class="absolute right-2 top-0 h-40 w-40 rounded-full bg-primary/18 blur-3xl" aria-hidden="true"></div>
           <div class="relative mx-auto max-w-2xl">
-            <div class="overflow-hidden rounded-[2.25rem] border border-slate-200 bg-white p-3 shadow-premium">
-              <figure class="relative overflow-hidden rounded-[1.75rem] bg-slate-50">
-                <div class="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-transparent" aria-hidden="true"></div>
-                <img src="https://picsum.photos/seed/fold-family-hero/1200/1500" alt="Happy family at home with fresh folded laundry" class="h-[470px] w-full object-cover sm:h-[640px]" width="1200" height="1500" loading="eager">
-                <div class="absolute left-4 top-4 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.24em] text-slate-700"><span class="rounded-full bg-white/92 px-3 py-2 shadow-soft backdrop-blur">Pickup scheduled</span><span class="rounded-full bg-primary/12 px-3 py-2 text-primary">Bags weighed</span></div>
-                <div class="absolute bottom-4 right-4 rounded-[1.5rem] border border-slate-200 bg-white/92 p-4 text-slate-900 shadow-premium backdrop-blur-xl sm:w-[22rem]">
-                  <div class="flex items-center justify-between gap-4"><div><p class="text-[0.7rem] font-bold uppercase tracking-[0.3em] text-slate-500">Order #4582</p><p class="mt-2 text-lg font-semibold text-slate-900">Order tracking</p></div><span class="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-700">Processing</span></div>
-                  <div class="mt-5 h-2 rounded-full bg-slate-100"><div class="h-full w-[62%] rounded-full bg-gradient-to-r from-primary via-emerald-400 to-gold"></div></div>
-                  <ol class="mt-5 space-y-3 text-sm text-slate-700"><li class="flex items-center justify-between"><span>Pickup scheduled</span><span class="text-emerald-700">✓</span></li><li class="flex items-center justify-between"><span>Driver assigned</span><span class="text-emerald-700">✓</span></li><li class="flex items-center justify-between"><span>Laundry processing</span><span class="text-emerald-700">✓</span></li><li class="flex items-center justify-between"><span>Out for delivery</span><span class="text-slate-500">→</span></li><li class="flex items-center justify-between"><span>Delivered</span><span class="text-slate-400">Pending</span></li></ol>
+            <figure class="image-frame p-3 sm:p-4" role="img" aria-label="Premium placeholder composition showing doorstep pickup status cards in a Montgomery home setting">
+              <div class="relative overflow-hidden rounded-[1.7rem] bg-gradient-to-br from-[#fff7fa] via-white to-[#eff8ff]">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(247,214,222,0.44),transparent_22%),radial-gradient(circle_at_78%_24%,rgba(169,214,245,0.36),transparent_24%),radial-gradient(circle_at_72%_78%,rgba(95,175,106,0.14),transparent_20%)]" aria-hidden="true"></div>
+                <div class="relative flex h-[470px] flex-col p-5 sm:h-[640px] sm:p-6">
+                  <div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.24em] text-slate-700">
+                    <span class="rounded-full bg-white/92 px-3 py-2 shadow-soft backdrop-blur">Doorstep pickup</span>
+                    <span class="rounded-full bg-primary/12 px-3 py-2 text-primary">Montgomery home</span>
+                  </div>
+                  <div class="mt-auto grid gap-4 sm:grid-cols-[1fr_0.88fr]">
+                    <div class="rounded-[1.7rem] border border-white/70 bg-white/92 p-5 text-slate-900 shadow-premium backdrop-blur-xl">
+                      <p class="text-[0.7rem] font-bold uppercase tracking-[0.3em] text-slate-500">Fresh folded laundry</p>
+                      <p class="mt-3 text-2xl font-black leading-tight sm:text-3xl">Photo-ready containers for a premium service story.</p>
+                      <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                        <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Theme</p><p class="mt-2 font-semibold text-slate-900">Clean home interiors</p></div>
+                        <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Story</p><p class="mt-2 font-semibold text-slate-900">Weekend freed up</p></div>
+                      </div>
+                    </div>
+                    <div class="rounded-[1.7rem] border border-slate-200 bg-slate-900 p-5 text-white shadow-premium">
+                      <div class="flex items-center justify-between gap-3">
+                        <div>
+                          <p class="text-[0.7rem] font-bold uppercase tracking-[0.3em] text-slate-300">Order #4582</p>
+                          <p class="mt-2 text-lg font-semibold">Order tracking</p>
+                        </div>
+                        <span class="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-300">Processing</span>
+                      </div>
+                      <div class="mt-5 h-2 rounded-full bg-white/10"><div class="h-full w-[62%] rounded-full bg-gradient-to-r from-primary via-emerald-400 to-gold"></div></div>
+                      <ol class="mt-5 space-y-3 text-sm text-slate-200"><li class="flex items-center justify-between"><span>Pickup scheduled</span><span class="text-emerald-300">✓</span></li><li class="flex items-center justify-between"><span>Driver assigned</span><span class="text-emerald-300">✓</span></li><li class="flex items-center justify-between"><span>Laundry processing</span><span class="text-emerald-300">✓</span></li><li class="flex items-center justify-between"><span>Out for delivery</span><span class="text-slate-300">→</span></li><li class="flex items-center justify-between"><span>Delivered</span><span class="text-slate-400">Pending</span></li></ol>
+                    </div>
+                  </div>
                 </div>
-              </figure>
-            </div>
+              </div>
+            </figure>
           </div>
         </div>
       </div>
@@ -265,51 +337,71 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="overflow-hidden rounded-[2.5rem] border border-white/70 bg-gradient-to-br from-[#fff7fb] via-white to-[#f4fbff] px-6 py-10 shadow-premium sm:px-8 lg:px-12 lg:py-14">
           <div class="reveal mx-auto max-w-3xl text-center">
-            <span class="inline-flex items-center rounded-full bg-blush/70 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-slate-700">Future capability</span>
-            <h2 id="3kd-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">Meet 3KD Vision™</h2>
-            <p class="mt-4 text-lg leading-8 text-slate-600">Snap a photo. Get an estimate. Soon you'll be able to upload laundry photos and receive a weight estimate, price range, and booking help powered by AI.</p>
+            <span class="inline-flex items-center rounded-full bg-blush/70 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-slate-700">Coming Soon</span>
+            <h2 id="3kd-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">Meet 3KD Vision Engine™</h2>
+            <p class="mt-4 text-lg leading-8 text-slate-600">Snap a photo. Get an estimate. Book with confidence.</p>
+            <p class="mt-3 text-sm font-medium text-slate-500">3KD Vision Engine will let customers upload laundry photos and receive an estimated weight range, price range, and service recommendation before pickup.</p>
           </div>
 
           <div class="reveal-group mt-10 grid gap-5 lg:grid-cols-3 lg:items-stretch">
             <div class="premium-card p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Upload</p>
+              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">1. Upload</p>
               <div class="mt-4 flex h-full flex-col justify-between rounded-[1.75rem] border border-dashed border-slate-200 bg-slate-50 p-5">
                 <div>
-                  <p class="text-lg font-semibold text-slate-900">Upload Laundry Photos</p>
-                  <p class="mt-2 text-sm leading-7 text-slate-600">Drop a few quick photos and let the system prefill the estimate.</p>
+                  <p class="text-lg font-semibold text-slate-900">Upload laundry photo</p>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Snap a few quick photos so the estimate starts with something real.</p>
                 </div>
                 <div class="mt-6 rounded-3xl bg-white p-5 shadow-soft">
-                  <div class="flex items-center justify-between text-sm text-slate-500"><span>Photos</span><span>3 items</span></div>
-                  <div class="mt-3 h-28 rounded-2xl bg-gradient-to-br from-blush/50 via-white to-primary/10"></div>
+                  <div class="flex items-center justify-between text-sm text-slate-500"><span>Upload</span><span>Photo set</span></div>
+                  <div class="mt-3 h-28 rounded-2xl bg-gradient-to-br from-blush/45 via-white to-primary/10"></div>
                 </div>
               </div>
             </div>
 
             <div class="premium-card p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">AI analysis</p>
+              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">2. Estimate</p>
               <div class="mt-4 rounded-[1.75rem] bg-slate-900 p-6 text-white shadow-premium">
                 <p class="text-sm font-semibold text-slate-300">Estimated Weight</p>
-                <p class="mt-2 text-4xl font-black">24-30 lbs</p>
+                <p class="mt-2 text-4xl font-black">24–30 lbs</p>
                 <p class="mt-5 text-sm font-semibold text-slate-300">Estimated Price</p>
-                <p class="mt-2 text-4xl font-black text-gold">$42-55</p>
+                <p class="mt-2 text-4xl font-black text-gold">$42–55</p>
                 <div class="mt-5 rounded-3xl bg-white/10 p-4">
                   <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-300">Detected items</p>
-                  <ul class="mt-3 space-y-2 text-sm text-slate-100"><li>• Clothing</li><li>• Towels</li><li>• Bedding</li></ul>
+                  <ul class="mt-3 space-y-2 text-sm text-slate-100"><li>Clothing</li><li>Towels</li><li>Bedding</li></ul>
                 </div>
                 <p class="mt-5 text-sm text-slate-300">Confidence: Medium</p>
               </div>
             </div>
 
             <div class="premium-card p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Recommendation</p>
+              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">3. Book</p>
               <div class="mt-4 flex h-full flex-col justify-between rounded-[1.75rem] bg-white p-5 shadow-soft">
                 <div>
                   <p class="text-lg font-semibold text-slate-900">Recommended Service</p>
                   <p class="mt-2 text-2xl font-black text-slate-900">Family Wash & Fold</p>
-                  <p class="mt-3 text-sm leading-7 text-slate-600">The system can recommend the right plan and prepare your booking flow automatically.</p>
+                  <p class="mt-3 text-sm leading-7 text-slate-600">The system recommends the right plan and prepares the booking flow without pretending the feature is live.</p>
                 </div>
-                <a href="schedule.html" class="mt-6 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:from-emerald-500 hover:to-emerald-400">Book Pickup →</a>
+                <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <a href="schedule.html" class="inline-flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-primary to-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:from-emerald-500 hover:to-emerald-400">Join Early Access</a>
+                  <a href="mailto:hello@foldlaundry.com?subject=3KD%20Vision%20early%20access" class="inline-flex flex-1 items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-primary hover:text-primary">Notify Me When Available</a>
+                </div>
               </div>
+            </div>
+          </div>
+
+          <div class="reveal-group mt-6 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+            <div class="rounded-[1.9rem] border border-slate-200 bg-white p-6 shadow-soft">
+              <p class="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">Example estimate card</p>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Estimated Weight</p><p class="mt-2 text-2xl font-black text-slate-900">24–30 lbs</p></div>
+                <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Estimated Price</p><p class="mt-2 text-2xl font-black text-slate-900">$42–55</p></div>
+                <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Detected</p><p class="mt-2 text-2xl font-black text-slate-900">Clothing, towels, bedding</p></div>
+                <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Recommended</p><p class="mt-2 text-2xl font-black text-slate-900">Family Wash & Fold</p></div>
+              </div>
+            </div>
+            <div class="rounded-[1.9rem] border border-white/80 bg-gradient-to-br from-blush/50 via-white to-primary/10 p-6 shadow-soft">
+              <p class="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">Product stance</p>
+              <p class="mt-4 text-lg leading-8 text-slate-700">Future-facing, restrained, and clearly marked as coming soon. The goal is to build innovation credibility without suggesting live AI capabilities that do not exist yet.</p>
             </div>
           </div>
         </div>
@@ -322,6 +414,22 @@
           <span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-primary">Transparent pricing</span>
           <h2 id="plans-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">Simple, honest plans</h2>
           <p class="mt-4 text-lg leading-8 text-slate-600">Use the calculator below to get a recommendation, then compare the plans that fit your household size and pickup rhythm.</p>
+        </div>
+        <div class="reveal-group mx-auto mt-8 grid max-w-5xl gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="premium-card p-6">
+            <p class="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">Why customers trust FOLD</p>
+            <ul class="mt-4 grid gap-3 text-sm leading-7 text-slate-700 sm:grid-cols-2">
+              <li class="flex gap-3"><span aria-hidden="true">•</span><span>No surprise charges</span></li>
+              <li class="flex gap-3"><span aria-hidden="true">•</span><span>Photo or SMS updates</span></li>
+              <li class="flex gap-3"><span aria-hidden="true">•</span><span>Clear receipt before payment</span></li>
+              <li class="flex gap-3"><span aria-hidden="true">•</span><span>Local service area</span></li>
+              <li class="flex gap-3"><span aria-hidden="true">•</span><span>Human support available</span></li>
+            </ul>
+          </div>
+          <div class="premium-card p-6">
+            <p class="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">Pricing authority</p>
+            <p class="mt-4 text-slate-600">Your estimate helps you plan. Your final total is based on actual weight, and you’ll receive a receipt before payment.</p>
+          </div>
         </div>
         <div class="mt-10 grid gap-5 lg:grid-cols-3">
           <article class="plan-card p-7" aria-label="Solo plan"><p class="text-sm font-bold uppercase tracking-[0.3em] text-slate-500">Solo</p><div class="mt-4 flex items-end gap-2"><span class="text-5xl font-black text-slate-900">$39</span><span class="pb-2 text-sm font-semibold text-slate-500">/mo</span></div><p class="mt-3 text-slate-600">For one person who wants laundry off the mental load.</p><ul class="mt-5 space-y-3 text-sm text-slate-700"><li>✓ 2 FOLD bags included</li><li>✓ 10 lb cap per bag</li><li>✓ 2 pickups per month</li><li>✓ SMS tracking</li></ul><a href="schedule.html?plan=solo" class="mt-6 inline-flex w-full items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-primary hover:text-primary">Choose Solo</a></article>
@@ -375,9 +483,33 @@
           </div>
 
           <div class="reveal-group mt-10 grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="relative overflow-hidden rounded-[2.25rem] border border-slate-200 bg-white p-3 shadow-soft"><img src="https://picsum.photos/seed/fold-weekend-family/1200/900" alt="Family enjoying a weekend together with folded laundry nearby" class="h-72 w-full rounded-[1.75rem] object-cover sm:h-[28rem]" width="1200" height="900" loading="lazy"><div class="absolute left-6 top-6 rounded-full bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-slate-700 shadow-soft backdrop-blur">Weekend restored</div></div>
+            <div class="image-frame relative p-3 sm:p-4" role="img" aria-label="Premium placeholder showing family free time with fresh folded laundry in a bright interior">
+              <div class="relative overflow-hidden rounded-[1.7rem] bg-gradient-to-br from-[#fff7fb] via-white to-[#edf7ff]">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_22%_24%,rgba(247,214,222,0.42),transparent_22%),radial-gradient(circle_at_84%_20%,rgba(169,214,245,0.34),transparent_24%),radial-gradient(circle_at_68%_80%,rgba(95,175,106,0.12),transparent_20%)]" aria-hidden="true"></div>
+                <div class="relative flex h-72 flex-col p-5 sm:h-[28rem] sm:p-6">
+                  <div class="rounded-full bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-slate-700 shadow-soft backdrop-blur w-fit">Weekend restored</div>
+                  <div class="mt-auto grid gap-4 sm:grid-cols-[1fr_0.85fr]">
+                    <div class="rounded-[1.7rem] border border-white/70 bg-white/92 p-5 shadow-premium backdrop-blur-xl">
+                      <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Family enjoying free time</p>
+                      <p class="mt-3 text-2xl font-black text-slate-900">Laundry handled before the weekend slips away.</p>
+                    </div>
+                    <div class="rounded-[1.7rem] border border-slate-200 bg-slate-900 p-5 text-white shadow-premium">
+                      <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-300">Theme</p>
+                      <p class="mt-3 text-2xl font-black">Bright home interiors</p>
+                      <p class="mt-2 text-sm leading-7 text-slate-300">Premium, warm, and intentionally staged for a local service brand.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-              <div class="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-3 shadow-soft"><img src="https://picsum.photos/seed/fold-laundry-stack/900/700" alt="Fresh folded laundry stacked neatly in a premium home setting" class="h-56 w-full rounded-[1.5rem] object-cover" width="900" height="700" loading="lazy"></div>
+              <div class="image-frame p-3 sm:p-4" role="img" aria-label="Premium placeholder showing organized closet and folded laundry">
+                <div class="rounded-[1.5rem] bg-gradient-to-br from-white via-[#f8fbff] to-[#fdf6f9] p-5 shadow-soft">
+                  <div class="flex h-56 items-end rounded-[1.25rem] bg-[radial-gradient(circle_at_25%_25%,rgba(169,214,245,0.34),transparent_20%),radial-gradient(circle_at_72%_30%,rgba(247,214,222,0.42),transparent_22%),linear-gradient(135deg,#ffffff_0%,#f4f8ff_55%,#fff7fb_100%)] p-4">
+                    <div class="rounded-3xl border border-white/70 bg-white/90 p-4 shadow-premium"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Fresh folded laundry</p><p class="mt-2 text-lg font-semibold text-slate-900">Organized closet ready</p></div>
+                  </div>
+                </div>
+              </div>
               <div class="premium-card p-6"><p class="text-sm font-bold uppercase tracking-[0.25em] text-slate-500">Why it matters</p><p class="mt-3 text-2xl font-black text-slate-900">Laundry gets handled. The weekend stays yours.</p><p class="mt-3 text-slate-600">FOLD gives families the breathing room to keep plans, keep routines, and keep the house from revolving around another load of laundry.</p></div>
             </div>
           </div>
@@ -406,6 +538,10 @@
               </div>
               <button type="submit" class="inline-flex h-14 w-full items-center justify-center rounded-full bg-gradient-to-r from-primary to-emerald-500 px-6 text-base font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:from-emerald-500 hover:to-emerald-400 sm:w-auto">Check availability</button>
               <p id="service-zip-msg" class="zip-feedback text-sm font-medium text-slate-600" role="status" aria-live="polite"></p>
+              <div class="zip-actions mt-2 flex-col gap-3 sm:flex-row" data-zip-actions>
+                <a href="schedule.html" class="inline-flex h-12 flex-1 items-center justify-center rounded-full bg-slate-900 px-5 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:-translate-y-0.5">Schedule Pickup</a>
+                <a href="#plans" class="inline-flex h-12 flex-1 items-center justify-center rounded-full border border-slate-200 bg-white px-5 text-sm font-semibold text-slate-900 transition hover:border-primary hover:text-primary">View Pickup Windows</a>
+              </div>
             </form>
 
             <div class="mt-6 rounded-[1.75rem] bg-slate-50 p-5">
@@ -423,7 +559,24 @@
                 <div class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3"><span>Average turnaround</span><span class="font-semibold text-slate-900">24 hours</span></div>
               </div>
             </div>
-            <div class="overflow-hidden rounded-[2.25rem] border border-slate-200 bg-white p-3 shadow-soft"><img src="https://picsum.photos/seed/montgomery-map-placeholder/1000/900" alt="Stylized Montgomery neighborhood visual placeholder" class="h-72 w-full rounded-[1.75rem] object-cover sm:h-80 lg:h-96" width="1000" height="900" loading="lazy"></div>
+            <div class="image-frame p-3 sm:p-4" role="img" aria-label="Premium placeholder for Montgomery service area and doorstep pickup route">
+              <div class="relative overflow-hidden rounded-[1.7rem] bg-gradient-to-br from-[#eff8ff] via-white to-[#fff7fb]">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_26%,rgba(169,214,245,0.34),transparent_20%),radial-gradient(circle_at_78%_20%,rgba(247,214,222,0.34),transparent_22%),radial-gradient(circle_at_74%_72%,rgba(95,175,106,0.13),transparent_20%)]" aria-hidden="true"></div>
+                <div class="relative flex h-72 flex-col p-5 sm:h-80 lg:h-96 sm:p-6">
+                  <div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.24em] text-slate-700"><span class="rounded-full bg-white/92 px-3 py-2 shadow-soft backdrop-blur">Montgomery neighborhood feel</span><span class="rounded-full bg-primary/12 px-3 py-2 text-primary">Route ready</span></div>
+                  <div class="mt-auto grid gap-4 sm:grid-cols-[1fr_0.9fr]">
+                    <div class="rounded-[1.7rem] border border-white/70 bg-white/92 p-5 shadow-premium backdrop-blur-xl">
+                      <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Pickup-ready areas</p>
+                      <p class="mt-3 text-2xl font-black text-slate-900">Midtown, Cloverdale, Eastdale</p>
+                    </div>
+                    <div class="rounded-[1.7rem] border border-slate-200 bg-slate-900 p-5 text-white shadow-premium">
+                      <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-300">Doorstep pickup</p>
+                      <p class="mt-3 text-sm leading-7 text-slate-300">A polished, stock-image-ready container that can later be swapped with a real neighborhood or pickup photo.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -431,11 +584,11 @@
 
     <section class="section-shell" aria-labelledby="reviews-heading">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center"><span class="inline-flex items-center rounded-full bg-blush/60 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-slate-700">Real customers</span><h2 id="reviews-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">What Montgomery households say</h2></div>
+        <div class="reveal mx-auto max-w-3xl text-center"><span class="inline-flex items-center rounded-full bg-blush/60 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-slate-700">Real customers</span><h2 id="reviews-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">What Montgomery households say</h2><p class="mt-4 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">4.9★ average rating · Based on early customer feedback · Locally served households</p></div>
         <div class="reveal-group mt-10 grid gap-5 lg:grid-cols-3">
-          <article class="premium-card p-6"><div class="inline-flex rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">★★★★★</div><p class="mt-5 text-lg leading-8 text-slate-700">Best decision I've made this year. My Sundays are finally mine again, and the text updates make the whole process feel effortless.</p><div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-sm font-black text-white">SM</span><div><p class="font-semibold text-slate-900">Sarah M.</p><p class="text-sm text-slate-500">Midtown · Montgomery</p></div></div></article>
-          <article class="premium-card p-6 ring-1 ring-blush/50"><div class="inline-flex rounded-full bg-blush/70 px-3 py-1 text-sm font-bold text-slate-800">★★★★★</div><p class="mt-5 text-lg leading-8 text-slate-700">The weigh-in receipt is a game changer. I see the charge before it posts, which makes the service feel premium and fair.</p><div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blush text-sm font-black text-slate-900">JT</span><div><p class="font-semibold text-slate-900">James T.</p><p class="text-sm text-slate-500">Cloverdale · Montgomery</p></div></div></article>
-          <article class="premium-card p-6"><div class="inline-flex rounded-full bg-gold/20 px-3 py-1 text-sm font-bold text-slate-800">★★★★★</div><p class="mt-5 text-lg leading-8 text-slate-700">We set this up for my mom after her hip replacement. She just leaves the bag at the door and everything comes back fresh and folded.</p><div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold text-sm font-black text-slate-900">RK</span><div><p class="font-semibold text-slate-900">Rachel K.</p><p class="text-sm text-slate-500">Eastdale · Montgomery</p></div></div></article>
+          <article class="premium-card p-6"><div class="inline-flex rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">★★★★★</div><p class="mt-5 text-lg leading-8 text-slate-700">FOLD saved my Saturday. I put two bags outside before work and got clean, folded laundry back without chasing updates.</p><div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-sm font-black text-white">MR</span><div><p class="font-semibold text-slate-900">Marcus R.</p><p class="text-sm text-slate-500">East Montgomery</p></div></div></article>
+          <article class="premium-card p-6 ring-1 ring-blush/50"><div class="inline-flex rounded-full bg-blush/70 px-3 py-1 text-sm font-bold text-slate-800">★★★★★</div><p class="mt-5 text-lg leading-8 text-slate-700">The weigh-in receipt made the price feel fair. I saw the total before payment and never had to wonder what changed.</p><div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blush text-sm font-black text-slate-900">AL</span><div><p class="font-semibold text-slate-900">Alyssa L.</p><p class="text-sm text-slate-500">Cloverdale · Montgomery</p></div></div></article>
+          <article class="premium-card p-6"><div class="inline-flex rounded-full bg-gold/20 px-3 py-1 text-sm font-bold text-slate-800">★★★★★</div><p class="mt-5 text-lg leading-8 text-slate-700">After surgery, we needed contactless pickup. The bags came back folded, on time, and with the same calm tone every step of the way.</p><div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold text-sm font-black text-slate-900">DP</span><div><p class="font-semibold text-slate-900">Denise P.</p><p class="text-sm text-slate-500">Capitol Heights · Montgomery</p></div></div></article>
         </div>
       </div>
     </section>
@@ -458,19 +611,26 @@
           <div class="reveal mx-auto max-w-3xl text-center">
             <h2 class="text-4xl font-black sm:text-5xl">Your weekend is not for laundry.</h2>
             <p class="mt-4 text-lg leading-8 text-slate-200">Join Montgomery households that want more time, more clarity, and a better way to keep laundry moving.</p>
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center"><a href="schedule.html" class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-4 text-base font-semibold text-white shadow-lg shadow-emerald-600/30 transition hover:-translate-y-0.5 hover:bg-emerald-500">Schedule a pickup</a><a href="plans.html" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-4 text-base font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/15">See plans</a></div>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center"><a href="schedule.html" class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-4 text-base font-semibold text-white shadow-lg shadow-emerald-600/30 transition hover:-translate-y-0.5 hover:bg-emerald-500">Schedule Pickup</a><a href="plans.html" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-4 text-base font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/15">See plans</a></div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
+  <div class="mobile-sticky-cta fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 backdrop-blur" aria-label="Mobile quick actions">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-3">
+      <a href="schedule.html" class="inline-flex items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition active:scale-[0.99]">Schedule Pickup</a>
+      <a href="#service-area" class="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition active:scale-[0.99]">Check Availability</a>
+    </div>
+  </div>
+
   <footer class="border-t border-slate-200/80 bg-white/80 py-12 backdrop-blur-sm" role="contentinfo">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_0.9fr]">
         <div><div class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-sm font-black tracking-[0.25em] text-white">FLD</div><p class="mt-4 max-w-md text-slate-600">Laundry pickup and delivery for Montgomery, AL. Weighed by the bag. SMS tracked. Built around a premium, tech-enabled experience.</p><p class="mt-4 text-sm text-slate-500">Demo site for pre-launch planning. Not yet accepting orders.</p></div>
         <div class="text-sm"><h3 class="font-bold text-slate-900">Service</h3><div class="mt-4 space-y-3 text-slate-600"><a class="block hover:text-primary" href="how-it-works.html">How it works</a><a class="block hover:text-primary" href="plans.html">Plans & pricing</a><a class="block hover:text-primary" href="services.html">Services</a><a class="block hover:text-primary" href="service-area.html">Service area</a></div></div>
-        <div class="text-sm"><h3 class="font-bold text-slate-900">Company</h3><div class="mt-4 space-y-3 text-slate-600"><a class="block hover:text-primary" href="about.html">About</a><a class="block hover:text-primary" href="faq.html">FAQ</a><a class="block hover:text-primary" href="schedule.html">Schedule pickup</a></div></div>
+        <div class="text-sm"><h3 class="font-bold text-slate-900">Company</h3><div class="mt-4 space-y-3 text-slate-600"><a class="block hover:text-primary" href="about.html">About</a><a class="block hover:text-primary" href="faq.html">FAQ</a><a class="block hover:text-primary" href="schedule.html">Schedule Pickup</a></div></div>
         <div class="text-sm"><h3 class="font-bold text-slate-900">Members</h3><div class="mt-4 space-y-3 text-slate-600"><a class="block hover:text-primary" href="login.html">Sign in</a><a class="block hover:text-primary" href="status.html">Track order</a><a class="block hover:text-primary" href="account.html#billing">Billing</a><a class="block hover:text-primary" href="privacy.html">Privacy</a><a class="block hover:text-primary" href="terms.html">Terms</a></div></div>
       </div>
       <div class="mt-10 flex flex-col gap-3 border-t border-slate-200 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between"><p>© 2026 FOLD Laundry. Montgomery, AL. All rights reserved.</p><div class="flex gap-4"><a class="hover:text-primary" href="privacy.html">Privacy</a><a class="hover:text-primary" href="terms.html">Terms</a></div></div>
@@ -523,6 +683,7 @@
     (() => {
       const served = new Set(['36101', '36102', '36103', '36104', '36105', '36106', '36107', '36108', '36109', '36110', '36111', '36112', '36113', '36114', '36115', '36116', '36117', '36118', '36119', '36120']);
       document.querySelectorAll('.js-zip-form').forEach((form) => {
+        const actions = form.querySelector('.zip-actions');
         form.addEventListener('submit', (event) => {
           event.preventDefault();
           const input = form.querySelector('.zip-input');
@@ -532,16 +693,25 @@
           if (!/^\d{5}$/.test(zip)) {
             message.textContent = 'Please enter a valid 5-digit ZIP code.';
             message.className = 'zip-feedback text-sm font-medium text-rose-200';
+            if (actions) actions.classList.remove('is-visible');
             return;
           }
           if (served.has(zip)) {
-            message.textContent = '✓ We serve your area. Checking schedule now...';
-            message.className = 'zip-feedback text-sm font-medium text-emerald-200';
-            window.setTimeout(() => { window.location.href = `schedule.html?zip=${zip}`; }, 650);
+            message.textContent = 'We serve your area. Choose your next step below.';
+            message.className = 'zip-feedback text-sm font-medium text-emerald-700';
+            if (actions) {
+              actions.classList.add('is-visible');
+              actions.querySelectorAll('a').forEach((link) => {
+                const url = new URL(link.getAttribute('href'), window.location.href);
+                url.searchParams.set('zip', zip);
+                link.href = url.pathname + url.search + url.hash;
+              });
+            }
             return;
           }
           message.textContent = 'We are not in that ZIP yet, but we can keep you posted as we expand.';
-          message.className = 'zip-feedback text-sm font-medium text-amber-100';
+          message.className = 'zip-feedback text-sm font-medium text-amber-700';
+          if (actions) actions.classList.remove('is-visible');
         });
       });
     })();
