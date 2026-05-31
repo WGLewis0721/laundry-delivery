@@ -3,21 +3,68 @@ Completed Task Results
 Status: Done
 Date: 2026-05-31
 
-Completed changes:
-- Redesigned the homepage into a premium tech-enabled laundry logistics experience.
-- Updated the hero with a lifestyle image placeholder, floating tracking dashboard, pickup badges, and soft blue/green/gold/blush glows.
-- Added blush pink #F7D6DE as a warmth accent for glows, testimonials, and gradients without using it for primary buttons.
-- Rebuilt the ZIP checker into a modern app-style availability flow with mobile-first layout and pickup-window helper copy.
-- Converted the FOLD difference section into a modern bento grid with the largest card for "Texts, not guesswork".
-- Added an interactive pricing recommendation calculator with household size, pickup frequency, recommendation, time saved, and monthly laundry volume outputs.
-- Added the new "More weekend. Less laundry." lifestyle section with premium image placeholders and blush/blue gradients.
-- Replaced defensive delivery copy with the confident delivery-window language requested.
-- Improved typography hierarchy, whitespace, rounded cards, shadows, hover states, glassmorphism header behavior, and scroll reveal animations.
-- Preserved semantic HTML, responsive structure, and lightweight client-side behavior.
+Original prompt correlation with line-number proof:
 
-Documentation:
-- Updated README with the live site link.
-- Added project documentation at docs/project-overview.md.
+1. Create prompts/results folders and write a results file for completed tasks.
+- Proof: [prompts/results/results.txt](prompts/results/results.txt#L1)
+- Result: The requested folder structure exists and this file records the completed work.
 
-Validation:
-- get_errors returned no errors for index.html, README.md, or docs/project-overview.md.
+2. Improve the existing FOLD Laundry homepage into a premium tech-enabled laundry logistics platform.
+- Proof: [index.html](index.html#L214), [index.html](index.html#L257), [index.html](index.html#L285), [index.html](index.html#L310), [index.html](index.html#L343), [index.html](index.html#L378)
+- Result: The homepage was redesigned with a premium, app-like layout and updated visual hierarchy.
+
+3. Keep the brand voice and key copy direction.
+- Proof: [index.html](index.html#L218), [index.html](index.html#L222), [index.html](index.html#L242), [index.html](index.html#L403)
+- Result: The page retains "Drop the bags. Keep the weekend.", weighed-by-the-bag transparency, SMS tracking, receipt-before-charge language, and Montgomery local focus.
+
+4. Replace the hero placeholder with a premium visual layout.
+- Proof: [index.html](index.html#L257), [index.html](index.html#L258), [index.html](index.html#L260)
+- Result: The hero now includes a lifestyle laundry image placeholder, pickup badges, and a floating tracking dashboard card.
+
+5. Add soft blush pink #F7D6DE as a warmth accent only.
+- Proof: [index.html](index.html#L257), [index.html](index.html#L285), [index.html](index.html#L347)
+- Result: Blush is used in decorative glows, testimonial accents, CTA gradients, and card highlights, not as the primary button color.
+
+6. Redesign the ZIP code availability checker into a modern app-like component.
+- Proof: [index.html](index.html#L230), [index.html](index.html#L242), [index.html](index.html#L378)
+- Result: The availability checker now uses a large rounded input, location icon, strong CTA, helper text, and mobile-first structure.
+
+7. Convert The FOLD difference into a bento grid.
+- Proof: [index.html](index.html#L285), [index.html](index.html#L286)
+- Result: The section now uses uneven cards, icons, depth, hover states, and makes "Texts, not guesswork" the largest feature card.
+
+8. Add an interactive pricing recommendation calculator.
+- Proof: [index.html](index.html#L310)
+- Result: The page includes household-size and pickup-frequency selectors, a recommendation output, estimated time saved, and estimated monthly laundry volume.
+
+9. Add the new emotional lifestyle section.
+- Proof: [index.html](index.html#L343), [index.html](index.html#L347), [index.html](index.html#L349)
+- Result: The page includes "More weekend. Less laundry." with the requested supporting copy, premium imagery placeholders, and a blush/blue gradient background.
+
+10. Refine defensive copy.
+- Proof: [index.html](index.html#L168), [index.html](index.html#L403)
+- Result: The defensive delivery wording was replaced with: "We confirm your delivery window after pickup so your promise is based on real capacity, not guesswork."
+
+11. Improve overall visual polish.
+- Proof: [index.html](index.html#L214), [index.html](index.html#L257), [index.html](index.html#L285), [index.html](index.html#L310), [index.html](index.html#L343), [index.html](index.html#L403)
+- Result: The page now uses stronger typography, more whitespace, larger CTA buttons, premium rounded cards, subtle shadows, a glassmorphism header on scroll, hover states, and scroll reveal animations.
+
+12. Maintain accessibility, semantic HTML, responsive design, and Lighthouse-friendly structure.
+- Proof: [index.html](index.html#L230), [index.html](index.html#L378), [index.html](index.html#L403)
+- Result: The page uses semantic sections, responsive layout patterns, reduced-motion handling, and lightweight client-side behavior.
+
+Documentation proof:
+- [README.md](README.md#L5), [README.md](README.md#L9), [README.md](README.md#L115)
+- Result: The README includes the live site link, the docs link, and the existing GitHub Pages checklist item.
+
+- [docs/project-overview.md](docs/project-overview.md#L1), [docs/project-overview.md](docs/project-overview.md#L5), [docs/project-overview.md](docs/project-overview.md#L9), [docs/project-overview.md](docs/project-overview.md#L17)
+- Result: A dedicated project overview document was added with live-site, brand, and homepage summary sections.
+
+Validation proof:
+- Result: `get_errors` returned no errors for [index.html](index.html), [README.md](README.md), or [docs/project-overview.md](docs/project-overview.md).
+
+Repo-state proof:
+- Result: The work is committed in `e7fabad` on `main` and was pushed to `origin/main`.
+
+Limitations:
+- GitHub Pages Actions deployment itself cannot be proven from local files alone; it requires checking the GitHub repo settings or Actions history.
