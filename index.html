@@ -521,6 +521,7 @@
   </footer>
 
   <script>
+    // Reveal once a card is meaningfully on screen without waiting for full visibility.
     const REVEAL_THRESHOLD = 0.18;
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
