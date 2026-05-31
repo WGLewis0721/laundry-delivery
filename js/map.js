@@ -33,14 +33,14 @@
     link.rel  = 'stylesheet';
     link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
     link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
-    link.crossOrigin = '';
+    link.crossOrigin = 'anonymous';
     document.head.appendChild(link);
 
     // Dynamically load Leaflet JS
     const script = document.createElement('script');
     script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-    script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLs=';
-    script.crossOrigin = '';
+    script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lylyzeQ=';
+    script.crossOrigin = 'anonymous';
     script.onload = () => buildMap();
     document.head.appendChild(script);
   }
