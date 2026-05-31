@@ -4,27 +4,148 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FOLD — Laundry Pickup & Delivery | Montgomery, AL</title>
-  <meta name="description" content="Subscription laundry pickup and delivery in Montgomery, AL. Weighed by the bag, no surprise fees. Drop it off, we handle the rest.">
-  <meta name="theme-color" content="#2E7D32">
+  <meta name="description" content="Subscription laundry pickup and delivery in Montgomery, AL. Weighed by the bag, no surprise fees. Drop the bags. Keep the weekend.">
+  <meta name="theme-color" content="#059669">
 
   <!-- Canonical & Open Graph -->
   <link rel="canonical" href="https://foldlaundry.com/">
-  <meta property="og:title"       content="FOLD — Laundry Pickup & Delivery | Montgomery, AL">
-  <meta property="og:description" content="Subscription laundry pickup and delivery in Montgomery. Weighed by the bag, zero surprise fees.">
-  <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://foldlaundry.com/">
+  <meta property="og:title" content="FOLD — Laundry Pickup & Delivery | Montgomery, AL">
+  <meta property="og:description" content="Premium laundry pickup and delivery in Montgomery. Weighed by the bag, SMS tracking, and receipt-before-charge transparency.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://foldlaundry.com/">
 
-  <!-- Fonts (preconnect for speed) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#059669',
+            blush: '#F7D6DE',
+            midnight: '#0f172a',
+            ocean: '#10233f',
+            mist: '#e2ecff'
+          },
+          boxShadow: {
+            premium: '0 30px 80px -40px rgba(15, 23, 42, 0.55)',
+            glow: '0 25px 80px -45px rgba(247, 214, 222, 0.9)'
+          },
+          borderRadius: {
+            '4xl': '2rem'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Existing styles for unchanged sections -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/utilities.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(247, 214, 222, 0.4), transparent 28%),
+        linear-gradient(180deg, #f8fbff 0%, #ffffff 35%);
+      color: #10233f;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .site-nav {
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+    }
+
+    .site-nav.nav-scrolled {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.95);
+      box-shadow: 0 18px 50px -32px rgba(15, 23, 42, 0.35);
+    }
+
+    .nav-links.is-open {
+      display: flex;
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      right: 1rem;
+      left: 1rem;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 20px 45px -30px rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .reveal,
+    .reveal-group {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible,
+    .reveal-group.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover,
+    .hover-lift:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 26px 50px -32px rgba(15, 23, 42, 0.35);
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: auto 10% -12% 10%;
+      height: 28%;
+      border-radius: 999px;
+      background: rgba(247, 214, 222, 0.55);
+      filter: blur(45px);
+      z-index: -1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .site-nav,
+      .reveal,
+      .reveal-group,
+      .hover-lift {
+        transition: none;
+      }
+
+      .hover-lift:hover,
+      .hover-lift:focus-within {
+        transform: none;
+      }
+    }
+  </style>
 
   <!-- JSON-LD: LocalBusiness + FAQPage -->
   <script type="application/ld+json">
@@ -54,35 +175,36 @@
   }
   </script>
 </head>
-<body data-page="home" class="no-js">
+<body data-page="home" class="no-js bg-slate-50 text-slate-900 antialiased">
 <script>document.body.classList.remove('no-js');</script>
 
-<!-- ── Skip to content ────────────────────────────────────── -->
+<!-- Skip to content -->
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<!-- ── Sticky nav ─────────────────────────────────────────── -->
-<nav class="site-nav" role="navigation" aria-label="Main navigation">
-  <div class="wrap nav-inner">
-    <a href="/" class="nav-logo" aria-label="FOLD — home">
-      <span class="logo-text">FOLD</span>
+<!-- Sticky nav -->
+<nav class="site-nav fixed inset-x-0 top-0 z-50 border-b border-transparent" role="navigation" aria-label="Main navigation">
+  <div class="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <a href="/" class="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.35em] text-slate-900" aria-label="FOLD — home">
+      <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-sm font-bold tracking-[0.35em] text-white shadow-premium">FLD</span>
+      <span class="text-base tracking-[0.45em]">FOLD</span>
     </a>
 
-    <button class="nav-toggle"
+    <button class="nav-toggle inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white/80 text-slate-900 shadow-sm backdrop-blur lg:hidden"
             aria-expanded="false"
             aria-controls="nav-menu"
             aria-label="Open navigation menu">
-      <span class="hamburger" aria-hidden="true">
-        <span></span><span></span><span></span>
+      <span class="hamburger flex flex-col gap-1.5" aria-hidden="true">
+        <span class="block h-0.5 w-5 rounded-full bg-current"></span><span class="block h-0.5 w-5 rounded-full bg-current"></span><span class="block h-0.5 w-5 rounded-full bg-current"></span>
       </span>
     </button>
 
-    <ul class="nav-links" id="nav-menu" role="list">
-      <li><a href="how-it-works.html">How it works</a></li>
-      <li><a href="plans.html">Plans</a></li>
-      <li><a href="service-area.html">Service area</a></li>
-      <li><a href="account.html">Sign in</a></li>
+    <ul class="nav-links hidden items-center gap-3 text-sm font-medium text-slate-700 lg:flex" id="nav-menu" role="list">
+      <li><a class="rounded-full px-4 py-2 transition hover:bg-white/80 hover:text-slate-900" href="how-it-works.html">How it works</a></li>
+      <li><a class="rounded-full px-4 py-2 transition hover:bg-white/80 hover:text-slate-900" href="plans.html">Plans</a></li>
+      <li><a class="rounded-full px-4 py-2 transition hover:bg-white/80 hover:text-slate-900" href="service-area.html">Service area</a></li>
+      <li><a class="rounded-full px-4 py-2 transition hover:bg-white/80 hover:text-slate-900" href="account.html">Sign in</a></li>
       <li>
-        <a href="schedule.html" class="btn btn--primary btn--sm nav-cta">
+        <a href="schedule.html" class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500">
           Schedule a pickup
         </a>
       </li>
@@ -90,82 +212,112 @@
   </div>
 </nav>
 
-<!-- ── Main content ───────────────────────────────────────── -->
+<!-- Main content -->
 <main id="main-content">
 
-  <!-- 1. HERO ────────────────────────────────────────────── -->
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="wrap hero-inner">
+  <!-- 1. HERO -->
+  <section class="relative isolate overflow-hidden bg-gradient-to-br from-[#081225] via-[#10233f] to-[#18375b] text-white" aria-labelledby="hero-heading">
+    <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div class="absolute -left-16 top-24 h-56 w-56 rounded-full bg-blush/30 blur-3xl"></div>
+      <div class="absolute right-0 top-10 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
+      <div class="absolute bottom-0 right-12 h-64 w-64 rounded-full bg-blush/20 blur-3xl"></div>
+    </div>
 
-      <div class="hero-content">
-        <span class="hero-eyebrow">Montgomery, AL</span>
+    <div class="relative mx-auto grid min-h-screen max-w-7xl items-center gap-14 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-20 lg:pt-32">
+      <div class="reveal space-y-8">
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-slate-100 shadow-glow backdrop-blur">
+          <span class="h-2 w-2 rounded-full bg-primary"></span>
+          Montgomery, Alabama
+        </span>
 
-        <h1 class="hero-title" id="hero-heading">
-          Drop the bags.<br><em>Keep the weekend.</em>
-        </h1>
+        <div class="max-w-2xl space-y-5">
+          <h1 class="text-5xl font-extrabold leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl" id="hero-heading">
+            Drop the bags.<br>
+            Keep the weekend.
+          </h1>
+          <p class="max-w-xl text-lg leading-8 text-slate-200 sm:text-xl">
+            Premium pickup, wash, fold, and delivery with transparent pricing that stays weighed by the bag — so you see exactly what you're paying for before we charge.
+          </p>
+        </div>
 
-        <p class="hero-sub">
-          We pick up, wash, fold, and deliver — weighed by the bag,
-          so you pay for exactly what's there. No guesswork, no surprises.
-        </p>
+        <div class="max-w-2xl rounded-[2rem] border border-white/15 bg-white/10 p-4 shadow-premium backdrop-blur-xl sm:p-5">
+          <form class="js-zip-form flex flex-col gap-3 md:flex-row" role="search" aria-label="Check service availability">
+            <div class="zip-field-wrap relative flex-1">
+              <label for="hero-zip" class="sr-only">Enter your ZIP code</label>
+              <span class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s6-4.35 6-11a6 6 0 1 0-12 0c0 6.65 6 11 6 11Z"></path>
+                  <circle cx="12" cy="10" r="2.5"></circle>
+                </svg>
+              </span>
+              <input
+                id="hero-zip"
+                class="zip-input h-16 w-full rounded-full border border-white/10 bg-white px-14 pr-4 text-base font-medium text-slate-900 shadow-inner outline-none transition placeholder:text-slate-400 focus:border-primary focus:ring-4 focus:ring-emerald-200"
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]{5}"
+                maxlength="5"
+                placeholder="Enter your ZIP code"
+                autocomplete="postal-code"
+                aria-describedby="hero-zip-msg hero-zip-help"
+              >
+              <span id="hero-zip-msg" class="zip-message mt-2 inline-block px-2 text-sm text-slate-200" role="status" aria-live="polite"></span>
+            </div>
+            <button type="submit" class="inline-flex h-16 items-center justify-center rounded-full bg-gradient-to-r from-primary to-emerald-500 px-7 text-base font-semibold text-white shadow-lg shadow-emerald-600/30 transition hover:-translate-y-0.5 hover:from-emerald-500 hover:to-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              Check availability
+            </button>
+          </form>
+          <p id="hero-zip-help" class="mt-3 px-2 text-sm text-slate-200">
+            Today's pickup windows available in Montgomery
+          </p>
+        </div>
 
-        <!-- ZIP availability form -->
-        <form class="zip-form js-zip-form" role="search" aria-label="Check service availability">
-          <div class="zip-field-wrap">
-            <label for="hero-zip" class="sr-only">Enter your ZIP code</label>
-            <input
-              id="hero-zip"
-              class="zip-input"
-              type="text"
-              inputmode="numeric"
-              pattern="[0-9]{5}"
-              maxlength="5"
-              placeholder="Enter your ZIP code"
-              autocomplete="postal-code"
-              aria-describedby="hero-zip-msg"
+        <div class="flex flex-wrap items-center gap-3 text-sm text-slate-200">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur">⚖️ Weighed by the bag</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur">📲 SMS tracking</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur">🧾 Receipt before charge</span>
+        </div>
+      </div>
+
+      <div class="reveal-group relative">
+        <div class="hero-image hover-lift relative mx-auto max-w-xl">
+          <div class="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-white/20 via-blush/10 to-transparent blur-2xl"></div>
+          <figure class="relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/10 p-3 shadow-premium backdrop-blur-xl">
+            <img
+              src="https://picsum.photos/seed/fold-family-hero/960/1080"
+              alt="Happy family enjoying fresh folded laundry at home"
+              class="h-[420px] w-full rounded-[1.6rem] object-cover sm:h-[560px]"
+              loading="eager"
+              width="960"
+              height="1080"
             >
-            <span id="hero-zip-msg" class="zip-message" role="status" aria-live="polite"></span>
-          </div>
-          <button type="submit" class="btn btn--primary">Check availability</button>
-        </form>
-
-        <!-- Secondary CTAs -->
-        <div class="hero-ctas">
-          <a href="plans.html" class="btn btn--ghost">See plans &amp; pricing</a>
-          <a href="how-it-works.html" class="btn btn--ghost">How it works</a>
+          </figure>
         </div>
 
-        <!-- Trust stats -->
-        <div class="hero-stats" aria-label="Service highlights">
-          <div class="stat-item">
-            <span class="stat-value">1–2</span>
-            <span class="stat-label">Day turnaround</span>
+        <aside class="hover-lift absolute bottom-6 left-0 right-0 mx-4 rounded-[2rem] border border-white/20 bg-slate-950/72 p-5 shadow-premium backdrop-blur-xl sm:bottom-8 sm:left-6 sm:right-auto sm:mx-0 sm:w-[22rem]" aria-label="Order tracking preview">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-300">Live order tracking</p>
+              <p class="mt-2 text-lg font-semibold text-white">Order #36106 is on the move</p>
+            </div>
+            <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-emerald-300">Washing</span>
           </div>
-          <div class="stat-item">
-            <span class="stat-value">$0</span>
-            <span class="stat-label">Surprise fees</span>
+
+          <div class="mt-5 h-2 rounded-full bg-white/10">
+            <div class="h-full w-3/5 rounded-full bg-gradient-to-r from-primary to-blush"></div>
           </div>
-          <div class="stat-item">
-            <span class="stat-value" aria-label="4.9 out of 5 stars">4.9★</span>
-            <span class="stat-label">Google rating</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">200+</span>
-            <span class="stat-label">Happy customers</span>
-          </div>
-        </div>
+
+          <ol class="mt-5 space-y-3 text-sm text-slate-200">
+            <li class="flex items-center justify-between"><span>Pickup</span><span class="text-emerald-300">Done</span></li>
+            <li class="flex items-center justify-between"><span>Weighed</span><span class="text-emerald-300">Done</span></li>
+            <li class="flex items-center justify-between"><span>Washing</span><span class="text-white">Now</span></li>
+            <li class="flex items-center justify-between"><span>Delivery</span><span class="text-slate-400">Next</span></li>
+            <li class="flex items-center justify-between"><span>Delivered</span><span class="text-slate-400">Pending</span></li>
+          </ol>
+        </aside>
       </div>
-
-      <!-- Hero visual -->
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-art">
-          <p class="hero-art-label">Hero image<br>placeholder</p>
-        </div>
-      </div>
-
     </div>
   </section><!-- /hero -->
-
   <!-- 2. TRUST BAR ──────────────────────────────────────── -->
   <div class="trust-bar" role="complementary" aria-label="Trust signals">
     <div class="wrap trust-bar-inner">
@@ -764,6 +916,20 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- ── Scripts ────────────────────────────────────────────── -->
+<script>
+  (() => {
+    const nav = document.querySelector('.site-nav');
+    if (!nav) return;
+
+    const syncNav = () => {
+      nav.classList.toggle('nav-scrolled', window.scrollY > 12);
+    };
+
+    syncNav();
+    window.addEventListener('scroll', syncNav, { passive: true });
+  })();
+</script>
+
 <script>
   // Nav toggle
   (() => {
