@@ -1,0 +1,23 @@
+Completed Task Results
+
+Status: Done
+Date: 2026-05-31
+
+Completed changes:
+- Redesigned the homepage into a premium tech-enabled laundry logistics experience.
+- Updated the hero with a lifestyle image placeholder, floating tracking dashboard, pickup badges, and soft blue/green/gold/blush glows.
+- Added blush pink #F7D6DE as a warmth accent for glows, testimonials, and gradients without using it for primary buttons.
+- Rebuilt the ZIP checker into a modern app-style availability flow with mobile-first layout and pickup-window helper copy.
+- Converted the FOLD difference section into a modern bento grid with the largest card for "Texts, not guesswork".
+- Added an interactive pricing recommendation calculator with household size, pickup frequency, recommendation, time saved, and monthly laundry volume outputs.
+- Added the new "More weekend. Less laundry." lifestyle section with premium image placeholders and blush/blue gradients.
+- Replaced defensive delivery copy with the confident delivery-window language requested.
+- Improved typography hierarchy, whitespace, rounded cards, shadows, hover states, glassmorphism header behavior, and scroll reveal animations.
+- Preserved semantic HTML, responsive structure, and lightweight client-side behavior.
+
+Documentation:
+- Updated README with the live site link.
+- Added project documentation at docs/project-overview.md.
+
+Validation:
+- get_errors returned no errors for index.html, README.md, or docs/project-overview.md.

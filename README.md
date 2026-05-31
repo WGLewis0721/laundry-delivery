@@ -2,7 +2,12 @@
 
 Premium, mobile-first, static marketing-and-booking website for **FOLD**, a subscription laundry pickup-and-delivery service in Montgomery, AL.
 
+Live site: [https://wglewis0721.github.io/laundry-delivery/index.html](https://wglewis0721.github.io/laundry-delivery/index.html)
+
 Hosted on **GitHub Pages** (no build step). Backend integration points are marked `// TODO:` for the TRA3 serverless backend (separate spec).
+
+Project documentation:
+- [docs/project-overview.md](docs/project-overview.md)
 
 ---
 
