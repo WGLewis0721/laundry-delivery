@@ -616,6 +616,7 @@
       }
     };
 
+    const DEFAULT_PLAN_KEY = '2-4-4x';
     const form = document.getElementById('plan-form');
     const householdField = document.getElementById('household-size');
     const frequencyField = document.getElementById('pickup-frequency');
@@ -623,7 +624,7 @@
 
     const renderRecommendation = (announce = false) => {
       const key = `${householdField.value}-${frequencyField.value}`;
-      const recommendation = plans[key] || plans['2-4-4x'];
+      const recommendation = plans[key] || plans[DEFAULT_PLAN_KEY];
 
       resultPanel.setAttribute('aria-live', announce ? 'polite' : 'off');
       document.getElementById('result-plan').textContent = recommendation.plan;
