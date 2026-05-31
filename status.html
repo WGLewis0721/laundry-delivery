@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Order — FOLD</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body data-page="status" class="no-js">
+<script>document.body.classList.remove('no-js');</script>
+
+<a class="skip-link" href="#status-main">Skip to order status</a>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="FOLD — home">
+      <span class="logo-text">FOLD</span>
+    </a>
+    <div style="margin-left: auto; display: flex; gap: var(--space-4); align-items: center;">
+      <a href="account.html" style="font-size: var(--text-sm); color: var(--ink-light); text-decoration: none;">My account</a>
+    </div>
+  </div>
+</nav>
+
+<main id="status-main" style="padding-block: var(--space-12) var(--space-20);">
+  <div class="wrap wrap--narrow">
+
+    <div style="margin-bottom: var(--space-8);">
+      <span class="section-label">Live tracking</span>
+      <h1 style="font-size: clamp(var(--text-3xl), 5vw, var(--text-4xl)); margin-bottom: var(--space-2);">
+        Order status
+      </h1>
+      <p style="color: var(--ink-lighter); font-size: var(--text-sm);">
+        Order ID: <strong id="status-order-id" style="font-family: 'Courier New', monospace; color: var(--ink);">FLD-DEMO0001</strong>
+      </p>
+    </div>
+
+    <!-- ── Status tracker ─────────────────────────────── -->
+    <section aria-labelledby="tracker-heading" style="margin-bottom: var(--space-10);">
+      <h2 id="tracker-heading" class="sr-only">Order progress</h2>
+
+      <ol class="status-tracker" aria-label="Order progress steps">
+        <li class="tracker-step tracker-step--done" aria-label="Scheduled — completed">
+          <span class="tracker-pip" aria-hidden="true">✓</span>
+          <span class="tracker-label">Scheduled</span>
+        </li>
+        <li class="tracker-step tracker-step--done" aria-label="Picked up — completed">
+          <span class="tracker-pip" aria-hidden="true">✓</span>
+          <span class="tracker-label">Picked up</span>
+        </li>
+        <li class="tracker-step tracker-step--current" aria-current="step"
+            aria-label="Washing — current step">
+          <span class="tracker-pip" aria-hidden="true"></span>
+          <span class="tracker-label">Washing</span>
+        </li>
+        <li class="tracker-step" aria-label="Ready to deliver — pending">
+          <span class="tracker-pip" aria-hidden="true"></span>
+          <span class="tracker-label">Ready</span>
+        </li>
+        <li class="tracker-step" aria-label="Out for delivery — pending">
+          <span class="tracker-pip" aria-hidden="true"></span>
+          <span class="tracker-label">Out for delivery</span>
+        </li>
+        <li class="tracker-step" aria-label="Delivered — pending">
+          <span class="tracker-pip" aria-hidden="true"></span>
+          <span class="tracker-label">Delivered</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ── Delivery date notice ───────────────────────── -->
+    <div class="booking-notice" role="status" aria-live="polite" style="margin-bottom: var(--space-8);">
+      <strong>Estimated delivery:</strong>
+      Thursday, June 5 — confirmed by text after weigh-in.
+      You'll receive an SMS when your order is out for delivery.
+    </div>
+
+    <!-- ── Weigh-in breakdown ─────────────────────────── -->
+    <section aria-labelledby="weighin-heading" style="margin-bottom: var(--space-10);">
+      <h2 id="weighin-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-4);">
+        Weigh-in breakdown
+      </h2>
+      <p style="font-size: var(--text-sm); color: var(--ink-lighter); margin-bottom: var(--space-4);">
+        Weighed at pickup on June 3, 9:14 am · Household plan (12 lb cap per bag)
+      </p>
+
+      <div style="overflow-x: auto;">
+        <table class="weighin-table" aria-label="Per-bag weigh-in breakdown">
+          <thead>
+            <tr>
+              <th scope="col">Bag</th>
+              <th scope="col">Weight</th>
+              <th scope="col">Cap</th>
+              <th scope="col">Status</th>
+              <th scope="col" style="text-align: right;">Overage charge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bag 1</td>
+              <td>10.5 lb</td>
+              <td>12 lb</td>
+              <td><span class="weighin-pill weighin-pill--within">Within cap</span></td>
+              <td style="text-align: right;">—</td>
+            </tr>
+            <tr>
+              <td>Bag 2</td>
+              <td>14.2 lb</td>
+              <td>12 lb</td>
+              <td><span class="weighin-pill weighin-pill--over">Over by 2.2 lb</span></td>
+              <td style="text-align: right;">$5.50</td>
+            </tr>
+            <tr>
+              <td>Bag 3</td>
+              <td>8.8 lb</td>
+              <td>12 lb</td>
+              <td><span class="weighin-pill weighin-pill--within">Within cap</span></td>
+              <td style="text-align: right;">—</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="weighin-total">
+              <td colspan="4"><strong>Total overage</strong></td>
+              <td style="text-align: right;"><strong>$5.50</strong></td>
+            </tr>
+            <tr>
+              <td colspan="4" style="font-size: var(--text-xs); color: var(--ink-lighter); padding-top: var(--space-2);">
+                Charged to card on file (•••• 4242) at delivery
+              </td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── SMS feed ───────────────────────────────────── -->
+    <section aria-labelledby="sms-heading" style="margin-bottom: var(--space-10);">
+      <h2 id="sms-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-4);">
+        SMS updates
+      </h2>
+
+      <div class="sms-feed" role="log" aria-live="polite" aria-label="SMS message history">
+
+        <div class="sms-bubble sms-bubble--outgoing"
+             aria-label="FOLD sent: Monday Jun 2 8:05 pm">
+          <span class="sms-sender">FOLD</span>
+          <p class="sms-body">
+            Hi Jane! Reminder: your FOLD pickup is tomorrow (Tue Jun 3)
+            between 8–10 am. Leave your bag by the door — we'll handle the rest. 🧺
+          </p>
+          <span class="sms-time">Mon Jun 2 · 8:05 pm</span>
+        </div>
+
+        <div class="sms-bubble sms-bubble--outgoing"
+             aria-label="FOLD sent: Tuesday Jun 3 9:17 am">
+          <span class="sms-sender">FOLD</span>
+          <p class="sms-body">
+            ✓ Picked up! We've got 3 bags. Weighing now — you'll receive a
+            breakdown text in a few minutes.
+          </p>
+          <span class="sms-time">Tue Jun 3 · 9:17 am</span>
+        </div>
+
+        <div class="sms-bubble sms-bubble--outgoing"
+             aria-label="FOLD sent: Tuesday Jun 3 9:22 am">
+          <span class="sms-sender">FOLD</span>
+          <p class="sms-body">
+            ⚖️ Weigh-in complete:<br>
+            • Bag 1: 10.5 lb (within cap ✓)<br>
+            • Bag 2: 14.2 lb (over cap by 2.2 lb → $5.50 overage)<br>
+            • Bag 3: 8.8 lb (within cap ✓)<br><br>
+            Total overage: $5.50, charged to card on file at delivery.
+            No action needed — we'll get started!
+          </p>
+          <span class="sms-time">Tue Jun 3 · 9:22 am</span>
+        </div>
+
+        <div class="sms-bubble sms-bubble--outgoing"
+             aria-label="FOLD sent: Tuesday Jun 3 11:30 am">
+          <span class="sms-sender">FOLD</span>
+          <p class="sms-body">
+            📅 Delivery confirmed: <strong>Thursday, June 5</strong>.
+            We'll text you when we're on the way. See you then!
+          </p>
+          <span class="sms-time">Tue Jun 3 · 11:30 am</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTAs -->
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-4);">
+      <a href="account.html" class="btn btn--ghost">Back to account</a>
+      <a href="schedule.html" class="btn btn--primary">Schedule next pickup</a>
+    </div>
+
+  </div>
+</main>
+
+<footer style="border-top: 1px solid var(--border); padding-block: var(--space-6); text-align: center;">
+  <div class="wrap">
+    <p style="font-size: var(--text-xs); color: var(--ink-lighter);">
+      © 2025 FOLD Laundry · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Pull order ID from URL or sessionStorage
+  (() => {
+    const params  = new URLSearchParams(window.location.search);
+    const orderId = params.get('order');
+    if (orderId) {
+      const el = document.getElementById('status-order-id');
+      if (el) el.textContent = orderId;
+    }
+  })();
+</script>
+</body>
+</html>

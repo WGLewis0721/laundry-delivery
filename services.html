@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — FOLD Laundry</title>
+  <meta name="description" content="FOLD offers wash &amp; fold, hang-dry care, and delicates handling. Premium laundry service in Montgomery, AL.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body data-page="services" class="no-js">
+<script>document.body.classList.remove('no-js');</script>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="FOLD — home"><span class="logo-text">FOLD</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="service-area.html">Service area</a></li>
+      <li><a href="account.html">Sign in</a></li>
+      <li><a href="schedule.html" class="btn btn--primary btn--sm nav-cta">Schedule a pickup</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main-content">
+
+  <section class="section" style="background: var(--off-white);">
+    <div class="wrap" style="text-align: center; max-width: 680px; margin-inline: auto;">
+      <span class="section-label">What we do</span>
+      <h1 style="font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl)); margin-bottom: var(--space-4);">Services</h1>
+      <p class="section-desc">Everything we offer, explained plainly.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid-3 reveal-group">
+
+        <article class="bento-cell" style="border: 1px solid var(--border);">
+          <div class="bento-accent bento-accent--green" aria-hidden="true">🧺</div>
+          <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Wash &amp; Fold</h2>
+          <p>
+            Standard laundry washed in cold water, tumble dried at medium heat, and
+            neatly folded. Your everyday load.
+          </p>
+        </article>
+
+        <article class="bento-cell" style="border: 1px solid var(--border);">
+          <div class="bento-accent bento-accent--sky" aria-hidden="true">👗</div>
+          <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Hang-Dry Care</h2>
+          <p>
+            Items you mark "hang dry" are separated from the main wash, air-dried on hangers,
+            and returned on a hanger inside the bag.
+          </p>
+        </article>
+
+        <article class="bento-cell" style="border: 1px solid var(--border);">
+          <div class="bento-accent bento-accent--blush" aria-hidden="true">✨</div>
+          <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Delicates Handling</h2>
+          <p>
+            Delicate items are washed in a mesh bag on a gentle cycle, never high heat.
+            Available on Household and Estate plans.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="booking-notice" style="max-width: 680px; margin: var(--space-10) auto 0;" role="note">
+        <strong>What we don't handle:</strong>
+        Dry-clean-only garments, leather, suede, and items requiring professional pressing.
+        For these we recommend a local specialist.
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark closing-cta">
+    <div class="wrap">
+      <h2>Ready to hand it off?</h2>
+      <p>Schedule a pickup and let us handle the rest.</p>
+      <div class="closing-cta-btns">
+        <a href="schedule.html" class="btn btn--primary btn--lg">Schedule a pickup</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="logo-text">FOLD</span><p>Laundry pickup and delivery for Montgomery, AL.</p></div>
+      <div class="footer-col"><h4>Service</h4><a href="how-it-works.html">How it works</a><a href="plans.html">Plans &amp; pricing</a><a href="services.html">Services</a><a href="service-area.html">Service area</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="faq.html">FAQ</a></div>
+      <div class="footer-col"><h4>Members</h4><a href="account.html">Sign in</a><a href="status.html">Track order</a><h4 style="margin-top: var(--space-5);">Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 FOLD Laundry. Montgomery, AL.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div>
+  </div>
+</footer>
+
+<div class="mobile-cta-bar"><a href="schedule.html" class="btn btn--primary btn--block">Schedule a pickup</a></div>
+<script>
+  (() => { const t = document.querySelector('.nav-toggle'), m = document.getElementById('nav-menu'); if (!t || !m) return; t.addEventListener('click', () => { const e = t.getAttribute('aria-expanded') === 'true'; t.setAttribute('aria-expanded', String(!e)); m.classList.toggle('is-open', !e); }); })();
+</script>
+</body>
+</html>

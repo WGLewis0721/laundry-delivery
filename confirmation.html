@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Confirmed — FOLD</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body data-page="confirmation" class="no-js">
+<script>document.body.classList.remove('no-js');</script>
+
+<a class="skip-link" href="#confirm-main">Skip to confirmation</a>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="FOLD — home">
+      <span class="logo-text">FOLD</span>
+    </a>
+  </div>
+</nav>
+
+<main id="confirm-main" style="padding-block: var(--space-16) var(--space-20);">
+  <div class="wrap">
+
+    <!-- Confirmation hero -->
+    <div class="confirm-hero">
+      <div class="confirm-check" role="img" aria-label="Booking confirmed">✓</div>
+      <h1 style="font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl)); margin-bottom: var(--space-3);">
+        You're all set.
+      </h1>
+      <p style="font-size: var(--text-lg); color: var(--ink-light); max-width: 500px; margin-inline: auto;">
+        Your pickup is scheduled. We'll text you a reminder the evening before —
+        just leave your bag by the door.
+      </p>
+      <div class="order-id-badge" id="order-id-display" aria-label="Order ID">
+        Loading…
+      </div>
+    </div>
+
+    <!-- What happens next -->
+    <section class="next-steps" aria-labelledby="next-heading">
+      <h2 id="next-heading" style="font-size: var(--text-2xl); margin-bottom: var(--space-6); text-align: center;">
+        What happens next
+      </h2>
+
+      <ol aria-label="Next steps">
+        <li class="next-step-item">
+          <span class="next-step-num" aria-hidden="true">1</span>
+          <div class="next-step-content">
+            <h4>Evening before pickup</h4>
+            <p>We text you a reminder with the exact pickup window. Leave your FOLD bag by the door — no need to be home.</p>
+          </div>
+        </li>
+        <li class="next-step-item">
+          <span class="next-step-num" aria-hidden="true">2</span>
+          <div class="next-step-content">
+            <h4>Pickup &amp; weigh-in</h4>
+            <p>We collect your bag and weigh it on our certified scale. You get a text with the exact weight, your cap, and any overage calculation — before we process anything.</p>
+          </div>
+        </li>
+        <li class="next-step-item">
+          <span class="next-step-num" aria-hidden="true">3</span>
+          <div class="next-step-content">
+            <h4>Delivery date confirmed by text</h4>
+            <p>Once we know this week's capacity, we set your delivery date and text it to you. Typically within 1 business day of pickup.</p>
+          </div>
+        </li>
+        <li class="next-step-item">
+          <span class="next-step-num" aria-hidden="true">4</span>
+          <div class="next-step-content">
+            <h4>Fresh &amp; folded at your door</h4>
+            <p>We text you when we're on the way, and again when it's delivered. Your FOLD bags come back ready to fill again.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Order summary recap -->
+    <div class="booking-summary" id="confirm-summary" style="max-width: 600px; margin: var(--space-10) auto 0;" aria-labelledby="confirm-summary-heading">
+      <h3 id="confirm-summary-heading">Your booking</h3>
+      <div class="summary-row">
+        <span class="summary-label">Order ID</span>
+        <span class="summary-value" id="cs-order-id">—</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Plan</span>
+        <span class="summary-value" id="cs-plan">—</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">First pickup window</span>
+        <span class="summary-value" id="cs-window">—</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Address</span>
+        <span class="summary-value" id="cs-address">—</span>
+      </div>
+    </div>
+
+    <!-- CTA row -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4); margin-top: var(--space-10);">
+      <a href="status.html" class="btn btn--primary btn--lg">Track your order</a>
+      <a href="account.html" class="btn btn--ghost btn--lg">Go to your account</a>
+    </div>
+
+  </div>
+</main>
+
+<footer style="border-top: 1px solid var(--border); padding-block: var(--space-6); text-align: center;">
+  <div class="wrap">
+    <p style="font-size: var(--text-xs); color: var(--ink-lighter);">
+      © 2025 FOLD Laundry · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Populate confirmation from sessionStorage
+  (() => {
+    let booking = null;
+
+    // Try sessionStorage
+    try {
+      const raw = sessionStorage.getItem('fold_booking_confirmed');
+      if (raw) booking = JSON.parse(raw);
+    } catch (_) {}
+
+    // Also try URL param as fallback
+    if (!booking) {
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get('order');
+      if (orderId) {
+        booking = { orderId };
+      }
+    }
+
+    if (!booking) {
+      document.getElementById('order-id-display').textContent = 'FLD-DEMO0000';
+      return;
+    }
+
+    const planNames = { solo: 'Solo ($39/mo)', household: 'Household ($69/mo)', estate: 'Estate ($119/mo)' };
+
+    setText('order-id-display', 'Order ID: ' + (booking.orderId || '—'));
+    setText('cs-order-id',      booking.orderId || '—');
+    setText('cs-plan',          planNames[booking.plan] || booking.plan || '—');
+    setText('cs-window',        booking.window || '—');
+    setText('cs-address',       booking.address || '—');
+
+    function setText(id, val) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    }
+  })();
+</script>
+</body>
+</html>

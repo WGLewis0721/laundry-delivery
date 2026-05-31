@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account — FOLD Laundry</title>
+  <meta name="description" content="Sign in to manage your FOLD subscription, track pickups, and view your order history.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body data-page="account" class="no-js">
+<script>document.body.classList.remove('no-js');</script>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="FOLD — home"><span class="logo-text">FOLD</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="service-area.html">Service area</a></li>
+      <li><a href="account.html" aria-current="page">Sign in</a></li>
+      <li><a href="schedule.html" class="btn btn--primary btn--sm nav-cta">Schedule a pickup</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main-content">
+
+  <!-- Sign-in form (shown when logged out) -->
+  <section class="section" id="sign-in-section">
+    <div class="wrap" style="max-width: 440px; margin-inline: auto;">
+      <h1 style="font-size: var(--text-3xl); margin-bottom: var(--space-2);">Sign in</h1>
+      <p style="color: var(--ink-light); margin-bottom: var(--space-8);">Welcome back. Your laundry is waiting.</p>
+
+      <form id="sign-in-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="sign-in-email">Email</label>
+          <input id="sign-in-email" class="form-input" type="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sign-in-password">Password</label>
+          <input id="sign-in-password" class="form-input" type="password" autocomplete="current-password" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn--primary btn--block btn--lg" style="margin-top: var(--space-2);">Sign in</button>
+        <p style="text-align: center; margin-top: var(--space-4); font-size: var(--text-sm); color: var(--ink-lighter);">
+          <a href="#">Forgot password?</a>
+        </p>
+      </form>
+
+      <div class="booking-notice" style="margin-top: var(--space-8);" role="note">
+        <strong>Not a member yet?</strong>
+        <a href="schedule.html">Schedule your first pickup</a> to create an account.
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard (shown when logged in — demo/stub state) -->
+  <section class="section" id="dashboard-section" style="display: none;">
+    <div class="wrap">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--space-4); margin-bottom: var(--space-8);">
+        <div>
+          <h1 id="dashboard-greeting" style="font-size: var(--text-3xl); margin-bottom: var(--space-1);">Good to see you.</h1>
+          <p style="color: var(--ink-light);">Here's your account at a glance.</p>
+        </div>
+        <button id="sign-out-btn" class="btn btn--ghost btn--sm">Sign out</button>
+      </div>
+
+      <div class="grid-3 reveal-group">
+
+        <!-- Plan card -->
+        <div class="bento-cell">
+          <p style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-lighter); margin-bottom: var(--space-2);">Your plan</p>
+          <p style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-1);">Household</p>
+          <p style="color: var(--ink-light); font-size: var(--text-sm);">4 bags · 12 lb cap · 4 pickups/month</p>
+          <a href="plans.html" class="btn btn--ghost btn--sm" style="margin-top: var(--space-4);">Change plan</a>
+        </div>
+
+        <!-- Pickups remaining card -->
+        <div class="bento-cell" style="background: var(--sky-light, #EBF4FF);">
+          <p style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-lighter); margin-bottom: var(--space-2);">Pickups remaining</p>
+          <p style="font-size: var(--text-4xl); font-weight: var(--weight-bold); color: var(--ink); margin-bottom: var(--space-1);" aria-label="3 of 4 pickups remaining this month">3 / 4</p>
+          <p style="color: var(--ink-light); font-size: var(--text-sm);">This billing cycle</p>
+          <a href="schedule.html" class="btn btn--primary btn--sm" style="margin-top: var(--space-4);">Schedule pickup</a>
+        </div>
+
+        <!-- Active order card -->
+        <div class="bento-cell">
+          <p style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-lighter); margin-bottom: var(--space-2);">Latest order</p>
+          <p style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin-bottom: var(--space-1);">#FOLD-2847</p>
+          <p style="color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--space-4);">Status: <strong>Washing</strong></p>
+          <a href="status.html?order=FOLD-2847" class="btn btn--ghost btn--sm">Track order</a>
+        </div>
+
+      </div>
+
+      <!-- Order history -->
+      <div style="margin-top: var(--space-12);">
+        <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-6);">Order history</h2>
+        <div class="weigh-table" role="table" aria-label="Order history">
+          <div class="weigh-table-header" role="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: var(--space-4);">
+            <span role="columnheader">Order</span>
+            <span role="columnheader">Pickup date</span>
+            <span role="columnheader">Bags</span>
+            <span role="columnheader">Total</span>
+          </div>
+          <div role="row" class="weigh-row" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: var(--space-4);">
+            <span><a href="status.html?order=FOLD-2847">FOLD-2847</a></span>
+            <span>May 28, 2025</span>
+            <span>4 bags</span>
+            <span>$69.00</span>
+          </div>
+          <div role="row" class="weigh-row" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: var(--space-4);">
+            <span><a href="status.html?order=FOLD-2803">FOLD-2803</a></span>
+            <span>May 14, 2025</span>
+            <span>4 bags</span>
+            <span>$69.00 + $5.50 overage</span>
+          </div>
+          <div role="row" class="weigh-row" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: var(--space-4);">
+            <span><a href="status.html?order=FOLD-2761">FOLD-2761</a></span>
+            <span>Apr 30, 2025</span>
+            <span>3 bags</span>
+            <span>$69.00</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="logo-text">FOLD</span><p>Laundry pickup and delivery for Montgomery, AL.</p></div>
+      <div class="footer-col"><h4>Service</h4><a href="how-it-works.html">How it works</a><a href="plans.html">Plans &amp; pricing</a><a href="services.html">Services</a><a href="service-area.html">Service area</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="faq.html">FAQ</a></div>
+      <div class="footer-col"><h4>Members</h4><a href="account.html">Sign in</a><a href="status.html">Track order</a><h4 style="margin-top: var(--space-5);">Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 FOLD Laundry. Montgomery, AL.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    // Nav toggle
+    const t = document.querySelector('.nav-toggle'), m = document.getElementById('nav-menu');
+    if (t && m) t.addEventListener('click', () => { const e = t.getAttribute('aria-expanded') === 'true'; t.setAttribute('aria-expanded', String(!e)); m.classList.toggle('is-open', !e); });
+
+    // Demo: show dashboard if there is a demo param ?demo=1
+    const params = new URLSearchParams(location.search);
+    if (params.get('demo') === '1') {
+      document.getElementById('sign-in-section').style.display = 'none';
+      document.getElementById('dashboard-section').style.display = 'block';
+    }
+
+    // Sign-in form (placeholder — wires to TRA3)
+    document.getElementById('sign-in-form')?.addEventListener('submit', e => {
+      e.preventDefault();
+      // TODO: POST to TRA3 /auth/login endpoint, receive session token, show dashboard
+      // For demo: show dashboard
+      document.getElementById('sign-in-section').style.display = 'none';
+      document.getElementById('dashboard-section').style.display = 'block';
+    });
+
+    // Sign out
+    document.getElementById('sign-out-btn')?.addEventListener('click', () => {
+      // TODO: clear TRA3 session token
+      document.getElementById('dashboard-section').style.display = 'none';
+      document.getElementById('sign-in-section').style.display = 'block';
+    });
+  })();
+</script>
+</body>
+</html>
