@@ -12,7 +12,8 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
       theme: {
         extend: {
           colors: {
@@ -343,27 +344,27 @@
             <div class="bg-slate-950 p-8 text-white sm:p-10">
               <div id="plan-result" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6" aria-live="polite">
                 <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Recommended plan</p>
-                <h3 id="result-plan" class="mt-4 text-3xl font-bold">Household plan</h3>
+                <h3 id="result-plan" class="mt-4 text-3xl font-bold">Solo plan</h3>
                 <p id="result-copy" class="mt-4 text-sm leading-7 text-slate-300">
-                  Built for regular family laundry with weighed-by-the-bag pricing and dependable SMS updates.
+                  Perfect for one-person households who want laundry handled twice a month without thinking about it.
                 </p>
 
                 <dl class="mt-8 grid grid-cols-2 gap-4">
                   <div class="rounded-3xl bg-white/5 p-4">
                     <dt class="text-xs uppercase tracking-[0.16em] text-slate-400">Monthly price</dt>
-                    <dd id="result-price" class="mt-2 text-2xl font-bold">$96</dd>
+                    <dd id="result-price" class="mt-2 text-2xl font-bold">$54</dd>
                   </div>
                   <div class="rounded-3xl bg-white/5 p-4">
                     <dt class="text-xs uppercase tracking-[0.16em] text-slate-400">Hours saved</dt>
-                    <dd id="result-hours" class="mt-2 text-2xl font-bold">10 hrs</dd>
+                    <dd id="result-hours" class="mt-2 text-2xl font-bold">6 hrs</dd>
                   </div>
                   <div class="rounded-3xl bg-white/5 p-4">
                     <dt class="text-xs uppercase tracking-[0.16em] text-slate-400">Bags per month</dt>
-                    <dd id="result-bags" class="mt-2 text-2xl font-bold">4 bags</dd>
+                    <dd id="result-bags" class="mt-2 text-2xl font-bold">2 bags</dd>
                   </div>
                   <div class="rounded-3xl bg-white/5 p-4">
                     <dt class="text-xs uppercase tracking-[0.16em] text-slate-400">Best for</dt>
-                    <dd id="result-fit" class="mt-2 text-lg font-semibold">Family rhythm</dd>
+                    <dd id="result-fit" class="mt-2 text-lg font-semibold">Solo rhythm</dd>
                   </div>
                 </dl>
               </div>
@@ -617,9 +618,7 @@
     const householdField = document.getElementById('household-size');
     const frequencyField = document.getElementById('pickup-frequency');
 
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-
+    const renderRecommendation = () => {
       const key = `${householdField.value}-${frequencyField.value}`;
       const recommendation = plans[key];
 
@@ -629,7 +628,14 @@
       document.getElementById('result-bags').textContent = recommendation.bags;
       document.getElementById('result-fit').textContent = recommendation.fit;
       document.getElementById('result-copy').textContent = recommendation.copy;
+    };
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      renderRecommendation();
     });
+
+    renderRecommendation();
   </script>
 </body>
 </html>
