@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in — FOLD Laundry</title>
+  <meta name="description" content="Sign in to your FOLD account to manage pickups, view order history, and track deliveries.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body data-page="login" class="no-js">
+<script>document.body.classList.remove('no-js');</script>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="FOLD — home"><span class="logo-text">FOLD</span></a>
+    <ul class="nav-links" id="nav-menu" role="list" style="margin-left: auto; display: flex; align-items: center; gap: var(--space-4);">
+      <li><a href="index.html" style="font-size: var(--text-sm); color: var(--ink-light); text-decoration: none;">← Back to home</a></li>
+      <li><a href="schedule.html" class="btn btn--primary btn--sm">Schedule a pickup</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main-content" style="padding-block: var(--space-16) var(--space-20);">
+  <div class="wrap" style="max-width: 440px; margin-inline: auto;">
+
+    <h1 style="font-size: var(--text-3xl); margin-bottom: var(--space-2);">Sign in</h1>
+    <p style="color: var(--ink-light); margin-bottom: var(--space-8);">Welcome back. Your laundry is waiting.</p>
+
+    <!-- Error banner (hidden by default) -->
+    <div id="login-error" role="alert" aria-live="polite" style="display: none; background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); margin-bottom: var(--space-5); font-size: var(--text-sm); color: #991B1B;"></div>
+
+    <form id="login-form" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="login-email">Email</label>
+        <input
+          id="login-email"
+          class="form-input"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="you@example.com"
+          aria-describedby="login-email-error"
+        >
+        <span id="login-email-error" class="form-error" aria-live="polite" style="display: none; font-size: var(--text-sm); color: var(--error, #DC2626); margin-top: var(--space-1);"></span>
+      </div>
+
+      <div class="form-group">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <label class="form-label" for="login-password">Password</label>
+          <a href="#" id="forgot-password-link" style="font-size: var(--text-sm); color: var(--ink-light);">Forgot password?</a>
+        </div>
+        <input
+          id="login-password"
+          class="form-input"
+          type="password"
+          autocomplete="current-password"
+          required
+          placeholder="••••••••"
+          aria-describedby="login-password-error"
+        >
+        <span id="login-password-error" class="form-error" aria-live="polite" style="display: none; font-size: var(--text-sm); color: var(--error, #DC2626); margin-top: var(--space-1);"></span>
+      </div>
+
+      <button type="submit" id="login-submit" class="btn btn--primary btn--block btn--lg" style="margin-top: var(--space-6);">
+        Sign in
+      </button>
+    </form>
+
+    <div class="booking-notice" style="margin-top: var(--space-8);" role="note">
+      <strong>Not a member yet?</strong>
+      <a href="schedule.html">Schedule your first pickup</a> to create an account.
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="logo-text">FOLD</span><p>Laundry pickup and delivery for Montgomery, AL.</p></div>
+      <div class="footer-col"><h4>Service</h4><a href="how-it-works.html">How it works</a><a href="plans.html">Plans &amp; pricing</a><a href="services.html">Services</a><a href="service-area.html">Service area</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="faq.html">FAQ</a></div>
+      <div class="footer-col"><h4>Members</h4><a href="login.html" aria-current="page">Sign in</a><a href="status.html">Track order</a><h4 style="margin-top: var(--space-5);">Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 FOLD Laundry. Montgomery, AL.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    const form     = document.getElementById('login-form');
+    const emailEl  = document.getElementById('login-email');
+    const passEl   = document.getElementById('login-password');
+    const errorBanner = document.getElementById('login-error');
+    const submitBtn   = document.getElementById('login-submit');
+
+    function showFieldError(inputEl, errorEl, msg) {
+      inputEl.setAttribute('aria-invalid', 'true');
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+    }
+
+    function clearFieldError(inputEl, errorEl) {
+      inputEl.removeAttribute('aria-invalid');
+      errorEl.textContent = '';
+      errorEl.style.display = 'none';
+    }
+
+    function clearAll() {
+      clearFieldError(emailEl, document.getElementById('login-email-error'));
+      clearFieldError(passEl,  document.getElementById('login-password-error'));
+      errorBanner.style.display = 'none';
+      errorBanner.textContent   = '';
+    }
+
+    // Inline validation on blur
+    emailEl.addEventListener('blur', () => {
+      if (emailEl.value && !emailEl.validity.valid) {
+        showFieldError(emailEl, document.getElementById('login-email-error'), 'Please enter a valid email address.');
+      } else {
+        clearFieldError(emailEl, document.getElementById('login-email-error'));
+      }
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      clearAll();
+
+      let valid = true;
+
+      if (!emailEl.value.trim()) {
+        showFieldError(emailEl, document.getElementById('login-email-error'), 'Email is required.');
+        valid = false;
+      } else if (!emailEl.validity.valid) {
+        showFieldError(emailEl, document.getElementById('login-email-error'), 'Please enter a valid email address.');
+        valid = false;
+      }
+
+      if (!passEl.value) {
+        showFieldError(passEl, document.getElementById('login-password-error'), 'Password is required.');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Disable button while "submitting"
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Signing in…';
+
+      // TODO: POST to auth endpoint; on success redirect to account.html
+      // Simulated async — replace with real fetch() call
+      setTimeout(() => {
+        // On success: redirect to account dashboard
+        window.location.href = 'account.html';
+      }, 600);
+    });
+  })();
+</script>
+</body>
+</html>
