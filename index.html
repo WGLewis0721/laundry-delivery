@@ -92,7 +92,7 @@
   <!-- Floating glass navigation appears after scroll. -->
   <div class="nav-shell fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8" data-scrolled="false">
     <nav class="mx-auto flex w-full max-w-7xl items-center justify-between rounded-full border border-white/60 bg-white/65 px-4 py-3 shadow-glass backdrop-blur-xl sm:px-6" aria-label="Primary">
-      <a href="#main-content" class="text-sm font-black tracking-[0.28em] text-slate-900">FOLD</a>
+      <a href="./" class="text-sm font-black tracking-[0.28em] text-slate-900">FOLD</a>
       <div class="hidden items-center gap-6 text-sm font-medium text-slate-700 md:flex">
         <a href="#difference" class="transition hover:text-primary">Why FOLD</a>
         <a href="#calculator" class="transition hover:text-primary">Pricing</a>
@@ -521,7 +521,7 @@
   </footer>
 
   <script>
-    // Reveal once a card is meaningfully on screen without waiting for full visibility.
+    // 18% keeps cards feeling quick on mobile while preventing reveals from firing too early offscreen.
     const REVEAL_THRESHOLD = 0.18;
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -623,7 +623,7 @@
 
     const renderRecommendation = (announce = false) => {
       const key = `${householdField.value}-${frequencyField.value}`;
-      const recommendation = plans[key];
+      const recommendation = plans[key] || plans['2-4-4x'];
 
       resultPanel.setAttribute('aria-live', announce ? 'polite' : 'off');
       document.getElementById('result-plan').textContent = recommendation.plan;
