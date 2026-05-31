@@ -108,6 +108,13 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.nav-logo:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
 }
 
 .nav-logo .logo-text {
