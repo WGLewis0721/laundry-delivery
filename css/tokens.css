@@ -1,0 +1,128 @@
+/* ============================================================
+   FOLD — Design Tokens
+   Single source of truth for every colour, size, and value.
+   Import this file first in every page.
+   ============================================================ */
+
+:root {
+
+  /* ── Palette ──────────────────────────────────────────── */
+
+  --white:         #FFFFFF;
+  --off-white:     #F8F9FA;
+  --ink:           #2D3748;
+  --ink-light:     #4A5568;
+  --ink-lighter:   #718096;
+  --border:        #E2E8F0;
+  --border-dark:   #CBD5E0;
+
+  /* Brand accents — fills / decoration / large UI only.
+     These lighter shades FAIL AA as small text on white.
+     Never use as body text or small-text colour. */
+  --gold:          #D4AF37;   /* premium warmth   */
+  --green:         #5FAF6A;   /* freshness        */
+  --sky:           #A9D6F5;   /* trust / calm     */
+  --blush:         #F7D6DE;   /* warmth           */
+
+  /* AA-safe button / interactive fills (white text ≥ 4.5:1) */
+  --green-btn:     #2E7D32;   /* 5.0 : 1 on white */
+  --green-btn-hov: #256428;
+
+  /* Semantic states */
+  --success:       #2E7D32;
+  --error:         #C53030;
+  --warning:       #B7791F;
+  --error-bg:      #FFF5F5;
+  --success-bg:    #F0FFF4;
+
+  /* ── Typography ───────────────────────────────────────── */
+
+  --font-display:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:     'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+                   'Segoe UI', Helvetica, Arial, sans-serif;
+
+  /* Type scale */
+  --text-xs:       0.75rem;    /*  12 px */
+  --text-sm:       0.875rem;   /*  14 px */
+  --text-base:     1rem;       /*  16 px */
+  --text-lg:       1.125rem;   /*  18 px */
+  --text-xl:       1.25rem;    /*  20 px */
+  --text-2xl:      1.5rem;     /*  24 px */
+  --text-3xl:      1.875rem;   /*  30 px */
+  --text-4xl:      2.25rem;    /*  36 px */
+  --text-5xl:      3rem;       /*  48 px */
+  --text-6xl:      3.75rem;    /*  60 px */
+
+  /* Line heights */
+  --leading-tight:   1.2;
+  --leading-snug:    1.375;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* Font weights */
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ── Spacing (4 px base) ──────────────────────────────── */
+
+  --space-1:   0.25rem;    /*   4 px */
+  --space-2:   0.5rem;     /*   8 px */
+  --space-3:   0.75rem;    /*  12 px */
+  --space-4:   1rem;       /*  16 px */
+  --space-5:   1.25rem;    /*  20 px */
+  --space-6:   1.5rem;     /*  24 px */
+  --space-8:   2rem;       /*  32 px */
+  --space-10:  2.5rem;     /*  40 px */
+  --space-12:  3rem;       /*  48 px */
+  --space-16:  4rem;       /*  64 px */
+  --space-20:  5rem;       /*  80 px */
+  --space-24:  6rem;       /*  96 px */
+  --space-32:  8rem;       /* 128 px */
+
+  /* Section vertical rhythm */
+  --section-y:    var(--space-20);
+  --section-y-lg: var(--space-24);
+
+  /* ── Border radius ────────────────────────────────────── */
+
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.5rem;
+  --radius-full: 9999px;
+
+  /* ── Shadows ──────────────────────────────────────────── */
+
+  --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm:  0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg:  0 12px 28px rgba(0, 0, 0, 0.09), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-xl:  0 24px 48px rgba(0, 0, 0, 0.10), 0 8px 16px rgba(0, 0, 0, 0.05);
+
+  /* ── Motion ───────────────────────────────────────────── */
+
+  --dur-fast:    150ms;
+  --dur-base:    250ms;
+  --dur-slow:    400ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Layout ───────────────────────────────────────────── */
+
+  --max-width:    1200px;
+  --nav-height:   4rem;       /* 64 px */
+  --wrap-x:       1.5rem;     /* side gutter */
+
+  /* ── Z-index ──────────────────────────────────────────── */
+
+  --z-below:  -1;
+  --z-base:    0;
+  --z-raised: 10;
+  --z-sticky: 50;
+  --z-nav:   100;
+  --z-modal: 200;
+  --z-toast: 300;
+}

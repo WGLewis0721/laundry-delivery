@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Area — FOLD Laundry Pickup &amp; Delivery in Montgomery, AL</title>
+  <meta name="description" content="FOLD serves Midtown, Cloverdale, Eastdale, and more in Montgomery, AL. Check your ZIP code to see if we're in your neighbourhood.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/utilities.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LaundryService",
+    "name": "FOLD Laundry",
+    "areaServed": [
+      { "@type": "City", "name": "Montgomery", "addressRegion": "AL" }
+    ]
+  }
+  </script>
+</head>
+<body data-page="service-area" class="no-js">
+<script>document.body.classList.remove('no-js');</script>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="FOLD — home"><span class="logo-text">FOLD</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="service-area.html" aria-current="page">Service area</a></li>
+      <li><a href="account.html">Sign in</a></li>
+      <li><a href="schedule.html" class="btn btn--primary btn--sm nav-cta">Schedule a pickup</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main-content">
+
+  <section class="section" style="background: var(--off-white);">
+    <div class="wrap" style="text-align: center; max-width: 680px; margin-inline: auto;">
+      <span class="section-label">Montgomery, AL</span>
+      <h1 style="font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl)); margin-bottom: var(--space-4);">
+        Service area
+      </h1>
+      <p class="section-desc">
+        Enter your ZIP code to confirm we serve your neighbourhood.
+        Not in range yet? Join the waitlist — we're growing.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="service-area-grid">
+        <div>
+          <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">Check your ZIP</h2>
+
+          <form class="zip-form js-zip-form" role="search" aria-label="ZIP availability check" style="max-width: 100%;">
+            <div class="zip-field-wrap" style="flex: 1;">
+              <label for="area-page-zip" class="form-label">ZIP code</label>
+              <input id="area-page-zip" class="zip-input" type="text" inputmode="numeric"
+                     pattern="[0-9]{5}" maxlength="5" placeholder="e.g. 36106"
+                     autocomplete="postal-code" aria-describedby="area-page-zip-msg">
+              <span id="area-page-zip-msg" class="zip-message" role="status" aria-live="polite"></span>
+            </div>
+            <button type="submit" class="btn btn--primary">Check my ZIP</button>
+          </form>
+
+          <!-- Waitlist form (shown if not served) -->
+          <div id="waitlist-section" style="display: none; margin-top: var(--space-6);">
+            <p style="font-size: var(--text-sm); color: var(--ink-lighter); margin-bottom: var(--space-3);">
+              Leave your email and we'll let you know when we reach your area.
+            </p>
+            <form id="waitlist-form" style="display: flex; gap: var(--space-2);">
+              <div style="flex: 1;">
+                <label for="waitlist-email" class="sr-only">Email address</label>
+                <input id="waitlist-email" class="form-input" type="email"
+                       placeholder="your@email.com" autocomplete="email">
+              </div>
+              <button type="submit" class="btn btn--ghost">Join waitlist</button>
+            </form>
+          </div>
+
+          <!-- Neighbourhoods list (accessibility fallback for map) -->
+          <div style="margin-top: var(--space-8);">
+            <h3 style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin-bottom: var(--space-3);">
+              Currently serving
+            </h3>
+            <ul class="neighborhoods" aria-label="Served neighbourhoods">
+              <li class="neighborhood-tag">Midtown</li>
+              <li class="neighborhood-tag">Cloverdale</li>
+              <li class="neighborhood-tag">Eastdale</li>
+              <li class="neighborhood-tag">Garden District</li>
+              <li class="neighborhood-tag">Old Cloverdale</li>
+              <li class="neighborhood-tag">Wynton</li>
+              <li class="neighborhood-tag">Forest Hills</li>
+              <li class="neighborhood-tag">Downtown</li>
+              <li class="neighborhood-tag">Capitol Heights</li>
+              <li class="neighborhood-tag">McGehee Estates</li>
+              <li class="neighborhood-tag">Chisholm</li>
+            </ul>
+            <p style="font-size: var(--text-xs); color: var(--ink-lighter); margin-top: var(--space-3);">
+              Expanding soon: Pike Road · Wetumpka · Prattville
+            </p>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div>
+          <div id="service-map" aria-label="FOLD service area map — Montgomery, AL" role="img"
+               style="min-height: 400px; border-radius: var(--radius-2xl); overflow: hidden;">
+            <div class="map-placeholder" style="height: 400px;">
+              <span>Service area map</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="logo-text">FOLD</span><p>Laundry pickup and delivery for Montgomery, AL.</p></div>
+      <div class="footer-col"><h4>Service</h4><a href="how-it-works.html">How it works</a><a href="plans.html">Plans &amp; pricing</a><a href="services.html">Services</a><a href="service-area.html">Service area</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="faq.html">FAQ</a></div>
+      <div class="footer-col"><h4>Members</h4><a href="account.html">Sign in</a><a href="status.html">Track order</a><h4 style="margin-top: var(--space-5);">Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 FOLD Laundry. Montgomery, AL.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div>
+  </div>
+</footer>
+
+<div class="mobile-cta-bar"><a href="schedule.html" class="btn btn--primary btn--block">Schedule a pickup</a></div>
+
+<script>
+  // ZIP check
+  (() => {
+    const SERVED = new Set(['36101','36102','36103','36104','36105','36106','36107','36108','36109','36110','36111','36112','36113','36114','36115','36116','36117','36118','36119','36120']);
+    document.querySelectorAll('.js-zip-form').forEach(form => {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const input = form.querySelector('.zip-input');
+        const msg   = form.querySelector('.zip-message');
+        const zip   = input.value.trim();
+        if (!/^\d{5}$/.test(zip)) { setMsg(input, msg, 'error', 'Please enter a valid 5-digit ZIP.'); return; }
+        if (SERVED.has(zip)) {
+          setMsg(input, msg, 'served', '✓ We serve your area!');
+          document.getElementById('waitlist-section').style.display = 'none';
+        } else {
+          setMsg(input, msg, 'waitlist', "Not in range yet — join the waitlist below.");
+          document.getElementById('waitlist-section').style.display = 'block';
+        }
+      });
+    });
+    function setMsg(input, msg, state, text) {
+      input.dataset.state = state === 'served' ? 'valid' : 'error';
+      if (msg) { msg.className = 'zip-message zip-message--' + state; msg.textContent = text; }
+    }
+  })();
+
+  // Nav toggle
+  (() => { const t = document.querySelector('.nav-toggle'), m = document.getElementById('nav-menu'); if (!t || !m) return; t.addEventListener('click', () => { const e = t.getAttribute('aria-expanded') === 'true'; t.setAttribute('aria-expanded', String(!e)); m.classList.toggle('is-open', !e); }); })();
+
+  // Waitlist form placeholder
+  document.getElementById('waitlist-form')?.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Thanks! We\'ll text you when we expand to your area.');
+  });
+</script>
+<script src="js/map.js"></script>
+</body>
+</html>

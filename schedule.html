@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule a Pickup — FOLD</title>
+  <meta name="description" content="Schedule your laundry pickup with FOLD. Choose a plan, pick a window, and leave the rest to us.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body data-page="schedule" class="no-js">
+<script>document.body.classList.remove('no-js');</script>
+
+<a class="skip-link" href="#booking-main">Skip to booking form</a>
+
+<!-- Nav (condensed — no mobile CTA bar on booking pages) -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="FOLD — home">
+      <span class="logo-text">FOLD</span>
+    </a>
+    <ul class="nav-links" id="nav-menu" role="list" style="margin-left: auto; display: flex; align-items: center; gap: var(--space-4);">
+      <li><a href="index.html" style="font-size: var(--text-sm); color: var(--ink-light); text-decoration: none;">← Back to home</a></li>
+      <li><a href="account.html" style="font-size: var(--text-sm); color: var(--ink-light); text-decoration: none;">Sign in</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="booking-main" style="padding-block: var(--space-12) var(--space-20);">
+  <div class="wrap">
+    <div class="booking-wrap">
+
+      <!-- Progress indicator -->
+      <nav aria-label="Booking progress" class="booking-progress">
+        <div class="progress-step progress-step--active" id="prog-1">
+          <div class="progress-pip" aria-label="Step 1 — current">1</div>
+          <span class="progress-label">ZIP</span>
+        </div>
+        <div class="progress-connector" id="conn-1"></div>
+
+        <div class="progress-step" id="prog-2">
+          <div class="progress-pip" aria-label="Step 2">2</div>
+          <span class="progress-label">Plan</span>
+        </div>
+        <div class="progress-connector" id="conn-2"></div>
+
+        <div class="progress-step" id="prog-3">
+          <div class="progress-pip" aria-label="Step 3">3</div>
+          <span class="progress-label">Account</span>
+        </div>
+        <div class="progress-connector" id="conn-3"></div>
+
+        <div class="progress-step" id="prog-4">
+          <div class="progress-pip" aria-label="Step 4">4</div>
+          <span class="progress-label">Pickup</span>
+        </div>
+        <div class="progress-connector" id="conn-4"></div>
+
+        <div class="progress-step" id="prog-5">
+          <div class="progress-pip" aria-label="Step 5">5</div>
+          <span class="progress-label">Confirm</span>
+        </div>
+      </nav>
+
+      <!-- ── Step 1: ZIP check ─────────────────────────── -->
+      <section class="booking-step is-active" id="step-1" aria-labelledby="step1-title">
+        <h1 class="booking-step-title" id="step1-title">Check your address</h1>
+        <p class="booking-step-desc">Enter your ZIP code to confirm we serve your area.</p>
+
+        <form class="zip-form js-zip-form" id="zip-check-form" role="search"
+              aria-label="Availability check" style="max-width: 100%;">
+          <div class="zip-field-wrap" style="flex: 1;">
+            <label for="booking-zip" class="form-label">ZIP code</label>
+            <input
+              id="booking-zip"
+              class="zip-input"
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]{5}"
+              maxlength="5"
+              placeholder="e.g. 36106"
+              autocomplete="postal-code"
+              aria-describedby="booking-zip-msg"
+            >
+            <span id="booking-zip-msg" class="zip-message" role="status" aria-live="polite"></span>
+          </div>
+          <button type="submit" class="btn btn--primary">
+            Check availability
+          </button>
+        </form>
+      </section>
+
+      <!-- ── Step 2: Choose plan ───────────────────────── -->
+      <section class="booking-step" id="step-2" aria-labelledby="step2-title">
+        <h2 class="booking-step-title" id="step2-title">Choose your plan</h2>
+        <p class="booking-step-desc">Pick the tier that fits your household. Cancel anytime.</p>
+
+        <div class="plans-grid" style="margin-bottom: var(--space-8);">
+
+          <article class="plan-card" aria-label="Solo plan">
+            <p class="plan-name">Solo</p>
+            <div class="plan-price">
+              <span class="plan-amount">$39</span>
+              <span class="plan-period">/mo</span>
+            </div>
+            <ul class="plan-features">
+              <li><span class="plan-check" aria-hidden="true">✓</span>2 bags · 10 lb cap</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>2 pickups/month</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>Wash, fold &amp; deliver</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>SMS tracking</li>
+            </ul>
+            <div class="plan-overage">
+              <strong>Overage</strong>$2.50/lb over 10 lb cap
+            </div>
+            <button class="btn btn--ghost btn--block js-select-plan" data-plan="solo">
+              Choose Solo
+            </button>
+          </article>
+
+          <article class="plan-card plan-card--featured" aria-label="Household plan — most popular">
+            <span class="plan-badge">Most popular</span>
+            <p class="plan-name">Household</p>
+            <div class="plan-price">
+              <span class="plan-amount">$69</span>
+              <span class="plan-period">/mo</span>
+            </div>
+            <ul class="plan-features">
+              <li><span class="plan-check" aria-hidden="true">✓</span>4 bags · 12 lb cap</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>4 pickups/month</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>Wash, fold &amp; deliver</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>SMS tracking</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>Delicates care</li>
+            </ul>
+            <div class="plan-overage">
+              <strong>Overage</strong>$2.50/lb over 12 lb cap
+            </div>
+            <button class="btn btn--primary btn--block js-select-plan" data-plan="household">
+              Choose Household
+            </button>
+          </article>
+
+          <article class="plan-card" aria-label="Estate plan">
+            <p class="plan-name">Estate</p>
+            <div class="plan-price">
+              <span class="plan-amount">$119</span>
+              <span class="plan-period">/mo</span>
+            </div>
+            <ul class="plan-features">
+              <li><span class="plan-check" aria-hidden="true">✓</span>8 bags · 15 lb cap</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>8 pickups/month</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>Wash, fold &amp; deliver</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>SMS tracking</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>Delicates &amp; hang-dry</li>
+              <li><span class="plan-check" aria-hidden="true">✓</span>Priority windows</li>
+            </ul>
+            <div class="plan-overage">
+              <strong>Overage</strong>$2.50/lb over 15 lb cap
+            </div>
+            <button class="btn btn--ghost btn--block js-select-plan" data-plan="estate">
+              Choose Estate
+            </button>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ── Step 3: Account + payment ────────────────── -->
+      <section class="booking-step" id="step-3" aria-labelledby="step3-title">
+        <h2 class="booking-step-title" id="step3-title">Your details</h2>
+        <p class="booking-step-desc">
+          We'll text your pickup confirmation and delivery updates to your mobile number.
+        </p>
+
+        <form id="account-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="field-name">Full name <span aria-hidden="true">*</span></label>
+              <input id="field-name" class="form-input" type="text"
+                     autocomplete="name" required placeholder="Jane Smith">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="field-mobile">
+                Mobile number <span aria-hidden="true">*</span>
+              </label>
+              <input id="field-mobile" class="form-input" type="tel"
+                     inputmode="numeric" autocomplete="tel" required placeholder="(334) 555-0100"
+                     aria-describedby="mobile-hint">
+              <span id="mobile-hint" class="form-hint">Used for SMS pickup &amp; delivery updates</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="field-email">Email <span aria-hidden="true">*</span></label>
+            <input id="field-email" class="form-input" type="email"
+                   autocomplete="email" required placeholder="jane@example.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="field-address">
+              Pickup address <span aria-hidden="true">*</span>
+            </label>
+            <input id="field-address" class="form-input" type="text"
+                   autocomplete="street-address" required
+                   placeholder="123 Main Street, Montgomery, AL 36104">
+          </div>
+
+          <!-- Card on file (Square — placeholder) -->
+          <div class="form-group">
+            <label class="form-label" for="field-card">
+              Card on file <span aria-hidden="true">*</span>
+            </label>
+            <input id="field-card" class="form-input" type="text"
+                   placeholder="Card details (Square payment — coming soon)"
+                   aria-describedby="card-hint" disabled>
+            <span id="card-hint" class="form-hint">
+              Your card is stored securely via Square. It is only charged for overage,
+              shown on your weigh-in receipt before any charge is processed.
+              No subscription charge today — billing starts after first pickup.
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="field-instructions">
+              Special instructions <span style="font-weight: var(--weight-normal); color: var(--ink-lighter);">(optional)</span>
+            </label>
+            <input id="field-instructions" class="form-input" type="text"
+                   placeholder="e.g. Front porch, left of door. Gate code #1234.">
+          </div>
+        </form>
+
+        <!-- Security trust badge -->
+        <div class="booking-notice" role="note">
+          🔒 <strong>Secure payment via Square.</strong>
+          Your card is stored for overage only — never charged without a receipt.
+        </div>
+
+      </section>
+
+      <!-- ── Step 4: Pickup window ─────────────────────── -->
+      <section class="booking-step" id="step-4" aria-labelledby="step4-title">
+        <h2 class="booking-step-title" id="step4-title">Pick a pickup window</h2>
+        <p class="booking-step-desc">
+          Choose a 2-hour window. We'll text you a confirmation the evening before.
+        </p>
+
+        <!-- Capacity-honest delivery notice -->
+        <div class="booking-notice" role="note">
+          <strong>About your delivery date:</strong>
+          We weigh each bag at pickup, then set your delivery date based on this week's
+          capacity. You'll receive a text with your confirmed delivery date once we've
+          processed your order — typically within 1 business day of pickup.
+        </div>
+
+        <fieldset style="border: none;">
+          <legend class="sr-only">Choose your pickup window</legend>
+          <div class="window-grid" role="radiogroup" aria-label="Pickup windows">
+
+            <div class="window-tile">
+              <input type="radio" name="pickup-window" id="win-mon-am"
+                     value="Mon 8–10 am">
+              <label class="window-tile-label" for="win-mon-am">
+                <span class="window-day">Monday</span>
+                <span class="window-time">8:00 – 10:00 am</span>
+                <span class="window-avail window-avail--ok">Available</span>
+              </label>
+            </div>
+
+            <div class="window-tile">
+              <input type="radio" name="pickup-window" id="win-mon-pm"
+                     value="Mon 2–4 pm">
+              <label class="window-tile-label" for="win-mon-pm">
+                <span class="window-day">Monday</span>
+                <span class="window-time">2:00 – 4:00 pm</span>
+                <span class="window-avail window-avail--ok">Available</span>
+              </label>
+            </div>
+
+            <div class="window-tile">
+              <input type="radio" name="pickup-window" id="win-tue-am"
+                     value="Tue 8–10 am">
+              <label class="window-tile-label" for="win-tue-am">
+                <span class="window-day">Tuesday</span>
+                <span class="window-time">8:00 – 10:00 am</span>
+                <span class="window-avail window-avail--low">2 spots left</span>
+              </label>
+            </div>
+
+            <div class="window-tile">
+              <input type="radio" name="pickup-window" id="win-tue-pm"
+                     value="Tue 2–4 pm">
+              <label class="window-tile-label" for="win-tue-pm">
+                <span class="window-day">Tuesday</span>
+                <span class="window-time">2:00 – 4:00 pm</span>
+                <span class="window-avail window-avail--ok">Available</span>
+              </label>
+            </div>
+
+            <div class="window-tile">
+              <input type="radio" name="pickup-window" id="win-wed-am"
+                     value="Wed 8–10 am">
+              <label class="window-tile-label" for="win-wed-am">
+                <span class="window-day">Wednesday</span>
+                <span class="window-time">8:00 – 10:00 am</span>
+                <span class="window-avail window-avail--ok">Available</span>
+              </label>
+            </div>
+
+            <div class="window-tile">
+              <input type="radio" name="pickup-window" id="win-wed-pm"
+                     value="Wed 2–4 pm" disabled>
+              <label class="window-tile-label" for="win-wed-pm">
+                <span class="window-day">Wednesday</span>
+                <span class="window-time">2:00 – 4:00 pm</span>
+                <span class="window-avail" style="color: var(--ink-lighter);">Full</span>
+              </label>
+            </div>
+
+            <div class="window-tile">
+              <input type="radio" name="pickup-window" id="win-thu-am"
+                     value="Thu 8–10 am">
+              <label class="window-tile-label" for="win-thu-am">
+                <span class="window-day">Thursday</span>
+                <span class="window-time">8:00 – 10:00 am</span>
+                <span class="window-avail window-avail--ok">Available</span>
+              </label>
+            </div>
+
+            <div class="window-tile">
+              <input type="radio" name="pickup-window" id="win-fri-am"
+                     value="Fri 8–10 am">
+              <label class="window-tile-label" for="win-fri-am">
+                <span class="window-day">Friday</span>
+                <span class="window-time">8:00 – 10:00 am</span>
+                <span class="window-avail window-avail--low">1 spot left</span>
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- ── Step 5: Confirm ───────────────────────────── -->
+      <section class="booking-step" id="step-5" aria-labelledby="step5-title">
+        <h2 class="booking-step-title" id="step5-title">Confirm your order</h2>
+        <p class="booking-step-desc">Review your details before we lock you in.</p>
+
+        <div class="booking-summary">
+          <h3>Order summary</h3>
+          <div class="summary-row">
+            <span class="summary-label">Plan</span>
+            <span class="summary-value" id="summary-plan">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Monthly subscription</span>
+            <span class="summary-value" id="summary-price">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Name</span>
+            <span class="summary-value" id="summary-name">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Pickup address</span>
+            <span class="summary-value" id="summary-address">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">First pickup window</span>
+            <span class="summary-value" id="summary-window">—</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span class="summary-label">Charged today</span>
+            <span class="summary-value" id="summary-price-total">—</span>
+          </div>
+        </div>
+
+        <div class="booking-notice" role="note">
+          <strong>Delivery date confirmed after weigh-in.</strong>
+          We'll text your delivery date once we've weighed your bags —
+          typically within 1 business day of pickup. You'll see the full
+          weigh-in breakdown and any overage before your card is charged.
+        </div>
+
+        <p style="font-size: var(--text-xs); color: var(--ink-lighter); margin-top: var(--space-4);">
+          By confirming, you agree to our
+          <a href="terms.html">Terms of Service</a> and
+          <a href="privacy.html">Privacy Policy</a>.
+          Cancel anytime from your account dashboard.
+        </p>
+      </section>
+
+      <!-- ── Navigation buttons ────────────────────────── -->
+      <div class="booking-actions">
+        <button id="btn-back" class="btn btn--ghost" style="visibility: hidden;">
+          ← Back
+        </button>
+        <button id="btn-next" class="btn btn--primary btn--lg">
+          Continue
+        </button>
+      </div>
+
+    </div><!-- /booking-wrap -->
+  </div><!-- /wrap -->
+</main>
+
+<footer style="border-top: 1px solid var(--border); padding-block: var(--space-6); text-align: center;">
+  <div class="wrap">
+    <p style="font-size: var(--text-xs); color: var(--ink-lighter);">
+      © 2025 FOLD Laundry · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+    </p>
+  </div>
+</footer>
+
+<script type="module" src="js/booking.js"></script>
+<script>
+  // ZIP handling on this page also
+  (() => {
+    const SERVED = new Set([
+      '36101','36102','36103','36104','36105','36106','36107','36108',
+      '36109','36110','36111','36112','36113','36114','36115','36116',
+      '36117','36118','36119','36120',
+    ]);
+
+    // Pre-fill from URL
+    const params = new URLSearchParams(window.location.search);
+    const urlZip = params.get('zip');
+    if (urlZip) {
+      const input = document.getElementById('booking-zip');
+      if (input) input.value = urlZip;
+    }
+
+    // Pre-select plan from URL
+    const urlPlan = params.get('plan');
+    if (urlPlan) {
+      const btn = document.querySelector(`.js-select-plan[data-plan="${urlPlan}"]`);
+      if (btn) btn.closest('.plan-card')?.classList.add('plan-card--selected');
+    }
+  })();
+</script>
+</body>
+</html>
