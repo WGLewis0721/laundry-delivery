@@ -208,7 +208,7 @@
               <li class="rounded-2xl bg-slate-100 px-2 py-2">Delivered</li>
             </ol>
 
-            <div class="mt-4 h-2.5 rounded-full bg-slate-200" role="progressbar" aria-label="Order progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62">
+            <div class="mt-4 h-2.5 rounded-full bg-slate-200" aria-hidden="true">
               <div class="h-full w-[62%] rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600"></div>
             </div>
 
@@ -342,7 +342,7 @@
             </div>
 
             <div class="bg-slate-950 p-8 text-white sm:p-10">
-              <div id="plan-result" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6" aria-live="polite">
+              <div id="plan-result" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
                 <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Recommended plan</p>
                 <h3 id="result-plan" class="mt-4 text-3xl font-bold">Solo plan</h3>
                 <p id="result-copy" class="mt-4 text-sm leading-7 text-slate-300">
@@ -521,6 +521,7 @@
   </footer>
 
   <script>
+    const REVEAL_THRESHOLD = 0.18;
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -528,7 +529,7 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.18 });
+    }, { threshold: REVEAL_THRESHOLD });
 
     document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
@@ -617,11 +618,13 @@
     const form = document.getElementById('plan-form');
     const householdField = document.getElementById('household-size');
     const frequencyField = document.getElementById('pickup-frequency');
+    const resultPanel = document.getElementById('plan-result');
 
-    const renderRecommendation = () => {
+    const renderRecommendation = (announce = false) => {
       const key = `${householdField.value}-${frequencyField.value}`;
       const recommendation = plans[key];
 
+      resultPanel.setAttribute('aria-live', announce ? 'polite' : 'off');
       document.getElementById('result-plan').textContent = recommendation.plan;
       document.getElementById('result-price').textContent = recommendation.price;
       document.getElementById('result-hours').textContent = recommendation.hours;
@@ -632,7 +635,7 @@
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-      renderRecommendation();
+      renderRecommendation(true);
     });
 
     renderRecommendation();
