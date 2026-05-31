@@ -120,7 +120,7 @@
             Premium laundry logistics for Montgomery
           </p>
 
-          <h1 id="hero-heading" class="mt-6 text-5xl font-black leading-[0.92] tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+          <h1 id="hero-heading" class="mt-6 text-5xl font-black leading-none tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
             Drop the bags.<br />
             Keep the weekend.
           </h1>
@@ -522,7 +522,7 @@
 
   <script>
     // 18% keeps cards feeling quick on mobile while preventing reveals from firing too early offscreen.
-    const REVEAL_THRESHOLD = 0.18;
+    const REVEAL_THRESHOLD_MOBILE_OPTIMIZED = 0.18;
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -530,7 +530,7 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: REVEAL_THRESHOLD });
+    }, { threshold: REVEAL_THRESHOLD_MOBILE_OPTIMIZED });
 
     document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
