@@ -1,0 +1,12 @@
+Step 2: Hero Section
+Status: Completed
+
+Proof:
+- Premium hero section added in /tmp/workspace/WGLewis0721/laundry-delivery/index.html:218-320.
+- Headline “Drop the bags. Keep the weekend.” appears in /tmp/workspace/WGLewis0721/laundry-delivery/index.html:234-237.
+- ZIP checker with helper text appears in /tmp/workspace/WGLewis0721/laundry-delivery/index.html:243-271.
+- Floating order tracking card appears in /tmp/workspace/WGLewis0721/laundry-delivery/index.html:299-317.
+
+Validation:
+- HTML parsed without parser exceptions.
+- Layout structure verified in-browser, with external CDN/image loading blocked only by the sandbox environment.
