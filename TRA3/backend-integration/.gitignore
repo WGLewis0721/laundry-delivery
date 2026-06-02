@@ -1,0 +1,16 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl.backup
+
+# Environment/local credentials
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Python cache/artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Build artifacts
+*.zip

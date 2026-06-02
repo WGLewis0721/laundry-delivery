@@ -66,13 +66,18 @@ fold-website/
 │   └── utilities.css        Helper classes
 ├── docs/
 │   └── project-overview.md
+├── TRA3/
+│   └── backend-integration/   AWS serverless integration package copied from AGT-2026
+├── 3KD/
+│   └── frontend/
+│       └── js/
+│           ├── estimate.js      3KD estimator flow module
+│           └── estimate-data.js 3KD weight/pricing model + helpers
 ├── js/
 │   ├── store.js             SessionStorage wrapper (ES module)
 │   ├── reveal.js            Scroll-reveal via IntersectionObserver (IIFE)
 │   ├── booking.js           5-step booking wizard (ES module)
-│   ├── map.js               Lazy-init Leaflet map (IIFE)
-│   ├── estimate.js          Photo estimator — upload, mock recognition, quote, Q&A (ES module)
-│   └── estimate-data.js     Garment weights, plan definitions, billing config + pure helpers (ES module)
+│   └── map.js               Lazy-init Leaflet map (IIFE)
 └── prompts/
     └── results/             Agent build reports
 ```
@@ -92,7 +97,7 @@ All colour, spacing, and type values live in `css/tokens.css` as CSS custom prop
 ## JavaScript architecture
 
 - Progressive enhancement — pages work without JS; JS adds reveals, selection logic, and the booking wizard.
-- `store.js`, `booking.js`, `estimate.js`, and `estimate-data.js` are ES modules — load with `<script type="module">`.
+- `store.js`, `booking.js`, `3KD/frontend/js/estimate.js`, and `3KD/frontend/js/estimate-data.js` are ES modules — load with `<script type="module">`.
 - `reveal.js` and `map.js` are IIFEs — load with plain `<script src>`.
 - Booking state is stored in `sessionStorage` under key `fold_booking`.
 - Estimate state is stored in `sessionStorage` under key `fold_estimate`.
@@ -104,11 +109,11 @@ All colour, spacing, and type values live in `css/tokens.css` as CSS custom prop
 ### Estimate flow (`estimate.html`)
 
 1. User uploads 1–3 photos → `recognizeLaundry()` returns a blend/fill fixture (mocked behind `USE_MOCK = true`).
-2. `estimateWeightRange()` + `recommendPlan()` + `estimateQuote()` in `estimate-data.js` produce an initial weight range and plan.
+2. `estimateWeightRange()` + `recommendPlan()` + `estimateQuote()` in `3KD/frontend/js/estimate-data.js` produce an initial weight range and plan.
 3. Four Q&A questions refine the blend/fill in real time; the displayed range narrows as answers are given.
 4. "Book a pickup" persists `fold_estimate` and merges `fold_booking.plan`, then routes to `schedule.html`.
 
-To wire the real vision backend: set `USE_MOCK = false` in `js/estimate.js` and implement the POST inside `recognizeLaundry()` (the expected request/response shape is documented in the function's JSDoc).
+To wire the real vision backend: set `USE_MOCK = false` in `3KD/frontend/js/estimate.js` and implement the POST inside `recognizeLaundry()` (the expected request/response shape is documented in the function's JSDoc).
 
 ---
 

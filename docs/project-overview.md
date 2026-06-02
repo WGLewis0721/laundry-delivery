@@ -37,14 +37,14 @@ FOLD is a premium, mobile-first laundry pickup-and-delivery marketing and bookin
 `estimate.html` is the first implementation of the **3KD Vision Engine**, a photo-based laundry estimator. The current build is **front-end only** — recognition is mocked locally. The flow:
 
 1. **Upload** — visitor uploads 1–3 photos of their laundry bag.
-2. **Recognition** — `recognizeLaundry()` in `js/estimate.js` returns a blend + fill level (mocked behind `USE_MOCK = true`). The result card shows the detected mix (light/medium/heavy %), fill level, and any heavy outliers.
-3. **Quote** — `js/estimate-data.js` pure helpers convert blend + fill into a weight range (lb) and map it to the best-fit plan. The quote card shows the range, recommended plan, expected overage, and a transparent breakdown.
+2. **Recognition** — `recognizeLaundry()` in `3KD/frontend/js/estimate.js` returns a blend + fill level (mocked behind `USE_MOCK = true`). The result card shows the detected mix (light/medium/heavy %), fill level, and any heavy outliers.
+3. **Quote** — `3KD/frontend/js/estimate-data.js` pure helpers convert blend + fill into a weight range (lb) and map it to the best-fit plan. The quote card shows the range, recommended plan, expected overage, and a transparent breakdown.
 4. **Q&A refinement** — four questions (clothing type, towels/sheets count, heavy items, fill level) recompute the estimate live. The range visibly tightens with each answer.
 5. **Book** — CTA persists `fold_estimate` to sessionStorage, merges `fold_booking.plan`, and routes to `schedule.html`.
 
-**Wiring the real backend:** set `USE_MOCK = false` in `js/estimate.js` and implement the `fetch` POST inside `recognizeLaundry()`. The JSDoc in that function documents the expected request/response shape. API credentials must be injected server-side only — never in client code.
+**Wiring the real backend:** set `USE_MOCK = false` in `3KD/frontend/js/estimate.js` and implement the `fetch` POST inside `recognizeLaundry()`. The JSDoc in that function documents the expected request/response shape. API credentials must be injected server-side only — never in client code.
 
-**Calibrating weights:** `js/estimate-data.js` exports `GARMENTS` (approximate dry weights) and `PLANS`. Replace the placeholder weights with empirical median values from real pickup-scale data over time.
+**Calibrating weights:** `3KD/frontend/js/estimate-data.js` exports `GARMENTS` (approximate dry weights) and `PLANS`. Replace the placeholder weights with empirical median values from real pickup-scale data over time.
 
 ## Technical Notes
 
@@ -53,6 +53,8 @@ FOLD is a premium, mobile-first laundry pickup-and-delivery marketing and bookin
 - `index.html` uses Tailwind CDN and is a divergent system from the inner pages. All other pages use the token-first CSS system.
 - ES module scripts (`store.js`, `booking.js`, `estimate.js`, `estimate-data.js`) load with `<script type="module">`. IIFE scripts (`reveal.js`, `map.js`) load with plain `<script>`.
 - Copilot working agreement is at `.github/copilot-instructions.md`.
+- TRA3 backend implementation package now lives under `TRA3/backend-integration/`.
+- 3KD estimator implementation now lives under `3KD/frontend/js/`.
 - All TRA3 backend stubs are marked `// TODO: TRA3`. All 3KD Vision Engine stubs are marked `// TODO: 3KD`.
 
 ## Suggested Next Steps
@@ -60,6 +62,6 @@ FOLD is a premium, mobile-first laundry pickup-and-delivery marketing and bookin
 - Replace placeholder imagery with final brand photography.
 - Wire the ZIP checker and booking wizard to the TRA3 serverless backend.
 - Wire `recognizeLaundry()` to the real 3KD vision backend (flip `USE_MOCK = false`).
-- Calibrate `js/estimate-data.js` garment weights from real pickup-scale data.
+- Calibrate `3KD/frontend/js/estimate-data.js` garment weights from real pickup-scale data.
 - Reconcile `index.html` onto the token-first CSS system to eliminate the Tailwind divergence.
 - Run a Lighthouse audit after deployment.

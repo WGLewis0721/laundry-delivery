@@ -1,0 +1,11 @@
+# Copy this folder for each new client
+client_name                          = "your-client-name"
+environment                          = "prod"
+stripe_secret_key_parameter_name     = "/tra3/your-client-name/prod/stripe_secret_key"
+stripe_webhook_secret_parameter_name = "/tra3/your-client-name/prod/stripe_webhook_secret"
+textbelt_api_key_parameter_name      = "/tra3/your-client-name/prod/textbelt_api_key"
+detailer_phone_number_parameter_name = "/tra3/your-client-name/prod/detailer_phone_number"
+calcom_webhook_secret_parameter_name = "/tra3/your-client-name/prod/calcom_webhook_secret"
+billing_report_email                 = "owner@example.com"
+domain_url                           = "https://example.com"
+aws_region                           = "us-east-1"

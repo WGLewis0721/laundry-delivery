@@ -1,0 +1,17 @@
+{
+  "name": "3kd-vision-engine-frontend",
+  "entryHtml": "../../estimate.html",
+  "entryModule": "frontend/js/estimate.js",
+  "dataModule": "frontend/js/estimate-data.js",
+  "dependsOn": [
+    "../../js/store.js",
+    "../../css/tokens.css",
+    "../../css/base.css",
+    "../../css/layout.css",
+    "../../css/components.css",
+    "../../css/utilities.css"
+  ],
+  "todoMarkers": [
+    "// TODO: 3KD"
+  ]
+}

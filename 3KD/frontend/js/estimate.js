@@ -9,7 +9,7 @@
  *   the expected request/response shape.
  */
 
-import store from './store.js';
+import store from '../../../js/store.js';
 import {
   estimateWeightRange,
   recommendPlan,
