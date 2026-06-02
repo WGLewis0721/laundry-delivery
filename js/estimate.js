@@ -1,10 +1,10 @@
 /**
- * FOLD — estimate.js
- * 3KD Vision Engine — front-end scaffold (mock build).
+ * FOLD - estimate.js
+ * 3KD Vision Engine - front-end scaffold (mock build).
  *
- * Flow: photo upload → mock recognition → weight estimate → Q&A refinement → book CTA.
+ * Flow: photo upload -> mock recognition -> weight estimate -> Q&A refinement -> book CTA.
  *
- * // TODO: 3KD — flip USE_MOCK = false and POST images to the real vision backend
+ * // TODO: 3KD - flip USE_MOCK = false and POST images to the real vision backend
  *   when the 3KD vision service is ready. The recognizeLaundry() function documents
  *   the expected request/response shape.
  */
@@ -22,15 +22,15 @@ if (document.body.dataset.page === 'estimate') {
   initEstimate();
 }
 
-// ── Config ─────────────────────────────────────────────────────────────────
+// -- Config -----------------------------------------------------------------
 
 /**
  * Flip to false when the real vision backend is wired.
- * // TODO: 3KD — set USE_MOCK = false and implement real POST in recognizeLaundry()
+ * // TODO: 3KD - set USE_MOCK = false and implement real POST in recognizeLaundry()
  */
 const USE_MOCK = true;
 
-// ── State ──────────────────────────────────────────────────────────────────
+// -- State ------------------------------------------------------------------
 
 /** @type {File[]} */
 let uploadedFiles = [];
@@ -50,14 +50,14 @@ let qaAnswers = {
   fillLevel:    null,   // 0.25 | 0.5 | 0.75 | 1.0
 };
 
-// ── Entry point ────────────────────────────────────────────────────────────
+// -- Entry point ------------------------------------------------------------
 
 function initEstimate() {
   renderUploadSection();
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// PART 3 — Upload + Recognition
+// PART 3 - Upload + Recognition
 // ═══════════════════════════════════════════════════════════════════════════
 
 function renderUploadSection() {
@@ -67,19 +67,19 @@ function renderUploadSection() {
       Upload your laundry photos
     </h2>
 
-    <!-- Consent notice — shown BEFORE upload -->
+    <!-- Consent notice - shown BEFORE upload -->
     <div class="consent-notice" role="note" aria-label="Privacy notice">
-      <span class="consent-notice__icon" aria-hidden="true">🔒</span>
+      <span class="consent-notice__icon" aria-hidden="true">Lock</span>
       <span>
         <strong>Your photos stay private.</strong>
-        We use them only to estimate your laundry load — they aren't stored long-term
+        We use them only to estimate your laundry load; they aren't stored long-term
         or shared with third parties.
       </span>
     </div>
 
     <!-- Capture tip -->
     <p style="font-size: var(--text-sm); color: var(--ink-lighter); margin-bottom: var(--space-6);">
-      <strong>Tip:</strong> Photograph your laundry in or next to a FOLD bag — it helps us
+      <strong>Tip:</strong> Photograph your laundry in or next to a FOLD bag; it helps us
       gauge the load size and gives a more accurate estimate.
     </p>
 
@@ -89,7 +89,7 @@ function renderUploadSection() {
       id="drop-zone"
       role="button"
       tabindex="0"
-      aria-label="Upload laundry photos — click or drop files here"
+      aria-label="Upload laundry photos - click or drop files here"
       aria-describedby="upload-hint"
     >
       <div class="upload-icon" aria-hidden="true">
@@ -105,7 +105,7 @@ function renderUploadSection() {
         Drop photos here
       </h3>
       <p id="upload-hint">
-        Or choose up to 3 photos — JPG, PNG, HEIC accepted.
+        Or choose up to 3 photos - JPG, PNG, HEIC accepted.
       </p>
 
       <input
@@ -207,7 +207,7 @@ function wireUploadEvents() {
       li.className = 'thumb-item';
       li.setAttribute('role', 'listitem');
       li.innerHTML = `
-        <img src="${url}" alt="Photo ${idx + 1} — ${escHtml(file.name)}" loading="lazy">
+        <img src="${url}" alt="Photo ${idx + 1} - ${escHtml(file.name)}" loading="lazy">
         <button
           class="thumb-remove"
           aria-label="Remove photo ${idx + 1}"
@@ -230,7 +230,7 @@ function wireUploadEvents() {
     btnAnalyze.disabled = !hasPhotos;
     btnAnalyze.setAttribute('aria-disabled', String(!hasPhotos));
     analyzeStatus.textContent = hasPhotos
-      ? `${uploadedFiles.length} photo${uploadedFiles.length > 1 ? 's' : ''} ready — tap Analyse to continue.`
+      ? `${uploadedFiles.length} photo${uploadedFiles.length > 1 ? 's' : ''} ready - tap Analyze to continue.`
       : 'Add at least one photo to continue.';
   }
 }
@@ -241,9 +241,9 @@ async function handleAnalyze() {
 
   btn.disabled = true;
   btn.setAttribute('aria-disabled', 'true');
-  btn.textContent = 'Analysing…';
+  btn.textContent = 'Analyzing...';
 
-  resultArea.innerHTML = renderLoadingState('Recognising your laundry…');
+  resultArea.innerHTML = renderLoadingState('Recognizing your laundry...');
 
   try {
     recognitionResult = await recognizeLaundry(uploadedFiles);
@@ -255,14 +255,14 @@ async function handleAnalyze() {
 
   } catch (err) {
     resultArea.innerHTML = renderErrorState(
-      'We couldn\'t analyse the photos. Please try again.',
+      'We couldn\'t analyze the photos. Please try again.',
       handleAnalyze,
     );
     console.error('[estimate.js] recognizeLaundry failed:', err);
   } finally {
     btn.disabled = false;
     btn.setAttribute('aria-disabled', 'false');
-    btn.textContent = 'Analyse my laundry';
+    btn.textContent = 'Analyze my laundry';
   }
 }
 
@@ -270,7 +270,7 @@ async function handleAnalyze() {
  * Mocked vision recognition.
  * Returns a plausible fixture after an artificial delay.
  *
- * // TODO: 3KD — when USE_MOCK = false, POST { images: base64[] } to the vision backend:
+ * // TODO: 3KD - when USE_MOCK = false, POST { images: base64[] } to the vision backend:
  *   const res = await fetch('/api/vision/recognise', {
  *     method: 'POST',
  *     headers: { 'Content-Type': 'application/json' },
@@ -287,10 +287,10 @@ async function recognizeLaundry(images) {  // eslint-disable-line no-unused-vars
     throw new Error('Real 3KD vision backend not yet wired. Set USE_MOCK = true or implement POST.');
   }
 
-  // Artificial delay — realistic async feel
+  // Artificial delay - realistic async feel
   await delay(1800);
 
-  // Mock fixture — plausible everyday household load
+  // Mock fixture - plausible everyday household load
   return {
     blend: { light: 0.6, medium: 0.3, heavy: 0.1 },
     fillLevel: 0.7,
@@ -316,7 +316,7 @@ function renderRecognitionCard(result) {
         ${escHtml(mixLabel)}
       </h2>
       <p style="font-size: var(--text-sm); color: var(--ink-lighter); margin-bottom: var(--space-4);">
-        Looks like a typical laundry load — we'll use this to estimate your weight and plan.
+        Looks like a typical laundry load; we'll use this to estimate your weight and plan.
       </p>
 
       <!-- Mix bar -->
@@ -360,7 +360,7 @@ function renderRecognitionCard(result) {
       ` : ''}
 
       <p class="confidence-note">
-        These are educated guesses based on what we can see — your answers in the next steps
+        These are educated guesses based on what we can see; your answers in the next steps
         will help us sharpen the estimate.
       </p>
     </div>
@@ -368,7 +368,7 @@ function renderRecognitionCard(result) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// PART 4 — Estimate Quote
+// PART 4 - Estimate Quote
 // ═══════════════════════════════════════════════════════════════════════════
 
 function renderQuoteSection(recognition) {
@@ -391,8 +391,8 @@ function renderQuoteSection(recognition) {
 function buildQuoteCardHTML(lowLb, highLb, planId, plan, quote, blend, fillLevel) {
   const hasOverage   = quote.overageHigh > 0;
   const overageText  = hasOverage
-    ? `≈ $${fmt(quote.overageLow)}–$${fmt(quote.overageHigh)} overage at $2.50/lb over ${quote.cap} lb cap`
-    : `Fits within the ${quote.cap} lb bag cap — no overage expected`;
+    ? `About $${fmt(quote.overageLow)}-$${fmt(quote.overageHigh)} overage at $2.50/lb over ${quote.cap} lb cap`
+    : `Fits within the ${quote.cap} lb bag cap - no overage expected`;
   const pct = v => Math.round(v * 100);
 
   return `
@@ -401,20 +401,20 @@ function buildQuoteCardHTML(lowLb, highLb, planId, plan, quote, blend, fillLevel
         Your estimated quote
       </h2>
       <p style="font-size: var(--text-sm); color: var(--ink-lighter); margin-bottom: var(--space-6);">
-        Based on the recognition above — answers to the questions below will refine this.
+        Based on the recognition above; answers to the questions below will refine this.
       </p>
 
       <!-- Weight range -->
-      <div class="quote-range" aria-label="Estimated weight ${lowLb}–${highLb} lb">
+      <div class="quote-range" aria-label="Estimated weight ${lowLb}-${highLb} lb">
         <span class="quote-range__value live-range" id="quote-range-display">
-          ${fmtLb(lowLb)}–${fmtLb(highLb)} lb
+          ${fmtLb(lowLb)}-${fmtLb(highLb)} lb
         </span>
         <span class="quote-range__unit">estimated</span>
       </div>
 
       <!-- Recommended plan -->
       <div class="quote-plan-pill ${plan.featured ? 'quote-plan-pill--featured' : ''}" aria-label="Recommended plan: ${plan.name}">
-        <span aria-hidden="true">${plan.featured ? '★' : '✓'}</span>
+        <span aria-hidden="true">${plan.featured ? 'Featured' : 'Recommended'}</span>
         ${plan.name} plan recommended
       </div>
 
@@ -426,19 +426,19 @@ function buildQuoteCardHTML(lowLb, highLb, planId, plan, quote, blend, fillLevel
       <!-- How we got this -->
       <details class="quote-breakdown">
         <summary style="cursor: pointer; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--ink); list-style: none; display: flex; align-items: center; gap: var(--space-2);">
-          <span aria-hidden="true">▸</span> How we got this
+          <span aria-hidden="true">&gt;</span> How we got this
         </summary>
         <dl style="margin-top: var(--space-3);">
           <dt>Mix</dt>
-          <dd>Light ${pct(blend.light)}% · Medium ${pct(blend.medium)}% · Heavy ${pct(blend.heavy)}%</dd>
+          <dd>Light ${pct(blend.light)}%, Medium ${pct(blend.medium)}%, Heavy ${pct(blend.heavy)}%</dd>
           <dt>Fill level</dt>
           <dd>${Math.round(fillLevel * 100)}% of a standard FOLD bag</dd>
           <dt>Mid estimate</dt>
-          <dd>${fmtLb((lowLb + highLb) / 2)} lb (±15% band applied)</dd>
+          <dd>${fmtLb((lowLb + highLb) / 2)} lb (+/-15% band applied)</dd>
           <dt>Plan cap</dt>
-          <dd>${plan.name} — ${quote.cap} lb per bag</dd>
+          <dd>${plan.name} - ${quote.cap} lb per bag</dd>
           <dt>Plan price</dt>
-          <dd>$${plan.price}/mo (${plan.pickups} pickups · ${plan.bags} bags)</dd>
+          <dd>$${plan.price}/mo (${plan.pickups} pickups, ${plan.bags} bags)</dd>
         </dl>
       </details>
 
@@ -452,7 +452,7 @@ function buildQuoteCardHTML(lowLb, highLb, planId, plan, quote, blend, fillLevel
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// PART 5 — Q&A Refinement
+// PART 5 - Q&A Refinement
 // ═══════════════════════════════════════════════════════════════════════════
 
 function renderQASection(recognition) {
@@ -471,7 +471,7 @@ function renderQASection(recognition) {
 
     <!-- Reassurance -->
     <div class="reassurance-bar" role="note">
-      Your answers refine the estimate only — your final price is always set by the scale at pickup.
+      Your answers refine the estimate only - your final price is always set by the scale at pickup.
     </div>
 
     <!-- Q1: Clothing type -->
@@ -480,7 +480,7 @@ function renderQASection(recognition) {
       <div class="qa-options" role="group" aria-label="Clothing type">
         ${qaRadio('clothing-type', 'adult',  'Adult')}
         ${qaRadio('clothing-type', 'mixed',  'Mixed')}
-        ${qaRadio('clothing-type', 'kids',   'Kids\'')}
+        ${qaRadio('clothing-type', 'kids',   'Kids')}
       </div>
     </fieldset>
 
@@ -508,9 +508,9 @@ function renderQASection(recognition) {
     <fieldset class="qa-question-group">
       <legend>How full is the bag?</legend>
       <div class="qa-options" role="group" aria-label="Bag fill level">
-        ${qaRadio('fill-level', '0.25', '¼ full')}
-        ${qaRadio('fill-level', '0.5',  '½ full')}
-        ${qaRadio('fill-level', '0.75', '¾ full')}
+        ${qaRadio('fill-level', '0.25', '1/4 full')}
+        ${qaRadio('fill-level', '0.5',  '1/2 full')}
+        ${qaRadio('fill-level', '0.75', '3/4 full')}
         ${qaRadio('fill-level', '1.0',  'Packed full')}
       </div>
     </fieldset>
@@ -551,11 +551,11 @@ function wireQAEvents(recognition) {
   function recomputeAndRender(recognition) {
     const { blend: rawBlend, fillLevel: rawFill } = recognition;
 
-    // ── Apply Q&A adjustments ──────────────────────────────
+    // -- Apply Q&A adjustments ----------------------------------------------
     let blend = { ...rawBlend };
     let fillLevel = qaAnswers.fillLevel ?? rawFill;
 
-    // Q1 — clothing type shifts blend
+    // Q1 - clothing type shifts blend
     if (qaAnswers.clothingType === 'kids') {
       blend.light  = Math.min(1, blend.light  + 0.15);
       blend.heavy  = Math.max(0, blend.heavy  - 0.10);
@@ -565,7 +565,7 @@ function wireQAEvents(recognition) {
       blend.light  = Math.max(0, blend.light  - 0.05);
     }
 
-    // Q2 — towels/sheets shift heavy fraction
+    // Q2 - towels/sheets shift heavy fraction
     const towelDelta = { none: -0.10, few: 0, lot: 0.15 };
     const td = towelDelta[qaAnswers.towelsSheets] ?? 0;
     blend.heavy = Math.max(0, blend.heavy + td);
@@ -579,7 +579,7 @@ function wireQAEvents(recognition) {
       blend.heavy  /= total;
     }
 
-    // Q3 — heavy items add a fixed weight on top
+    // Q3 - heavy items add a fixed weight on top
     const HEAVY_WEIGHTS = { comforter: 5.5, duvet: 4.0, suit: 3.0 };
     const heavyAddLb = qaAnswers.heavyItems.reduce((sum, item) => {
       return sum + (HEAVY_WEIGHTS[item] ?? 0);
@@ -595,9 +595,9 @@ function wireQAEvents(recognition) {
     const plan   = PLANS[planId];
     const quote  = estimateQuote(adjLowLb, adjHighLb, planId);
 
-    // ── Update live range display in quote card ─────────────
+    // -- Update live range display in quote card ----------------------------
     if (quoteRangeEl) {
-      const newText = `${fmtLb(adjLowLb)}–${fmtLb(adjHighLb)} lb`;
+      const newText = `${fmtLb(adjLowLb)}-${fmtLb(adjHighLb)} lb`;
       if (quoteRangeEl.textContent.trim() !== newText) {
         quoteRangeEl.textContent = newText;
         // Pulse animation for sighted users
@@ -611,12 +611,12 @@ function wireQAEvents(recognition) {
     if (quoteOverageEl) {
       const hasOverage = quote.overageHigh > 0;
       quoteOverageEl.textContent = hasOverage
-        ? `≈ $${fmt(quote.overageLow)}–$${fmt(quote.overageHigh)} overage at $2.50/lb over ${quote.cap} lb cap`
-        : `Fits within the ${quote.cap} lb bag cap — no overage expected`;
+        ? `About $${fmt(quote.overageLow)}-$${fmt(quote.overageHigh)} overage at $2.50/lb over ${quote.cap} lb cap`
+        : `Fits within the ${quote.cap} lb bag cap - no overage expected`;
       quoteOverageEl.style.color = hasOverage ? 'var(--warning)' : 'var(--success)';
     }
 
-    // ── Render/update refined quote summary ─────────────────
+    // -- Render/update refined quote summary --------------------------------
     const allAnswered =
       qaAnswers.clothingType !== null &&
       qaAnswers.towelsSheets !== null &&
@@ -646,7 +646,7 @@ function wireQAEvents(recognition) {
 function renderRefinedSummary(lowLb, highLb, planId, plan, quote, allAnswered) {
   const hasOverage  = quote.overageHigh > 0;
   const overageText = hasOverage
-    ? `≈ $${fmt(quote.overageLow)}–$${fmt(quote.overageHigh)} potential overage`
+    ? `About $${fmt(quote.overageLow)}-$${fmt(quote.overageHigh)} potential overage`
     : 'No overage expected';
 
   return `
@@ -657,11 +657,11 @@ function renderRefinedSummary(lowLb, highLb, planId, plan, quote, allAnswered) {
 
       <div class="refined-summary">
         <div>
-          <div class="refined-summary__range live-range" aria-label="Weight estimate ${fmtLb(lowLb)}–${fmtLb(highLb)} lb">
-            ${fmtLb(lowLb)}–${fmtLb(highLb)} lb
+          <div class="refined-summary__range live-range" aria-label="Weight estimate ${fmtLb(lowLb)}-${fmtLb(highLb)} lb">
+            ${fmtLb(lowLb)}-${fmtLb(highLb)} lb
           </div>
           <div class="refined-summary__plan" style="margin-top: var(--space-1);">
-            ${plan.name} plan · $${plan.price}/mo
+            ${plan.name} plan - $${plan.price}/mo
           </div>
         </div>
         <div style="font-size: var(--text-sm); color: ${hasOverage ? 'var(--warning)' : 'var(--success)'};">
@@ -682,14 +682,14 @@ function renderRefinedSummary(lowLb, highLb, planId, plan, quote, allAnswered) {
           style="min-height: 3rem; min-width: 220px;"
           type="button"
         >
-          Looks right — book a pickup
+          Looks right - book a pickup
         </button>
         <button
           id="btn-reset"
           class="btn btn--ghost"
           style="min-height: 3rem;"
           type="button"
-          aria-label="Start over — clear all photos and answers"
+          aria-label="Start over - clear all photos and answers"
         >
           Start over
         </button>
@@ -709,7 +709,7 @@ function handleBook(lowLb, highLb, planId) {
   });
 
   // Merge plan into the booking state so booking.js can read it
-  // MINIMAL handoff — do nothing else to the booking flow
+  // MINIMAL handoff - do nothing else to the booking flow
   const b = store.get('fold_booking', {});
   b.plan = planId;
   store.set('fold_booking', b);
@@ -745,9 +745,9 @@ function handleReset() {
     ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ── Shared UI helpers ──────────────────────────────────────────────────────
+// -- Shared UI helpers ------------------------------------------------------
 
-function renderLoadingState(message = 'Loading…') {
+function renderLoadingState(message = 'Loading...') {
   return `
     <div class="state-loading" role="status" aria-label="${escHtml(message)}">
       <div class="state-loading__spinner" aria-hidden="true"></div>
@@ -791,7 +791,7 @@ function qaCheckbox(name, value, label) {
   `;
 }
 
-// ── Utility ────────────────────────────────────────────────────────────────
+// -- Utility ----------------------------------------------------------------
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
