@@ -4,7 +4,7 @@ Premium, mobile-first, static marketing-and-booking website for **FOLD**, a subs
 
 Live site: [https://wglewis0721.github.io/laundry-delivery/index.html](https://wglewis0721.github.io/laundry-delivery/index.html)
 
-Hosted on **GitHub Pages** (no build step). Backend integration points are marked `// TODO:` for the TRA3 serverless backend (separate spec).
+Hosted on **GitHub Pages** (no build step). Backend integration points are marked `// TODO:` for the TRA3 serverless backend and `// TODO: 3KD` for the 3KD Vision Engine (separate specs).
 
 Project documentation:
 - [docs/project-overview.md](docs/project-overview.md)
@@ -22,10 +22,12 @@ Project documentation:
 | `service-area.html` | `/service-area` | ZIP checker + interactive map |
 | `about.html` | `/about` | Brand story and values |
 | `faq.html` | `/faq` | Full FAQ accordion (9 questions + JSON-LD FAQPage) |
+| `estimate.html` | `/estimate` | Photo-based laundry estimator — upload photos, get a weight range + recommended plan, refine via Q&A, then book |
 | `schedule.html` | `/schedule` | 5-step booking wizard |
 | `confirmation.html` | `/confirmation` | Post-booking confirmation |
 | `status.html` | `/status` | Live order tracking + weigh-in breakdown + SMS feed |
 | `account.html` | `/account` | Sign-in + member dashboard |
+| `login.html` | `/login` | Sign-in entry point |
 | `privacy.html` | `/privacy` | Privacy policy (pre-launch placeholder) |
 | `terms.html` | `/terms` | Terms of service (pre-launch placeholder) |
 
@@ -42,12 +44,16 @@ fold-website/
 ├── service-area.html
 ├── about.html
 ├── faq.html
+├── estimate.html            Photo-based laundry estimator (3KD Vision Engine)
 ├── schedule.html            Booking wizard
 ├── confirmation.html        Post-booking confirmation
 ├── status.html              Live order tracking
 ├── account.html             Member dashboard
+├── login.html
 ├── privacy.html
 ├── terms.html
+├── .github/
+│   └── copilot-instructions.md   Copilot working agreement for this repo
 ├── assets/
 │   ├── img/                 WebP/AVIF images (add here, reference in HTML)
 │   ├── icons/               Inline-able SVGs
@@ -58,11 +64,17 @@ fold-website/
 │   ├── layout.css           Nav, footer, section rhythm, grid, mobile CTA bar
 │   ├── components.css       All UI components
 │   └── utilities.css        Helper classes
-└── js/
-    ├── store.js             SessionStorage wrapper (ES module)
-    ├── reveal.js            Scroll-reveal via IntersectionObserver (IIFE)
-    ├── booking.js           5-step booking wizard (ES module)
-    └── map.js               Lazy-init Leaflet map (IIFE)
+├── docs/
+│   └── project-overview.md
+├── js/
+│   ├── store.js             SessionStorage wrapper (ES module)
+│   ├── reveal.js            Scroll-reveal via IntersectionObserver (IIFE)
+│   ├── booking.js           5-step booking wizard (ES module)
+│   ├── map.js               Lazy-init Leaflet map (IIFE)
+│   ├── estimate.js          Photo estimator — upload, mock recognition, quote, Q&A (ES module)
+│   └── estimate-data.js     Garment weights, plan definitions, billing config + pure helpers (ES module)
+└── prompts/
+    └── results/             Agent build reports
 ```
 
 ---
@@ -80,12 +92,23 @@ All colour, spacing, and type values live in `css/tokens.css` as CSS custom prop
 ## JavaScript architecture
 
 - Progressive enhancement — pages work without JS; JS adds reveals, selection logic, and the booking wizard.
-- `store.js` and `booking.js` are ES modules — load with `<script type="module">`.
+- `store.js`, `booking.js`, `estimate.js`, and `estimate-data.js` are ES modules — load with `<script type="module">`.
 - `reveal.js` and `map.js` are IIFEs — load with plain `<script src>`.
 - Booking state is stored in `sessionStorage` under key `fold_booking`.
+- Estimate state is stored in `sessionStorage` under key `fold_estimate`.
 - ZIP → schedule handoff via URL param: `schedule.html?zip=36106`.
-- Plan → schedule handoff: `schedule.html?plan=household`.
-- All TRA3 integration points are marked `// TODO:`.
+- Plan → schedule handoff: `schedule.html?plan=household` or via `fold_booking.plan` (set by estimate flow).
+- All TRA3 integration points are marked `// TODO: TRA3`.
+- All 3KD Vision Engine stubs are marked `// TODO: 3KD`.
+
+### Estimate flow (`estimate.html`)
+
+1. User uploads 1–3 photos → `recognizeLaundry()` returns a blend/fill fixture (mocked behind `USE_MOCK = true`).
+2. `estimateWeightRange()` + `recommendPlan()` + `estimateQuote()` in `estimate-data.js` produce an initial weight range and plan.
+3. Four Q&A questions refine the blend/fill in real time; the displayed range narrows as answers are given.
+4. "Book a pickup" persists `fold_estimate` and merges `fold_booking.plan`, then routes to `schedule.html`.
+
+To wire the real vision backend: set `USE_MOCK = false` in `js/estimate.js` and implement the POST inside `recognizeLaundry()` (the expected request/response shape is documented in the function's JSDoc).
 
 ---
 
