@@ -1,65 +1,70 @@
 /* ============================================================
    Soapbox Caddie - Design Tokens
-   Single source of truth for every colour, size, and value.
-   Import this file first in every page (after css/fonts.css).
+   Single source of truth for colour, typography, spacing, and UI values.
 
-   The Soapbox Caddie palette is defined once under "Brand palette".
-   Everything below it is a semantic alias, so components never name a
-   palette colour directly and a rebrand is a change to this file only.
+   The official Soapbox Caddie brand board is the visual source of truth:
+     Ivory  #F7F2F0
+     Ink    #0E0E10
+     Olive  #1E2509
+     Taupe  #CFC5B8
+
+   Legacy semantic token names are intentionally retained so existing
+   components keep working while the site-wide brand system stays unified.
    ============================================================ */
 
 :root {
 
-  /* ── Brand palette ────────────────────────────────────── */
+  /* ── Official brand palette ────────────────────────────── */
+  --brand-ivory: #F7F2F0;
+  --brand-ink:   #0E0E10;
+  --brand-olive: #1E2509;
+  --brand-taupe: #CFC5B8;
 
-  --color-linen:       #F5F3ED;
-  --color-warm-white:  #FCFBF8;
+  /* ── Compatibility aliases derived from the brand board ─ */
+  --color-linen:       var(--brand-ivory);
+  --color-warm-white:  var(--brand-ivory);
   --color-white:       #FFFFFF;
 
-  --color-sage:        #B8B9AE;
-  --color-sage-light:  #D8DAD2;
-  --color-sage-dark:   #85897A;
+  --color-sage:        var(--brand-taupe);
+  --color-sage-light:  color-mix(in srgb, var(--brand-taupe) 48%, var(--brand-ivory));
+  --color-sage-dark:   #8B857D;
 
-  --color-camel:       #B98A60;
-  --color-sand:        #D7B999;
-  --color-oatmeal:     #E5D8C8;
+  --color-camel:       var(--brand-taupe);
+  --color-sand:        color-mix(in srgb, var(--brand-taupe) 78%, var(--brand-ivory));
+  --color-oatmeal:     color-mix(in srgb, var(--brand-taupe) 52%, var(--brand-ivory));
 
-  --color-olive:       #30351F;
-  --color-olive-soft:  #596044;
+  --color-olive:       var(--brand-olive);
+  --color-olive-soft:  color-mix(in srgb, var(--brand-olive) 88%, var(--brand-ink));
 
-  --color-charcoal:    #24261F;
-  --color-text-muted:  #66685F;
-  --color-border:      #DDD9CF;
+  --color-charcoal:    var(--brand-ink);
+  --color-text-muted:  #6B696A;
+  --color-border:      color-mix(in srgb, var(--brand-taupe) 70%, var(--brand-ivory));
 
-  /* On dark surfaces - solid, so contrast is provable.
-     warm-white 12.3:1 and muted 9.2:1 on olive. */
-  --color-on-dark:       #FCFBF8;
-  --color-on-dark-muted: #DBDCD4;
-  --color-on-dark-line:  rgba(252, 251, 248, 0.62);
+  /* On dark surfaces */
+  --color-on-dark:       var(--brand-ivory);
+  --color-on-dark-muted: var(--brand-taupe);
+  --color-on-dark-line:  color-mix(in srgb, var(--brand-taupe) 62%, transparent);
 
   /* ── Semantic aliases ─────────────────────────────────── */
-
   --white:         var(--color-white);
-  --off-white:     var(--color-linen);
-  --ink:           var(--color-charcoal);
-  --ink-light:     #3E4238;
+  --off-white:     var(--brand-ivory);
+  --ink:           var(--brand-ink);
+  --ink-light:     #3F3D3E;
   --ink-lighter:   var(--color-text-muted);
   --border:        var(--color-border);
   --border-dark:   var(--color-sage-dark);
 
-  /* Decorative fills only. These FAIL AA as small text on white:
-     camel is 3.0:1 and sage-dark 3.5:1 - never use them for body copy. */
-  --gold:          var(--color-camel);
-  --green:         var(--color-sage);
+  /* Existing decorative token names now resolve to the official system. */
+  --gold:          var(--brand-taupe);
+  --green:         var(--brand-taupe);
   --sky:           var(--color-sage-light);
   --blush:         var(--color-oatmeal);
 
-  /* AA-safe interactive fills (warm-white text on olive is 12.3:1) */
-  --green-btn:     var(--color-olive);
-  --green-btn-hov: var(--color-olive-soft);
+  /* Interactive fills */
+  --green-btn:     var(--brand-olive);
+  --green-btn-hov: color-mix(in srgb, var(--brand-olive) 86%, var(--brand-ink));
 
-  /* Semantic states - kept distinguishable rather than fully on-brand,
-     because an error must not read as decoration. */
+  /* Semantic states remain distinct for accessibility and meaning. */
   --success:       #3F6B3A;
   --error:         #A3342C;
   --warning:       #8A6212;
@@ -67,58 +72,56 @@
   --success-bg:    #F1F5EF;
 
   /* ── Typography ───────────────────────────────────────── */
-
-  --font-display:   'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --font-body:      'Inter', system-ui, -apple-system, BlinkMacSystemFont,
-                    'Segoe UI', Helvetica, Arial, sans-serif;
-  --font-condensed: 'Oswald', 'Arial Narrow', 'Inter', system-ui, sans-serif;
+  /* Brand board specifies OKANA + ENRIQ, but licensed files have not been
+     supplied. These remain the approved self-hosted production fallbacks. */
+  --font-brand-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-brand-accent:  'Oswald', 'Arial Narrow', 'Inter', system-ui, sans-serif;
+  --font-display:       var(--font-brand-display);
+  --font-body:          'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+                        'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-condensed:     var(--font-brand-accent);
 
   /* Type scale */
-  --text-xs:       0.75rem;    /*  12 px */
-  --text-sm:       0.875rem;   /*  14 px */
-  --text-base:     1rem;       /*  16 px */
-  --text-lg:       1.125rem;   /*  18 px */
-  --text-xl:       1.25rem;    /*  20 px */
-  --text-2xl:      1.5rem;     /*  24 px */
-  --text-3xl:      1.875rem;   /*  30 px */
-  --text-4xl:      2.25rem;    /*  36 px */
-  --text-5xl:      3rem;       /*  48 px */
-  --text-6xl:      3.75rem;    /*  60 px */
+  --text-xs:       0.75rem;
+  --text-sm:       0.875rem;
+  --text-base:     1rem;
+  --text-lg:       1.125rem;
+  --text-xl:       1.25rem;
+  --text-2xl:      1.5rem;
+  --text-3xl:      1.875rem;
+  --text-4xl:      2.25rem;
+  --text-5xl:      3rem;
+  --text-6xl:      3.75rem;
 
-  /* Line heights */
   --leading-tight:   1.2;
   --leading-snug:    1.375;
   --leading-normal:  1.5;
   --leading-relaxed: 1.65;
 
-  /* Font weights */
   --weight-normal:   400;
   --weight-medium:   500;
   --weight-semibold: 600;
   --weight-bold:     700;
 
   /* ── Spacing (4 px base) ──────────────────────────────── */
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-5:   1.25rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+  --space-32:  8rem;
 
-  --space-1:   0.25rem;    /*   4 px */
-  --space-2:   0.5rem;     /*   8 px */
-  --space-3:   0.75rem;    /*  12 px */
-  --space-4:   1rem;       /*  16 px */
-  --space-5:   1.25rem;    /*  20 px */
-  --space-6:   1.5rem;     /*  24 px */
-  --space-8:   2rem;       /*  32 px */
-  --space-10:  2.5rem;     /*  40 px */
-  --space-12:  3rem;       /*  48 px */
-  --space-16:  4rem;       /*  64 px */
-  --space-20:  5rem;       /*  80 px */
-  --space-24:  6rem;       /*  96 px */
-  --space-32:  8rem;       /* 128 px */
-
-  /* Section vertical rhythm */
   --section-y:    var(--space-20);
   --section-y-lg: var(--space-24);
 
   /* ── Border radius ────────────────────────────────────── */
-
   --radius-sm:   0.25rem;
   --radius-md:   0.5rem;
   --radius-lg:   0.75rem;
@@ -127,15 +130,16 @@
   --radius-full: 9999px;
 
   /* ── Shadows ──────────────────────────────────────────── */
-
-  --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-sm:  0 2px 4px rgba(0, 0, 0, 0.06);
-  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-lg:  0 12px 28px rgba(0, 0, 0, 0.09), 0 4px 8px rgba(0, 0, 0, 0.04);
-  --shadow-xl:  0 24px 48px rgba(0, 0, 0, 0.10), 0 8px 16px rgba(0, 0, 0, 0.05);
+  --shadow-xs:  0 1px 2px color-mix(in srgb, var(--brand-ink) 8%, transparent);
+  --shadow-sm:  0 2px 4px color-mix(in srgb, var(--brand-ink) 9%, transparent);
+  --shadow-md:  0 4px 12px color-mix(in srgb, var(--brand-ink) 10%, transparent),
+                0 2px 4px color-mix(in srgb, var(--brand-ink) 5%, transparent);
+  --shadow-lg:  0 12px 28px color-mix(in srgb, var(--brand-ink) 11%, transparent),
+                0 4px 8px color-mix(in srgb, var(--brand-ink) 5%, transparent);
+  --shadow-xl:  0 24px 48px color-mix(in srgb, var(--brand-ink) 12%, transparent),
+                0 8px 16px color-mix(in srgb, var(--brand-ink) 6%, transparent);
 
   /* ── Motion ───────────────────────────────────────────── */
-
   --dur-fast:    150ms;
   --dur-base:    250ms;
   --dur-slow:    400ms;
@@ -143,13 +147,11 @@
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ── Layout ───────────────────────────────────────────── */
-
   --max-width:    1200px;
-  --nav-height:   4rem;       /* 64 px */
-  --wrap-x:       1.5rem;     /* side gutter */
+  --nav-height:   4rem;
+  --wrap-x:       1.5rem;
 
   /* ── Z-index ──────────────────────────────────────────── */
-
   --z-below:  -1;
   --z-base:    0;
   --z-raised: 10;
