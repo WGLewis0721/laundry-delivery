@@ -1,0 +1,101 @@
+name: One-shot Soapbox hero repair
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-soapbox-hero.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair-hero:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Rebuild hero from the client's original teddy-bear image
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageFilter, ImageStat
+
+          source = Path('assets/img/Soapbox Caddie Sample Graphics - 5.png')
+          png_out = Path('assets/img/hero-soapbox-caddie.png')
+          webp_out = Path('assets/img/hero-soapbox-caddie.webp')
+
+          im = Image.open(source).convert('RGB')
+          w, h = im.size
+
+          # The client original has a small baked Soapbox Caddie mark in the
+          # upper-left. The surrounding wall is nearly uniform, so remove the
+          # mark with a feathered fill sampled from the adjacent blank wall.
+          # Coordinates are proportional so this remains safe if the source is
+          # replaced with the same composition at another resolution.
+          sample_box = (
+              int(w * 0.36), int(h * 0.035),
+              int(w * 0.58), int(h * 0.19)
+          )
+          sample = im.crop(sample_box)
+          mean = tuple(round(v) for v in ImageStat.Stat(sample).mean[:3])
+
+          logo_box = (
+              int(w * 0.055), int(h * 0.035),
+              int(w * 0.315), int(h * 0.185)
+          )
+          overlay = Image.new('RGB', im.size, mean)
+          mask = Image.new('L', im.size, 0)
+          from PIL import ImageDraw
+          draw = ImageDraw.Draw(mask)
+          draw.rectangle(logo_box, fill=255)
+          feather = max(10, round(min(w, h) * 0.018))
+          mask = mask.filter(ImageFilter.GaussianBlur(feather))
+          im = Image.composite(overlay, im, mask)
+
+          # Preserve the entire teddy bear, basket body/handles, linens and
+          # floor. No crop is applied here; the homepage media box is changed
+          # to the same 4:5 ratio so CSS no longer cuts the subject away.
+          im.save(png_out, format='PNG', optimize=True)
+          im.save(webp_out, format='WEBP', quality=88, method=6)
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+          html = html.replace('aspect-ratio: 751 / 986;', 'aspect-ratio: 4 / 5;')
+          html = html.replace('width="751" height="986"', f'width="{w}" height="{h}"')
+          html = html.replace(
+              'alt="Teddy bear sitting on a wicker laundry basket filled with soft folded linens."',
+              'alt="Teddy bear sitting in a wicker laundry basket filled with soft folded linens."'
+          )
+          index.write_text(html, encoding='utf-8')
+
+          print(f'Hero rebuilt: {w}x{h}')
+          print(f'PNG:  {png_out.stat().st_size:,} bytes')
+          print(f'WebP: {webp_out.stat().st_size:,} bytes')
+          PY
+
+      - name: Remove one-shot workflow and commit repaired hero
+        shell: bash
+        run: |
+          rm .github/workflows/fix-soapbox-hero.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Fix homepage teddy bear hero asset and crop"
+          git push origin HEAD:main
