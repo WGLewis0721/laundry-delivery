@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soapbox Caddie - Laundry Pickup &amp; Delivery | River Region</title>
   <meta name="description" content="Soapbox Caddie picks up, washes, dries, folds, and returns laundry throughout the River Region. Fill the bag to the line and pay by the bag. Choose peace, not laundry.">
-  <meta name="theme-color" content="#0F2744">
+  <meta name="theme-color" content="#30351F">
 
   <link rel="canonical" href="https://wglewis0721.github.io/laundry-delivery/index.html">
   <meta property="og:title" content="Soapbox Caddie - Laundry Pickup &amp; Delivery | River Region">
@@ -13,92 +13,137 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wglewis0721.github.io/laundry-delivery/index.html">
 
+  <!-- Approved temporary type pairing (no client font assets supplied yet):
+       Cormorant Garamond for display, DM Sans for body/UI. Only the six
+       faces actually used are requested. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    /* Phase 2 replaces this palette with the final Soapbox Caddie brand colours
-       (the sage/cream direction shown in the approved mockup). */
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#059669',
-            blush: '#F7D6DE',
-            midnight: '#0B1630',
-            ocean: '#10233f',
-            mist: '#EAF2FF',
-            gold: '#E9C46A'
-          },
-          borderRadius: { '4xl': '2rem' }
-        }
-      }
-    };
-  </script>
-
   <style>
     /* ------------------------------------------------------------------
-       PHASE 1-B - MOCKUP FIDELITY PASS
+       PHASE 2 - VISUAL DESIGN SYSTEM
 
-       Composition, proportions and density follow the approved homepage
-       mockup: a centred content system, compact editorial section
-       heights, a half-and-half hero with the media bleeding right, a
-       four-column pricing row, a light process strip, a wide
-       subscription banner, a compact gift interruption, a paired
-       About / Business row, one reassurance band and a compact footer.
+       Layout, composition and density are inherited unchanged from Phase
+       1-B (the approved mockup). This pass adds the Soapbox Caddie visual
+       system: colour tokens, typographic hierarchy, surfaces, buttons,
+       borders, radii, line icons and production-ready image slots.
 
-       Colour, type pairing, photography, logo and iconography remain
-       deliberately neutral. Phase 2 applies the palette and image
-       placeholders; Phase 3 applies real branding and client imagery.
+       Colour balance target: ~60% warm linen / white, ~30% sage + natural
+       tan, ~10% deep olive emphasis.
+
+       Still to come - Phase 3: real logo, client photography, bag
+       product shots, final icon set if the client supplies one.
        ------------------------------------------------------------------ */
 
     :root {
       color-scheme: light;
 
-      /* Container + rhythm system */
+      /* ---- Palette ---------------------------------------------------
+         Single source of truth. Nothing below should introduce a new hex. */
+
+      /* Primary light surfaces (~60%) */
+      --color-linen: #F5F3ED;
+      --color-warm-white: #FCFBF8;
+      --color-white: #FFFFFF;
+
+      /* Sage family (~30% with the tans) */
+      --color-sage: #B8B9AE;
+      --color-sage-light: #D8DAD2;
+      --color-sage-dark: #85897A;
+
+      /* Natural tan family */
+      --color-camel: #B98A60;
+      --color-sand: #D7B999;
+      --color-oatmeal: #E5D8C8;
+
+      /* Brand greens (~10% emphasis) */
+      --color-olive: #30351F;
+      --color-olive-soft: #596044;
+
+      /* Text */
+      --color-charcoal: #24261F;
+      --color-text-muted: #66685F;
+
+      /* Utility */
+      --color-border: #DDD9CF;
+      /* Derived: a linen/oatmeal blend that reads as "reserved media" against
+         every surrounding surface without becoming another palette colour. */
+      --color-placeholder: #EAE5DB;
+
+      /* On dark surfaces. Solid rather than alpha so contrast is provable:
+         warm-white 12.3:1 and muted 6.9:1 on olive; 6.6:1 and 4.8:1 on
+         olive-soft. Alpha values below 0.8 failed AA on olive-soft. */
+      --color-on-dark: var(--color-warm-white);
+      --color-on-dark-muted: #DBDCD4;
+      --color-on-dark-line: rgba(252, 251, 248, 0.62);
+      --color-on-dark-divider: rgba(252, 251, 248, 0.28);
+
+      /* ---- Semantic aliases -----------------------------------------
+         Components reference these, so a palette change is a one-line edit. */
+      --surface: var(--color-warm-white);
+      --surface-muted: var(--color-linen);
+      --surface-warm: var(--color-linen);
+      --surface-placeholder: var(--color-placeholder);
+      --line: var(--color-border);
+      /* Interactive boundaries need >= 3:1; --line alone is 1.4:1 on warm
+         white, so it is for decorative hairlines only. */
+      --line-strong: var(--color-sage-dark);
+      --ink: var(--color-charcoal);
+      --ink-soft: var(--color-text-muted);
+      --accent: var(--color-olive);
+      --accent-soft: var(--color-olive-soft);
+
+      /* ---- Typography ------------------------------------------------ */
+      --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+
+      /* ---- Container + rhythm (unchanged from Phase 1-B) ------------- */
       --shell-max: 82rem;
       --shell-gutter: clamp(1rem, 3.5vw, 2rem);
       --shell-content: calc(var(--shell-max) - (2 * var(--shell-gutter)));
       --section-space: clamp(1.75rem, 2.8vw, 2.25rem);
       --section-space-tight: clamp(0.75rem, 1.5vw, 1.1rem);
       --grid-gap: clamp(0.85rem, 1.6vw, 1.25rem);
-      --radius-card: 0.85rem;
+
+      /* ---- Radius scale ---------------------------------------------- */
+      --radius-sm: 0.35rem;   /* buttons, inputs */
+      --radius-md: 0.6rem;    /* small panels */
+      --radius-lg: 0.9rem;    /* cards, bands, media */
       --radius-pill: 9999px;
 
-      /* Restrained neutral surfaces - Phase 2 swaps these for the brand set */
-      --surface: #ffffff;
-      --surface-muted: #f6f6f4;
-      --surface-warm: #f2f1ec;
-      --line: #e3e5e2;
-      --line-strong: #cfd2cd;
-      --ink: #24312a;
-      --ink-soft: #5d6660;
+      /* ---- Depth ------------------------------------------------------
+         Editorial, not floating cards: exactly one shadow, used only where
+         an element genuinely sits above the page (the mobile nav sheet). */
+      --shadow-sheet: 0 18px 40px -30px rgba(36, 38, 31, 0.5);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: var(--font-body);
       color: var(--ink);
       background: var(--surface);
       font-size: 1rem;
     }
 
-    h1, h2, h3, h4, h5, h6 { font-family: 'Inter Tight', 'Inter', system-ui, sans-serif; }
+    /* Display face for the editorial voice; h3 and below stay in the UI face,
+       matching the mockup. */
+    h1, h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: 0; }
+    h3, h4, h5, h6 { font-family: var(--font-body); }
 
     img, svg, video { max-width: 100%; height: auto; }
 
     :where(a, button, input, select, textarea, summary):focus-visible {
-      outline: 3px solid var(--ink);
+      outline: 3px solid var(--color-olive);
       outline-offset: 2px;
-      border-radius: 0.4rem;
+      border-radius: var(--radius-sm);
     }
 
     .skip-link {
       position: absolute; left: 1rem; top: 1rem; z-index: 60; transform: translateY(-200%);
-      border-radius: 0.4rem; background: var(--ink); color: #fff;
-      padding: 0.7rem 1rem; font-weight: 700; transition: transform 0.2s ease;
+      border-radius: var(--radius-sm); background: var(--color-olive); color: var(--color-on-dark);
+      padding: 0.7rem 1rem; font-weight: 600; transition: transform 0.2s ease;
     }
     .skip-link:focus { transform: translateY(0); }
 
@@ -129,74 +174,127 @@
     }
     .lede__intro { display: grid; gap: 0.5rem; align-content: start; justify-items: start; }
 
-    .title-lg { font-size: clamp(1.5rem, 2.5vw, 1.9rem); font-weight: 600; line-height: 1.15; color: var(--ink); }
-    .title-md { font-size: clamp(1.25rem, 1.9vw, 1.45rem); font-weight: 600; line-height: 1.2; color: var(--ink); }
+    /* ---------------- Type scale ---------------- */
+
+    .title-lg {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3.1vw, 2.5rem);
+      font-weight: 500; line-height: 1.12; color: var(--color-olive);
+    }
+    .title-md {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.3vw, 1.85rem);
+      font-weight: 500; line-height: 1.18; color: var(--color-olive);
+    }
     .body-sm { font-size: 0.875rem; line-height: 1.6; color: var(--ink-soft); }
     .body-xs { font-size: 0.8125rem; line-height: 1.55; color: var(--ink-soft); }
+    .text-ink { color: var(--ink); }
+    /* Eyebrows/labels use olive-soft (6.4:1). sage-dark and camel fail AA as
+       text and are reserved for icons, borders and fills. */
+    .label-xs {
+      font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent-soft);
+    }
 
-    /* ---------------- Media + icon placeholders ----------------
-       Explicit ratios reserve the final dimensions so Phase 2/3 imagery
-       drops in without layout shift. */
+    /* ---------------- Media placeholders ----------------
+       Every slot reserves its final dimensions before an image loads.
+       Phase 3 drops an <img class="media-slot__img"> inside: lifestyle
+       imagery crops with cover, bag products are contained so the whole
+       bag stays visible. */
 
     .media-slot {
       position: relative;
       display: grid; place-items: center;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: var(--surface-muted);
-      border-radius: var(--radius-card);
+      background: var(--surface-placeholder);
+      border-radius: var(--radius-lg);
       aspect-ratio: var(--media-ratio, 3 / 2);
     }
     .media-slot > * { max-width: 85%; text-align: center; }
     .media-slot__label {
-      font-size: 0.625rem; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: #9aa39c;
+      font-size: 0.625rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--color-olive);
     }
+    /* Phase 3 image rules - already in place so inserting <img> shifts nothing. */
+    .media-slot__img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .media-slot--contain .media-slot__img { object-fit: contain; padding: 6%; }
+
     .media-slot--wide { --media-ratio: 16 / 9; }
     .media-slot--flush { border-radius: 0; border: 0; }
     @media (min-width: 62rem) { .media-slot--flush { border-left: 1px solid var(--line); } }
 
-    .icon-slot {
-      display: grid; place-items: center;
-      width: 2rem; height: 2rem;
-      border: 1px solid var(--line-strong); border-radius: 0.4rem;
-      background: transparent;
+    /* Product tints hinting at the eventual bag palette: cream, tan, sage. */
+    .bag-image-small  { background: var(--color-warm-white); }
+    .bag-image-medium { background: var(--color-oatmeal); }
+    .bag-image-large  { background: var(--color-sage-light); }
+
+    /* ---------------- Icons ----------------
+       One family: thin line strokes, currentColor, consistent weight. */
+
+    .icon {
+      width: 1.5rem; height: 1.5rem;
+      fill: none; stroke: currentColor; stroke-width: 1.25;
+      stroke-linecap: round; stroke-linejoin: round;
       flex: 0 0 auto;
     }
-    .icon-slot--round { border-radius: var(--radius-pill); width: 3rem; height: 3rem; }
+    .icon--sm { width: 1.15rem; height: 1.15rem; }
+    .icon--lg { width: 1.75rem; height: 1.75rem; }
+    .icon-lead { color: var(--accent-soft); }
+    .icon-circle {
+      display: grid; place-items: center;
+      width: 3rem; height: 3rem; border-radius: var(--radius-pill);
+      background: var(--color-sage-light); color: var(--color-olive);
+      flex: 0 0 auto;
+    }
 
     /* ---------------- Buttons ---------------- */
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
       min-height: 2.5rem; padding-inline: 1.1rem;
-      border-radius: 0.35rem;
-      font-size: 0.8125rem; font-weight: 600; line-height: 1.2;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.8125rem; font-weight: 500; line-height: 1.2;
       border: 1px solid transparent;
       cursor: pointer; text-align: center;
       transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
-    .btn--primary { background: var(--ink); color: #fff; }
-    .btn--primary:hover { background: #33463b; }
-    .btn--secondary { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
-    .btn--secondary:hover { border-color: var(--ink); }
-    .btn--on-dark { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.55); }
-    .btn--on-dark:hover { background: rgba(255, 255, 255, 0.12); }
+    .btn--primary { background: var(--color-olive); color: var(--color-on-dark); }
+    .btn--primary:hover { background: var(--color-olive-soft); }
+    .btn--primary:active { background: var(--color-olive); }
+    .btn--secondary { background: var(--color-warm-white); color: var(--color-olive); border-color: var(--line-strong); }
+    .btn--secondary:hover { background: var(--color-linen); border-color: var(--color-olive); }
+    .btn--secondary:active { background: var(--color-sage-light); }
+    .btn--on-dark { background: transparent; color: var(--color-on-dark); border-color: var(--color-on-dark-line); }
+    .btn--on-dark:hover { background: var(--color-on-dark); color: var(--color-olive-soft); border-color: var(--color-on-dark); }
     .btn--block { width: 100%; }
+    .btn[disabled], .btn[aria-disabled="true"] {
+      background: var(--color-sage-light); color: var(--color-text-muted);
+      border-color: var(--line); cursor: not-allowed;
+    }
 
+    /* Links carry an underline as well as colour - never colour alone. */
     .link-arrow {
       display: inline-flex; align-items: center; gap: 0.35rem;
       min-height: 2rem;
-      font-size: 0.8125rem; font-weight: 600; color: var(--ink);
+      font-size: 0.8125rem; font-weight: 500; color: var(--color-olive);
+      text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+      text-decoration-color: var(--color-sage-dark);
     }
-    .link-arrow::after { content: "\2192"; }
-    .link-arrow:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .link-arrow::after { content: "\2192"; text-decoration: none; }
+    .link-arrow:hover { text-decoration-color: currentColor; }
 
     /* ---------------- Header ---------------- */
 
     .site-nav {
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.94);
+      background: var(--color-warm-white); /* fallback if color-mix is unsupported */
+      background: color-mix(in srgb, var(--color-warm-white) 94%, transparent);
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     }
     .nav-inner { display: flex; align-items: center; gap: 1rem; padding-block: 0.9rem; }
@@ -206,15 +304,16 @@
     .brand__mark {
       display: grid; place-items: center;
       min-width: 3.1rem; height: 3.1rem; padding-inline: 0.4rem;
-      border: 1px solid var(--ink); border-radius: 0.25rem;
-      font-size: 0.6rem; font-weight: 700; line-height: 1.25; letter-spacing: 0.04em;
-      color: var(--ink); text-transform: uppercase; text-align: center;
+      border: 1px solid var(--color-olive); border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.6rem; font-weight: 600; line-height: 1.25; letter-spacing: 0.06em;
+      color: var(--color-olive); text-transform: uppercase; text-align: center;
     }
     .brand__mark--sm { min-width: 2.7rem; height: 2.7rem; font-size: 0.55rem; }
 
     .nav-links { display: none; }
     .nav-cta-desktop { display: none; }
-    .nav-links a { display: block; border-radius: 0.35rem; padding: 0.5rem 0.7rem; }
+    .nav-links a { display: block; border-radius: var(--radius-sm); padding: 0.5rem 0.7rem; }
     @media (min-width: 68rem) {
       /* Logo | centred links | CTA - a 3-track grid centres the links on
          the page rather than in the space left over beside the CTA. */
@@ -223,7 +322,7 @@
         display: flex; align-items: center; justify-content: center; gap: 0.1rem;
         font-size: 0.8125rem; font-weight: 500; color: var(--ink-soft);
       }
-      .nav-links a:hover { color: var(--ink); }
+      .nav-links a:hover { color: var(--color-olive); background: var(--color-linen); }
       .nav-links .nav-cta { display: none; }
       .nav-cta-desktop { display: inline-flex; }
     }
@@ -232,10 +331,10 @@
       position: absolute; top: calc(100% + 0.5rem); right: var(--shell-gutter); left: var(--shell-gutter);
       z-index: 50;
       padding: 0.6rem;
-      border: 1px solid var(--line); border-radius: var(--radius-card);
-      background: rgba(255, 255, 255, 0.98);
-      box-shadow: 0 20px 44px -32px rgba(20, 30, 24, 0.45);
-      font-weight: 500;
+      border: 1px solid var(--line); border-radius: var(--radius-lg);
+      background: var(--color-warm-white);
+      box-shadow: var(--shadow-sheet);
+      font-weight: 500; color: var(--ink);
     }
     .nav-links.is-open a { padding: 0.7rem 0.8rem; }
 
@@ -243,8 +342,8 @@
     .nav-toggle {
       display: inline-flex; align-items: center; justify-content: center;
       height: 2.6rem; width: 2.6rem; margin-inline-start: auto;
-      border: 1px solid var(--line-strong); border-radius: 0.4rem;
-      background: var(--surface); color: var(--ink); cursor: pointer;
+      border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+      background: var(--color-warm-white); color: var(--color-olive); cursor: pointer;
       flex: 0 0 auto;
     }
     .nav-toggle > span { display: flex; flex-direction: column; gap: 0.28rem; }
@@ -253,13 +352,13 @@
 
     /* ---------------- Hero ---------------- */
 
-    .hero { display: grid; background: var(--surface-warm); }
+    .hero { display: grid; background: var(--color-linen); }
     .hero__content {
       display: grid; gap: clamp(0.9rem, 1.8vw, 1.35rem);
       align-content: center;
       padding: clamp(1.5rem, 3.2vw, 2.25rem) var(--shell-gutter);
     }
-    .hero__media { --media-ratio: 4 / 3; width: 100%; }
+    .hero__media { --media-ratio: 4 / 3; width: 100%; background: var(--color-oatmeal); }
 
     @media (min-width: 62rem) {
       /* Full-bleed grid: copy aligns to the shell, media runs to the right
@@ -278,39 +377,45 @@
     }
 
     .hero__title {
-      font-size: clamp(2.25rem, 5.4vw, 4.35rem);
-      line-height: 1.04;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 6.4vw, 5.25rem);
+      line-height: 1.02;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      color: var(--color-olive);
     }
-    /* Softer second line, per the mockup. Phase 2 sets the italic serif. */
+    /* Softer editorial second line - italic, lighter weight, same colour so
+       it stays as readable as the first. */
     .hero__title em { font-style: italic; font-weight: 400; }
 
     .hero__copy { max-width: 26rem; font-size: 1rem; line-height: 1.7; color: var(--ink-soft); }
 
     /* ZIP checker - compact utility component inside the hero */
     .zip-panel {
-      border: 1px solid var(--line-strong);
-      border-radius: 0.5rem;
-      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--color-warm-white);
       padding: 0.85rem;
       display: grid; gap: 0.5rem;
       max-width: 29rem;
     }
-    .zip-panel__title { font-size: 0.875rem; font-weight: 600; color: var(--ink); }
+    .zip-panel__title { font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--ink); }
     .zip-fields { display: grid; gap: 0.4rem; }
     @media (min-width: 26rem) { .zip-fields { grid-template-columns: minmax(0, 1fr) auto; } }
     .zip-input {
       width: 100%; min-height: 2.5rem;
-      border: 1px solid var(--line-strong); border-radius: 0.35rem;
-      background: var(--surface);
+      border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+      background: var(--color-white);
       padding-inline: 0.7rem;
+      font-family: var(--font-body);
       font-size: 0.8125rem; color: var(--ink);
     }
-    .zip-input::placeholder { color: #9aa39c; }
+    .zip-input::placeholder { color: var(--ink-soft); }
+    .zip-input:focus { border-color: var(--color-olive); }
     .zip-note { font-size: 0.75rem; color: var(--ink-soft); }
-    .zip-feedback { font-size: 0.75rem; font-weight: 600; color: var(--ink); }
+    /* All three results render in the same charcoal: the outcome is carried
+       by the wording and the aria-live announcement, never by colour. */
+    .zip-feedback { font-size: 0.75rem; font-weight: 500; color: var(--ink); }
     .zip-feedback:empty { display: none; }
     .zip-actions { display: none; gap: 0.4rem; }
     .zip-actions.is-visible { display: grid; }
@@ -328,15 +433,21 @@
       min-height: 15.5rem;
       padding: 0.9rem;
       border: 1px solid var(--line);
-      border-radius: var(--radius-card);
-      background: var(--surface-muted);
+      border-radius: var(--radius-lg);
+      background: var(--color-linen);
     }
     .bag-card__text { grid-column: 1; grid-row: 1; display: grid; gap: 0.1rem; align-content: start; }
     .bag-card__name { font-size: 0.875rem; font-weight: 600; color: var(--ink); }
-    .bag-card__price { font-size: clamp(1.75rem, 3vw, 2.15rem); font-weight: 600; line-height: 1.1; color: var(--ink); }
+    /* Prices take the editorial treatment - display face, used consistently
+       here and in the subscription stats. */
+    .bag-card__price {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 3.6vw, 2.9rem);
+      font-weight: 500; line-height: 1.05; color: var(--color-olive);
+    }
     .bag-card__meta { font-size: 0.75rem; color: var(--ink-soft); }
     /* Imagery dominates the card: it spans both content rows. */
-    .bag-card__media { grid-column: 2; grid-row: 1 / 3; aspect-ratio: auto; min-height: 9rem; border: 1px dashed var(--line-strong); background: transparent; }
+    .bag-card__media { grid-column: 2; grid-row: 1 / 3; aspect-ratio: auto; min-height: 9rem; border-color: var(--color-border); }
     .bag-card__cta { grid-column: 2; grid-row: 3; }
 
     .price-note { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem; align-items: start; }
@@ -346,33 +457,39 @@
     .steps { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
     .steps > li { counter-increment: step; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.75rem; align-items: start; }
     .step__title { font-size: 0.875rem; font-weight: 600; color: var(--ink); }
-    .step__title::before { content: counter(step) ". "; }
+    .step__title::before { content: counter(step) ". "; color: var(--accent-soft); }
     .step__copy { font-size: 0.8125rem; line-height: 1.5; color: var(--ink-soft); }
     @media (min-width: 48rem) {
       .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(0.75rem, 1.6vw, 1.25rem); }
       .steps > li { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; gap: 0.5rem; }
     }
 
-    /* ---------------- Subscription banner ---------------- */
+    /* ---------------- Subscription banner ----------------
+       The one large olive surface in the page body: it separates the
+       recurring offer from one-time bag pricing. */
 
     .band {
       display: grid;
       overflow: hidden;
-      border-radius: var(--radius-card);
-      background: var(--ink); /* Phase 2: brand green */
-      color: #fff;
+      border-radius: var(--radius-lg);
+      background: var(--color-olive-soft);
+      color: var(--color-on-dark);
     }
-    .band__media { border: 0; border-radius: 0; background: rgba(255, 255, 255, 0.07); }
-    .band__media .media-slot__label { color: rgba(255, 255, 255, 0.6); }
+    .band__media { border: 0; border-radius: 0; background: var(--color-oatmeal); }
+    .band__media .media-slot__label { color: var(--color-olive); }
     @media (min-width: 56rem) {
       .band { grid-template-columns: minmax(0, 0.52fr) minmax(0, 1fr); align-items: stretch; }
       .band__media { aspect-ratio: auto; min-height: 100%; }
     }
     .band__body { display: grid; gap: 0.55rem; align-content: center; padding: clamp(1.1rem, 2.2vw, 1.65rem); }
-    .band__eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.7); }
-    .band__title { font-size: clamp(1.4rem, 2.6vw, 1.85rem); font-weight: 600; line-height: 1.15; }
-    .band__sub { font-size: 0.875rem; color: rgba(255, 255, 255, 0.8); }
-    .band__note { font-size: 0.75rem; color: rgba(255, 255, 255, 0.65); }
+    .band__eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-on-dark-muted); }
+    .band__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      font-weight: 500; line-height: 1.12;
+    }
+    .band__sub { font-size: 0.875rem; color: var(--color-on-dark-muted); }
+    .band__note { font-size: 0.75rem; color: var(--color-on-dark-muted); }
 
     .band__row { display: grid; gap: 0.85rem; align-items: center; margin-block: 0.15rem; }
     @media (min-width: 62rem) { .band__row { grid-template-columns: minmax(0, 1fr) auto; } }
@@ -380,28 +497,37 @@
     .stat-row { display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr)); }
     .stat { padding-inline: clamp(0.4rem, 1.2vw, 1rem); }
     .stat:first-child { padding-inline-start: 0; }
-    .stat:not(:first-child) { border-inline-start: 1px solid rgba(255, 255, 255, 0.22); }
-    .stat__value { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; line-height: 1.2; }
-    .stat__label { font-size: 0.6875rem; color: rgba(255, 255, 255, 0.72); }
+    .stat:not(:first-child) { border-inline-start: 1px solid var(--color-on-dark-divider); }
+    .stat__value {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+      font-weight: 500; line-height: 1.15;
+    }
+    .stat__label { font-size: 0.6875rem; color: var(--color-on-dark-muted); }
 
     /* ---------------- Gift interruption ---------------- */
 
     .gift-band {
       display: grid; align-items: center;
-      border-radius: var(--radius-card);
-      background: var(--surface-warm);
+      border-radius: var(--radius-lg);
+      background: var(--color-oatmeal);
       overflow: hidden;
     }
     .gift-band__lead { display: flex; align-items: center; gap: 1rem; padding: clamp(1rem, 2.2vw, 1.4rem); }
     .gift-band__body { display: grid; gap: 0.3rem; }
     .gift-band__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
-    .gift-band__media { border: 0; border-radius: 0; }
+    /* text-muted is only 4.0:1 on oatmeal, so supporting copy here is charcoal. */
+    .gift-band__actions .body-sm { color: var(--ink); }
+    .gift-band .icon-circle { background: var(--color-warm-white); }
+    .gift-band__media { border: 0; border-radius: 0; background: var(--color-sand); }
     @media (min-width: 56rem) {
       .gift-band { grid-template-columns: minmax(0, 1fr) minmax(0, 0.32fr); }
       .gift-band__media { aspect-ratio: auto; min-height: 100%; }
     }
 
-    /* ---------------- About + Business pair ---------------- */
+    /* ---------------- About + Business pair ----------------
+       Both halves stay on the page surface so the approved paired row is
+       preserved; the two media regions carry the light alternation instead. */
 
     .duo { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); }
     @media (min-width: 60rem) {
@@ -411,17 +537,20 @@
     .duo__item { display: grid; gap: clamp(0.9rem, 2vw, 1.25rem); align-items: center; }
     @media (min-width: 34rem) { .duo__item { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } }
     .duo__body { display: grid; gap: 0.5rem; justify-items: start; }
+    .about-media { background: var(--color-oatmeal); }
+    .business-media { background: var(--color-sage-light); }
 
     /* ---------------- Reassurance band ---------------- */
 
     .trust-box {
       display: grid; gap: clamp(0.85rem, 1.8vw, 1.4rem);
-      border: 1px solid var(--line); border-radius: var(--radius-card);
+      border: 1px solid var(--line); border-radius: var(--radius-lg);
+      background: var(--color-linen);
       padding: clamp(0.85rem, 1.6vw, 1.15rem);
     }
     @media (min-width: 56rem) {
       .trust-box { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .trust-col:not(:first-child) { border-inline-start: 1px solid var(--line); padding-inline-start: clamp(1rem, 2.2vw, 1.75rem); }
+      .trust-col:not(:first-child) { border-inline-start: 1px solid var(--color-border); padding-inline-start: clamp(1rem, 2.2vw, 1.75rem); }
     }
     .trust-col { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.5rem 0.85rem; align-content: start; }
     .trust-col__body { display: grid; gap: 0.25rem; justify-items: start; }
@@ -429,21 +558,32 @@
 
     /* ---------------- Footer ---------------- */
 
-    .site-footer { border-top: 1px solid var(--line); background: var(--surface-warm); padding-block: clamp(1.25rem, 2.2vw, 1.6rem); }
+    .site-footer {
+      border-top: 1px solid var(--line);
+      background: var(--color-olive);
+      color: var(--color-on-dark);
+      padding-block: clamp(1.5rem, 2.6vw, 2rem);
+    }
+    .site-footer .brand__mark { border-color: var(--color-on-dark-line); color: var(--color-on-dark); }
+    .site-footer .body-xs { color: var(--color-on-dark-muted); }
     .footer-grid { display: grid; gap: clamp(1rem, 2vw, 1.4rem); }
     @media (min-width: 44rem) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (min-width: 68rem) { .footer-grid { grid-template-columns: 1fr 0.75fr 0.85fr 0.9fr 1.5fr; } }
     .footer-col { display: grid; gap: 0.4rem; align-content: start; }
-    .footer-title { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
-    .footer-list { display: grid; gap: 0.25rem; font-size: 0.8125rem; color: var(--ink-soft); }
+    .footer-title { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-on-dark); }
+    .footer-list { display: grid; gap: 0.25rem; font-size: 0.8125rem; color: var(--color-on-dark-muted); }
     .footer-list a { padding-block: 0.15rem; }
-    .footer-list a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
-    .footer-social { display: flex; gap: 0.4rem; margin-top: 0.15rem; }
-    .footer-legal { display: flex; flex-wrap: wrap; gap: 0.9rem; font-size: 0.6875rem; color: var(--ink-soft); }
+    .footer-list a:hover { color: var(--color-on-dark); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-social { display: flex; gap: 0.65rem; margin-top: 0.35rem; color: var(--color-on-dark-muted); }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: 0.9rem; font-size: 0.6875rem; color: var(--color-on-dark-muted); }
     .footer-legal a { padding-block: 0.3rem; }
-    .footer-legal a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-legal a:hover { color: var(--color-on-dark); text-decoration: underline; text-underline-offset: 3px; }
     @media (min-width: 68rem) { .footer-legal { justify-content: flex-end; } }
-    .zip-panel--footer { max-width: none; padding: 0.7rem; gap: 0.35rem; border-color: var(--line); background: var(--surface); }
+    /* A light card on the olive footer, matching the mockup. */
+    .zip-panel--footer {
+      max-width: none; padding: 0.7rem; gap: 0.35rem;
+      border-color: var(--line); background: var(--color-warm-white);
+    }
 
     /* ---------------- Motion ---------------- */
 
@@ -453,8 +593,7 @@
     .mobile-sticky-cta {
       position: fixed; inset-inline: 0; bottom: 0; z-index: 40;
       border-top: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.97);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      background: var(--color-warm-white);
       padding: 0.6rem var(--shell-gutter);
     }
     .mobile-sticky-cta__inner {
@@ -466,6 +605,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal, .reveal-group { opacity: 1; transform: none; transition: none; }
+      .btn { transition: none; }
     }
   </style>
 
@@ -567,7 +707,7 @@
       </div>
 
       <!-- Phase 2: image placeholder treatment. Phase 3: real hero photography. -->
-      <div class="media-slot media-slot--flush hero__media reveal-group">
+      <div class="media-slot media-slot--flush hero__media hero-media reveal-group">
         <p class="media-slot__label">Hero Lifestyle Image</p>
       </div>
     </section>
@@ -581,9 +721,9 @@
             <p class="body-sm">You fill it. We clean it. You love it.</p>
 
             <div class="price-note mt-3">
-              <span class="icon-slot" aria-hidden="true"></span>
+              <svg class="icon icon--sm icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4c-8 0-14 3-14 9a5 5 0 0 0 5 5c6 0 9-6 9-14Z"/><path d="M6 20c1.5-4 4-6.6 8-8.6"/></svg>
               <p class="body-xs">
-                <strong class="font-semibold text-[color:var(--ink)]">Fill to the line</strong> on any of our bags.<br>You're charged by the bag.
+                <strong class="font-semibold text-ink">Fill to the line</strong> on any of our bags.<br>You're charged by the bag.
               </p>
             </div>
           </div>
@@ -596,7 +736,7 @@
                 <p class="bag-card__meta">Fill to the line</p>
               </div>
               <!-- Phase 3: real Small bag product photograph -->
-              <div class="media-slot bag-card__media">
+              <div class="media-slot media-slot--contain bag-card__media bag-image-small">
                 <p class="media-slot__label">Small Bag Image</p>
               </div>
               <a class="btn btn--primary bag-card__cta" href="schedule.html?bag=small">Book Now</a>
@@ -609,7 +749,7 @@
                 <p class="bag-card__meta">Fill to the line</p>
               </div>
               <!-- Phase 3: real Medium bag product photograph -->
-              <div class="media-slot bag-card__media">
+              <div class="media-slot media-slot--contain bag-card__media bag-image-medium">
                 <p class="media-slot__label">Medium Bag Image</p>
               </div>
               <a class="btn btn--primary bag-card__cta" href="schedule.html?bag=medium">Book Now</a>
@@ -622,7 +762,7 @@
                 <p class="bag-card__meta">Fill to the line</p>
               </div>
               <!-- Phase 3: real Large bag product photograph -->
-              <div class="media-slot bag-card__media">
+              <div class="media-slot media-slot--contain bag-card__media bag-image-large">
                 <p class="media-slot__label">Large Bag Image</p>
               </div>
               <a class="btn btn--primary bag-card__cta" href="schedule.html?bag=large">Book Now</a>
@@ -645,28 +785,28 @@
           <ol class="lede__body steps reveal-group">
             <li>
               <!-- Phase 3: final icon set -->
-              <span class="icon-slot" aria-hidden="true"></span>
+              <svg class="icon icon--lg icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
               <div>
                 <h3 class="step__title">Book</h3>
                 <p class="step__copy">Choose a one-time service or subscribe.</p>
               </div>
             </li>
             <li>
-              <span class="icon-slot" aria-hidden="true"></span>
+              <svg class="icon icon--lg icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 8h13l-1 12.5h-11L5.5 8Z"/><path d="M9.2 8V6.2a2.8 2.8 0 0 1 5.6 0V8"/></svg>
               <div>
                 <h3 class="step__title">Fill</h3>
                 <p class="step__copy">Fill your bag to the line.</p>
               </div>
             </li>
             <li>
-              <span class="icon-slot" aria-hidden="true"></span>
+              <svg class="icon icon--lg icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 6.5h11v9.5h-11z"/><path d="M13.5 10h3.8l3.2 3.2V16h-7z"/><circle cx="7" cy="18.2" r="1.8"/><circle cx="17" cy="18.2" r="1.8"/></svg>
               <div>
                 <h3 class="step__title">Pickup</h3>
                 <p class="step__copy">We'll pick it up from your door.</p>
               </div>
             </li>
             <li>
-              <span class="icon-slot" aria-hidden="true"></span>
+              <svg class="icon icon--lg icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 8.2a2.1 2.1 0 1 1 2.1 2.1c-1.2 0-2.1.8-2.1 1.9v.4"/><path d="m12 12.6-7.7 4.9c-.8.5-.4 1.8.6 1.8h14.2c1 0 1.4-1.3.6-1.8L12 12.6Z"/></svg>
               <div>
                 <h3 class="step__title">Clean &amp; Return</h3>
                 <p class="step__copy">We clean, fold, and return it fresh.</p>
@@ -682,7 +822,7 @@
       <div class="shell">
         <div class="band reveal">
           <!-- Phase 3: supporting subscription photography -->
-          <div class="media-slot media-slot--wide band__media">
+          <div class="media-slot media-slot--wide band__media subscription-media">
             <p class="media-slot__label">Subscription Image</p>
           </div>
 
@@ -726,7 +866,7 @@
         <div class="gift-band reveal">
           <div class="gift-band__lead">
             <!-- Phase 3: final gift icon -->
-            <span class="icon-slot icon-slot--round" aria-hidden="true"></span>
+            <span class="icon-circle" aria-hidden="true"><svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="9.5" width="17" height="10.5" rx="1.5"/><path d="M3.5 9.5h17M12 9.5V20"/><path d="M12 9.5S10.6 4.5 8.2 4.5a2.2 2.2 0 0 0 0 5M12 9.5s1.4-5 3.8-5a2.2 2.2 0 0 1 0 5"/></svg></span>
             <div class="gift-band__body">
               <h2 id="gift-heading" class="title-md">Because time is the best gift.</h2>
               <div class="gift-band__actions">
@@ -738,7 +878,7 @@
           </div>
 
           <!-- Phase 3: gift card photography -->
-          <div class="media-slot media-slot--wide gift-band__media">
+          <div class="media-slot media-slot--wide gift-band__media gift-media">
             <p class="media-slot__label">Gift Laundry Image</p>
           </div>
         </div>
@@ -750,7 +890,7 @@
       <div class="duo reveal-group">
         <section id="about" class="duo__item" aria-labelledby="about-heading">
           <!-- Phase 3: local team / brand photography -->
-          <div class="media-slot">
+          <div class="media-slot about-media">
             <p class="media-slot__label">About Image</p>
           </div>
           <div class="duo__body">
@@ -764,7 +904,7 @@
 
         <section id="business" class="duo__item" aria-labelledby="business-heading">
           <!-- Phase 3: commercial linen photography -->
-          <div class="media-slot">
+          <div class="media-slot business-media">
             <p class="media-slot__label">Business Image</p>
           </div>
           <div class="duo__body">
@@ -786,7 +926,7 @@
 
         <div class="trust-box reveal-group">
           <article id="faq" class="trust-col" aria-labelledby="faq-heading">
-            <span class="icon-slot" aria-hidden="true"></span>
+            <svg class="icon icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.7a2.4 2.4 0 1 1 3.2 2.3c-.6.2-.9.8-.9 1.4v.3"/><path d="M12 16.8h.01"/></svg>
             <div class="trust-col__body">
               <h3 id="faq-heading" class="trust-col__title">FAQs</h3>
               <p class="body-xs">Find answers to common questions about our service, subscriptions, pricing, and more.</p>
@@ -795,7 +935,7 @@
           </article>
 
           <article id="protections" class="trust-col" aria-labelledby="protections-heading">
-            <span class="icon-slot" aria-hidden="true"></span>
+            <svg class="icon icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.4 5.2 6v5.2c0 3.9 2.8 7.4 6.8 8.6 4-1.2 6.8-4.7 6.8-8.6V6L12 3.4Z"/><path d="m9.2 12 2.1 2.1L15 10.4"/></svg>
             <div class="trust-col__body">
               <h3 id="protections-heading" class="trust-col__title">Protections</h3>
               <p class="body-xs">Your items are handled with care, tracked at every step, and covered by our service commitments.</p>
@@ -805,7 +945,7 @@
           </article>
 
           <article id="waivers" class="trust-col" aria-labelledby="waivers-heading">
-            <span class="icon-slot" aria-hidden="true"></span>
+            <svg class="icon icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 3.5h7L18 8.2V20.5h-11.5z"/><path d="M13.2 3.5v4.8H18"/><path d="M9.4 12.6h5.6M9.4 16h3.8"/></svg>
             <div class="trust-col__body">
               <h3 id="waivers-heading" class="trust-col__title">Waivers</h3>
               <p class="body-xs">Please review our service waiver and policies before your first pickup.</p>
@@ -869,9 +1009,9 @@
             <p>Phone: to be published</p>
           </div>
           <div class="footer-social" aria-hidden="true">
-            <span class="icon-slot"></span>
-            <span class="icon-slot"></span>
-            <span class="icon-slot"></span>
+            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="4.6"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"/></svg>
+            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.4 8.6h2.4V5.5h-2.6c-2.1 0-3.5 1.4-3.5 3.5v1.7H8.4v3.1h2.3v6.7h3.1v-6.7h2.4l.4-3.1h-2.8V9.5c0-.6.3-.9.6-.9Z"/></svg>
+            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.2 7.2 7.8 6 7.8-6"/></svg>
           </div>
         </div>
 
