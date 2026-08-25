@@ -33,14 +33,14 @@
 }
 
 .section--dark {
-  background-color: var(--color-olive-soft);
-  color: var(--color-on-dark);
+  background-color: var(--brand-olive);
+  color: var(--on-dark);
 }
 
 .section--dark h2,
 .section--dark h3,
 .section--dark p {
-  color: var(--color-on-dark);
+  color: var(--on-dark);
 }
 
 /* Section header block */
@@ -67,7 +67,7 @@
 }
 
 .section--dark .section-label {
-  color: var(--color-on-dark-muted);
+  color: var(--on-dark-muted);
 }
 
 .section-title {
@@ -81,7 +81,7 @@
 }
 
 .section--dark .section-desc {
-  color: var(--color-on-dark-muted);
+  color: var(--on-dark-muted);
 }
 
 /* ── Sticky top nav ───────────────────────────────────────── */
@@ -118,31 +118,13 @@
   border-radius: var(--radius-md);
 }
 
-/* PLACEHOLDER, NOT THE BRAND MARK. The official Soapbox Caddie logo asset
-   has not been supplied, so this is a neutral type stand-in. Replace the
-   span with <img class="logo-img" src="assets/images/logo/soapbox-caddie-logo.svg"
-   alt="Soapbox Caddie"> - it is sized to the same box, so nothing shifts. */
-.nav-logo .logo-mark,
-.footer-brand .logo-mark {
-  display: grid;
-  place-items: center;
-  min-width: 3.1rem;
-  height: 3.1rem;
-  padding-inline: 0.4rem;
-  border: 1px solid currentColor;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-size: 0.6rem;
-  font-weight: var(--weight-semibold);
-  line-height: 1.25;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-align: center;
-}
+/* Official brand marks. The header lockup is a boxed two-line mark (1.51:1)
+   so it is sized by width; the footer lockup is a light horizontal mark for
+   the near-black footer. */
+.logo-img { width: 7.25rem; height: auto; }
+@media (max-width: 48rem) { .logo-img { width: 6.25rem; } }
 
-.nav-logo .logo-mark { color: var(--color-olive); }
-
-.logo-img { height: 3.1rem; width: auto; object-fit: contain; }
+.footer-logo { width: 11.5rem; height: auto; }
 
 /* Nav links */
 .nav-links {
@@ -171,8 +153,8 @@
 
 /* The nav link rule outranks .btn--primary on specificity, so buttons in
    the nav need their own colour restored. */
-.nav-links .btn--primary { color: var(--color-on-dark); }
-.nav-links .btn--primary:hover { color: var(--color-on-dark); }
+.nav-links .btn--primary { color: var(--on-dark); }
+.nav-links .btn--primary:hover { color: var(--on-dark); }
 
 /* Current page indicator */
 .nav-links a[aria-current="page"] {
@@ -275,8 +257,8 @@
 /* ── Footer ───────────────────────────────────────────────── */
 
 .site-footer {
-  background: var(--color-olive);
-  color: var(--color-on-dark);
+  background: var(--brand-ink);
+  color: var(--on-dark);
   padding-block: var(--space-16) var(--space-8);
 }
 
@@ -287,13 +269,9 @@
   margin-bottom: var(--space-12);
 }
 
-.footer-brand .logo-mark {
-  color: var(--color-on-dark-line);
-  justify-self: start;
-}
 
 .footer-brand p {
-  color: var(--color-on-dark-muted);
+  color: var(--on-dark-muted);
   margin-top: var(--space-3);
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
@@ -305,13 +283,13 @@
   font-weight: var(--weight-semibold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-on-dark-muted);
+  color: var(--on-dark-muted);
   margin-bottom: var(--space-4);
 }
 
 .footer-col a {
   display: block;
-  color: var(--color-on-dark-muted);
+  color: var(--on-dark-muted);
   text-decoration: none;
   font-size: var(--text-sm);
   padding-block: var(--space-1);
@@ -324,7 +302,7 @@
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--color-on-dark-line);
+  border-top: 1px solid var(--on-dark-line);
   padding-top: var(--space-6);
   display: flex;
   align-items: center;
@@ -335,13 +313,13 @@
 
 .footer-bottom p,
 .footer-bottom a {
-  color: var(--color-on-dark-muted);
+  color: var(--on-dark-muted);
   font-size: var(--text-xs);
   text-decoration: none;
 }
 
 .footer-bottom a:hover {
-  color: var(--color-on-dark-muted);
+  color: var(--on-dark-muted);
 }
 
 .footer-bottom-links {

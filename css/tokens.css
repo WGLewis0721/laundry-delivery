@@ -10,53 +10,48 @@
 
 :root {
 
-  /* ── Brand palette ────────────────────────────────────── */
+  /* ── Official Soapbox Caddie brand board ──────────────── */
 
-  --color-linen:       #F5F3ED;
-  --color-warm-white:  #FCFBF8;
-  --color-white:       #FFFFFF;
+  --brand-ivory:   #F7F2F0;
+  --brand-ink:     #0E0E10;
+  --brand-olive:   #1E2509;
+  --brand-taupe:   #CFC5B8;
 
-  --color-sage:        #B8B9AE;
-  --color-sage-light:  #D8DAD2;
-  --color-sage-dark:   #85897A;
+  /* ── Derived neutrals ─────────────────────────────────────
+     Measured, not guessed. Taupe is 1.5:1 on ivory, so it is a
+     decorative divider only; controls need --border-strong (3.3:1)
+     and muted body text needs --ink-lighter (4.9:1). */
 
-  --color-camel:       #B98A60;
-  --color-sand:        #D7B999;
-  --color-oatmeal:     #E5D8C8;
+  --text-muted:    #6B696A;   /* ink 60% over ivory -> 4.91:1 */
+  --border-strong: #8B857D;   /* taupe + ink 35%    -> 3.29:1 */
 
-  --color-olive:       #30351F;
-  --color-olive-soft:  #596044;
+  /* ── Semantic aliases ─────────────────────────────────────
+     Component rules reference these, never a brand colour directly. */
 
-  --color-charcoal:    #24261F;
-  --color-text-muted:  #66685F;
-  --color-border:      #DDD9CF;
-
-  /* On dark surfaces - solid, so contrast is provable.
-     warm-white 12.3:1 and muted 9.2:1 on olive. */
-  --color-on-dark:       #FCFBF8;
-  --color-on-dark-muted: #DBDCD4;
-  --color-on-dark-line:  rgba(252, 251, 248, 0.62);
-
-  /* ── Semantic aliases ─────────────────────────────────── */
-
-  --white:         var(--color-white);
-  --off-white:     var(--color-linen);
-  --ink:           var(--color-charcoal);
+  --white:         #FFFFFF;
+  --off-white:     var(--brand-ivory);
+  --ink:           var(--brand-ink);
   --ink-light:     #3E4238;
-  --ink-lighter:   var(--color-text-muted);
-  --border:        var(--color-border);
-  --border-dark:   var(--color-sage-dark);
+  --ink-lighter:   var(--text-muted);
+  --border:        var(--brand-taupe);
+  --border-dark:   var(--border-strong);
 
-  /* Decorative fills only. These FAIL AA as small text on white:
-     camel is 3.0:1 and sage-dark 3.5:1 - never use them for body copy. */
-  --gold:          var(--color-camel);
-  --green:         var(--color-sage);
-  --sky:           var(--color-sage-light);
-  --blush:         var(--color-oatmeal);
+  /* Decorative fills only. Taupe is 1.5:1 and olive-on-light is the only
+     safe text pairing here - never use these for body copy. */
+  --gold:          var(--brand-taupe);
+  --green:         var(--brand-taupe);
+  --sky:           var(--brand-taupe);
+  --blush:         var(--brand-ivory);
 
-  /* AA-safe interactive fills (warm-white text on olive is 12.3:1) */
-  --green-btn:     var(--color-olive);
-  --green-btn-hov: var(--color-olive-soft);
+  /* AA-safe interactive fills (ivory text on olive is 14.3:1) */
+  --green-btn:     var(--brand-olive);
+  --green-btn-hov: #2C3610;
+
+  /* On dark surfaces: ivory is 14.3:1 on olive and 17.4:1 on ink;
+     taupe is 9.3:1 and 11.3:1. Both clear AA for body text. */
+  --on-dark:       var(--brand-ivory);
+  --on-dark-muted: var(--brand-taupe);
+  --on-dark-line:  color-mix(in srgb, var(--brand-taupe) 45%, transparent);
 
   /* Semantic states - kept distinguishable rather than fully on-brand,
      because an error must not read as decoration. */

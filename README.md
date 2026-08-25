@@ -200,6 +200,9 @@ Footer contact details read "to be published" on purpose — no real phone or em
 | Fonts | Inline `@font-face` | `css/fonts.css` |
 | Runtime deps | None | None, except the Leaflet map |
 
+Both token blocks now carry the **same four brand-board values** and the same
+two derived neutrals, so the whole site reads as one design.
+
 Both builds use the **same palette values, the same three fonts and the same
 line-icon family**, so they read as one site. No page loads fonts, CSS or a
 framework from a CDN. The one external runtime dependency left anywhere on the
@@ -388,7 +391,6 @@ The homepage has no test suite, so verify by hand:
 ## Pre-launch checklist
 
 - [ ] Supply licensed OKANA and ENRIQ font files (the brand board specifies them; none were provided)
-- [ ] Propagate the finalised homepage brand system to the other 14 pages
 - [ ] Recalibrate the 3KD estimator for bag pricing (needs confirmed bag capacities)
 - [ ] Consolidate the homepage tokens into `css/tokens.css` once branding is final
 - [ ] Supply real footer contact details and social links

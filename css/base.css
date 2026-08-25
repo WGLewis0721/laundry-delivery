@@ -38,7 +38,7 @@ body {
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   color: var(--ink);
-  background-color: var(--white);
+  background-color: var(--off-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

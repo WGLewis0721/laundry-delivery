@@ -75,7 +75,7 @@
 .btn--ghost-light {
   background: transparent;
   color: var(--white);
-  border-color: var(--color-on-dark-line);
+  border-color: var(--on-dark-line);
 }
 
 .btn--ghost-light:hover {
@@ -274,30 +274,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.hero-art {
-  width: 100%;
-  max-width: 480px;
-  aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, var(--sky) 0%, var(--blush) 50%, var(--off-white) 100%);
-  border-radius: var(--radius-2xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-xl);
-  overflow: hidden;
-  position: relative;
-}
-
-.hero-art-label {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: var(--weight-bold);
-  color: rgba(45, 55, 72, 0.25);
-  text-align: center;
-  padding: var(--space-8);
-  user-select: none;
 }
 
 @media (max-width: 900px) {
@@ -1502,7 +1478,7 @@
 }
 
 .closing-cta p {
-  color: var(--color-on-dark-muted);
+  color: var(--on-dark-muted);
   font-size: var(--text-lg);
   margin-bottom: var(--space-8);
   max-width: 480px;
@@ -1595,7 +1571,6 @@
   color: var(--ink-lighter);
 }
 
-
 /* ──────────────────────────────────────────────────────────
    LINE ICONS
    One family, matching the homepage: thin strokes, currentColor,
@@ -1611,10 +1586,56 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   flex: 0 0 auto;
-  color: var(--color-olive-soft);
+  color: var(--brand-olive);
 }
 
 .bento-accent .ui-icon,
-.value-icon .ui-icon { color: var(--color-olive); }
+.value-icon .ui-icon { color: var(--brand-olive); }
 
-.section--dark .ui-icon { color: var(--color-on-dark); }
+.section--dark .ui-icon { color: var(--on-dark); }
+
+/* ──────────────────────────────────────────────────────────
+   BRAND MEDIA
+   Shared image containers for the inner pages. Every slot reserves its
+   ratio so photography drops in without layout shift. Lifestyle imagery
+   crops with cover; bag products are contained so no strap is cut.
+   ────────────────────────────────────────────────────────── */
+
+.brand-media {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--off-white);
+  aspect-ratio: var(--media-ratio, 3 / 2);
+}
+
+.brand-media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.brand-media--portrait { --media-ratio: 4 / 5; }
+.brand-media--wide     { --media-ratio: 16 / 9; }
+
+/* Product shots: contained, on the card surface, never cropped. */
+.brand-media--product {
+  --media-ratio: 1 / 1;
+  background: transparent;
+  border-radius: 0;
+  margin-bottom: var(--space-3);
+}
+.brand-media--product > img { object-fit: contain; }
+
+/* A quiet supporting band for pages that only need one image. */
+.brand-strip {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+}
+@media (min-width: 48rem) {
+  .brand-strip { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .brand-strip--media-first > .brand-media { order: -1; }
+}
