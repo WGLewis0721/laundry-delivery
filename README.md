@@ -259,9 +259,12 @@ laundry-delivery/
 ├── .github/
 │   └── copilot-instructions.md   Working agreement for this repo
 ├── assets/
-│   ├── img/                 Photography (add here, reference from HTML)
+│   ├── images/              Client branding, logo and photography (see its README)
+│   │   ├── logo/            Brand mark
+│   │   ├── bags/            The three bag product shots
+│   │   └── lifestyle/       Homepage photography
 │   ├── icons/               Inline-able SVGs
-│   └── fonts/               Self-hosted variable fonts (served by the homepage)
+│   └── fonts/               Self-hosted variable fonts (served by every page)
 │       ├── cormorant-garamond/  Roman + Italic woff2
 │       ├── inter/               InterVariable.woff2
 │       └── oswald/              Oswald-Variable.woff2
@@ -387,7 +390,8 @@ The homepage has no test suite, so verify by hand:
 - [ ] Replace all four hard-coded ZIP sets with the TRA3 service-area API
 - [ ] Integrate Acuity for booking
 - [ ] Review and finalise `privacy.html` and `terms.html` with legal counsel
-- [ ] Supply the official Soapbox Caddie logo asset (the header/footer mark is a type stand-in)
+- [ ] Supply the official Soapbox Caddie logo asset (the header/footer mark is a type stand-in) &mdash; drop it in `assets/images/logo/`
+- [ ] Supply bag product shots and lifestyle photography &mdash; see `assets/images/README.md` for the slot list, ratios and crop behaviour
 - [ ] Add a favicon (none exists in the repo)
 - [ ] Refresh `docs/project-overview.md` for the Soapbox Caddie build
 - [ ] Run Lighthouse (target: 95+ Performance, 100 Accessibility / Best Practices / SEO) and an axe or WAVE audit
