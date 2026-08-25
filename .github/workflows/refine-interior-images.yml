@@ -12,10 +12,201 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Apply high-resolution interior image refinements
+      - name: Replace low-resolution image references
         run: |
-          echo 'CmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKcm9vdCA9IFBhdGgoJy4nKQpwYWdlcyA9IFtwIGZvciBwIGluIHJvb3QuZ2xvYignKi5odG1sJykgaWYgcC5uYW1lICE9ICdpbmRleC5odG1sJ10KCnJlcGxhY2VtZW50cyA9IHsKICAgICdhc3NldHMvaW1nL2RlY29yLXRvd2Vscy1waXRjaGVyLndlYnAnOiAnYXNzZXRzL2ltZy9mb2xkZWQtdG93ZWxzLXRhbGwtb2xpdmUtdmFzZS5qcGcnLAogICAgJ2Fzc2V0cy9pbWcvZGVjb3ItdG93ZWxzLW9saXZlLXZhc2Uud2VicCc6ICdhc3NldHMvaW1nL2ZvbGRlZC10b3dlbHMtb2xpdmUtdmFzZS5qcGcnLAogICAgJ2Fzc2V0cy9pbWcvZGVjb3Itd2lkZS1iYXNrZXQtdmFzZS53ZWJwJzogJ2Fzc2V0cy9pbWcvbGF1bmRyeS1iYXNrZXQtdG93ZWxzLWhlcm8uanBnJywKICAgICdhc3NldHMvaW1nL2RlY29yLXRvd2Vscy1iYXNrZXQud2VicCc6ICdhc3NldHMvaW1nL0NBOTBBNkM4LUEwMUUtNEE0Qy1CODdCLUE1MENCMjQzNTNENS5wbmcnLAogICAgJ2Fzc2V0cy9pbWcvZGVjb3Itb2xpdmUtYnJhbmNoZXMud2VicCc6ICdhc3NldHMvaW1nL29saXZlLWJyYW5jaC13aWRlLmpwZycsCn0KCmZvciBwYXRoIGluIHBhZ2VzOgogICAgdGV4dCA9IHBhdGgucmVhZF90ZXh0KCkKICAgIGZvciBvbGQsIG5ldyBpbiByZXBsYWNlbWVudHMuaXRlbXMoKToKICAgICAgICB0ZXh0ID0gdGV4dC5yZXBsYWNlKG9sZCwgbmV3KQogICAgcGF0aC53cml0ZV90ZXh0KHRleHQpCgpjc3NfcGF0aCA9IFBhdGgoJ2Nzcy9pbnRlcmlvci1kZWNvci5jc3MnKQpjc3MgPSBjc3NfcGF0aC5yZWFkX3RleHQoKQpjc3MgPSBjc3MucmVwbGFjZSgnLi4vYXNzZXRzL2ltZy9kZWNvci1vbGl2ZS1icmFuY2hlcy53ZWJwJywgJy4uL2Fzc2V0cy9pbWcvb2xpdmUtYnJhbmNoLXdpZGUuanBnJykKCm1hcmtlciA9ICcvKiA9PT0gSElHSC1SRVMgTU9DS1VQIFJFRklORU1FTlQgMjAyNi0wOC0yNSA9PT0gKi8nCmFwcGVuZF9jc3MgPSByJycnCi8qID09PSBISUdILVJFUyBNT0NLVVAgUkVGSU5FTUVOVCAyMDI2LTA4LTI1ID09PSAqLwoubW9ja3VwLXBob3RvIGltZywKLmludGVyaW9yLXBob3RvIGltZywKLmludGVyaW9yLXBhZ2UtYmFubmVyIGltZywKLnNjaGVkdWxlLXN1cHBvcnQtcGhvdG8gaW1nLAoucHJpY2luZy1zaWRlLWJhc2tldCBpbWcsCi5hYm91dC1oZXJvLXBob3RvIGltZywKLmFib3V0LWxvd2VyLXNjZW5lIGltZyB7IGltYWdlLXJlbmRlcmluZzogYXV0bzsgdHJhbnNmb3JtOiBub25lOyB9Cgpib2R5W2RhdGEtcGFnZT0ic2NoZWR1bGUiXSAuc2NoZWR1bGUtYmFnLWdyaWQgeyBvdmVyZmxvdzogdmlzaWJsZTsgcGFkZGluZy10b3A6IDEuMTVyZW07IH0KYm9keVtkYXRhLXBhZ2U9InNjaGVkdWxlIl0gLnNjaGVkdWxlLWJhZy1jYXJkIHsgcG9zaXRpb246IHJlbGF0aXZlOyBvdmVyZmxvdzogdmlzaWJsZSAhaW1wb3J0YW50OyB9CmJvZHlbZGF0YS1wYWdlPSJzY2hlZHVsZSJdIC5zY2hlZHVsZS1iYWctY2FyZC5wbGFuLWNhcmQtLWZlYXR1cmVkIHsgcGFkZGluZy10b3A6IDEuMzVyZW07IG1hcmdpbi10b3A6IDA7IH0KYm9keVtkYXRhLXBhZ2U9InNjaGVkdWxlIl0gLnNjaGVkdWxlLWJhZy1jYXJkIC5wbGFuLWJhZGdlIHsKICBwb3NpdGlvbjogYWJzb2x1dGU7IHRvcDogLTAuNzhyZW07IGxlZnQ6IDUwJTsgcmlnaHQ6IGF1dG87IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTsKICB6LWluZGV4OiA4OyB3aWR0aDogbWF4LWNvbnRlbnQ7IG1heC13aWR0aDogY2FsYygxMDAlIC0gMnJlbSk7IHBhZGRpbmc6IC40MnJlbSAxLjE1cmVtOwogIGJvcmRlci1yYWRpdXM6IDk5OXB4OyBsaW5lLWhlaWdodDogMS4xNTsgd2hpdGUtc3BhY2U6IG5vd3JhcDsgb3ZlcmZsb3c6IHZpc2libGU7IGNsaXA6IGF1dG87Cn0KYm9keVtkYXRhLXBhZ2U9InNjaGVkdWxlIl0gLnNjaGVkdWxlLWJhZy1tZWRpYSB7CiAgcG9zaXRpb246IHJlbGF0aXZlOyB6LWluZGV4OiAxOyBvdmVyZmxvdzogaGlkZGVuOyBib3JkZXItcmFkaXVzOiAxLjM1cmVtOwogIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgxODBkZWcsIHJnYmEoMjQ3LDI0MiwyNDAsLjc1KSwgcmdiYSgyNDcsMjQyLDI0MCwuMzUpKTsKfQpib2R5W2RhdGEtcGFnZT0ic2NoZWR1bGUiXSAuc2NoZWR1bGUtYmFnLW1lZGlhIGltZyB7CiAgb2JqZWN0LWZpdDogY29udGFpbjsgbWF4LXdpZHRoOiA3OCU7IG1heC1oZWlnaHQ6IDg4JTsgbWFyZ2luOiBhdXRvOwp9CmJvZHlbZGF0YS1wYWdlPSJzY2hlZHVsZSJdIC5zY2hlZHVsZS1zdWJzY3JpcHRpb24tcm93IHsKICBhbGlnbi1pdGVtczogY2VudGVyOyBnYXA6IGNsYW1wKDEuMjVyZW0sIDR2dywgM3JlbSk7Cn0KYm9keVtkYXRhLXBhZ2U9InNjaGVkdWxlIl0gLnNjaGVkdWxlLXN1cHBvcnQtcGhvdG8gewogIHBvc2l0aW9uOiByZWxhdGl2ZTsgd2lkdGg6IG1pbigyOHJlbSwgNDIlKTsgYXNwZWN0LXJhdGlvOiAxIC8gMTsgYm9yZGVyOiAwOwogIGJveC1zaGFkb3c6IG5vbmU7IGJhY2tncm91bmQ6IHRyYW5zcGFyZW50Owp9CmJvZHlbZGF0YS1wYWdlPSJzY2hlZHVsZSJdIC5zY2hlZHVsZS1zdXBwb3J0LXBob3RvOjpiZWZvcmUgewogIGNvbnRlbnQ6ICIiOyBwb3NpdGlvbjogYWJzb2x1dGU7IGluc2V0OiAwOyB6LWluZGV4OiAyOyBwb2ludGVyLWV2ZW50czogbm9uZTsKICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoOTBkZWcsIHZhcigtLWRlY29yLWNyZWFtKSAwJSwgcmdiYSgyNDcsMjQyLDI0MCwuNzIpIDEwJSwgdHJhbnNwYXJlbnQgMzglKTsKfQpib2R5W2RhdGEtcGFnZT0ic2NoZWR1bGUiXSAuc2NoZWR1bGUtc3VwcG9ydC1waG90byBpbWcgeyBvYmplY3QtZml0OiBjb3Zlcjsgb2JqZWN0LXBvc2l0aW9uOiBjZW50ZXI7IH0KCmJvZHlbZGF0YS1wYWdlPSJzY2hlZHVsZSJdICNib29raW5nLW1haW46OmJlZm9yZSwKLnByaWNpbmctYmFncy1zZWN0aW9uOjpiZWZvcmUsCi5wcmljaW5nLWJhZ3Mtc2VjdGlvbjo6YWZ0ZXIsCi5hYm91dC1oZXJvLXNlY3Rpb246OmFmdGVyLApib2R5W2RhdGEtcGFnZT0iZmFxIl0gbWFpbiOjYmVmb3JlLApib2R5W2RhdGEtcGFnZT0ic2VydmljZXMiXSBtYWluOjpiZWZvcmUsCmJvZHlbZGF0YS1wYWdlPSJzZXJ2aWNlLWFyZWEiXSBtYWluOjpiZWZvcmUgewogIGJhY2tncm91bmQtaW1hZ2U6IHVybCgiLi4vYXNzZXRzL2ltZy9vbGl2ZS1icmFuY2gtd2lkZS5qcGciKTsKICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyOyBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7IGZpbHRlcjogc2F0dXJhdGUoLjkpIGNvbnRyYXN0KC45Nik7Cn0KCmJvZHlbZGF0YS1wYWdlPSJwbGFucyJdIC5wcmljaW5nLXNpZGUtYmFza2V0IHsKICBib3JkZXI6IDA7IGJveC1zaGFkb3c6IG5vbmU7IGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OyBtaW4taGVpZ2h0OiAyNXJlbTsKfQpib2R5W2RhdGEtcGFnZT0icGxhbnMiXSAucHJpY2luZy1zaWRlLWJhc2tldCBpbWcgewogIG9iamVjdC1maXQ6IGNvdmVyOyBvYmplY3QtcG9zaXRpb246IGNlbnRlcjsgYm9yZGVyLXJhZGl1czogMS41cmVtOyBib3gtc2hhZG93OiB2YXIoLS1kZWNvci1zaGFkb3ctc29mdCk7Cn0KCmJvZHlbZGF0YS1wYWdlPSJhYm91dCJdIC5hYm91dC1oZXJvLXBob3RvIHsKICBtaW4taGVpZ2h0OiBjbGFtcCgzMHJlbSwgNDZ2dywgNDJyZW0pOyBib3JkZXI6IDA7IGJveC1zaGFkb3c6IG5vbmU7IGJhY2tncm91bmQ6IHZhcigtLWRlY29yLWNyZWFtKTsKfQpib2R5W2RhdGEtcGFnZT0iYWJvdXQiXSAuYWJvdXQtaGVyby1waG90byBpbWcgeyBvYmplY3QtZml0OiBjb3Zlcjsgb2JqZWN0LXBvc2l0aW9uOiBjZW50ZXI7IH0KYm9keVtkYXRhLXBhZ2U9ImFib3V0Il0gLmFib3V0LWhlcm8tcGhvdG86OmFmdGVyIHsKICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoOTBkZWcsIHZhcigtLWRlY29yLWNyZWFtKSAwJSwgcmdiYSgyNDcsMjQyLDI0MCwuOTApIDglLAogICAgcmdiYSgyNDcsMjQyLDI0MCwuMzQpIDI0JSwgdHJhbnNwYXJlbnQgNDglKTsKfQpib2R5W2RhdGEtcGFnZT0iYWJvdXQiXSAuYWJvdXQtbG93ZXItc2NlbmUgewogIHdpZHRoOiBtaW4oNjgwcHgsIDY0JSk7IGJvcmRlci1yYWRpdXM6IDEuNXJlbTsgb3ZlcmZsb3c6IGhpZGRlbjsKfQpib2R5W2RhdGEtcGFnZT0iYWJvdXQiXSAuYWJvdXQtbG93ZXItc2NlbmUgaW1nIHsKICBhc3BlY3QtcmF0aW86IDE2IC8gOTsgb2JqZWN0LWZpdDogY292ZXI7IG9iamVjdC1wb3NpdGlvbjogY2VudGVyIHJpZ2h0Owp9Cgpib2R5W2RhdGEtcGFnZT0iaG93LWl0LXdvcmtzIl0gLmhpdy1mZWF0dXJlLXBob3RvLApib2R5W2RhdGEtcGFnZT0iaG93LWl0LXdvcmtzIl0gLmhpdy10cnVzdC1hY2NlbnQgewogIGJvcmRlcjogMDsgYm94LXNoYWRvdzogdmFyKC0tZGVjb3Itc2hhZG93LXNvZnQpOwp9CmJvZHlbZGF0YS1wYWdlPSJmYXEiXSAuZmFxLXN1cHBvcnQtcGhvdG8sCmJvZHlbZGF0YS1wYWdlPSJzZXJ2aWNlcyJdIC5zZXJ2aWNlcy1zdXBwb3J0LXBob3RvLApib2R5W2RhdGEtcGFnZT0ic2VydmljZS1hcmVhIl0gLnNlcnZpY2UtYXJlYS1zdXBwb3J0LXBob3RvLAouaW50ZXJpb3ItcGFnZS1iYW5uZXIgewogIGJvcmRlci1jb2xvcjogcmdiYSgyMDcsMTk3LDE4NCwuNTIpOyBib3gtc2hhZG93OiAwIDEwcHggMjhweCByZ2JhKDE0LDE0LDE2LC4wNTUpOwp9Cgpib2R5Om5vdChbZGF0YS1wYWdlPSJzY2hlZHVsZSJdKTpub3QoW2RhdGEtcGFnZT0icGxhbnMiXSk6bm90KFtkYXRhLXBhZ2U9ImFib3V0Il0pOm5vdChbZGF0YS1wYWdlPSJob3ctaXQtd29ya3MiXSk6bm90KFtkYXRhLXBhZ2U9ImZhcSJdKTpub3QoW2RhdGEtcGFnZT0ic2VydmljZXMiXSk6bm90KFtkYXRhLXBhZ2U9InNlcnZpY2UtYXJlYSJdKSBtYWluIHsKICBwb3NpdGlvbjogcmVsYXRpdmU7IGlzb2xhdGlvbjogaXNvbGF0ZTsgb3ZlcmZsb3c6IGhpZGRlbjsKfQpib2R5Om5vdChbZGF0YS1wYWdlPSJzY2hlZHVsZSJdKTpub3QoW2RhdGEtcGFnZT0icGxhbnMiXSk6bm90KFtkYXRhLXBhZ2U9ImFib3V0Il0pOm5vdChbZGF0YS1wYWdlPSJob3ctaXQtd29ya3MiXSk6bm90KFtkYXRhLXBhZ2U9ImZhcSJdKTpub3QoW2RhdGEtcGFnZT0ic2VydmljZXMiXSk6bm90KFtkYXRhLXBhZ2U9InNlcnZpY2UtYXJlYSJdKSBtYWluOjphZnRlciB7CiAgY29udGVudDogIiI7IHBvc2l0aW9uOiBhYnNvbHV0ZTsgei1pbmRleDogLTE7IHJpZ2h0OiAtOHJlbTsgdG9wOiAyLjVyZW07IHdpZHRoOiAyNHJlbTsgaGVpZ2h0OiAyOXJlbTsKICBwb2ludGVyLWV2ZW50czogbm9uZTsgYmFja2dyb3VuZDogdXJsKCIuLi9hc3NldHMvaW1nL29saXZlLWJyYW5jaC1yaWdodC5qcGciKSBjZW50ZXIgLyBjb3ZlciBuby1yZXBlYXQ7IG9wYWNpdHk6IC4wNzU7CiAgLXdlYmtpdC1tYXNrLWltYWdlOiByYWRpYWwtZ3JhZGllbnQoZWxsaXBzZSBhdCBjZW50ZXIsICMwMDAgMzglLCB0cmFuc3BhcmVudCA3NiUpOwogIG1hc2staW1hZ2U6IHJhZGlhbC1ncmFkaWVudChlbGxpcHNlIGF0IGNlbnRlciwgIzAwMCAzOCUsIHRyYW5zcGFyZW50IDc2JSk7Cn0KCkBtZWRpYSAobWF4LXdpZHRoOiA4MDBweCkgewogIGJvZHlbZGF0YS1wYWdlPSJzY2hlZHVsZSJdIC5zY2hlZHVsZS1zdWJzY3JpcHRpb24tcm93IHsgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnI7IH0KICBib2R5W2RhdGEtcGFnZT0ic2NoZWR1bGUiXSAuc2NoZWR1bGUtc3VwcG9ydC1waG90byB7IHdpZHRoOiBtaW4oMTAwJSwgMjZyZW0pOyBtYXJnaW4taW5saW5lOiBhdXRvOyB9CiAgYm9keVtkYXRhLXBhZ2U9ImFib3V0Il0gLmFib3V0LWhlcm8tcGhvdG8geyBtaW4taGVpZ2h0OiAyNHJlbTsgYXNwZWN0LXJhdGlvOiA0IC8gMzsgfQogIGJvZHlbZGF0YS1wYWdlPSJhYm91dCJdIC5hYm91dC1sb3dlci1zY2VuZSB7IHdpZHRoOiAxMDAlOyB9Cn0KQG1lZGlhIChtYXgtd2lkdGg6IDU0MHB4KSB7CiAgYm9keVtkYXRhLXBhZ2U9InNjaGVkdWxlIl0gLnNjaGVkdWxlLWJhZy1ncmlkIHsgcGFkZGluZy10b3A6IDEuNXJlbTsgfQogIGJvZHlbZGF0YS1wYWdlPSJzY2hlZHVsZSJdIC5zY2hlZHVsZS1iYWctY2FyZC5wbGFuLWNhcmQtLWZlYXR1cmVkIHsgbWFyZ2luLXRvcDogLjVyZW07IH0KICBib2R5W2RhdGEtcGFnZT0ic2NoZWR1bGUiXSAuc2NoZWR1bGUtYmFnLWNhcmQgLnBsYW4tYmFkZ2UgeyB0b3A6IC0xcmVtOyBmb250LXNpemU6IC43OHJlbTsgbGV0dGVyLXNwYWNpbmc6IC4wMmVtOyB9CiAgYm9keVtkYXRhLXBhZ2U9InNjaGVkdWxlIl0gLnNjaGVkdWxlLWJhZy1tZWRpYSBpbWcgeyBtYXgtd2lkdGg6IDcyJTsgfQp9CicnJwppZiBtYXJrZXIgbm90IGluIGNzczoKICAgIGNzcyArPSAnXG4nICsgYXBwZW5kX2Nzcwpjc3NfcGF0aC53cml0ZV90ZXh0KGNzcykK' | base64 -d > /tmp/refine.py
-          python3 /tmp/refine.py
+          python3 - <<'PY'
+          from pathlib import Path
+          replacements = {
+              'assets/img/decor-towels-pitcher.webp': 'assets/img/folded-towels-tall-olive-vase.jpg',
+              'assets/img/decor-towels-olive-vase.webp': 'assets/img/folded-towels-olive-vase.jpg',
+              'assets/img/decor-wide-basket-vase.webp': 'assets/img/laundry-basket-towels-hero.jpg',
+              'assets/img/decor-towels-basket.webp': 'assets/img/CA90A6C8-A01E-4A4C-B87B-A50CB24353D5.png',
+              'assets/img/decor-olive-branches.webp': 'assets/img/olive-branch-wide.jpg',
+          }
+          for path in Path('.').glob('*.html'):
+              if path.name == 'index.html':
+                  continue
+              text = path.read_text()
+              for old, new in replacements.items():
+                  text = text.replace(old, new)
+              path.write_text(text)
+          css = Path('css/interior-decor.css')
+          text = css.read_text().replace('../assets/img/decor-olive-branches.webp', '../assets/img/olive-branch-wide.jpg')
+          css.write_text(text)
+          PY
+      - name: Append mockup-matched high-resolution styling
+        run: |
+          if ! grep -q 'HIGH-RES MOCKUP REFINEMENT 2026-08-25' css/interior-decor.css; then
+            cat >> css/interior-decor.css <<'CSS'
+          
+          /* === HIGH-RES MOCKUP REFINEMENT 2026-08-25 === */
+          .mockup-photo img,
+          .interior-photo img,
+          .interior-page-banner img,
+          .schedule-support-photo img,
+          .pricing-side-basket img,
+          .about-hero-photo img,
+          .about-lower-scene img {
+            image-rendering: auto;
+            transform: none;
+          }
+          body[data-page="schedule"] .schedule-bag-grid {
+            overflow: visible;
+            padding-top: 1.25rem;
+          }
+          body[data-page="schedule"] .schedule-bag-card {
+            position: relative;
+            overflow: visible !important;
+          }
+          body[data-page="schedule"] .schedule-bag-card.plan-card--featured {
+            padding-top: 1.5rem;
+            margin-top: .25rem;
+          }
+          body[data-page="schedule"] .schedule-bag-card .plan-badge {
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            z-index: 20;
+            width: max-content;
+            max-width: calc(100% - 1.5rem);
+            padding: .45rem 1.2rem;
+            border-radius: 999px;
+            line-height: 1.1;
+            white-space: nowrap;
+            overflow: visible;
+            clip: auto;
+          }
+          body[data-page="schedule"] .schedule-bag-media {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border-radius: 1.35rem;
+            background: linear-gradient(180deg, rgba(247,242,240,.78), rgba(247,242,240,.38));
+          }
+          body[data-page="schedule"] .schedule-bag-media img {
+            object-fit: contain;
+            max-width: 76%;
+            max-height: 86%;
+            margin: auto;
+          }
+          body[data-page="schedule"] .schedule-subscription-row {
+            align-items: center;
+            gap: clamp(1.25rem, 4vw, 3rem);
+          }
+          body[data-page="schedule"] .schedule-support-photo {
+            position: relative;
+            width: min(28rem, 42%);
+            aspect-ratio: 1 / 1;
+            border: 0;
+            box-shadow: none;
+            background: transparent;
+          }
+          body[data-page="schedule"] .schedule-support-photo::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background: linear-gradient(90deg, var(--decor-cream) 0%, rgba(247,242,240,.72) 10%, transparent 38%);
+          }
+          body[data-page="schedule"] .schedule-support-photo img {
+            object-fit: cover;
+            object-position: center;
+          }
+          body[data-page="schedule"] #booking-main::before,
+          .pricing-bags-section::before,
+          .pricing-bags-section::after,
+          .about-hero-section::after,
+          body[data-page="faq"] main::before,
+          body[data-page="services"] main::before,
+          body[data-page="service-area"] main::before {
+            background-image: url("../assets/img/olive-branch-wide.jpg");
+            background-size: cover;
+            background-position: center;
+            filter: saturate(.9) contrast(.96);
+          }
+          body[data-page="plans"] .pricing-side-basket {
+            border: 0;
+            box-shadow: none;
+            background: transparent;
+            min-height: 25rem;
+          }
+          body[data-page="plans"] .pricing-side-basket img {
+            object-fit: cover;
+            object-position: center;
+            border-radius: 1.5rem;
+            box-shadow: var(--decor-shadow-soft);
+          }
+          body[data-page="about"] .about-hero-photo {
+            min-height: clamp(30rem, 46vw, 42rem);
+            border: 0;
+            box-shadow: none;
+            background: var(--decor-cream);
+          }
+          body[data-page="about"] .about-hero-photo img {
+            object-fit: cover;
+            object-position: center;
+          }
+          body[data-page="about"] .about-hero-photo::after {
+            background: linear-gradient(90deg, var(--decor-cream) 0%, rgba(247,242,240,.90) 8%, rgba(247,242,240,.34) 24%, transparent 48%);
+          }
+          body[data-page="about"] .about-lower-scene {
+            width: min(680px, 64%);
+            border-radius: 1.5rem;
+            overflow: hidden;
+          }
+          body[data-page="about"] .about-lower-scene img {
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            object-position: center right;
+          }
+          body[data-page="how-it-works"] .hiw-feature-photo,
+          body[data-page="how-it-works"] .hiw-trust-accent {
+            border: 0;
+            box-shadow: var(--decor-shadow-soft);
+          }
+          body[data-page="faq"] .faq-support-photo,
+          body[data-page="services"] .services-support-photo,
+          body[data-page="service-area"] .service-area-support-photo,
+          .interior-page-banner {
+            border-color: rgba(207,197,184,.52);
+            box-shadow: 0 10px 28px rgba(14,14,16,.055);
+          }
+          body:not([data-page="schedule"]):not([data-page="plans"]):not([data-page="about"]):not([data-page="how-it-works"]):not([data-page="faq"]):not([data-page="services"]):not([data-page="service-area"]) main {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+          }
+          body:not([data-page="schedule"]):not([data-page="plans"]):not([data-page="about"]):not([data-page="how-it-works"]):not([data-page="faq"]):not([data-page="services"]):not([data-page="service-area"]) main::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            right: -8rem;
+            top: 2.5rem;
+            width: 24rem;
+            height: 29rem;
+            pointer-events: none;
+            background: url("../assets/img/olive-branch-right.jpg") center / cover no-repeat;
+            opacity: .075;
+            -webkit-mask-image: radial-gradient(ellipse at center, #000 38%, transparent 76%);
+            mask-image: radial-gradient(ellipse at center, #000 38%, transparent 76%);
+          }
+          @media (max-width: 800px) {
+            body[data-page="schedule"] .schedule-subscription-row { grid-template-columns: 1fr; }
+            body[data-page="schedule"] .schedule-support-photo { width: min(100%, 26rem); margin-inline: auto; }
+            body[data-page="about"] .about-hero-photo { min-height: 24rem; aspect-ratio: 4 / 3; }
+            body[data-page="about"] .about-lower-scene { width: 100%; }
+          }
+          @media (max-width: 540px) {
+            body[data-page="schedule"] .schedule-bag-grid { padding-top: 1.5rem; }
+            body[data-page="schedule"] .schedule-bag-card.plan-card--featured { margin-top: .75rem; }
+            body[data-page="schedule"] .schedule-bag-card .plan-badge { top: -1.05rem; font-size: .78rem; letter-spacing: .02em; }
+            body[data-page="schedule"] .schedule-bag-media img { max-width: 72%; }
+          }
+          CSS
+          fi
       - name: Commit refinements and clean workflow
         run: |
           git config user.name "github-actions[bot]"
