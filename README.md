@@ -48,7 +48,7 @@ Bag weight capacities are **deliberately undocumented** — no weights or load c
 
 ## Homepage
 
-`index.html` is a self-contained page: Tailwind via CDN plus an inline `<style>` block that owns the layout system, and three small inline IIFEs. It does **not** use `css/*` or `js/*`.
+`index.html` is a **fully self-contained page with zero external runtime dependencies**: an inline `<style>` block owning the reset, design tokens, layout and components; three small inline IIFEs; and self-hosted fonts from `assets/fonts/`. It renders correctly with the network disabled. It does **not** use `css/*` or `js/*`.
 
 ### Section order
 
@@ -77,7 +77,7 @@ Layout is driven by CSS custom properties defined on `:root` in the homepage's i
 |---|---|
 | Container | `--shell-max`, `--shell-gutter`, `--shell-content` |
 | Rhythm | `--section-space`, `--section-space-tight`, `--grid-gap` |
-| Shape | `--radius-card`, `--radius-pill` |
+| Shape | `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-pill` |
 | Surfaces | `--surface`, `--surface-muted`, `--surface-warm`, `--line`, `--line-strong` |
 | Text | `--ink`, `--ink-soft` |
 
@@ -88,7 +88,59 @@ Structural conventions:
 - Card grids use `repeat(auto-fit, minmax(min(100%, Xrem), 1fr))` so they reflow without breakpoint cliffs.
 - The hero is a full-bleed named-line grid: copy aligns to `.shell` while the media runs to the right viewport edge.
 - Every image region is a `.media-slot` with an explicit `aspect-ratio` (or a `min-height` at desktop) so real photography drops in without layout shift.
-- Component styles live in the inline stylesheet, not in utility soup. **Watch the cascade:** Tailwind's CDN injects its stylesheet at runtime, so a utility class can beat an equally-specific rule of yours. Anything that must win (for example the desktop/mobile nav swap) is owned by a single class rule with no competing utility.
+- Component styles live in the inline stylesheet. There is no utility framework, so the cascade is entirely yours - a rule wins or loses purely on specificity and order.
+
+### Colour and typography
+
+The palette lives as custom properties in the same `:root` block; **no hex value
+appears anywhere else in the file**, so a rebrand is a token edit.
+
+| Group | Tokens |
+|---|---|
+| Light surfaces (~60%) | `--color-linen`, `--color-warm-white`, `--color-white` |
+| Sage (~30% with tans) | `--color-sage`, `--color-sage-light`, `--color-sage-dark` |
+| Natural tans | `--color-camel`, `--color-sand`, `--color-oatmeal` |
+| Brand greens (~10%) | `--color-olive`, `--color-olive-soft` |
+| Text | `--color-charcoal`, `--color-text-muted` |
+| On dark | `--color-on-dark`, `--color-on-dark-muted`, `--color-on-dark-line` |
+
+Semantic aliases (`--surface`, `--line`, `--ink`, `--accent`) sit on top, so
+components never name a palette colour directly.
+
+**Contrast rules that are not negotiable** — these were measured, not guessed:
+
+- `--color-sage-dark` is 3.5:1 on warm white: **icons and borders only, never text.**
+- `--color-camel` is 3.0:1: **decoration only, never text and never a control boundary.**
+- `--color-text-muted` is only 4.0:1 on oatmeal, so the gift band uses charcoal.
+- `--color-border` is 1.4:1: decorative hairlines only. Interactive boundaries use `--line-strong`.
+- On-dark muted text must stay at `#DBDCD4` or lighter; darker values fail AA on the subscription band.
+
+### Fonts
+
+Three variable fonts are **self-hosted from `assets/fonts/`** — no CDN, no
+`@import`, no runtime third-party requests.
+
+| Token | Family | Used for | Source |
+|---|---|---|---|
+| `--font-display` | Cormorant Garamond (roman + italic) | h1, h2, prices | [google/fonts](https://github.com/google/fonts/tree/main/ofl/cormorantgaramond) |
+| `--font-body` | Inter | body, nav, forms, buttons, footer | [rsms/inter](https://github.com/rsms/inter) |
+| `--font-condensed` | Oswald | uppercase micro-labels only | [google/fonts](https://github.com/google/fonts/tree/main/ofl/oswald) |
+
+All three are variable fonts with real `wght` ranges (Cormorant 300–700, Inter
+100–900, Oswald 200–700), so every weight is a genuine instance rather than a
+synthesised one. Total payload is ~758 KB; the two Cormorant faces are preloaded
+because they render the above-the-fold headline, and everything uses
+`font-display: swap`.
+
+Inter and Oswald came as official WOFF2 / were converted from the official
+variable TTFs with `fonttools`. To cut the payload to ~232 KB, subset to latin:
+
+```bash
+pip install fonttools brotli
+pyftsubset assets/fonts/inter/InterVariable.woff2 --flavor=woff2 --layout-features='*' \
+  --unicodes='U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122' \
+  --output-file=assets/fonts/inter/InterVariable.woff2
+```
 
 ### Responsive behaviour
 
@@ -134,7 +186,7 @@ Footer contact details read "to be published" on purpose — no real phone or em
 
 | Page | Brand | Design system |
 |---|---|---|
-| `index.html` | **Soapbox Caddie** | Tailwind CDN + inline tokens |
+| `index.html` | **Soapbox Caddie** | Self-contained inline tokens |
 | all other pages | FOLD / Montgomery (pre-redesign) | `css/*` token system |
 
 Consequences worth knowing before you touch anything:
@@ -172,7 +224,7 @@ Consequences worth knowing before you touch anything:
 
 ```
 laundry-delivery/
-├── index.html               Homepage (self-contained: Tailwind CDN + inline CSS/JS)
+├── index.html               Homepage (fully self-contained: inline CSS/JS, no CDN)
 ├── how-it-works.html
 ├── plans.html
 ├── services.html
@@ -192,7 +244,10 @@ laundry-delivery/
 ├── assets/
 │   ├── img/                 Photography (add here, reference from HTML)
 │   ├── icons/               Inline-able SVGs
-│   └── fonts/               Self-hosted fonts (optional)
+│   └── fonts/               Self-hosted variable fonts (served by the homepage)
+│       ├── cormorant-garamond/  Roman + Italic woff2
+│       ├── inter/               InterVariable.woff2
+│       └── oswald/              Oswald-Variable.woff2
 ├── css/                     Token-first system — used by every page EXCEPT index.html
 │   ├── tokens.css           Custom properties — palette, type, spacing
 │   ├── base.css             Reset, typography, focus styles
@@ -219,7 +274,7 @@ laundry-delivery/
 
 **Two systems currently coexist.** This is a known divergence, not an accident:
 
-1. **`index.html`** — Tailwind CDN for utilities plus an inline `<style>` block that owns the layout system and every component. Self-contained so the redesign could move without disturbing the rest of the site.
+1. **`index.html`** — a single inline `<style>` block owning a minimal reset, the colour/type/radius tokens, the layout system and every component. No CSS framework and no CDN.
 2. **Every other page** — token-first ITCSS cascade: `tokens.css` → `base.css` → `layout.css` → `components.css` → `utilities.css`, with all colour, spacing and type values as custom properties in `css/tokens.css`.
 
 Reconciling the two is a post-Phase-3 task: once the Soapbox Caddie palette is final, promote the homepage tokens into `css/tokens.css` and migrate the inner pages.
@@ -289,7 +344,7 @@ The homepage has no test suite, so verify by hand:
 - Open the mobile menu and close it three ways: link click, outside click, Escape.
 - Submit both ZIP forms with an invalid ZIP, an unserved ZIP (`99999`) and a served ZIP (`36106`).
 - Tab through the page — focus order should follow the visual order and every stop should show a focus ring.
-- Check the console is clean. (Google Fonts and Tailwind load from CDNs, so a network-restricted environment will show request failures that are environmental, not page bugs.)
+- Check the console is clean. The homepage makes **zero external requests** - if you see one, something regressed.
 
 ---
 
@@ -304,6 +359,7 @@ The homepage has no test suite, so verify by hand:
 - [ ] Replace all four hard-coded ZIP sets with the TRA3 service-area API
 - [ ] Integrate Acuity for booking
 - [ ] Review and finalise `privacy.html` and `terms.html` with legal counsel
+- [ ] Supply the official Soapbox Caddie logo asset (the header/footer mark is a type stand-in)
 - [ ] Add a favicon (none exists in the repo)
 - [ ] Refresh `docs/project-overview.md` for the Soapbox Caddie build
 - [ ] Run Lighthouse (target: 95+ Performance, 100 Accessibility / Best Practices / SEO) and an axe or WAVE audit

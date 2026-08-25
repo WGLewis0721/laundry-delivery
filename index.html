@@ -13,14 +13,52 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wglewis0721.github.io/laundry-delivery/index.html">
 
-  <!-- Approved temporary type pairing (no client font assets supplied yet):
-       Cormorant Garamond for display, DM Sans for body/UI. Only the six
-       faces actually used are requested. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Self-hosted variable fonts. No CDN, no runtime third-party requests:
+       the site renders identically with external network access disabled.
+       Sources (fetched at build time, not runtime):
+         Cormorant Garamond - github.com/google/fonts/tree/main/ofl/cormorantgaramond
+         Oswald             - github.com/google/fonts/tree/main/ofl/oswald
+         Inter              - github.com/rsms/inter
+       The two Cormorant faces render the above-the-fold hero headline, so
+       they are preloaded; Inter and Oswald load normally behind swap. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/cormorant-garamond/CormorantGaramond-Variable.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/cormorant-garamond/CormorantGaramond-Italic-Variable.woff2">
   <style>
+
+    /* ---------------- Self-hosted variable fonts ----------------
+       Weight ranges match each font's real wght axis, so any weight in
+       range is a genuine instance rather than a synthesised one. */
+
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      src: url('assets/fonts/cormorant-garamond/CormorantGaramond-Variable.woff2') format('woff2');
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      src: url('assets/fonts/cormorant-garamond/CormorantGaramond-Italic-Variable.woff2') format('woff2');
+      font-weight: 300 700;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Inter';
+      src: url('assets/fonts/inter/InterVariable.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Oswald';
+      src: url('assets/fonts/oswald/Oswald-Variable.woff2') format('woff2');
+      font-weight: 200 700;
+      font-style: normal;
+      font-display: swap;
+    }
     /* ------------------------------------------------------------------
        PHASE 2 - VISUAL DESIGN SYSTEM
 
@@ -35,6 +73,34 @@
        Still to come - Phase 3: real logo, client photography, bag
        product shots, final icon set if the client supplies one.
        ------------------------------------------------------------------ */
+
+
+    /* ---------------- Reset ----------------
+       Replaces the slice of Tailwind's preflight this page depended on,
+       now that the CDN is gone and the page is fully self-contained. */
+
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+    html { -webkit-text-size-adjust: 100%; line-height: 1.5; }
+    body { min-height: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+    ul, ol { list-style: none; padding: 0; }
+    a { color: inherit; text-decoration: inherit; }
+    img, svg, video { display: block; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { background: none; border: 0; }
+    table { border-collapse: collapse; }
+
+    /* ---------------- Small layout helpers ----------------
+       The handful of utilities the markup still needed. */
+    .shell--relative { position: relative; }
+    .stack-2 { display: grid; gap: 0.5rem; }
+    .stack-3 { display: grid; gap: 0.75rem; }
+    .price-note { margin-top: 0.75rem; }
+    .lede__cta { margin-top: 0.5rem; }
+    .trust-heading { text-align: center; }
+    .footer-legal--stacked { margin-top: 0.5rem; }
+    .text-ink { color: var(--ink); font-weight: 600; }
 
     :root {
       color-scheme: light;
@@ -96,7 +162,8 @@
 
       /* ---- Typography ------------------------------------------------ */
       --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-      --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --font-condensed: 'Oswald', 'Arial Narrow', 'Inter', system-ui, sans-serif;
 
       /* ---- Container + rhythm (unchanged from Phase 1-B) ------------- */
       --shell-max: 82rem;
@@ -129,7 +196,7 @@
 
     /* Display face for the editorial voice; h3 and below stay in the UI face,
        matching the mockup. */
-    h1, h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: 0; }
+    h1, h2 { font-family: var(--font-display); font-weight: 400; letter-spacing: 0; }
     h3, h4, h5, h6 { font-family: var(--font-body); }
 
     img, svg, video { max-width: 100%; height: auto; }
@@ -179,12 +246,12 @@
     .title-lg {
       font-family: var(--font-display);
       font-size: clamp(1.9rem, 3.1vw, 2.5rem);
-      font-weight: 500; line-height: 1.12; color: var(--color-olive);
+      font-weight: 400; line-height: 1.12; color: var(--color-olive);
     }
     .title-md {
       font-family: var(--font-display);
       font-size: clamp(1.5rem, 2.3vw, 1.85rem);
-      font-weight: 500; line-height: 1.18; color: var(--color-olive);
+      font-weight: 400; line-height: 1.18; color: var(--color-olive);
     }
     .body-sm { font-size: 0.875rem; line-height: 1.6; color: var(--ink-soft); }
     .body-xs { font-size: 0.8125rem; line-height: 1.55; color: var(--ink-soft); }
@@ -192,7 +259,8 @@
     /* Eyebrows/labels use olive-soft (6.4:1). sage-dark and camel fail AA as
        text and are reserved for icons, borders and fills. */
     .label-xs {
-      font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em;
+      font-family: var(--font-condensed);
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--accent-soft);
     }
 
@@ -213,7 +281,8 @@
     }
     .media-slot > * { max-width: 85%; text-align: center; }
     .media-slot__label {
-      font-size: 0.625rem; font-weight: 600; letter-spacing: 0.16em;
+      font-family: var(--font-condensed);
+      font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em;
       text-transform: uppercase; color: var(--color-olive);
     }
     /* Phase 3 image rules - already in place so inserting <img> shifts nothing. */
@@ -292,6 +361,7 @@
     /* ---------------- Header ---------------- */
 
     .site-nav {
+      position: sticky; top: 0; z-index: 50;
       border-bottom: 1px solid var(--line);
       background: var(--color-warm-white); /* fallback if color-mix is unsupported */
       background: color-mix(in srgb, var(--color-warm-white) 94%, transparent);
@@ -310,6 +380,9 @@
       color: var(--color-olive); text-transform: uppercase; text-align: center;
     }
     .brand__mark--sm { min-width: 2.7rem; height: 2.7rem; font-size: 0.55rem; }
+    /* Reserved box for the real logo asset - same footprint as the stand-in. */
+    .brand__logo { height: 3.1rem; width: auto; object-fit: contain; }
+    .site-footer .brand__logo { height: 2.7rem; }
 
     .nav-links { display: none; }
     .nav-cta-desktop { display: none; }
@@ -380,7 +453,7 @@
       font-family: var(--font-display);
       font-size: clamp(2.75rem, 6.4vw, 5.25rem);
       line-height: 1.02;
-      font-weight: 500;
+      font-weight: 400;
       letter-spacing: -0.005em;
       color: var(--color-olive);
     }
@@ -482,11 +555,11 @@
       .band__media { aspect-ratio: auto; min-height: 100%; }
     }
     .band__body { display: grid; gap: 0.55rem; align-content: center; padding: clamp(1.1rem, 2.2vw, 1.65rem); }
-    .band__eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-on-dark-muted); }
+    .band__eyebrow { font-family: var(--font-condensed); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-on-dark-muted); }
     .band__title {
       font-family: var(--font-display);
       font-size: clamp(1.75rem, 3vw, 2.35rem);
-      font-weight: 500; line-height: 1.12;
+      font-weight: 400; line-height: 1.12;
     }
     .band__sub { font-size: 0.875rem; color: var(--color-on-dark-muted); }
     .band__note { font-size: 0.75rem; color: var(--color-on-dark-muted); }
@@ -570,7 +643,7 @@
     @media (min-width: 44rem) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (min-width: 68rem) { .footer-grid { grid-template-columns: 1fr 0.75fr 0.85fr 0.9fr 1.5fr; } }
     .footer-col { display: grid; gap: 0.4rem; align-content: start; }
-    .footer-title { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-on-dark); }
+    .footer-title { font-family: var(--font-condensed); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-on-dark); }
     .footer-list { display: grid; gap: 0.25rem; font-size: 0.8125rem; color: var(--color-on-dark-muted); }
     .footer-list a { padding-block: 0.15rem; }
     .footer-list a:hover { color: var(--color-on-dark); text-decoration: underline; text-underline-offset: 3px; }
@@ -589,6 +662,9 @@
 
     .reveal, .reveal-group { opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.is-visible, .reveal-group.is-visible { opacity: 1; transform: translateY(0); }
+
+    main { padding-bottom: 5rem; }
+    @media (min-width: 48rem) { main { padding-bottom: 0; } }
 
     .mobile-sticky-cta {
       position: fixed; inset-inline: 0; bottom: 0; z-index: 40;
@@ -634,16 +710,21 @@
   }
   </script>
 </head>
-<body class="antialiased">
+<body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- 1. HEADER / NAVIGATION ------------------------------------------ -->
   <header>
-    <nav class="site-nav sticky top-0 z-50" aria-label="Main navigation">
-      <div class="shell relative">
+    <nav class="site-nav" aria-label="Main navigation">
+      <div class="shell shell--relative">
         <div class="nav-inner">
           <a href="index.html" class="brand" aria-label="Soapbox Caddie - go to homepage">
-            <!-- Phase 3: replace with the final Soapbox Caddie logo -->
+            <!-- PLACEHOLDER - NOT THE BRAND MARK.
+                 The official Soapbox Caddie logo asset has not been supplied,
+                 so this is a neutral type stand-in, deliberately not an
+                 attempt to reproduce the logo. Phase 3 replaces this span with
+                 <img class="brand__logo" src="assets/img/soapbox-caddie-logo.svg" alt="Soapbox Caddie">
+                 which is sized to the same box, so the swap shifts nothing. -->
             <span class="brand__mark" aria-hidden="true">Soapbox<br>Caddie</span>
             <span class="sr-only">Soapbox Caddie</span>
           </a>
@@ -668,7 +749,7 @@
     </nav>
   </header>
 
-  <main id="main-content" class="pb-20 md:pb-0">
+  <main id="main-content">
 
     <!-- 2. HERO + 3. ZIP CHECKER --------------------------------------- -->
     <section class="hero" aria-labelledby="hero-heading">
@@ -685,7 +766,7 @@
         <div class="zip-panel" id="zip-check">
           <h2 class="zip-panel__title">Check if we service your area</h2>
 
-          <form class="js-zip-form grid gap-2" role="search" aria-label="Check service availability by ZIP code" novalidate>
+          <form class="js-zip-form stack-2" role="search" aria-label="Check service availability by ZIP code" novalidate>
             <div class="zip-fields">
               <div>
                 <label class="sr-only" for="service-zip">ZIP code</label>
@@ -720,10 +801,10 @@
             <h2 id="pricing-heading" class="title-lg">Simple pricing.<br>Beautifully done.</h2>
             <p class="body-sm">You fill it. We clean it. You love it.</p>
 
-            <div class="price-note mt-3">
+            <div class="price-note">
               <svg class="icon icon--sm icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4c-8 0-14 3-14 9a5 5 0 0 0 5 5c6 0 9-6 9-14Z"/><path d="M6 20c1.5-4 4-6.6 8-8.6"/></svg>
               <p class="body-xs">
-                <strong class="font-semibold text-ink">Fill to the line</strong> on any of our bags.<br>You're charged by the bag.
+                <strong class="text-ink">Fill to the line</strong> on any of our bags.<br>You're charged by the bag.
               </p>
             </div>
           </div>
@@ -779,7 +860,7 @@
           <div class="lede__intro">
             <h2 id="how-heading" class="title-lg">How it works</h2>
             <p class="body-sm">Impossibly convenient.<br>Impeccably clean.</p>
-            <p class="mt-2"><a class="btn btn--primary" href="schedule.html">Book Your Laundry</a></p>
+            <p class="lede__cta"><a class="btn btn--primary" href="schedule.html">Book Your Laundry</a></p>
           </div>
 
           <ol class="lede__body steps reveal-group">
@@ -921,8 +1002,8 @@
 
     <!-- 9. FAQ + PROTECTIONS + WAIVERS ----------------------------------- -->
     <section id="trust" class="section--tight" aria-labelledby="trust-heading">
-      <div class="shell grid gap-3">
-        <h2 id="trust-heading" class="title-md text-center">Your items are in good hands.</h2>
+      <div class="shell stack-3">
+        <h2 id="trust-heading" class="title-md trust-heading">Your items are in good hands.</h2>
 
         <div class="trust-box reveal-group">
           <article id="faq" class="trust-col" aria-labelledby="faq-heading">
@@ -1020,7 +1101,7 @@
             <h2 class="zip-panel__title">Check Your ZIP</h2>
             <p class="zip-note">See if we service your area.</p>
 
-            <form class="js-zip-form grid gap-2" role="search" aria-label="Check service availability by ZIP code" novalidate>
+            <form class="js-zip-form stack-2" role="search" aria-label="Check service availability by ZIP code" novalidate>
               <div class="zip-fields">
                 <div>
                   <label class="sr-only" for="footer-zip">ZIP code</label>
@@ -1038,7 +1119,7 @@
             </form>
           </div>
 
-          <p class="footer-legal mt-2">
+          <p class="footer-legal footer-legal--stacked">
             <a href="privacy.html">Privacy Policy</a>
             <a href="terms.html">Terms of Service</a>
           </p>
