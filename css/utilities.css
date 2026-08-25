@@ -1,6 +1,6 @@
 /* ============================================================
-   FOLD — Utilities
-   Single-purpose helper classes
+   Soapbox Caddie — Utilities
+   Single-purpose helpers + final site-wide brand/image overrides.
    ============================================================ */
 
 /* ── Text alignment ───────────────────────────────────────── */
@@ -68,16 +68,16 @@
 .rounded-full { border-radius: var(--radius-full); }
 
 /* ── Width ────────────────────────────────────────────────── */
-.w-full  { width: 100%; }
+.w-full   { width: 100%; }
 .max-w-sm { max-width: 480px; }
 .max-w-md { max-width: 640px; }
 .max-w-lg { max-width: 800px; }
 
-/* ── Reveal animation (JS-driven via reveal.js) ───────────── */
+/* ── Reveal animation ─────────────────────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity  var(--dur-slow) var(--ease-out),
+  transition: opacity var(--dur-slow) var(--ease-out),
               transform var(--dur-slow) var(--ease-out);
 }
 
@@ -86,11 +86,10 @@
   transform: none;
 }
 
-/* Stagger children */
 .reveal-group > * {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity  var(--dur-slow) var(--ease-out),
+  transition: opacity var(--dur-slow) var(--ease-out),
               transform var(--dur-slow) var(--ease-out);
 }
 
@@ -113,9 +112,295 @@
 }
 
 /* ── No-JS safety ─────────────────────────────────────────── */
-/* If JS is disabled, reveal elements stay visible */
 .no-js .reveal,
 .no-js .reveal-group > * {
   opacity: 1;
   transform: none;
+}
+
+/* ============================================================
+   FINAL SOAPBOX CADDIE BRAND PROPAGATION
+   These rules deliberately live last: every secondary page imports
+   utilities.css after the component/layout files, so this is the single
+   finishing layer that brings the rest of the public site in line with
+   the branded homepage without duplicating markup or JS.
+   ============================================================ */
+
+/* ── Official logo assets across shared navigation/footer ── */
+.site-nav .logo-mark {
+  display: block;
+  width: clamp(7.6rem, 11vw, 9.6rem);
+  min-width: 0;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px;
+  background: url('../assets/img/soapbox-caddie-logo-header.png') center / contain no-repeat;
+}
+
+.site-footer .logo-mark {
+  display: block;
+  width: clamp(10rem, 16vw, 13rem);
+  min-width: 0;
+  height: 3.8rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px;
+  background: url('../assets/img/soapbox-caddie-logo-footer.png') left center / contain no-repeat;
+}
+
+.site-nav {
+  background: var(--brand-ivory);
+  border-bottom-color: color-mix(in srgb, var(--brand-taupe) 70%, var(--brand-ivory));
+}
+
+.site-footer {
+  background: var(--brand-ink);
+}
+
+/* ── Shared branded media language ───────────────────────── */
+body[data-page] .brand-photo-surface,
+body[data-page] .hero-art {
+  border: 1px solid color-mix(in srgb, var(--brand-taupe) 72%, var(--brand-ivory));
+  border-radius: var(--radius-2xl);
+  background-color: var(--brand-ivory);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+/* ── About: actual client photography as the editorial hero ─ */
+body[data-page='about'] main > .section:first-of-type {
+  position: relative;
+  overflow: hidden;
+  min-height: 30rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--brand-ivory) !important;
+  background-image:
+    linear-gradient(90deg,
+      var(--brand-ivory) 0%,
+      var(--brand-ivory) 43%,
+      color-mix(in srgb, var(--brand-ivory) 88%, transparent) 58%,
+      transparent 76%),
+    url('../assets/img/about-soapbox-caddie.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+body[data-page='about'] main > .section:first-of-type .wrap {
+  max-width: var(--max-width) !important;
+  margin-inline: auto !important;
+  padding-right: min(48vw, 36rem);
+}
+
+/* ── Pricing: make the bags the product, not decoration ──── */
+body[data-page='plans'] .plans-grid .plan-card {
+  overflow: hidden;
+}
+
+body[data-page='plans'] .plans-grid .plan-card::before,
+body[data-page='schedule'] #step-2 .plans-grid .plan-card::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: clamp(8.5rem, 16vw, 12rem);
+  margin-bottom: var(--space-5);
+  background-color: var(--brand-ivory);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: var(--radius-xl);
+}
+
+body[data-page='plans'] #small::before,
+body[data-page='schedule'] #step-2 .plans-grid .plan-card:nth-child(1)::before {
+  background-image: url('../assets/img/bag-small.webp');
+}
+
+body[data-page='plans'] #medium::before,
+body[data-page='schedule'] #step-2 .plans-grid .plan-card:nth-child(2)::before {
+  background-image: url('../assets/img/bag-medium.webp');
+}
+
+body[data-page='plans'] #large::before,
+body[data-page='schedule'] #step-2 .plans-grid .plan-card:nth-child(3)::before {
+  background-image: url('../assets/img/bag-large.webp');
+}
+
+body[data-page='plans'] #subscription .wrap--narrow > div:last-child {
+  position: relative;
+  overflow: hidden;
+  padding-right: min(42%, 20rem) !important;
+  background:
+    linear-gradient(90deg,
+      var(--brand-olive) 0%,
+      var(--brand-olive) 57%,
+      color-mix(in srgb, var(--brand-olive) 92%, transparent) 70%,
+      transparent 84%),
+    url('../assets/img/subscription-folded-laundry.webp') right center / 48% 100% no-repeat !important;
+}
+
+/* ── How It Works: replace all three illustration placeholders ─ */
+body[data-page='how-it-works'] .hero-art {
+  box-shadow: none;
+}
+
+body[data-page='how-it-works'] .hero-art-label {
+  display: none !important;
+}
+
+body[data-page='how-it-works'] main > .section:nth-of-type(2) .grid-2:nth-of-type(1) .hero-art {
+  background-image: url('../assets/img/hero-soapbox-caddie.webp');
+  background-position: 68% 45%;
+}
+
+body[data-page='how-it-works'] main > .section:nth-of-type(2) .grid-2:nth-of-type(2) .hero-art {
+  background-image: url('../assets/img/subscription-folded-laundry.webp');
+}
+
+body[data-page='how-it-works'] main > .section:nth-of-type(2) .grid-2:nth-of-type(3) .hero-art {
+  background-image: url('../assets/img/gift-laundry-pile.webp');
+}
+
+/* ── Services: branded photography instead of generic cards ─ */
+body[data-page='services'] main > .section:nth-of-type(2) .grid-3 .bento-cell {
+  overflow: hidden;
+}
+
+body[data-page='services'] main > .section:nth-of-type(2) .grid-3 .bento-cell::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 11rem;
+  margin-bottom: var(--space-5);
+  border-radius: var(--radius-xl);
+  background-color: var(--brand-ivory);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body[data-page='services'] main > .section:nth-of-type(2) .grid-3 .bento-cell:nth-child(1)::before {
+  background-image: url('../assets/img/subscription-folded-laundry.webp');
+}
+body[data-page='services'] main > .section:nth-of-type(2) .grid-3 .bento-cell:nth-child(2)::before {
+  background-image: url('../assets/img/business-commercial-linens.webp');
+}
+body[data-page='services'] main > .section:nth-of-type(2) .grid-3 .bento-cell:nth-child(3)::before {
+  background-image: url('../assets/img/about-soapbox-caddie.webp');
+}
+
+/* ── Service Area + FAQ: one quiet image, not image-heavy ─── */
+body[data-page='service-area'] main > .section:first-of-type,
+body[data-page='faq'] main > .section:first-of-type {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--brand-ivory) !important;
+  background-repeat: no-repeat;
+  background-size: min(38rem, 48vw) auto;
+  background-position: right center;
+}
+
+body[data-page='service-area'] main > .section:first-of-type {
+  background-image:
+    linear-gradient(90deg, var(--brand-ivory) 0 52%, color-mix(in srgb, var(--brand-ivory) 82%, transparent) 72%, transparent 88%),
+    url('../assets/img/about-soapbox-caddie.webp');
+}
+
+body[data-page='faq'] main > .section:first-of-type {
+  background-image:
+    linear-gradient(90deg, var(--brand-ivory) 0 52%, color-mix(in srgb, var(--brand-ivory) 82%, transparent) 72%, transparent 88%),
+    url('../assets/img/gift-laundry-pile.webp');
+}
+
+body[data-page='service-area'] main > .section:first-of-type .wrap,
+body[data-page='faq'] main > .section:first-of-type .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Booking: bag images reinforce the exact product selection ─ */
+body[data-page='schedule'] #step-2 .plans-grid .plan-card::before {
+  height: clamp(6.5rem, 12vw, 9rem);
+  margin-bottom: var(--space-4);
+}
+
+/* Legal pages intentionally stay image-light. Their shared logo, palette,
+   type hierarchy and footer carry the brand without distracting from copy. */
+body[data-page='legal'] main {
+  background: var(--brand-ivory);
+}
+
+/* ── Responsive finishing pass ───────────────────────────── */
+@media (max-width: 900px) {
+  .site-nav .logo-mark {
+    width: 7.8rem;
+    height: 2.55rem;
+  }
+
+  body[data-page='about'] main > .section:first-of-type {
+    min-height: 0;
+    display: block;
+    background-image: none;
+    padding-bottom: 0;
+  }
+
+  body[data-page='about'] main > .section:first-of-type .wrap {
+    max-width: 720px !important;
+    padding-right: var(--wrap-x);
+  }
+
+  body[data-page='about'] main > .section:first-of-type::after {
+    content: '';
+    display: block;
+    width: min(calc(100% - (2 * var(--wrap-x))), 42rem);
+    height: clamp(15rem, 60vw, 24rem);
+    margin: var(--space-8) auto 0;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    background: url('../assets/img/about-soapbox-caddie.webp') center / cover no-repeat;
+  }
+
+  body[data-page='plans'] #subscription .wrap--narrow > div:last-child {
+    padding-right: var(--space-8) !important;
+    padding-bottom: clamp(14rem, 56vw, 22rem) !important;
+    background:
+      linear-gradient(180deg, var(--brand-olive) 0 54%, color-mix(in srgb, var(--brand-olive) 92%, transparent) 64%, transparent 76%),
+      url('../assets/img/subscription-folded-laundry.webp') center bottom / 100% 52% no-repeat !important;
+  }
+
+  body[data-page='service-area'] main > .section:first-of-type,
+  body[data-page='faq'] main > .section:first-of-type {
+    background-image: none;
+  }
+}
+
+@media (max-width: 600px) {
+  body[data-page='plans'] .plans-grid .plan-card::before,
+  body[data-page='schedule'] #step-2 .plans-grid .plan-card::before {
+    height: 8rem;
+  }
+
+  body[data-page='services'] main > .section:nth-of-type(2) .grid-3 .bento-cell::before {
+    height: 10rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-group > * {
+    transition: none !important;
+    transform: none !important;
+  }
 }
