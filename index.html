@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FOLD - Laundry Pickup & Delivery | Montgomery, AL</title>
-  <meta name="description" content="Premium laundry pickup and delivery in Montgomery, AL. Weighed by the bag, SMS tracking, and receipt-before-charge transparency. Drop the bags. Keep the weekend.">
-  <meta name="theme-color" content="#059669">
+  <title>Soapbox Caddie - Laundry Pickup &amp; Delivery | River Region</title>
+  <meta name="description" content="Soapbox Caddie picks up, washes, dries, folds, and returns laundry throughout the River Region. Fill the bag to the line and pay by the bag. Choose peace, not laundry.">
+  <meta name="theme-color" content="#0F2744">
 
   <link rel="canonical" href="https://wglewis0721.github.io/laundry-delivery/index.html">
-  <meta property="og:title" content="FOLD - Laundry Pickup & Delivery | Montgomery, AL">
-  <meta property="og:description" content="Premium laundry pickup and delivery in Montgomery. Weighed by the bag, SMS tracking, receipt-before-charge, and a local Montgomery focus.">
+  <meta property="og:title" content="Soapbox Caddie - Laundry Pickup &amp; Delivery | River Region">
+  <meta property="og:description" content="Laundry pickup, washing, drying, folding, and return delivery across the River Region. Simple pricing by the bag.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wglewis0721.github.io/laundry-delivery/index.html">
 
@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    /* Phase 2 will replace this palette with the final Soapbox Caddie brand colours. */
     tailwind.config = {
       theme: {
         extend: {
@@ -31,7 +32,6 @@
           },
           boxShadow: {
             premium: '0 30px 80px -40px rgba(15, 23, 42, 0.48)',
-            glass: '0 24px 64px -38px rgba(15, 23, 42, 0.45)',
             soft: '0 18px 40px -28px rgba(15, 23, 42, 0.26)'
           },
           borderRadius: {
@@ -43,122 +43,315 @@
   </script>
 
   <style>
-    :root { color-scheme: light; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #1e293b;
-      background:
-        radial-gradient(circle at 14% 10%, rgba(169, 214, 245, 0.3), transparent 18%),
-        radial-gradient(circle at 86% 14%, rgba(247, 214, 222, 0.32), transparent 20%),
-        radial-gradient(circle at 80% 74%, rgba(95, 175, 106, 0.12), transparent 18%),
-        linear-gradient(180deg, #ffffff 0%, #f8f9fa 38%, #ffffff 100%);
+    /* ------------------------------------------------------------------
+       PHASE 1 - STRUCTURE ONLY
+       Layout system, spacing rhythm, container widths, responsive grids.
+       Final colour, type pairing, imagery and brand treatment land in
+       Phase 2 (palette + image placeholders) and Phase 3 (real branding).
+       ------------------------------------------------------------------ */
+
+    :root {
+      color-scheme: light;
+
+      /* Container + rhythm system */
+      --shell-max: 78rem;
+      --shell-gutter: clamp(1rem, 4vw, 2rem);
+      --section-space: clamp(3.5rem, 8vw, 6.5rem);
+      --section-space-tight: clamp(2.5rem, 5vw, 4rem);
+      --grid-gap: clamp(1rem, 2.2vw, 1.75rem);
+      --stack: clamp(0.75rem, 1.6vw, 1.25rem);
+      --radius-card: 1.5rem;
+      --radius-pill: 9999px;
+
+      /* Restrained neutral surface set for new structural components */
+      --surface: #ffffff;
+      --surface-muted: #f6f7f9;
+      --line: #e2e8f0;
+      --ink: #0f2744;
+      --ink-soft: #475569;
     }
-    h1, h2, h3, h4, h5, h6 { font-family: 'Inter Tight', 'Inter', sans-serif; letter-spacing: -0.03em; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #1e293b;
+      background: linear-gradient(180deg, #ffffff 0%, var(--surface-muted) 42%, #ffffff 100%);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter Tight', 'Inter', system-ui, sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    img, svg, video { max-width: 100%; height: auto; }
+
+    /* Visible focus foundation - never rely on colour alone */
+    :where(a, button, input, select, textarea, summary):focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 2px;
+      border-radius: 0.5rem;
+    }
+
     .skip-link {
       position: absolute; left: 1rem; top: 1rem; z-index: 60; transform: translateY(-200%);
-      border-radius: 9999px; background: #10233f; color: #fff; padding: 0.75rem 1rem; font-weight: 700; transition: transform 0.2s ease;
+      border-radius: var(--radius-pill); background: var(--ink); color: #fff;
+      padding: 0.75rem 1rem; font-weight: 700; transition: transform 0.2s ease;
     }
     .skip-link:focus { transform: translateY(0); }
-    .site-nav { transition: background-color 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease, border-color 0.25s ease; }
+
+    /* ---------------- Layout primitives ---------------- */
+
+    .shell {
+      width: 100%;
+      max-width: var(--shell-max);
+      margin-inline: auto;
+      padding-inline: var(--shell-gutter);
+    }
+
+    .section { padding-block: var(--section-space); }
+    .section--tight { padding-block: var(--section-space-tight); }
+
+    .section-head { max-width: 44rem; display: grid; gap: 0.75rem; }
+    .section-head--center { margin-inline: auto; text-align: center; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center;
+      align-self: start; justify-self: start; width: fit-content;
+      gap: 0.5rem; border-radius: var(--radius-pill);
+      border: 1px solid var(--line); background: var(--surface);
+      padding: 0.4rem 0.9rem;
+      font-size: 0.75rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .section-head--center .eyebrow { justify-self: center; }
+
+    /* Auto-fitting card grids: no breakpoint cliffs between device widths. */
+    .auto-grid {
+      display: grid;
+      gap: var(--grid-gap);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    }
+    .auto-grid--steps {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+    }
+    .auto-grid--trust {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    }
+    /* Compact chip grid for short label lists (e.g. customer types) */
+    .auto-grid--tags {
+      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+    }
+    .auto-grid--tags > li { padding: 0.85rem 1rem; align-content: center; }
+
+    /* Two-column editorial splits */
+    .split { display: grid; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+    @media (min-width: 56rem) {
+      .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .split--media-first > .split__media { order: -1; }
+    }
+
+    .split__action { justify-self: start; }
+    @media (min-width: 56rem) { .split__action { justify-self: end; } }
+
+    .hero-grid { display: grid; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+    @media (min-width: 60rem) {
+      .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); }
+    }
+
+    /* ---------------- Components ---------------- */
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: clamp(1.25rem, 2.4vw, 1.75rem);
+      display: grid;
+      align-content: start;
+      gap: var(--stack);
+    }
+    .card--muted { background: var(--surface-muted); }
+    .card--feature { box-shadow: 0 22px 50px -34px rgba(15, 23, 42, 0.28); }
+
+    /* Reserved media regions. Explicit aspect-ratio keeps future images
+       from causing cumulative layout shift. Phase 2/3 replace the inner
+       placeholder with <img> / <picture> (responsive srcset + lazy load). */
+    .media-slot {
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px dashed #cbd5e1;
+      border-radius: var(--radius-card);
+      background: var(--surface-muted);
+      aspect-ratio: var(--media-ratio, 4 / 3);
+    }
+    .media-slot > * { max-width: 80%; text-align: center; }
+    .media-slot__label {
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #94a3b8;
+    }
+    .media-slot--hero { --media-ratio: 4 / 5; }
+    .media-slot--wide { --media-ratio: 16 / 10; }
+    .media-slot--bag  { --media-ratio: 1 / 1; }
+
+    /* Buttons: native semantics, consistent target sizing (>= 44px) */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      min-height: 3rem; padding-inline: 1.5rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem; font-weight: 700; line-height: 1;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      text-align: center;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn--primary { background: var(--ink); color: #fff; }
+    .btn--primary:hover { background: #163a63; }
+    .btn--secondary { background: var(--surface); color: var(--ink); border-color: var(--line); }
+    .btn--secondary:hover { border-color: var(--ink); }
+    .btn--ghost { background: transparent; color: var(--ink); padding-inline: 0.25rem; min-height: 2.75rem; }
+    .btn--ghost:hover { text-decoration: underline; }
+    .btn--block { width: 100%; }
+
+    .link-inline { font-weight: 700; color: var(--ink); text-underline-offset: 3px; text-decoration: underline; }
+
+    /* Navigation */
+    .site-nav { transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
     .site-nav.nav-scrolled {
-      background: rgba(255, 255, 255, 0.78); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.94); box-shadow: 0 18px 48px -30px rgba(15, 23, 42, 0.32);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: var(--line);
+      box-shadow: 0 18px 48px -36px rgba(15, 23, 42, 0.32);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding-block: 0.9rem;
+    }
+    .nav-links { display: none; }
+    .nav-links a { border-radius: var(--radius-pill); padding: 0.7rem 0.85rem; }
+
+    /* Styled here rather than with utilities so the desktop/mobile swap is
+       owned by one rule and cannot be overridden by utility load order. */
+    .nav-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 2.75rem; width: 2.75rem;
+      border: 1px solid var(--line); border-radius: 0.9rem;
+      background: var(--surface); color: var(--ink);
+      cursor: pointer;
+    }
+    .nav-toggle > span { display: flex; flex-direction: column; gap: 0.3rem; }
+    .nav-toggle span span { display: block; height: 2px; width: 1.25rem; border-radius: var(--radius-pill); background: currentColor; }
+
+    @media (min-width: 68rem) {
+      .nav-toggle { display: none; }
+      .nav-links {
+        display: flex; align-items: center; gap: 0.15rem;
+        font-size: 0.9rem; font-weight: 600; color: var(--ink-soft);
+      }
+      .nav-links a:hover { background: var(--surface-muted); color: var(--ink); }
     }
     .nav-links.is-open {
-      display: flex; position: absolute; top: calc(100% + 0.75rem); right: 1rem; left: 1rem; flex-direction: column; gap: 0.75rem; padding: 1rem;
-      border-radius: 1.5rem; border: 1px solid rgba(226, 232, 240, 0.88); background: rgba(255, 255, 255, 0.94);
-      box-shadow: 0 24px 50px -34px rgba(15, 23, 42, 0.42); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      display: grid; gap: 0.35rem;
+      position: absolute; top: calc(100% + 0.5rem); right: var(--shell-gutter); left: var(--shell-gutter);
+      padding: 0.85rem;
+      border: 1px solid var(--line); border-radius: var(--radius-card);
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 24px 50px -34px rgba(15, 23, 42, 0.42);
+      font-weight: 600;
     }
-    .reveal, .reveal-group { opacity: 0; transform: translateY(18px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .nav-links.is-open a { padding: 0.75rem 0.9rem; }
+
+    .brand { display: inline-flex; align-items: center; gap: 0.75rem; }
+    .brand__mark {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 2.75rem; width: 2.75rem; border-radius: 0.9rem;
+      background: var(--ink); color: #fff;
+      font-size: 0.85rem; font-weight: 900; letter-spacing: 0.08em;
+    }
+    .brand__word { font-weight: 800; letter-spacing: 0.02em; color: var(--ink); }
+
+    /* ZIP checker - the primary above-the-fold interaction */
+    .zip-panel {
+      border: 1px solid var(--line);
+      border-radius: clamp(1.25rem, 2.5vw, 2rem);
+      background: var(--surface);
+      padding: clamp(1.25rem, 3vw, 2.25rem);
+      box-shadow: 0 26px 60px -42px rgba(15, 23, 42, 0.4);
+      display: grid;
+      gap: 1rem;
+    }
+    .zip-fields { display: grid; gap: 0.75rem; }
+    @media (min-width: 34rem) {
+      .zip-fields { grid-template-columns: minmax(0, 1fr) auto; align-items: start; }
+    }
+    .zip-input {
+      width: 100%; min-height: 3.25rem;
+      border: 1px solid var(--line); border-radius: var(--radius-pill);
+      background: var(--surface);
+      padding-inline: 1.25rem;
+      font-size: 1rem; font-weight: 600; color: var(--ink);
+    }
+    .zip-input::placeholder { color: #94a3b8; font-weight: 500; }
+    .zip-actions { display: none; gap: 0.75rem; }
+    .zip-actions.is-visible { display: grid; }
+    @media (min-width: 34rem) {
+      .zip-actions.is-visible { grid-auto-flow: column; justify-content: start; }
+    }
+
+    /* Pricing bags - treated as a major product element */
+    .bag-card { padding: clamp(1.25rem, 2.6vw, 1.75rem); }
+    .bag-card__price { font-size: clamp(2.25rem, 5vw, 3rem); font-weight: 900; color: var(--ink); line-height: 1; }
+    .bag-card__meta { display: grid; gap: 0.5rem; font-size: 0.95rem; color: var(--ink-soft); }
+
+    /* How it works */
+    .steps { list-style: none; counter-reset: step; padding: 0; margin: 0; }
+    .steps > li { counter-increment: step; }
+    .step__num {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 2.25rem; width: 2.25rem; border-radius: var(--radius-pill);
+      background: var(--ink); color: #fff; font-weight: 800; font-size: 0.95rem;
+    }
+    .step__num::before { content: counter(step); }
+
+    /* Subscription */
+    .sub-facts { display: grid; gap: 0.75rem; }
+    @media (min-width: 40rem) { .sub-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .sub-fact { border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); padding: 1rem; }
+    .sub-fact__value { font-size: 1.5rem; font-weight: 900; color: var(--ink); }
+
+    /* Reveal-on-scroll (progressive enhancement) */
+    .reveal, .reveal-group { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.is-visible, .reveal-group.is-visible { opacity: 1; transform: translateY(0); }
-    .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-    .hover-lift:hover, .hover-lift:focus-within { transform: translateY(-6px); box-shadow: 0 28px 56px -34px rgba(15, 23, 42, 0.35); }
-    .glass-card {
-      border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 26px 60px -38px rgba(15, 23, 42, 0.35);
-    }
-    .section-shell { position: relative; padding-top: 5rem; padding-bottom: 5rem; }
-    .bento-grid { display: grid; gap: 1rem; }
-    @media (min-width: 768px) { .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (min-width: 1024px) {
-      .bento-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .bento-feature { grid-column: span 2; grid-row: span 2; }
-      .bento-tall { grid-row: span 2; }
-    }
-    .premium-card {
-      border-radius: 1.75rem; border: 1px solid rgba(226, 232, 240, 0.9); background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 22px 50px -34px rgba(15, 23, 42, 0.28);
-    }
-    .plan-card {
-      border-radius: 1.75rem; border: 1px solid rgba(226, 232, 240, 0.95); background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 22px 50px -34px rgba(15, 23, 42, 0.22); transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .plan-card:hover { transform: translateY(-5px); box-shadow: 0 30px 70px -40px rgba(15, 23, 42, 0.34); }
-    .plan-card--featured { border-color: rgba(5, 150, 105, 0.28); background: linear-gradient(180deg, rgba(236, 253, 245, 0.98), rgba(255, 255, 255, 0.98)); }
-    .plan-badge {
-      display: inline-flex; align-items: center; gap: 0.35rem; border-radius: 9999px; background: rgba(5, 150, 105, 0.12); color: #047857;
-      padding: 0.35rem 0.75rem; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-    }
-    .hero-shell {
-      background:
-        radial-gradient(circle at 12% 18%, rgba(247, 214, 222, 0.24), transparent 24%),
-        radial-gradient(circle at 82% 10%, rgba(15, 39, 68, 0.09), transparent 34%),
-        radial-gradient(circle at 74% 78%, rgba(212, 175, 55, 0.14), transparent 24%),
-        linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-    }
-    .hero-dashboard {
-      border-radius: 2rem;
-      border: 1px solid rgba(226, 232, 240, 0.82);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 249, 250, 0.98));
-      box-shadow: 0 32px 80px -40px rgba(15, 39, 68, 0.45);
-    }
-    .hero-status-dot {
-      width: 0.55rem;
-      height: 0.55rem;
-      border-radius: 9999px;
-      background: #5faf6a;
-      box-shadow: 0 0 0 6px rgba(95, 175, 106, 0.14);
-      flex: 0 0 auto;
-    }
-    .hero-check-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 1.2rem;
-      height: 1.2rem;
-      border-radius: 9999px;
-      background: rgba(95, 175, 106, 0.14);
-      color: #2f855a;
-      font-size: 0.8rem;
-      font-weight: 800;
-      flex: 0 0 auto;
-    }
-    .hero-float {
-      animation: heroFloat 6s ease-in-out infinite;
-    }
-    @keyframes heroFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    .image-frame {
-      overflow: hidden; border-radius: 1.9rem; border: 1px solid rgba(226, 232, 240, 0.9);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(244, 251, 255, 0.98));
-      box-shadow: 0 24px 54px -36px rgba(15, 23, 42, 0.34);
-    }
-    .zip-actions { display: none; }
-    .zip-actions.is-visible { display: flex; }
+
+    /* Mobile quick actions */
     .mobile-sticky-cta {
-      display: block;
-      box-shadow: 0 -18px 48px -28px rgba(15, 23, 42, 0.36);
+      position: fixed; inset-inline: 0; bottom: 0; z-index: 40;
+      border-top: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      padding: 0.75rem var(--shell-gutter);
     }
-    @media (min-width: 768px) {
-      .mobile-sticky-cta { display: none; }
+    .mobile-sticky-cta__inner {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem;
+      max-width: var(--shell-max); margin-inline: auto;
     }
+    @media (min-width: 48rem) { .mobile-sticky-cta { display: none; } }
+
+    /* Footer */
+    .footer-grid { display: grid; gap: clamp(1.75rem, 4vw, 2.75rem); }
+    @media (min-width: 44rem) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 64rem) { .footer-grid { grid-template-columns: 1.3fr repeat(3, minmax(0, 1fr)); } }
+    .footer-list { display: grid; gap: 0.6rem; font-size: 0.925rem; color: var(--ink-soft); }
+    .footer-list a:hover { color: var(--ink); text-decoration: underline; }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .site-nav, .reveal, .reveal-group, .hover-lift, .plan-card { transition: none; }
-      .hover-lift:hover, .hover-lift:focus-within, .plan-card:hover { transform: none; }
+      .site-nav, .reveal, .reveal-group, .btn { transition: none; }
+      .btn:hover { transform: none; }
+      .reveal, .reveal-group { opacity: 1; transform: none; }
     }
   </style>
 
@@ -168,503 +361,475 @@
     "@graph": [
       {
         "@type": ["LocalBusiness", "LaundryService"],
-        "name": "FOLD Laundry",
-        "description": "Premium laundry pickup and delivery service in Montgomery, AL.",
+        "name": "Soapbox Caddie",
+        "description": "Laundry pickup, washing, drying, folding, and return delivery throughout the River Region.",
         "url": "https://wglewis0721.github.io/laundry-delivery/index.html",
-        "areaServed": { "@type": "City", "name": "Montgomery", "addressRegion": "AL" },
-        "address": { "@type": "PostalAddress", "addressLocality": "Montgomery", "addressRegion": "AL", "postalCode": "36104", "addressCountry": "US" },
+        "areaServed": { "@type": "Place", "name": "River Region, Alabama" },
         "priceRange": "$$"
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "How long does delivery take?", "acceptedAnswer": { "@type": "Answer", "text": "We confirm your delivery window after pickup so your promise is based on real capacity, not guesswork." } },
-          { "@type": "Question", "name": "What if I go over my bag's weight cap?", "acceptedAnswer": { "@type": "Answer", "text": "Overages are shown in your weigh-in receipt and charged to your card on file before delivery." } },
-          { "@type": "Question", "name": "What if I'm not home for pickup?", "acceptedAnswer": { "@type": "Answer", "text": "Leave your bags in a safe spot and we will text you when pickup is complete." } },
-          { "@type": "Question", "name": "Can I cancel anytime?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. No contracts, no cancellation fees, and no awkward retention calls." } }
+          { "@type": "Question", "name": "How does bag pricing work?", "acceptedAnswer": { "@type": "Answer", "text": "You fill your Soapbox Caddie bag to the designated line and you are charged by the bag: $45 small, $60 medium, $80 large." } },
+          { "@type": "Question", "name": "What is included in a pickup?", "acceptedAnswer": { "@type": "Answer", "text": "Pickup, washing, drying, folding, and return delivery are all included." } },
+          { "@type": "Question", "name": "Do you serve my area?", "acceptedAnswer": { "@type": "Answer", "text": "Soapbox Caddie serves the River Region. Enter your ZIP code on the homepage to confirm service availability." } },
+          { "@type": "Question", "name": "How does the subscription work?", "acceptedAnswer": { "@type": "Answer", "text": "The subscription includes two bags per week for $55 per week with a $75 startup fee. Each additional bag is $25." } }
         ]
       }
     ]
   }
   </script>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="text-slate-900 antialiased">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <nav class="site-nav fixed inset-x-0 top-0 z-50 border-b border-transparent" aria-label="Main navigation">
-    <div class="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-      <a href="/laundry-delivery/index.html" class="inline-flex items-center gap-3 rounded-full px-2 py-1 text-sm font-semibold tracking-[0.3em] text-slate-900 cursor-pointer" aria-label="Go to homepage">
-        <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-sm font-black tracking-[0.25em] text-white shadow-premium">FLD</span>
-        <span class="text-base tracking-[0.42em]">FOLD</span>
-      </a>
+  <header>
+    <nav class="site-nav fixed inset-x-0 top-0 z-50 border-b border-transparent" aria-label="Main navigation">
+      <div class="shell relative">
+        <div class="nav-inner">
+          <a href="index.html" class="brand" aria-label="Soapbox Caddie - go to homepage">
+            <!-- Phase 3: replace mark with the final Soapbox Caddie logo -->
+            <span class="brand__mark" aria-hidden="true">SC</span>
+            <span class="brand__word">Soapbox Caddie</span>
+          </a>
 
-      <button class="nav-toggle inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white/80 text-slate-900 shadow-sm backdrop-blur lg:hidden" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
-        <span class="flex flex-col gap-1.5" aria-hidden="true"><span class="block h-0.5 w-5 rounded-full bg-current"></span><span class="block h-0.5 w-5 rounded-full bg-current"></span><span class="block h-0.5 w-5 rounded-full bg-current"></span></span>
-      </button>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            aria-label="Open navigation menu">
+            <span aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
 
-      <ul class="nav-links hidden items-center gap-2 text-sm font-medium text-slate-700 lg:flex" id="nav-menu" role="list">
-        <li><a class="rounded-full px-4 py-2 transition hover:bg-white/80 hover:text-slate-900" href="#difference">Why FOLD</a></li>
-        <li><a class="rounded-full px-4 py-2 transition hover:bg-white/80 hover:text-slate-900" href="#plans">Plans</a></li>
-        <li><a class="rounded-full px-4 py-2 transition hover:bg-white/80 hover:text-slate-900" href="#service-area">Service area</a></li>
-        <li><a class="rounded-full px-4 py-2 transition hover:bg-white/80 hover:text-slate-900" href="estimate.html">Get an Estimate</a></li>
-        <li><a class="rounded-full px-4 py-2 transition hover:bg-white/80 hover:text-slate-900" href="login.html">Sign in</a></li>
-        <li><a href="schedule.html" class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500">Schedule a pickup</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <main id="main-content" class="pb-28 md:pb-0">
-    <section class="hero-shell relative isolate overflow-hidden pt-28 text-[#2D3748] lg:pt-32" aria-labelledby="hero-heading">
-      <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-        <div class="absolute -left-24 top-14 h-80 w-80 rounded-full bg-[#0F2744]/12 blur-3xl"></div>
-        <div class="absolute right-[-10%] top-8 h-72 w-72 rounded-full bg-[#D4AF37]/20 blur-3xl"></div>
-        <div class="absolute bottom-[-2rem] left-1/3 h-72 w-72 rounded-full bg-[#F7D6DE]/34 blur-3xl"></div>
-      </div>
-
-      <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:pb-24">
-        <div class="reveal space-y-8">
-          <p class="inline-flex items-center rounded-full border border-[#D4AF37]/45 bg-[#FFF8E2] px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#8B6A07]">
-            Laundry Pickup &amp; Delivery in Montgomery
-          </p>
-
-          <div class="space-y-4">
-            <h1 id="hero-heading" class="max-w-3xl text-5xl font-black leading-[0.94] text-[#0F2744] sm:text-6xl lg:text-7xl">DROP THE BAGS.
-KEEP THE WEEKEND.</h1>
-            <p class="max-w-2xl text-lg leading-8 text-[#2D3748] sm:text-xl">
-              Schedule a pickup in under a minute. We collect, wash, fold, and deliver your laundry back fresh and ready to wear.
-            </p>
-            <p class="max-w-2xl text-base font-semibold leading-8 text-[#1C3557]">No laundromats. No sorting. No wasted weekends.</p>
-          </div>
-
-          <div class="flex flex-col gap-3 sm:flex-row">
-            <a href="#service-area" class="inline-flex h-14 items-center justify-center rounded-full bg-[#D4AF37] px-8 text-base font-semibold text-[#0F2744] shadow-lg shadow-[#D4AF37]/35 transition hover:-translate-y-0.5 hover:bg-[#F4C542] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F2744]">Check Availability</a>
-            <a href="#plans" class="inline-flex h-14 items-center justify-center rounded-full border border-[#0F2744]/25 bg-white px-8 text-base font-semibold text-[#0F2744] transition hover:-translate-y-0.5 hover:border-[#0F2744] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F2744]">View Pricing</a>
-          </div>
-
-          <ul class="grid gap-3 text-sm font-medium text-[#1C3557] sm:grid-cols-2" aria-label="Core trust points">
-            <li class="inline-flex items-center gap-2"><span class="hero-check-icon" aria-hidden="true">?</span><span>Weighed By The Bag</span></li>
-            <li class="inline-flex items-center gap-2"><span class="hero-check-icon" aria-hidden="true">?</span><span>Receipt Before Charge</span></li>
-            <li class="inline-flex items-center gap-2"><span class="hero-check-icon" aria-hidden="true">?</span><span>SMS Updates</span></li>
-            <li class="inline-flex items-center gap-2"><span class="hero-check-icon" aria-hidden="true">?</span><span>Montgomery Local</span></li>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#subscriptions">Subscriptions</a></li>
+            <li><a href="#gift-laundry">Gift Laundry</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#business">Business &amp; Contracting</a></li>
+            <li><a class="btn btn--primary" href="#zip-check">Check Your ZIP</a></li>
           </ul>
         </div>
-
-        <div class="reveal-group relative">
-          <div class="absolute -left-4 top-8 h-36 w-36 rounded-full bg-[#F7D6DE]/55 blur-3xl" aria-hidden="true"></div>
-          <div class="absolute -right-4 bottom-8 h-40 w-40 rounded-full bg-[#D4AF37]/24 blur-3xl" aria-hidden="true"></div>
-
-          <aside class="hero-dashboard hero-float relative mx-auto max-w-xl p-4 sm:p-5" aria-label="FOLD order dashboard preview">
-            <div class="rounded-[1.5rem] bg-[#0F2744] px-5 py-4 text-white shadow-soft">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <p class="text-[0.7rem] font-bold uppercase tracking-[0.28em] text-[#F4C542]">FOLD</p>
-                  <p class="mt-2 text-lg font-semibold">Pickup Scheduled</p>
-                  <p class="text-sm text-slate-300">Today | 4 PM - 6 PM</p>
-                </div>
-                <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#A7F3D0]"><span class="hero-status-dot" aria-hidden="true"></span>On Track</span>
-              </div>
-            </div>
-
-            <div class="mt-4 rounded-[1.4rem] border border-slate-200/85 bg-white/85 p-5 backdrop-blur-xl">
-              <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Progress</p>
-              <ol class="mt-4 space-y-3 text-sm text-[#1C3557]">
-                <li class="flex items-center justify-between"><span class="inline-flex items-center gap-2"><span class="hero-check-icon" aria-hidden="true">?</span>Pickup Complete</span><span class="font-semibold text-[#5FAF6A]">Done</span></li>
-                <li class="flex items-center justify-between"><span class="inline-flex items-center gap-2"><span class="hero-check-icon" aria-hidden="true">?</span>Bag Weighed</span><span class="font-semibold text-[#5FAF6A]">Done</span></li>
-                <li class="flex items-center justify-between"><span class="inline-flex items-center gap-2"><span class="hero-check-icon" aria-hidden="true">?</span>Washing</span><span class="font-semibold text-[#5FAF6A]">In progress</span></li>
-                <li class="flex items-center justify-between"><span class="inline-flex items-center gap-2"><span class="inline-flex h-[1.2rem] w-[1.2rem] items-center justify-center rounded-full bg-[#0F2744]/8 text-xs font-bold text-[#0F2744]" aria-hidden="true">?</span>Folding</span><span class="font-semibold text-[#0F2744]">Next</span></li>
-              </ol>
-
-              <div class="mt-5 rounded-2xl bg-[#F8F9FA] p-4">
-                <p class="text-xs font-bold uppercase tracking-[0.22em] text-slate-500">Delivery Scheduled</p>
-                <p class="mt-2 text-lg font-semibold text-[#0F2744]">Tomorrow | 6 PM - 8 PM</p>
-              </div>
-            </div>
-
-            <div class="mt-4 grid gap-3 sm:grid-cols-2">
-              <div class="rounded-[1.25rem] border border-slate-200 bg-white p-4 shadow-soft">
-                <p class="text-xs font-bold uppercase tracking-[0.22em] text-slate-500">Estimated Total</p>
-                <p class="mt-2 text-3xl font-black text-[#0F2744]">$42.50</p>
-              </div>
-              <div class="rounded-[1.25rem] border border-slate-200 bg-white p-4 shadow-soft">
-                <p class="text-xs font-bold uppercase tracking-[0.22em] text-slate-500">Receipt Sent</p>
-                <p class="mt-2 text-lg font-black text-[#0F2744]">Pending Approval</p>
-              </div>
-            </div>
-          </aside>
-        </div>
       </div>
-    </section>
+    </nav>
+  </header>
 
-    <section class="section-shell" aria-label="Trust signals">
-      <div class="mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 lg:grid-cols-3 lg:px-8">
-        <div class="reveal premium-card hover-lift p-6"><p class="text-sm font-bold uppercase tracking-[0.3em] text-slate-500">Review signal</p><p class="mt-3 text-3xl font-black text-slate-900">4.9/5</p><p class="mt-2 text-slate-600">From Montgomery households that want a cleaner handoff and fewer laundry decisions.</p></div>
-        <div class="reveal premium-card hover-lift p-6" style="transition-delay: 80ms;"><p class="text-sm font-bold uppercase tracking-[0.3em] text-slate-500">Status</p><p class="mt-3 text-3xl font-black text-slate-900">SMS every step</p><p class="mt-2 text-slate-600">Pickup, weigh-in, delivery window, and drop-off keep moving without guesswork.</p></div>
-        <div class="reveal premium-card hover-lift p-6" style="transition-delay: 160ms;"><p class="text-sm font-bold uppercase tracking-[0.3em] text-slate-500">Billing</p><p class="mt-3 text-3xl font-black text-slate-900">Receipt first</p><p class="mt-2 text-slate-600">You see the math before the charge posts, so the experience stays calm and transparent.</p></div>
-      </div>
-    </section>
+  <main id="main-content" class="pb-24 md:pb-0">
 
-    <section id="difference" class="section-shell bg-white/55" aria-labelledby="difference-heading">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center">
-          <span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-primary">Why FOLD</span>
-          <h2 id="difference-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">The FOLD difference</h2>
-          <p class="mt-4 text-lg leading-8 text-slate-600">Premium service should feel predictable. FOLD is built around the parts that matter most: the weight, the text updates, and the final charge.</p>
-        </div>
+    <!-- 1. HERO ------------------------------------------------------- -->
+    <section class="section" style="padding-top: clamp(6.5rem, 12vw, 9rem); padding-bottom: clamp(2.5rem, 6vw, 4.5rem);" aria-labelledby="hero-heading">
+      <div class="shell">
+        <div class="hero-grid">
+          <div class="reveal grid gap-6">
+            <p class="eyebrow">Laundry Concierge &middot; River Region</p>
 
-        <div class="reveal-group mt-10 grid gap-5 lg:grid-cols-3">
-          <article class="premium-card hover-lift p-7 bg-gradient-to-br from-white to-[#f9fdff] lg:col-span-2">
-            <div class="inline-flex rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.24em] text-emerald-700">Customer clarity</div>
-            <h3 class="mt-5 text-3xl font-black text-slate-900">Texts, not guesswork</h3>
-            <p class="mt-4 max-w-2xl text-slate-600">Pickup confirmed. Bags weighed. Delivery window set. Out for delivery. Delivered. Every message gives the next clear step.</p>
-            <div class="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">Pickup confirmed</div>
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">Bag weighed</div>
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">Delivery set</div>
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">Out for delivery</div>
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">Delivered</div>
-            </div>
-          </article>
+            <h1 id="hero-heading" class="text-5xl font-black leading-[0.95] text-[color:var(--ink)] sm:text-6xl lg:text-7xl">
+              Choose peace,<br>not laundry.
+            </h1>
 
-          <article class="premium-card hover-lift p-6 bg-gradient-to-br from-white to-[#f8fbff]">
-            <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Pricing trust</p>
-            <h3 class="mt-4 text-2xl font-bold text-slate-900">Weighed by the bag</h3>
-            <p class="mt-3 text-sm leading-7 text-slate-600">Every bag is weighed in front of the record at pickup. You see the exact weight instead of a rounded estimate.</p>
-          </article>
+            <p class="max-w-xl text-lg leading-8 text-[color:var(--ink-soft)]">
+              Soapbox Caddie picks up, washes, dries, folds, and returns laundry throughout the River Region.
+            </p>
 
-          <article class="premium-card hover-lift p-6 bg-gradient-to-br from-white to-[#f8fffb]">
-            <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Billing trust</p>
-            <h3 class="mt-4 text-2xl font-bold text-slate-900">Receipt before charge</h3>
-            <p class="mt-3 text-sm leading-7 text-slate-600">Overages are shown in plain language first, then charged after you've had a chance to review the receipt.</p>
-          </article>
+            <p class="max-w-xl text-base font-semibold text-[color:var(--ink)]">Let us help you take a load off.</p>
 
-          <article class="premium-card hover-lift p-6 bg-gradient-to-br from-white to-[#fffaf6]">
-            <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Local fit</p>
-            <h3 class="mt-4 text-2xl font-bold text-slate-900">Montgomery local focus</h3>
-            <p class="mt-3 text-sm leading-7 text-slate-600">Designed around Montgomery neighborhoods and schedules, not a generic national service template.</p>
-            <div class="mt-6 space-y-3 text-sm text-slate-700">
-              <div class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3"><span>Service area</span><span class="font-semibold">Midtown, Cloverdale and more</span></div>
-              <div class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3"><span>Support tone</span><span class="font-semibold">Warm, direct, local</span></div>
-              <div class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3"><span>Transparency</span><span class="font-semibold">No surprises</span></div>
-            </div>
-          </article>
-
-          <article class="premium-card hover-lift p-6 bg-gradient-to-br from-white to-[#f4fbff]">
-            <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Operations</p>
-            <h3 class="mt-4 text-2xl font-bold text-slate-900">Capacity-aware delivery</h3>
-            <p class="mt-3 text-sm leading-7 text-slate-600">We confirm the delivery window after pickup so the promise is based on real capacity, not guesswork.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-shell" aria-labelledby="3kd-heading">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="overflow-hidden rounded-[2.5rem] border border-white/70 bg-gradient-to-br from-[#fff7fb] via-white to-[#f4fbff] px-6 py-10 shadow-premium sm:px-8 lg:px-12 lg:py-14">
-          <div class="reveal mx-auto max-w-3xl text-center">
-            <span class="inline-flex items-center rounded-full bg-blush/70 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-slate-700">Coming Soon</span>
-            <h2 id="3kd-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">Meet 3KD Vision Engine</h2>
-            <p class="mt-4 text-lg leading-8 text-slate-600">Snap a photo. Get an estimate. Book with confidence.</p>
-            <p class="mt-3 text-sm font-medium text-slate-500">3KD Vision Engine will let customers upload laundry photos and receive an estimated weight range, price range, and service recommendation before pickup.</p>
-            <div class="mt-6">
-              <a href="estimate.html" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-primary hover:text-primary">Open Get an Estimate</a>
+            <div class="flex flex-wrap gap-3">
+              <a class="btn btn--primary" href="#zip-check">Check Your ZIP</a>
+              <a class="btn btn--secondary" href="#pricing">See bag pricing</a>
             </div>
           </div>
 
-          <div class="reveal-group mt-10 grid gap-5 lg:grid-cols-3 lg:items-stretch">
-            <div class="premium-card p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">1. Upload</p>
-              <div class="mt-4 flex h-full flex-col justify-between rounded-[1.75rem] border border-dashed border-slate-200 bg-slate-50 p-5">
-                <div>
-                  <p class="text-lg font-semibold text-slate-900">Upload laundry photo</p>
-                  <p class="mt-2 text-sm leading-7 text-slate-600">Snap a few quick photos so the estimate starts with something real.</p>
-                </div>
-                <div class="mt-6 rounded-3xl bg-white p-5 shadow-soft">
-                  <div class="flex items-center justify-between text-sm text-slate-500"><span>Upload</span><span>Photo set</span></div>
-                  <div class="mt-3 h-28 rounded-2xl bg-gradient-to-br from-blush/45 via-white to-primary/10"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="premium-card p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">2. Estimate</p>
-              <div class="mt-4 rounded-[1.75rem] bg-slate-900 p-6 text-white shadow-premium">
-                <p class="text-sm font-semibold text-slate-300">Estimated Weight</p>
-                <p class="mt-2 text-4xl font-black">24-30 lbs</p>
-                <p class="mt-5 text-sm font-semibold text-slate-300">Estimated Price</p>
-                <p class="mt-2 text-4xl font-black text-gold">$42-55</p>
-                <div class="mt-5 rounded-3xl bg-white/10 p-4">
-                  <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-300">Detected items</p>
-                  <ul class="mt-3 space-y-2 text-sm text-slate-100"><li>Clothing</li><li>Towels</li><li>Bedding</li></ul>
-                </div>
-                <p class="mt-5 text-sm text-slate-300">Confidence: Medium</p>
-              </div>
-            </div>
-
-            <div class="premium-card p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">3. Book</p>
-              <div class="mt-4 flex h-full flex-col justify-between rounded-[1.75rem] bg-white p-5 shadow-soft">
-                <div>
-                  <p class="text-lg font-semibold text-slate-900">Recommended Service</p>
-                  <p class="mt-2 text-2xl font-black text-slate-900">Family Wash & Fold</p>
-                  <p class="mt-3 text-sm leading-7 text-slate-600">The system recommends the right plan and prepares the booking flow without pretending the feature is live.</p>
-                </div>
-                <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <a href="schedule.html" class="inline-flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-primary to-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:from-emerald-500 hover:to-emerald-400">Join Early Access</a>
-                  <a href="mailto:hello@foldlaundry.com?subject=3KD%20Vision%20early%20access" class="inline-flex flex-1 items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-primary hover:text-primary">Notify Me When Available</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="reveal-group mt-6 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-            <div class="rounded-[1.9rem] border border-slate-200 bg-white p-6 shadow-soft">
-              <p class="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">Example estimate card</p>
-              <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Estimated Weight</p><p class="mt-2 text-2xl font-black text-slate-900">24-30 lbs</p></div>
-                <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Estimated Price</p><p class="mt-2 text-2xl font-black text-slate-900">$42-55</p></div>
-                <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Detected</p><p class="mt-2 text-2xl font-black text-slate-900">Clothing, towels, bedding</p></div>
-                <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Recommended</p><p class="mt-2 text-2xl font-black text-slate-900">Family Wash & Fold</p></div>
-              </div>
-            </div>
-            <div class="rounded-[1.9rem] border border-white/80 bg-gradient-to-br from-blush/50 via-white to-primary/10 p-6 shadow-soft">
-              <p class="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">Product stance</p>
-              <p class="mt-4 text-lg leading-8 text-slate-700">Future-facing, restrained, and clearly marked as coming soon. The goal is to build innovation credibility without suggesting live AI capabilities that do not exist yet.</p>
+          <div class="reveal-group split__media">
+            <!-- Phase 2: image placeholder treatment. Phase 3: real lifestyle photography.
+                 Aspect ratio is reserved now so the final <img> causes no layout shift. -->
+            <div class="media-slot media-slot--hero">
+              <p class="media-slot__label">Hero lifestyle image</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="plans" class="section-shell" aria-labelledby="plans-heading">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center">
-          <span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-primary">Transparent pricing</span>
-          <h2 id="plans-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">Simple, honest plans</h2>
-          <p class="mt-4 text-lg leading-8 text-slate-600">Use the calculator below to get a recommendation, then compare the plans that fit your household size and pickup rhythm.</p>
+    <!-- 2. ZIP CHECK - bridges hero and pricing ----------------------- -->
+    <section id="zip-check" class="section--tight" aria-labelledby="zip-heading">
+      <div class="shell">
+        <div class="zip-panel reveal">
+          <div class="grid gap-2">
+            <h2 id="zip-heading" class="text-2xl font-black text-[color:var(--ink)] sm:text-3xl">Check if we service your area</h2>
+            <p class="text-[color:var(--ink-soft)]">Enter your ZIP code to confirm Soapbox Caddie pickup and delivery where you live.</p>
+          </div>
+
+          <!-- Markup is ready for real service-area validation.
+               TODO: TRA3 - replace the client-side ZIP list with the service-area API. -->
+          <form class="js-zip-form grid gap-3" role="search" aria-label="Check service availability by ZIP code" novalidate>
+            <div class="zip-fields">
+              <div class="grid gap-2">
+                <label class="text-sm font-bold uppercase tracking-[0.18em] text-[color:var(--ink-soft)]" for="service-zip">ZIP code</label>
+                <input
+                  id="service-zip"
+                  class="zip-input"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="[0-9]{5}"
+                  maxlength="5"
+                  placeholder="Enter your ZIP code"
+                  autocomplete="postal-code"
+                  aria-describedby="service-zip-msg">
+              </div>
+              <button class="btn btn--primary sm:mt-[1.85rem]" type="submit">Check ZIP</button>
+            </div>
+
+            <p id="service-zip-msg" class="zip-feedback text-sm font-semibold text-[color:var(--ink-soft)]" role="status" aria-live="polite"></p>
+
+            <div class="zip-actions" data-zip-actions>
+              <a class="btn btn--primary" href="schedule.html">Book a pickup</a>
+              <a class="btn btn--secondary" href="#pricing">See bag pricing</a>
+            </div>
+          </form>
         </div>
-        <div class="reveal-group mx-auto mt-8 grid max-w-5xl gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <div class="premium-card p-6">
-            <p class="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">Why customers trust FOLD</p>
-            <ul class="mt-4 grid gap-3 text-sm leading-7 text-slate-700 sm:grid-cols-2">
-              <li class="flex gap-3"><span aria-hidden="true">[OK]</span><span>No surprise charges</span></li>
-              <li class="flex gap-3"><span aria-hidden="true">[OK]</span><span>Photo or SMS updates</span></li>
-              <li class="flex gap-3"><span aria-hidden="true">[OK]</span><span>Clear receipt before payment</span></li>
-              <li class="flex gap-3"><span aria-hidden="true">[OK]</span><span>Local service area</span></li>
-              <li class="flex gap-3"><span aria-hidden="true">[OK]</span><span>Human support available</span></li>
+      </div>
+    </section>
+
+    <!-- 3. BAG PRICING ------------------------------------------------ -->
+    <section id="pricing" class="section" aria-labelledby="pricing-heading">
+      <div class="shell grid gap-8">
+        <div class="section-head section-head--center reveal">
+          <p class="eyebrow">Pricing</p>
+          <h2 id="pricing-heading" class="text-4xl font-black text-[color:var(--ink)] sm:text-5xl">Simple pricing. Beautifully done.</h2>
+          <p class="text-lg leading-8 text-[color:var(--ink-soft)]">Fill to the line. You're charged by the bag. No sorting fees, no per-item math.</p>
+        </div>
+
+        <div class="auto-grid reveal-group">
+          <article class="card card--feature bag-card" aria-labelledby="bag-small-name">
+            <!-- Phase 3: replace with the real Small bag product photograph -->
+            <div class="media-slot media-slot--bag">
+              <p class="media-slot__label">Small bag image</p>
+            </div>
+            <h3 id="bag-small-name" class="text-2xl font-black text-[color:var(--ink)]">Small Bag</h3>
+            <p class="bag-card__price">$45</p>
+            <div class="bag-card__meta">
+              <p><strong class="text-[color:var(--ink)]">Fill to the line.</strong> The fill line printed on the bag is your limit - fill to it and the price is the price.</p>
+              <!-- TODO: confirm capacity language with client before adding weights or load counts -->
+              <p>Best for a lighter, single-person load.</p>
+            </div>
+            <a class="btn btn--secondary btn--block" href="schedule.html?bag=small">Book Now</a>
+          </article>
+
+          <article class="card card--feature bag-card" aria-labelledby="bag-medium-name">
+            <!-- Phase 3: replace with the real Medium bag product photograph -->
+            <div class="media-slot media-slot--bag">
+              <p class="media-slot__label">Medium bag image</p>
+            </div>
+            <h3 id="bag-medium-name" class="text-2xl font-black text-[color:var(--ink)]">Medium Bag</h3>
+            <p class="bag-card__price">$60</p>
+            <div class="bag-card__meta">
+              <p><strong class="text-[color:var(--ink)]">Fill to the line.</strong> The fill line printed on the bag is your limit - fill to it and the price is the price.</p>
+              <!-- TODO: confirm capacity language with client before adding weights or load counts -->
+              <p>Best for a couple or a regular household week.</p>
+            </div>
+            <a class="btn btn--primary btn--block" href="schedule.html?bag=medium">Book Now</a>
+          </article>
+
+          <article class="card card--feature bag-card" aria-labelledby="bag-large-name">
+            <!-- Phase 3: replace with the real Large bag product photograph -->
+            <div class="media-slot media-slot--bag">
+              <p class="media-slot__label">Large bag image</p>
+            </div>
+            <h3 id="bag-large-name" class="text-2xl font-black text-[color:var(--ink)]">Large Bag</h3>
+            <p class="bag-card__price">$80</p>
+            <div class="bag-card__meta">
+              <p><strong class="text-[color:var(--ink)]">Fill to the line.</strong> The fill line printed on the bag is your limit - fill to it and the price is the price.</p>
+              <!-- TODO: confirm capacity language with client before adding weights or load counts -->
+              <p>Best for a full family week or bedding-heavy loads.</p>
+            </div>
+            <a class="btn btn--secondary btn--block" href="schedule.html?bag=large">Book Now</a>
+          </article>
+        </div>
+
+        <p class="text-center text-sm text-[color:var(--ink-soft)]">
+          Not sure which bag you need? <a class="link-inline" href="estimate.html">Get a photo estimate</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. HOW IT WORKS ----------------------------------------------- -->
+    <section id="how-it-works" class="section" aria-labelledby="how-heading">
+      <div class="shell grid gap-8">
+        <div class="section-head section-head--center reveal">
+          <p class="eyebrow">How It Works</p>
+          <h2 id="how-heading" class="text-4xl font-black text-[color:var(--ink)] sm:text-5xl">Four steps. That's it.</h2>
+        </div>
+
+        <ol class="steps auto-grid auto-grid--steps reveal-group">
+          <li class="card card--muted">
+            <span class="step__num" aria-hidden="true"></span>
+            <h3 class="text-xl font-bold text-[color:var(--ink)]">Book</h3>
+            <p class="text-[color:var(--ink-soft)]">Choose a one-time service or subscription.</p>
+          </li>
+          <li class="card card--muted">
+            <span class="step__num" aria-hidden="true"></span>
+            <h3 class="text-xl font-bold text-[color:var(--ink)]">Fill</h3>
+            <p class="text-[color:var(--ink-soft)]">Fill your Soapbox Caddie bag to the designated line.</p>
+          </li>
+          <li class="card card--muted">
+            <span class="step__num" aria-hidden="true"></span>
+            <h3 class="text-xl font-bold text-[color:var(--ink)]">Pickup</h3>
+            <p class="text-[color:var(--ink-soft)]">Soapbox Caddie collects the bag.</p>
+          </li>
+          <li class="card card--muted">
+            <span class="step__num" aria-hidden="true"></span>
+            <h3 class="text-xl font-bold text-[color:var(--ink)]">Clean &amp; Return</h3>
+            <p class="text-[color:var(--ink-soft)]">Laundry is washed, dried, folded, and returned.</p>
+          </li>
+        </ol>
+
+        <p class="text-center">
+          <a class="btn btn--ghost" href="how-it-works.html">See the full process</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. SUBSCRIPTION ----------------------------------------------- -->
+    <section id="subscriptions" class="section" aria-labelledby="subscription-heading">
+      <div class="shell">
+        <div class="card card--feature reveal" style="padding: clamp(1.5rem, 4vw, 3rem);">
+          <div class="split">
+            <div class="grid gap-5">
+              <p class="eyebrow">Subscription</p>
+              <h2 id="subscription-heading" class="text-4xl font-black text-[color:var(--ink)] sm:text-5xl">More ease. More time. Less laundry.</h2>
+              <p class="text-lg leading-8 text-[color:var(--ink-soft)]">
+                A standing weekly pickup so laundry never becomes a decision again. Same bags, same fill line, same routine every week.
+              </p>
+
+              <ul class="grid gap-2 text-[color:var(--ink-soft)]" role="list">
+                <li>Two bags collected and returned every week</li>
+                <li>A recurring pickup day you can plan around</li>
+                <li>Add extra bags any week you need them</li>
+              </ul>
+
+              <div class="sub-facts">
+                <div class="sub-fact">
+                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--ink-soft)]">Weekly</p>
+                  <p class="sub-fact__value">$55 / week</p>
+                  <p class="text-sm text-[color:var(--ink-soft)]">2 bags per week</p>
+                </div>
+                <div class="sub-fact">
+                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--ink-soft)]">Startup fee</p>
+                  <p class="sub-fact__value">$75</p>
+                  <p class="text-sm text-[color:var(--ink-soft)]">One time, at sign-up</p>
+                </div>
+                <div class="sub-fact">
+                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--ink-soft)]">Additional bag</p>
+                  <p class="sub-fact__value">$25</p>
+                  <p class="text-sm text-[color:var(--ink-soft)]">Per extra bag, per week</p>
+                </div>
+                <div class="sub-fact">
+                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--ink-soft)]">Included</p>
+                  <p class="sub-fact__value">Wash &middot; Dry &middot; Fold</p>
+                  <p class="text-sm text-[color:var(--ink-soft)]">Pickup and return delivery</p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-3">
+                <a class="btn btn--primary" href="schedule.html?plan=subscription">Start a subscription</a>
+                <a class="btn btn--ghost" href="plans.html">Compare options</a>
+              </div>
+            </div>
+
+            <div class="split__media">
+              <!-- Phase 3: supporting subscription lifestyle image -->
+              <div class="media-slot media-slot--wide">
+                <p class="media-slot__label">Subscription supporting image</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. GIFT LAUNDRY - editorial interruption ---------------------- -->
+    <section id="gift-laundry" class="section--tight" aria-labelledby="gift-heading">
+      <div class="shell">
+        <div class="card card--muted reveal" style="padding: clamp(1.5rem, 4vw, 2.5rem);">
+          <div class="split">
+            <div class="grid gap-4">
+              <p class="eyebrow">Gift Laundry</p>
+              <h2 id="gift-heading" class="text-3xl font-black text-[color:var(--ink)] sm:text-4xl">Give the gift of laundry.</h2>
+              <p class="text-lg leading-8 text-[color:var(--ink-soft)]">
+                New parents. Someone recovering. A friend in a hard week. Give them back their time, not another thing to unwrap.
+              </p>
+            </div>
+            <div class="split__action">
+              <!-- TODO: point at the gift purchase flow once it exists -->
+              <a class="btn btn--primary" href="#zip-check">Gift Laundry</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ABOUT ------------------------------------------------------ -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <div class="shell">
+        <div class="split split--media-first reveal">
+          <div class="split__media">
+            <!-- Phase 3: owner / local team photography -->
+            <div class="media-slot media-slot--wide">
+              <p class="media-slot__label">About supporting image</p>
+            </div>
+          </div>
+
+          <div class="grid gap-4">
+            <p class="eyebrow">About Us</p>
+            <h2 id="about-heading" class="text-3xl font-black text-[color:var(--ink)] sm:text-4xl">A local service, handled personally.</h2>
+            <p class="text-lg leading-8 text-[color:var(--ink-soft)]">
+              Soapbox Caddie is a River Region laundry service built around care and consistency. Your laundry is handled by people from here, on a schedule you can count on.
+            </p>
+            <p>
+              <a class="btn btn--secondary" href="about.html">Our Story</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. BUSINESS & CONTRACTING ------------------------------------- -->
+    <section id="business" class="section" aria-labelledby="business-heading">
+      <div class="shell">
+        <div class="card card--feature reveal" style="padding: clamp(1.5rem, 4vw, 2.5rem);">
+          <div class="split">
+            <div class="grid gap-4">
+              <p class="eyebrow">Business &amp; Contracting</p>
+              <h2 id="business-heading" class="text-3xl font-black text-[color:var(--ink)] sm:text-4xl">Laundry, handled for your business.</h2>
+              <p class="text-lg leading-8 text-[color:var(--ink-soft)]">
+                Recurring pickup and return for teams that go through linens and towels every week. We'll build the cadence around your turnovers.
+              </p>
+              <!-- TODO: dedicated business-and-contracting page in a later phase -->
+              <p>
+                <a class="btn btn--primary" href="#zip-check">Partner With Us</a>
+              </p>
+            </div>
+
+            <ul class="auto-grid auto-grid--tags text-sm font-semibold text-[color:var(--ink)]" role="list">
+              <li class="card card--muted">Short-term rentals</li>
+              <li class="card card--muted">Salons</li>
+              <li class="card card--muted">Spas</li>
+              <li class="card card--muted">Clinics</li>
+              <li class="card card--muted">Offices</li>
+              <li class="card card--muted">Other commercial</li>
             </ul>
           </div>
-          <div class="premium-card p-6">
-            <p class="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">Pricing authority</p>
-            <p class="mt-4 text-slate-600">Your estimate helps you plan. Your final total is based on actual weight, and you'll receive a receipt before payment.</p>
-          </div>
-        </div>
-        <div class="mt-10 grid gap-5 lg:grid-cols-3">
-          <article class="plan-card p-7" aria-label="Solo plan"><p class="text-sm font-bold uppercase tracking-[0.3em] text-slate-500">Solo</p><div class="mt-4 flex items-end gap-2"><span class="text-5xl font-black text-slate-900">$39</span><span class="pb-2 text-sm font-semibold text-slate-500">/mo</span></div><p class="mt-3 text-slate-600">For one person who wants laundry off the mental load.</p><ul class="mt-5 space-y-3 text-sm text-slate-700"><li>? 2 FOLD bags included</li><li>? 10 lb cap per bag</li><li>? 2 pickups per month</li><li>? SMS tracking</li></ul><a href="schedule.html?plan=solo" class="mt-6 inline-flex w-full items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-primary hover:text-primary">Choose Solo</a></article>
-          <article class="plan-card plan-card--featured p-7" aria-label="Household plan, most popular"><span class="plan-badge">Most popular</span><div class="mt-4 flex items-end gap-2"><span class="text-5xl font-black text-slate-900">$69</span><span class="pb-2 text-sm font-semibold text-slate-500">/mo</span></div><p class="mt-3 text-slate-600">Balanced for busy households that need predictable help every month.</p><ul class="mt-5 space-y-3 text-sm text-slate-700"><li>? 4 FOLD bags included</li><li>? 12 lb cap per bag</li><li>? 4 pickups per month</li><li>? SMS tracking</li><li>? Delicates care available</li></ul><a href="schedule.html?plan=household" class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-primary to-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:from-emerald-500 hover:to-emerald-400">Choose Household</a></article>
-          <article class="plan-card p-7" aria-label="Estate plan"><p class="text-sm font-bold uppercase tracking-[0.3em] text-slate-500">Estate</p><div class="mt-4 flex items-end gap-2"><span class="text-5xl font-black text-slate-900">$119</span><span class="pb-2 text-sm font-semibold text-slate-500">/mo</span></div><p class="mt-3 text-slate-600">For larger households, rentals, and repeated volume.</p><ul class="mt-5 space-y-3 text-sm text-slate-700"><li>? 8 FOLD bags included</li><li>? 15 lb cap per bag</li><li>? 8 pickups per month</li><li>? Priority pickup windows</li></ul><a href="schedule.html?plan=estate" class="mt-6 inline-flex w-full items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-primary hover:text-primary">Choose Estate</a></article>
         </div>
       </div>
     </section>
 
-    <section class="section-shell" aria-labelledby="calculator-heading">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center">
-          <span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-primary">Find your perfect plan</span>
-          <h2 id="calculator-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">Recommendation calculator</h2>
-          <p class="mt-4 text-lg leading-8 text-slate-600">Answer two quick questions and we'll estimate the monthly volume, time saved, and the plan that fits best.</p>
+    <!-- 9. TRUST: FAQ / PROTECTIONS / WAIVERS -------------------------- -->
+    <section id="trust" class="section" aria-labelledby="trust-heading">
+      <div class="shell grid gap-8">
+        <div class="section-head section-head--center reveal">
+          <p class="eyebrow">Good To Know</p>
+          <h2 id="trust-heading" class="text-3xl font-black text-[color:var(--ink)] sm:text-4xl">Answers, protections, and the fine print.</h2>
+          <p class="text-lg leading-8 text-[color:var(--ink-soft)]">Everything is written down before you ever hand us a bag.</p>
         </div>
 
-        <div class="reveal-group mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-          <div class="premium-card p-7 sm:p-8">
-            <div class="grid gap-5 sm:grid-cols-2">
-              <label class="space-y-2"><span class="text-sm font-bold uppercase tracking-[0.24em] text-slate-500">How many people live in your home?</span><select id="household-size" class="h-14 w-full rounded-2xl border border-slate-200 bg-white px-4 text-base text-slate-900 outline-none transition focus:border-primary focus:ring-4 focus:ring-emerald-100"><option value="1">1 person</option><option value="2">2-4 people</option><option value="3">5+ people</option></select></label>
-              <label class="space-y-2"><span class="text-sm font-bold uppercase tracking-[0.24em] text-slate-500">How often do you want pickup?</span><select id="pickup-frequency" class="h-14 w-full rounded-2xl border border-slate-200 bg-white px-4 text-base text-slate-900 outline-none transition focus:border-primary focus:ring-4 focus:ring-emerald-100"><option value="2">2x per month</option><option value="4" selected>4x per month</option><option value="8">Weekly</option></select></label>
-            </div>
-            <button id="recommend-btn" type="button" class="mt-6 inline-flex h-14 items-center justify-center rounded-full bg-gradient-to-r from-primary to-emerald-500 px-7 text-base font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:from-emerald-500 hover:to-emerald-400">See my recommendation</button>
-            <p class="calc-note mt-3 text-sm text-slate-500">We estimate based on common household laundry volume in Montgomery homes.</p>
-          </div>
+        <div class="auto-grid auto-grid--trust reveal-group">
+          <article id="faq" class="card" aria-labelledby="faq-heading">
+            <h3 id="faq-heading" class="text-xl font-bold text-[color:var(--ink)]">FAQs</h3>
+            <p class="text-[color:var(--ink-soft)]">How pricing works, what's included, turnaround, and what happens if you're not home.</p>
+            <p><a class="link-inline" href="faq.html">Read the FAQs</a></p>
+          </article>
 
-          <aside id="calc-output" class="premium-card p-7 sm:p-8">
-            <p class="text-sm font-bold uppercase tracking-[0.3em] text-slate-500">Recommendation</p>
-            <h3 id="calc-plan-name" class="mt-3 text-3xl font-black text-slate-900">Household</h3>
-            <p id="calc-plan-copy" class="mt-2 text-slate-600">Best fit for a busy home that wants a steady cadence and enough coverage for recurring loads.</p>
-            <div class="mt-6 grid gap-4 sm:grid-cols-2">
-              <div class="rounded-3xl bg-slate-50 p-5"><p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Estimated monthly price</p><p id="calc-price" class="mt-2 text-3xl font-black text-slate-900">$69</p></div>
-              <div class="rounded-3xl bg-slate-50 p-5"><p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Estimated time saved</p><p id="calc-hours" class="mt-2 text-3xl font-black text-slate-900">12 hours</p></div>
-              <div class="rounded-3xl bg-slate-50 p-5"><p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Estimated bags per month</p><p id="calc-bags" class="mt-2 text-3xl font-black text-slate-900">6 bags</p></div>
-              <div class="rounded-3xl bg-slate-50 p-5"><p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Monthly laundry volume</p><p id="calc-volume" class="mt-2 text-3xl font-black text-slate-900">About 90 lb</p></div>
-            </div>
-            <p class="mt-5 text-sm text-slate-500">This is a recommendation tool, not final pricing. Your weigh-in receipt still confirms the final charge before payment.</p>
-          </aside>
-        </div>
-      </div>
-    </section>
+          <article id="protections" class="card" aria-labelledby="protections-heading">
+            <h3 id="protections-heading" class="text-xl font-bold text-[color:var(--ink)]">Protections</h3>
+            <p class="text-[color:var(--ink-soft)]">How your items are handled, tracked, and made right in the rare case something goes wrong.</p>
+            <!-- TODO: link to a dedicated protections page once published -->
+            <p><a class="link-inline" href="terms.html">Read our protections</a></p>
+          </article>
 
-    <section class="section-shell overflow-hidden" aria-labelledby="lifestyle-heading">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="overflow-hidden rounded-[2.5rem] border border-white/70 bg-gradient-to-br from-[#fff7fb] via-white to-[#f4fbff] px-6 py-10 shadow-premium sm:px-8 lg:px-12 lg:py-14">
-          <div class="reveal mx-auto max-w-3xl text-center">
-            <span class="inline-flex items-center rounded-full bg-blush/70 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-slate-700">Lifestyle</span>
-            <h2 id="lifestyle-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">More weekend. Less laundry.</h2>
-            <p class="mt-4 text-lg leading-8 text-slate-600">Spend Saturday with your family, not sorting socks.</p>
-          </div>
-
-          <div class="reveal-group mt-10 grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="image-frame relative p-3 sm:p-4" role="img" aria-label="Premium placeholder showing family free time with fresh folded laundry in a bright interior">
-              <div class="relative overflow-hidden rounded-[1.7rem] bg-gradient-to-br from-[#fff7fb] via-white to-[#edf7ff]">
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_22%_24%,rgba(247,214,222,0.42),transparent_22%),radial-gradient(circle_at_84%_20%,rgba(169,214,245,0.34),transparent_24%),radial-gradient(circle_at_68%_80%,rgba(95,175,106,0.12),transparent_20%)]" aria-hidden="true"></div>
-                <div class="relative flex h-72 flex-col p-5 sm:h-[28rem] sm:p-6">
-                  <div class="rounded-full bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-slate-700 shadow-soft backdrop-blur w-fit">Weekend restored</div>
-                  <div class="mt-auto grid gap-4 sm:grid-cols-[1fr_0.85fr]">
-                    <div class="rounded-[1.7rem] border border-white/70 bg-white/92 p-5 shadow-premium backdrop-blur-xl">
-                      <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Family enjoying free time</p>
-                      <p class="mt-3 text-2xl font-black text-slate-900">Laundry handled before the weekend slips away.</p>
-                    </div>
-                    <div class="rounded-[1.7rem] border border-slate-200 bg-slate-900 p-5 text-white shadow-premium">
-                      <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-300">Theme</p>
-                      <p class="mt-3 text-2xl font-black">Bright home interiors</p>
-                      <p class="mt-2 text-sm leading-7 text-slate-300">Premium, warm, and intentionally staged for a local service brand.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-              <div class="image-frame p-3 sm:p-4" role="img" aria-label="Premium placeholder showing organized closet and folded laundry">
-                <div class="rounded-[1.5rem] bg-gradient-to-br from-white via-[#f8fbff] to-[#fdf6f9] p-5 shadow-soft">
-                  <div class="flex h-56 items-end rounded-[1.25rem] bg-[radial-gradient(circle_at_25%_25%,rgba(169,214,245,0.34),transparent_20%),radial-gradient(circle_at_72%_30%,rgba(247,214,222,0.42),transparent_22%),linear-gradient(135deg,#ffffff_0%,#f4f8ff_55%,#fff7fb_100%)] p-4">
-                    <div class="rounded-3xl border border-white/70 bg-white/90 p-4 shadow-premium"><p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Fresh folded laundry</p><p class="mt-2 text-lg font-semibold text-slate-900">Organized closet ready</p></div>
-                  </div>
-                </div>
-              </div>
-              <div class="premium-card p-6"><p class="text-sm font-bold uppercase tracking-[0.25em] text-slate-500">Why it matters</p><p class="mt-3 text-2xl font-black text-slate-900">Laundry gets handled. The weekend stays yours.</p><p class="mt-3 text-slate-600">FOLD gives families the breathing room to keep plans, keep routines, and keep the house from revolving around another load of laundry.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="service-area" class="section-shell" aria-labelledby="service-area-heading">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div class="reveal premium-card p-7 sm:p-8">
-            <span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-primary">Montgomery, AL</span>
-            <h2 id="service-area-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">Check your ZIP in seconds</h2>
-            <p class="mt-4 text-lg leading-8 text-slate-600">Enter your ZIP code to confirm availability. The layout is mobile-first, app-like, and built to feel as simple as checking a delivery app.</p>
-
-            <form class="js-zip-form mt-7 space-y-3" role="search" aria-label="Check service availability by ZIP">
-              <div class="relative">
-                <label for="service-zip" class="sr-only">Enter your ZIP code</label>
-                <span class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true">
-                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s6-4.35 6-11a6 6 0 1 0-12 0c0 6.65 6 11 6 11Z"></path>
-                    <circle cx="12" cy="10" r="2.5"></circle>
-                  </svg>
-                </span>
-                <input id="service-zip" class="zip-input h-16 w-full rounded-full border border-slate-200 bg-white px-14 pr-4 text-base font-semibold text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-primary focus:ring-4 focus:ring-emerald-100" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="Enter your ZIP code" autocomplete="postal-code" aria-describedby="service-zip-msg service-zip-help">
-              </div>
-              <button type="submit" class="inline-flex h-14 w-full items-center justify-center rounded-full bg-gradient-to-r from-primary to-emerald-500 px-6 text-base font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:from-emerald-500 hover:to-emerald-400 sm:w-auto">Check availability</button>
-              <p id="service-zip-msg" class="zip-feedback text-sm font-medium text-slate-600" role="status" aria-live="polite"></p>
-              <div class="zip-actions mt-2 flex-col gap-3 sm:flex-row" data-zip-actions>
-                <a href="schedule.html" class="inline-flex h-12 flex-1 items-center justify-center rounded-full bg-slate-900 px-5 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:-translate-y-0.5">Schedule Pickup</a>
-                <a href="#plans" class="inline-flex h-12 flex-1 items-center justify-center rounded-full border border-slate-200 bg-white px-5 text-sm font-semibold text-slate-900 transition hover:border-primary hover:text-primary">View Pickup Windows</a>
-              </div>
-            </form>
-
-            <div class="mt-6 rounded-[1.75rem] bg-slate-50 p-5">
-              <p id="service-zip-help" class="text-sm font-semibold text-slate-700">Today's pickup windows available in Montgomery</p>
-              <div class="mt-4 flex flex-wrap gap-2 text-sm text-slate-600"><span class="rounded-full bg-white px-4 py-2 shadow-sm">Midtown</span><span class="rounded-full bg-white px-4 py-2 shadow-sm">Cloverdale</span><span class="rounded-full bg-white px-4 py-2 shadow-sm">Eastdale</span><span class="rounded-full bg-white px-4 py-2 shadow-sm">Downtown</span><span class="rounded-full bg-white px-4 py-2 shadow-sm">Capitol Heights</span></div>
-            </div>
-          </div>
-
-          <div class="reveal-group grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-            <div class="premium-card p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">Today's availability</p>
-              <div class="mt-4 space-y-3">
-                <div class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3"><span>Pickup</span><span class="font-semibold text-emerald-700">4 PM - 6 PM</span></div>
-                <div class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3"><span>Spots remaining</span><span class="font-semibold text-slate-900">12</span></div>
-                <div class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3"><span>Average turnaround</span><span class="font-semibold text-slate-900">24 hours</span></div>
-              </div>
-            </div>
-            <div class="image-frame p-3 sm:p-4" role="img" aria-label="Premium placeholder for Montgomery service area and doorstep pickup route">
-              <div class="relative overflow-hidden rounded-[1.7rem] bg-gradient-to-br from-[#eff8ff] via-white to-[#fff7fb]">
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_26%,rgba(169,214,245,0.34),transparent_20%),radial-gradient(circle_at_78%_20%,rgba(247,214,222,0.34),transparent_22%),radial-gradient(circle_at_74%_72%,rgba(95,175,106,0.13),transparent_20%)]" aria-hidden="true"></div>
-                <div class="relative flex h-72 flex-col p-5 sm:h-80 lg:h-96 sm:p-6">
-                  <div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.24em] text-slate-700"><span class="rounded-full bg-white/92 px-3 py-2 shadow-soft backdrop-blur">Montgomery neighborhood feel</span><span class="rounded-full bg-primary/12 px-3 py-2 text-primary">Route ready</span></div>
-                  <div class="mt-auto grid gap-4 sm:grid-cols-[1fr_0.9fr]">
-                    <div class="rounded-[1.7rem] border border-white/70 bg-white/92 p-5 shadow-premium backdrop-blur-xl">
-                      <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Pickup-ready areas</p>
-                      <p class="mt-3 text-2xl font-black text-slate-900">Midtown, Cloverdale, Eastdale</p>
-                    </div>
-                    <div class="rounded-[1.7rem] border border-slate-200 bg-slate-900 p-5 text-white shadow-premium">
-                      <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-300">Doorstep pickup</p>
-                      <p class="mt-3 text-sm leading-7 text-slate-300">A polished, stock-image-ready container that can later be swapped with a real neighborhood or pickup photo.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-shell" aria-labelledby="reviews-heading">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center"><span class="inline-flex items-center rounded-full bg-blush/60 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-slate-700">Real customers</span><h2 id="reviews-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">What Montgomery households say</h2><p class="mt-4 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">4.9 average rating | Based on early customer feedback | Locally served households</p></div>
-        <div class="reveal-group mt-10 grid gap-5 lg:grid-cols-3">
-          <article class="premium-card p-6"><div class="inline-flex rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">5.0</div><p class="mt-5 text-lg leading-8 text-slate-700">FOLD saved my Saturday. I put two bags outside before work and got clean, folded laundry back without chasing updates.</p><div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-sm font-black text-white">MR</span><div><p class="font-semibold text-slate-900">Marcus R.</p><p class="text-sm text-slate-500">East Montgomery</p></div></div></article>
-          <article class="premium-card p-6 ring-1 ring-blush/50"><div class="inline-flex rounded-full bg-blush/70 px-3 py-1 text-sm font-bold text-slate-800">5.0</div><p class="mt-5 text-lg leading-8 text-slate-700">The weigh-in receipt made the price feel fair. I saw the total before payment and never had to wonder what changed.</p><div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blush text-sm font-black text-slate-900">AL</span><div><p class="font-semibold text-slate-900">Alyssa L.</p><p class="text-sm text-slate-500">Cloverdale | Montgomery</p></div></div></article>
-          <article class="premium-card p-6"><div class="inline-flex rounded-full bg-gold/20 px-3 py-1 text-sm font-bold text-slate-800">5.0</div><p class="mt-5 text-lg leading-8 text-slate-700">After surgery, we needed contactless pickup. The bags came back folded, on time, and with the same calm tone every step of the way.</p><div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold text-sm font-black text-slate-900">DP</span><div><p class="font-semibold text-slate-900">Denise P.</p><p class="text-sm text-slate-500">Capitol Heights | Montgomery</p></div></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-shell" aria-labelledby="faq-heading">
-      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center"><span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-primary">Common questions</span><h2 id="faq-heading" class="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">Frequently asked questions</h2></div>
-        <div class="reveal-group mt-10 space-y-4" role="list">
-          <details class="premium-card group p-6" role="listitem"><summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-slate-900">How long does delivery take?<span class="text-slate-400 transition group-open:rotate-45">+</span></summary><p class="mt-4 text-slate-600">We confirm your delivery window after pickup so your promise is based on real capacity, not guesswork.</p></details>
-          <details class="premium-card group p-6" role="listitem"><summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-slate-900">What if I go over my bag's weight cap?<span class="text-slate-400 transition group-open:rotate-45">+</span></summary><p class="mt-4 text-slate-600">The weigh-in receipt shows the exact weight, your cap, and any overage before your card is charged.</p></details>
-          <details class="premium-card group p-6" role="listitem"><summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-slate-900">What if I'm not home for pickup?<span class="text-slate-400 transition group-open:rotate-45">+</span></summary><p class="mt-4 text-slate-600">Leave the bags in a safe spot and add pickup notes when you schedule. We'll text when the pickup is complete.</p></details>
-          <details class="premium-card group p-6" role="listitem"><summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-slate-900">Can I cancel anytime?<span class="text-slate-400 transition group-open:rotate-45">+</span></summary><p class="mt-4 text-slate-600">Yes. No contracts and no cancellation fees. Your account stays active through the end of the billing period.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-shell pb-16">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#10233f] via-[#19365c] to-[#071224] px-6 py-12 text-white shadow-premium sm:px-8 lg:px-12 lg:py-16">
-          <div class="reveal mx-auto max-w-3xl text-center">
-            <h2 class="text-4xl font-black sm:text-5xl">Your weekend is not for laundry.</h2>
-            <p class="mt-4 text-lg leading-8 text-slate-200">Join Montgomery households that want more time, more clarity, and a better way to keep laundry moving.</p>
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center"><a href="schedule.html" class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-4 text-base font-semibold text-white shadow-lg shadow-emerald-600/30 transition hover:-translate-y-0.5 hover:bg-emerald-500">Schedule Pickup</a><a href="plans.html" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-4 text-base font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/15">See plans</a></div>
-          </div>
+          <article id="waivers" class="card" aria-labelledby="waivers-heading">
+            <h3 id="waivers-heading" class="text-xl font-bold text-[color:var(--ink)]">Waivers</h3>
+            <p class="text-[color:var(--ink-soft)]">The limits of the service, documented plainly so there are no surprises later.</p>
+            <!-- TODO: link to a dedicated waivers page once published -->
+            <p><a class="link-inline" href="terms.html">Read our waivers</a></p>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
-  <div class="mobile-sticky-cta fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 backdrop-blur" aria-label="Mobile quick actions">
-    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-3">
-      <a href="schedule.html" class="inline-flex items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition active:scale-[0.99]">Schedule Pickup</a>
-      <a href="#service-area" class="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition active:scale-[0.99]">Check Availability</a>
+  <div class="mobile-sticky-cta" aria-label="Quick actions">
+    <div class="mobile-sticky-cta__inner">
+      <a class="btn btn--primary" href="#zip-check">Check Your ZIP</a>
+      <a class="btn btn--secondary" href="schedule.html">Book Laundry</a>
     </div>
   </div>
 
-  <footer class="border-t border-slate-200/80 bg-white/80 py-12 backdrop-blur-sm" role="contentinfo">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_0.9fr]">
-        <div><div class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-sm font-black tracking-[0.25em] text-white">FLD</div><p class="mt-4 max-w-md text-slate-600">Laundry pickup and delivery for Montgomery, AL. Weighed by the bag. SMS tracked. Built around a premium, tech-enabled experience.</p><p class="mt-4 text-sm text-slate-500">Demo site for pre-launch planning. Not yet accepting orders.</p></div>
-        <div class="text-sm"><h3 class="font-bold text-slate-900">Service</h3><div class="mt-4 space-y-3 text-slate-600"><a class="block hover:text-primary" href="how-it-works.html">How it works</a><a class="block hover:text-primary" href="plans.html">Plans & pricing</a><a class="block hover:text-primary" href="services.html">Services</a><a class="block hover:text-primary" href="service-area.html">Service area</a></div></div>
-        <div class="text-sm"><h3 class="font-bold text-slate-900">Company</h3><div class="mt-4 space-y-3 text-slate-600"><a class="block hover:text-primary" href="about.html">About</a><a class="block hover:text-primary" href="faq.html">FAQ</a><a class="block hover:text-primary" href="schedule.html">Schedule Pickup</a></div></div>
-        <div class="text-sm"><h3 class="font-bold text-slate-900">Members</h3><div class="mt-4 space-y-3 text-slate-600"><a class="block hover:text-primary" href="login.html">Sign in</a><a class="block hover:text-primary" href="status.html">Track order</a><a class="block hover:text-primary" href="account.html#billing">Billing</a><a class="block hover:text-primary" href="privacy.html">Privacy</a><a class="block hover:text-primary" href="terms.html">Terms</a></div></div>
+  <footer class="border-t border-slate-200 bg-white/80 py-12" role="contentinfo">
+    <div class="shell grid gap-10">
+      <div class="footer-grid">
+        <div class="grid gap-3">
+          <span class="brand">
+            <span class="brand__mark" aria-hidden="true">SC</span>
+            <span class="brand__word">Soapbox Caddie</span>
+          </span>
+          <p class="max-w-sm text-[color:var(--ink-soft)]">
+            Laundry pickup, washing, drying, folding, and return delivery throughout the River Region.
+          </p>
+          <p class="text-sm text-[color:var(--ink-soft)]">Choose peace, not laundry.</p>
+        </div>
+
+        <div class="grid gap-3">
+          <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-[color:var(--ink)]">Services</h2>
+          <div class="footer-list">
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#subscriptions">Subscriptions</a>
+            <a href="#gift-laundry">Gift Laundry</a>
+            <a href="estimate.html">Get an Estimate</a>
+          </div>
+        </div>
+
+        <div class="grid gap-3">
+          <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-[color:var(--ink)]">Company</h2>
+          <div class="footer-list">
+            <a href="about.html">About</a>
+            <a href="#business">Business &amp; Contracting</a>
+            <a href="faq.html">FAQ</a>
+            <a href="#protections">Protections</a>
+            <a href="#waivers">Waivers</a>
+            <a href="#zip-check">Contact</a>
+          </div>
+        </div>
+
+        <div class="grid gap-3">
+          <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-[color:var(--ink)]">Connect</h2>
+          <!-- TODO: real phone, email and social profiles added in Phase 3 -->
+          <div class="footer-list">
+            <p>Phone: to be published</p>
+            <p>Email: to be published</p>
+            <p>Social links: to be published</p>
+          </div>
+        </div>
       </div>
-      <div class="mt-10 flex flex-col gap-3 border-t border-slate-200 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between"><p>(c) 2026 FOLD Laundry. Montgomery, AL. All rights reserved.</p><div class="flex gap-4"><a class="hover:text-primary" href="privacy.html">Privacy</a><a class="hover:text-primary" href="terms.html">Terms</a></div></div>
+
+      <div class="flex flex-col gap-3 border-t border-slate-200 pt-6 text-sm text-[color:var(--ink-soft)] sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; 2026 Soapbox Caddie. River Region. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
+    /* Sticky nav surface on scroll */
     (() => {
       const nav = document.querySelector('.site-nav');
       if (!nav) return;
@@ -673,23 +838,37 @@ KEEP THE WEEKEND.</h1>
       window.addEventListener('scroll', syncNav, { passive: true });
     })();
 
+    /* Mobile navigation toggle */
     (() => {
       const toggle = document.querySelector('.nav-toggle');
       const menu = document.getElementById('nav-menu');
       if (!toggle || !menu) return;
+
+      const setOpen = (open) => {
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        menu.classList.toggle('is-open', open);
+      };
+      const close = () => setOpen(false);
+
       toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        menu.classList.toggle('is-open', !expanded);
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
       });
+
+      menu.addEventListener('click', (event) => {
+        if (event.target.closest('a')) close();
+      });
+
       document.addEventListener('click', (event) => {
-        if (!toggle.contains(event.target) && !menu.contains(event.target)) {
-          toggle.setAttribute('aria-expanded', 'false');
-          menu.classList.remove('is-open');
-        }
+        if (!toggle.contains(event.target) && !menu.contains(event.target)) close();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') close();
       });
     })();
 
+    /* Reveal on scroll (progressive enhancement) */
     (() => {
       const revealItems = document.querySelectorAll('.reveal, .reveal-group');
       if (!('IntersectionObserver' in window)) {
@@ -707,88 +886,47 @@ KEEP THE WEEKEND.</h1>
       revealItems.forEach((el) => observer.observe(el));
     })();
 
+    /* ZIP service-area checker.
+       TODO: TRA3 - replace this local list with the service-area API response. */
     (() => {
       const served = new Set(['36101', '36102', '36103', '36104', '36105', '36106', '36107', '36108', '36109', '36110', '36111', '36112', '36113', '36114', '36115', '36116', '36117', '36118', '36119', '36120']);
+
       document.querySelectorAll('.js-zip-form').forEach((form) => {
         const actions = form.querySelector('.zip-actions');
+
         form.addEventListener('submit', (event) => {
           event.preventDefault();
           const input = form.querySelector('.zip-input');
           const message = form.querySelector('.zip-feedback');
           if (!input || !message) return;
+
           const zip = input.value.trim();
+
           if (!/^\d{5}$/.test(zip)) {
             message.textContent = 'Please enter a valid 5-digit ZIP code.';
-            message.className = 'zip-feedback text-sm font-medium text-rose-200';
             if (actions) actions.classList.remove('is-visible');
             return;
           }
+
           if (served.has(zip)) {
-            message.textContent = 'We serve your area. Choose your next step below.';
-            message.className = 'zip-feedback text-sm font-medium text-emerald-700';
+            message.textContent = 'Good news - we service your area. Choose your next step below.';
             if (actions) {
               actions.classList.add('is-visible');
-              actions.querySelectorAll('a').forEach((link) => {
+              actions.querySelectorAll('a[href]').forEach((link) => {
                 const url = new URL(link.getAttribute('href'), window.location.href);
+                if (url.pathname === window.location.pathname && url.hash) return;
                 url.searchParams.set('zip', zip);
                 link.href = url.pathname + url.search + url.hash;
               });
             }
             return;
           }
+
           message.textContent = 'We are not in that ZIP yet, but we can keep you posted as we expand.';
-          message.className = 'zip-feedback text-sm font-medium text-amber-700';
           if (actions) actions.classList.remove('is-visible');
         });
       });
     })();
-
-    (() => {
-      const planOutput = document.getElementById('calc-output');
-      const planName = document.getElementById('calc-plan-name');
-      const planCopy = document.getElementById('calc-plan-copy');
-      const price = document.getElementById('calc-price');
-      const hours = document.getElementById('calc-hours');
-      const bags = document.getElementById('calc-bags');
-      const volume = document.getElementById('calc-volume');
-      const householdSelect = document.getElementById('household-size');
-      const frequencySelect = document.getElementById('pickup-frequency');
-      const button = document.getElementById('recommend-btn');
-      if (!planOutput || !planName || !planCopy || !price || !hours || !bags || !volume || !householdSelect || !frequencySelect || !button) return;
-
-      const planData = {
-        solo: { name: 'Solo', price: 39, hours: 8, bags: 3, volume: 40, copy: 'Best for one person who wants a lighter cadence and clear cost control.' },
-        household: { name: 'Household', price: 69, hours: 12, bags: 6, volume: 90, copy: 'Best fit for a busy home that wants predictable support and steady coverage.' },
-        estate: { name: 'Estate', price: 119, hours: 18, bags: 10, volume: 150, copy: 'Best for larger homes, rental turnover, or recurring higher-volume laundry.' }
-      };
-      const householdMultiplier = { '1': 1, '2': 2, '3': 3 };
-      const frequencyMultiplier = { '2': 1, '4': 2, '8': 3 };
-
-      const calculate = () => {
-        const size = householdSelect.value;
-        const frequency = frequencySelect.value;
-        const scale = householdMultiplier[size] * frequencyMultiplier[frequency];
-        let planKey = 'solo';
-        if (scale >= 5) planKey = 'estate';
-        else if (scale >= 2.5) planKey = 'household';
-        const base = planData[planKey];
-        const hourlySavings = Math.round((base.hours + (scale * 1.5)) * 10) / 10;
-        const estimatedBags = Math.max(base.bags, Math.round((size === '1' ? 3 : size === '2' ? 6 : 9) * (frequency === '2' ? 0.8 : frequency === '4' ? 1 : 1.35)));
-        const estimatedVolume = Math.max(base.volume, Math.round(estimatedBags * (size === '3' ? 16 : 14)));
-        const estimatedPrice = base.price + (size === '2' ? 10 : size === '3' ? 28 : 0) + (frequency === '8' ? 32 : frequency === '2' ? 0 : 14);
-
-        planName.textContent = base.name;
-        planCopy.textContent = base.copy;
-        price.textContent = `$${estimatedPrice}`;
-        hours.textContent = `${hourlySavings} hours`;
-        bags.textContent = `${estimatedBags} bags`;
-        volume.textContent = `About ${estimatedVolume} lb`;
-      };
-
-      button.addEventListener('click', calculate);
-      calculate();
-    })();
   </script>
 </body>
 </html>
-
