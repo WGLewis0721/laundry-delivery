@@ -377,7 +377,7 @@
       align-content: center;
       padding: clamp(1.5rem, 3.2vw, 2.25rem) var(--shell-gutter);
     }
-    .hero__media { width: 100%; aspect-ratio: 4 / 3; background: var(--surface-main); }
+    .hero__media { width: 100%; aspect-ratio: 751 / 986; background: var(--surface-main); }
 
     @media (min-width: 62rem) {
       /* Full-bleed grid: copy aligns to the shell, media runs to the right
@@ -386,16 +386,22 @@
       .hero {
         grid-template-columns:
           [pad-start] minmax(var(--shell-gutter), 1fr)
-          [content-start] minmax(0, calc(min(var(--shell-content), 100% - (2 * var(--shell-gutter))) * 0.5))
-          [content-mid] minmax(0, calc(min(var(--shell-content), 100% - (2 * var(--shell-gutter))) * 0.5))
+          [content-start] minmax(0, calc(min(var(--shell-content), 100% - (2 * var(--shell-gutter))) * 0.56))
+          [content-mid] minmax(0, calc(min(var(--shell-content), 100% - (2 * var(--shell-gutter))) * 0.44))
           [content-end] minmax(var(--shell-gutter), 1fr) [pad-end];
         align-items: stretch;
       }
       .hero__content { grid-column: content-start / content-mid; padding-inline: 0 clamp(1.5rem, 3vw, 2.5rem); }
-      .hero__media { grid-column: content-mid / pad-end; aspect-ratio: auto; min-height: 33rem; }
-      /* Keeps the whole bear plus the linens and basket edge in frame;
-         a tighter crop lost the basket the alt text describes. */
-      .hero__media > img { object-position: 40% center; }
+      /* The photograph is portrait (751x986), so the media column keeps that
+         ratio and becomes the tallest item in the row - the hero grows to it
+         rather than cropping the basket away. */
+      .hero__media {
+        grid-column: content-mid / pad-end;
+        align-self: start;
+        aspect-ratio: 751 / 986;
+        min-height: 0;
+      }
+      .hero__media > img { object-position: center; }
     }
 
     .hero__title {
@@ -737,8 +743,8 @@
 
       <picture class="hero__media">
         <source srcset="assets/img/hero-soapbox-caddie.webp" type="image/webp">
-        <img src="assets/img/hero-soapbox-caddie.png" width="1824" height="1026"
-             alt="Teddy bear resting in a wicker laundry basket filled with soft white linens."
+        <img src="assets/img/hero-soapbox-caddie.png" width="751" height="986"
+             alt="Teddy bear sitting on a wicker laundry basket filled with soft folded linens."
              loading="eager" fetchpriority="high" decoding="async">
       </picture>
     </section>
