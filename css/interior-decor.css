@@ -60,7 +60,7 @@
   position: absolute;
   pointer-events: none;
   z-index: 0;
-  background: url("../assets/img/olive-branch-wide.jpg") center / cover no-repeat;
+  background: url("../assets/img/olive-branch-wide.png") center / cover no-repeat;
   opacity: .22;
   filter: saturate(.82) contrast(.92);
   -webkit-mask-image: radial-gradient(ellipse at center, #000 48%, transparent 78%);
@@ -84,7 +84,7 @@ body[data-page="schedule"] #booking-main::before {
   height: 18rem;
   pointer-events: none;
   z-index: -1;
-  background: url("../assets/img/olive-branch-wide.jpg") center / cover no-repeat;
+  background: url("../assets/img/olive-branch-wide.png") center / cover no-repeat;
   opacity: .18;
   transform: rotate(-9deg);
   -webkit-mask-image: radial-gradient(ellipse at center, #000 42%, transparent 76%);
@@ -148,7 +148,7 @@ body[data-page="schedule"] .plan-card {
   width: 17rem;
   height: 20rem;
   pointer-events: none;
-  background: url("../assets/img/olive-branch-wide.jpg") center / cover no-repeat;
+  background: url("../assets/img/olive-branch-wide.png") center / cover no-repeat;
   opacity: .15;
   -webkit-mask-image: radial-gradient(ellipse at center, #000 38%, transparent 76%);
   mask-image: radial-gradient(ellipse at center, #000 38%, transparent 76%);
@@ -191,7 +191,7 @@ body[data-page="plans"] #subscription .brand-media { display: none; }
   right: -8rem;
   width: 24rem;
   height: 28rem;
-  background: url("../assets/img/olive-branch-wide.jpg") center / cover no-repeat;
+  background: url("../assets/img/olive-branch-wide.png") center / cover no-repeat;
   opacity: .12;
   pointer-events: none;
   -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 76%);
@@ -265,7 +265,7 @@ body[data-page="service-area"] main::before {
   right: -6rem;
   width: 19rem;
   height: 20rem;
-  background: url("../assets/img/olive-branch-wide.jpg") center / cover no-repeat;
+  background: url("../assets/img/olive-branch-wide.png") center / cover no-repeat;
   opacity: .13;
   pointer-events: none;
   -webkit-mask-image: radial-gradient(ellipse at center, #000 38%, transparent 74%);
@@ -550,7 +550,7 @@ body[data-page="schedule"] #booking-main::before,
 body[data-page="faq"] main::before,
 body[data-page="services"] main::before,
 body[data-page="service-area"] main::before {
-  background-image: url("../assets/img/olive-branch-wide.jpg");
+  background-image: url("../assets/img/olive-branch-wide.png");
   background-size: cover;
   background-position: center;
   filter: saturate(.9) contrast(.96);
@@ -616,7 +616,7 @@ body:not([data-page="schedule"]):not([data-page="plans"]):not([data-page="about"
   width: 24rem;
   height: 29rem;
   pointer-events: none;
-  background: url("../assets/img/olive-branch-right.jpg") center / cover no-repeat;
+  background: url("../assets/img/olive-branch-right.png") center / cover no-repeat;
   opacity: .075;
   -webkit-mask-image: radial-gradient(ellipse at center, #000 38%, transparent 76%);
   mask-image: radial-gradient(ellipse at center, #000 38%, transparent 76%);
