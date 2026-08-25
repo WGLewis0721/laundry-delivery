@@ -11,7 +11,7 @@
   <meta property="og:title" content="Soapbox Caddie - Laundry Pickup &amp; Delivery | River Region">
   <meta property="og:description" content="Laundry pickup, washing, drying, folding, and return delivery across the River Region. Simple pricing by the bag.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://wglewis0721.github.io/laundry-delivery/assets/img/hero-soapbox-caddie.png">
+  <meta property="og:image" content="https://wglewis0721.github.io/laundry-delivery/assets/hero-soapbox-caddie.png">
   <meta property="og:url" content="https://wglewis0721.github.io/laundry-delivery/index.html">
 
   <!-- Self-hosted variable fonts. No CDN, no runtime third-party requests.
@@ -20,8 +20,8 @@
         href="assets/fonts/cormorant-garamond/CormorantGaramond-Variable.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
         href="assets/fonts/cormorant-garamond/CormorantGaramond-Italic-Variable.woff2">
-  <link rel="preload" as="image" type="image/webp"
-        href="assets/img/hero-soapbox-caddie.webp" fetchpriority="high">
+  <link rel="preload" as="image" type="image/png"
+        href="assets/hero-soapbox-caddie.png" fetchpriority="high">
   <style>
 
     /* ---------------- Self-hosted variable fonts ----------------
@@ -377,7 +377,18 @@
       align-content: center;
       padding: clamp(1.5rem, 3.2vw, 2.25rem) var(--shell-gutter);
     }
-    .hero__media { width: 100%; aspect-ratio: 4 / 5; background: var(--surface-main); }
+    /* The hero photograph is landscape (1586x992). It is never forced into a
+       portrait box: mobile shows the whole frame, desktop crops to the right
+       so the bear and basket stay in view. */
+    .hero__media {
+      width: 100%; aspect-ratio: auto; min-height: 0;
+      background: var(--surface-main);
+    }
+    .hero__media > img {
+      width: 100%; height: auto;
+      object-fit: contain;
+      object-position: center;
+    }
 
     @media (min-width: 62rem) {
       /* Full-bleed grid: copy aligns to the shell, media runs to the right
@@ -392,16 +403,20 @@
         align-items: stretch;
       }
       .hero__content { grid-column: content-start / content-mid; padding-inline: 0 clamp(1.5rem, 3vw, 2.5rem); }
-      /* The photograph is portrait (751x986), so the media column keeps that
-         ratio and becomes the tallest item in the row - the hero grows to it
-         rather than cropping the basket away. */
+      /* Landscape photograph: the media column fills the hero height and
+         crops from the right edge, keeping the bear and basket substantial. */
       .hero__media {
         grid-column: content-mid / pad-end;
-        align-self: start;
-        aspect-ratio: 4 / 5;
-        min-height: 0;
+        align-self: stretch;
+        aspect-ratio: auto;
+        min-height: 34rem;
+        overflow: hidden;
       }
-      .hero__media > img { object-position: center; }
+      .hero__media > img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center right;
+      }
     }
 
     .hero__title {
@@ -742,9 +757,8 @@
       </div>
 
       <picture class="hero__media">
-        <source srcset="assets/img/hero-soapbox-caddie.webp" type="image/webp">
-        <img src="assets/img/hero-soapbox-caddie.png" width="1080" height="1350"
-             alt="Teddy bear sitting in a wicker laundry basket filled with soft folded linens."
+        <img src="assets/hero-soapbox-caddie.png" width="1586" height="992"
+             alt="Teddy bear sitting on soft white linens in a wicker laundry basket."
              loading="eager" fetchpriority="high" decoding="async">
       </picture>
     </section>
