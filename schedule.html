@@ -49,10 +49,6 @@
 </nav>
 
 <main id="booking-main" style="padding-block: var(--space-12) var(--space-20);">
-  <figure class="interior-page-banner interior-page-banner--schedule">
-    <img src="assets/img/decor-teddy-basket.webp" alt="Light wicker laundry basket filled with cream linens with a teddy bear resting on top." loading="lazy" decoding="async">
-  </figure>
-
   <div class="wrap">
     <div class="booking-wrap deco-frame deco-context">
       <svg class="deco-sprig deco-sprig--panel-corner deco-sprig--corner-wide deco-sprig--lg" viewBox="0 0 220 340" aria-hidden="true" focusable="false"><path d="M38 322C14 192 152 150 178 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><g fill="currentColor"><path d="M0 0C6.1 -7.2 23.6 -7.2 38.0 0C23.6 7.2 6.1 7.2 0 0Z" transform="translate(35.4 285.5) rotate(-41.2)"/><path d="M0 0C5.8 -6.8 22.4 -6.8 36.1 0C22.4 6.8 5.8 6.8 0 0Z" transform="translate(40.0 256.2) rotate(-121.0)"/><path d="M0 0C5.5 -6.4 21.2 -6.4 34.2 0C21.2 6.4 5.5 6.4 0 0Z" transform="translate(49.9 229.6) rotate(-18.5)"/><path d="M0 0C5.2 -6.1 20.0 -6.1 32.3 0C20.0 6.1 5.2 6.1 0 0Z" transform="translate(64.0 204.8) rotate(-102.8)"/><path d="M0 0C4.9 -5.7 18.9 -5.7 30.4 0C18.9 5.7 4.9 5.7 0 0Z" transform="translate(81.0 181.1) rotate(-6.3)"/><path d="M0 0C4.6 -5.4 17.7 -5.4 28.5 0C17.7 5.4 4.6 5.4 0 0Z" transform="translate(99.8 157.7) rotate(-96.7)"/><path d="M0 0C4.3 -5.0 16.5 -5.0 26.6 0C16.5 5.0 4.3 5.0 0 0Z" transform="translate(119.2 133.9) rotate(-5.8)"/><path d="M0 0C4.0 -4.7 15.3 -4.7 24.7 0C15.3 4.7 4.0 4.7 0 0Z" transform="translate(137.8 108.7) rotate(-101.4)"/><path d="M0 0C3.7 -4.3 14.2 -4.3 22.8 0C14.2 4.3 3.7 4.3 0 0Z" transform="translate(154.7 81.6) rotate(-15.4)"/><path d="M0 0C3.4 -4.0 13.1 -4.0 21.1 0C13.1 4.0 3.4 4.0 0 0Z" transform="translate(167.1 55.1) rotate(-114.5)"/><path d="M0 0C2.6 -3.2 9.9 -3.2 16.0 0C9.9 3.2 2.6 3.2 0 0Z" transform="translate(175.4 29.6) rotate(-75.6)"/></g></svg>
@@ -118,18 +114,20 @@
       </section>
 
       <!-- ── Step 2: Choose your bag ───────────────────── -->
-      <section class="booking-step" id="step-2" aria-labelledby="step2-title">
+      <section class="booking-step schedule-step2-decor" id="step-2" aria-labelledby="step2-title">
         <div class="step2-header">
           <div>
             <h2 class="booking-step-title" id="step2-title">Choose your bag</h2>
             <p class="booking-step-desc">Fill to the line. You're charged by the bag.</p>
           </div>
-          <img class="step2-accent" src="assets/img/decor-towels-basket.webp" alt="Folded cream and beige towels arranged neatly in a light wicker basket." loading="lazy" decoding="async">
-        </div>
+</div>
 
         <div class="plans-grid" style="margin-bottom: var(--space-8);">
 
-          <article class="plan-card plan-card--text-only" aria-label="Small Bag">
+          <article class="plan-card" aria-label="Small Bag">
+          <figure class="bag-product-visual" aria-hidden="true">
+            <img src="assets/img/bag-small.png" alt="Soapbox Caddie small cream laundry bag." loading="lazy" decoding="async">
+          </figure>
 <p class="plan-name">Small Bag</p>
             <div class="plan-price">
               <span class="plan-amount">$45</span>
@@ -146,8 +144,11 @@
             </button>
           </article>
 
-          <article class="plan-card plan-card--featured plan-card--text-only" aria-label="Medium Bag">
+          <article class="plan-card plan-card--featured" aria-label="Medium Bag">
             <span class="plan-badge">Most popular</span>
+          <figure class="bag-product-visual" aria-hidden="true">
+            <img src="assets/img/bag-medium.png" alt="Soapbox Caddie medium tan laundry bag." loading="lazy" decoding="async">
+          </figure>
 <p class="plan-name">Medium Bag</p>
             <div class="plan-price">
               <span class="plan-amount">$60</span>
@@ -164,7 +165,10 @@
             </button>
           </article>
 
-          <article class="plan-card plan-card--text-only" aria-label="Large Bag">
+          <article class="plan-card" aria-label="Large Bag">
+          <figure class="bag-product-visual" aria-hidden="true">
+            <img src="assets/img/bag-large.png" alt="Soapbox Caddie large sage laundry bag." loading="lazy" decoding="async">
+          </figure>
 <p class="plan-name">Large Bag</p>
             <div class="plan-price">
               <span class="plan-amount">$80</span>
@@ -182,6 +186,10 @@
           </article>
 
         </div>
+
+        <figure class="schedule-side-basket mockup-photo" aria-label="Fresh folded laundry in a wicker basket">
+          <img src="assets/img/decor-wide-basket-vase.webp" alt="Wicker laundry basket filled with cream towels beside folded linens and a ceramic vase." loading="lazy" decoding="async">
+        </figure>
 
         <div class="plan-card" aria-label="Subscription" style="max-width: 34rem;">
           <p class="plan-name">Or subscribe</p>
