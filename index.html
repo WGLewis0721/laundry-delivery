@@ -11,7 +11,7 @@
   <meta property="og:title" content="Soapbox Caddie - Laundry Pickup &amp; Delivery | River Region">
   <meta property="og:description" content="Laundry pickup, washing, drying, folding, and return delivery across the River Region. Simple pricing by the bag.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://wglewis0721.github.io/laundry-delivery/assets/img/hero-soapbox-caddie.png">
+  <meta property="og:image" content="https://wglewis0721.github.io/laundry-delivery/assets/img/hero-banner-soapbox-caddie.png">
   <meta property="og:url" content="https://wglewis0721.github.io/laundry-delivery/index.html">
 
   <!-- Self-hosted variable fonts. No CDN, no runtime third-party requests.
@@ -21,7 +21,7 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
         href="assets/fonts/cormorant-garamond/CormorantGaramond-Italic-Variable.woff2">
   <link rel="preload" as="image" type="image/webp"
-        href="assets/img/hero-soapbox-caddie.webp" fetchpriority="high">
+        href="assets/img/hero-banner-soapbox-caddie.webp" fetchpriority="high">
   <style>
 
     /* ---------------- Self-hosted variable fonts ----------------
@@ -371,35 +371,39 @@
 
     /* ---------------- Hero ---------------- */
 
-    .hero { display: grid; background: var(--surface-main); }
+    /* The photograph is landscape (1672x941) with wide open negative space
+       on its left third. The box always matches that native ratio, so
+       object-fit: cover never actually crops anything - the whole frame
+       stays visible edge to edge. Below 62rem there isn't enough height in
+       that ratio for the headline + ZIP panel to sit on top of it legibly,
+       so the image runs full-bleed on top and the copy flows in normal
+       document order beneath it. At 62rem+ the image is tall enough that
+       the copy overlays its open left side instead. */
+
+    .hero { position: relative; display: grid; background: var(--surface-main); }
+    .hero__media { order: -1; width: 100%; aspect-ratio: 1672 / 941; background: var(--surface-main); }
     .hero__content {
       display: grid; gap: clamp(0.9rem, 1.8vw, 1.35rem);
       align-content: center;
       padding: clamp(1.5rem, 3.2vw, 2.25rem) var(--shell-gutter);
     }
-    .hero__media { width: 100%; aspect-ratio: 751 / 1124; background: var(--surface-main); }
 
     @media (min-width: 62rem) {
-      /* Full-bleed grid: copy aligns to the shell, media runs to the right
-         viewport edge. min() keeps the tracks inside the viewport when the
-         window is narrower than the container. */
-      .hero {
-        grid-template-columns:
-          [pad-start] minmax(var(--shell-gutter), 1fr)
-          [content-start] minmax(0, calc(min(var(--shell-content), 100% - (2 * var(--shell-gutter))) * 0.60))
-          [content-mid] minmax(0, calc(min(var(--shell-content), 100% - (2 * var(--shell-gutter))) * 0.40))
-          [content-end] minmax(var(--shell-gutter), 1fr) [pad-end];
-        align-items: stretch;
+      .hero::before {
+        content: "";
+        position: absolute; inset: 0; z-index: 1;
+        background: linear-gradient(90deg,
+          var(--brand-ivory) 0%,
+          color-mix(in srgb, var(--brand-ivory) 82%, transparent) 38%,
+          transparent 62%);
+        pointer-events: none;
       }
-      .hero__content { grid-column: content-start / content-mid; padding-inline: 0 clamp(1.5rem, 3vw, 2.5rem); }
-      /* The photograph is portrait (751x1124), so the media column keeps that
-         ratio and becomes the tallest item in the row - the hero grows to it
-         rather than cropping the bear or basket away. */
-      .hero__media {
-        grid-column: content-mid / pad-end;
-        align-self: start;
-        aspect-ratio: 751 / 1124;
-        min-height: 0;
+      .hero__media { order: 0; z-index: 0; }
+      .hero__content {
+        position: absolute; inset: 0; z-index: 2;
+        align-content: center;
+        max-width: 33rem;
+        padding: 2rem clamp(1.5rem, 3vw, 2.5rem) 2rem var(--shell-gutter);
       }
     }
 
@@ -741,9 +745,9 @@
       </div>
 
       <picture class="hero__media">
-        <source srcset="assets/img/hero-soapbox-caddie.webp" type="image/webp">
-        <img src="assets/img/hero-soapbox-caddie.png" width="751" height="1124"
-             alt="Teddy bear sitting on a wicker laundry basket filled with soft folded linens."
+        <source srcset="assets/img/hero-banner-soapbox-caddie.webp" type="image/webp">
+        <img src="assets/img/hero-banner-soapbox-caddie.png" width="1672" height="941"
+             alt="Teddy bear sitting in a wicker laundry basket with soft folded linens, in warm sunlit light."
              loading="eager" fetchpriority="high" decoding="async">
       </picture>
     </section>
