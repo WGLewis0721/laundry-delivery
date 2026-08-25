@@ -5,26 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soapbox Caddie - Laundry Pickup &amp; Delivery | River Region</title>
   <meta name="description" content="Soapbox Caddie picks up, washes, dries, folds, and returns laundry throughout the River Region. Fill the bag to the line and pay by the bag. Choose peace, not laundry.">
-  <meta name="theme-color" content="#30351F">
+  <meta name="theme-color" content="#1E2509">
 
   <link rel="canonical" href="https://wglewis0721.github.io/laundry-delivery/index.html">
   <meta property="og:title" content="Soapbox Caddie - Laundry Pickup &amp; Delivery | River Region">
   <meta property="og:description" content="Laundry pickup, washing, drying, folding, and return delivery across the River Region. Simple pricing by the bag.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://wglewis0721.github.io/laundry-delivery/assets/img/hero-soapbox-caddie.png">
   <meta property="og:url" content="https://wglewis0721.github.io/laundry-delivery/index.html">
 
-  <!-- Self-hosted variable fonts. No CDN, no runtime third-party requests:
-       the site renders identically with external network access disabled.
-       Sources (fetched at build time, not runtime):
-         Cormorant Garamond - github.com/google/fonts/tree/main/ofl/cormorantgaramond
-         Oswald             - github.com/google/fonts/tree/main/ofl/oswald
-         Inter              - github.com/rsms/inter
-       The two Cormorant faces render the above-the-fold hero headline, so
-       they are preloaded; Inter and Oswald load normally behind swap. -->
+  <!-- Self-hosted variable fonts. No CDN, no runtime third-party requests.
+       Sources: google/fonts (Cormorant Garamond, Oswald), rsms/inter. -->
   <link rel="preload" as="font" type="font/woff2" crossorigin
         href="assets/fonts/cormorant-garamond/CormorantGaramond-Variable.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
         href="assets/fonts/cormorant-garamond/CormorantGaramond-Italic-Variable.woff2">
+  <link rel="preload" as="image" type="image/webp"
+        href="assets/img/hero-soapbox-caddie.webp" fetchpriority="high">
   <style>
 
     /* ---------------- Self-hosted variable fonts ----------------
@@ -59,21 +56,6 @@
       font-style: normal;
       font-display: swap;
     }
-    /* ------------------------------------------------------------------
-       PHASE 2 - VISUAL DESIGN SYSTEM
-
-       Layout, composition and density are inherited unchanged from Phase
-       1-B (the approved mockup). This pass adds the Soapbox Caddie visual
-       system: colour tokens, typographic hierarchy, surfaces, buttons,
-       borders, radii, line icons and production-ready image slots.
-
-       Colour balance target: ~60% warm linen / white, ~30% sage + natural
-       tan, ~10% deep olive emphasis.
-
-       Still to come - Phase 3: real logo, client photography, bag
-       product shots, final icon set if the client supplies one.
-       ------------------------------------------------------------------ */
-
 
     /* ---------------- Reset ----------------
        Replaces the slice of Tailwind's preflight this page depended on,
@@ -100,72 +82,59 @@
     .lede__cta { margin-top: 0.5rem; }
     .trust-heading { text-align: center; }
     .footer-legal--stacked { margin-top: 0.5rem; }
-    .text-ink { color: var(--ink); font-weight: 600; }
+    .text-ink { color: var(--text-primary); font-weight: 600; }
 
     :root {
       color-scheme: light;
 
-      /* ---- Palette ---------------------------------------------------
-         Single source of truth. Nothing below should introduce a new hex. */
+      /* ---- Official Soapbox Caddie brand board ----------------------
+         These four values are the visual source of truth. Everything
+         else in this file is derived from them; no other hex appears. */
+      --brand-ivory: #F7F2F0;
+      --brand-ink: #0E0E10;
+      --brand-olive: #1E2509;
+      --brand-taupe: #CFC5B8;
 
-      /* Primary light surfaces (~60%) */
-      --color-linen: #F5F3ED;
-      --color-warm-white: #FCFBF8;
-      --color-white: #FFFFFF;
+      /* ---- Derived neutrals -----------------------------------------
+         Measured, not guessed. Taupe is 1.5:1 on ivory, so it is a
+         decorative divider only; controls need --border-strong (3.3:1),
+         and muted body text needs --text-muted (4.9:1). */
+      --text-muted: #6B696A;      /* ink 60% over ivory  -> 4.91:1 */
+      --border-strong: #8B857D;   /* taupe + ink 35%     -> 3.29:1 */
 
-      /* Sage family (~30% with the tans) */
-      --color-sage: #B8B9AE;
-      --color-sage-light: #D8DAD2;
-      --color-sage-dark: #85897A;
+      /* ---- Semantic aliases ----------------------------------------- */
+      --surface-main: var(--brand-ivory);
+      --surface-light: #FFFFFF;
+      --surface-muted: var(--brand-taupe);
 
-      /* Natural tan family */
-      --color-camel: #B98A60;
-      --color-sand: #D7B999;
-      --color-oatmeal: #E5D8C8;
+      --text-primary: var(--brand-ink);
+      --text-accent: var(--brand-olive);
 
-      /* Brand greens (~10% emphasis) */
-      --color-olive: #30351F;
-      --color-olive-soft: #596044;
+      --action-primary: var(--brand-olive);
+      --action-primary-text: var(--brand-ivory);
 
-      /* Text */
-      --color-charcoal: #24261F;
-      --color-text-muted: #66685F;
+      --border-brand: var(--brand-taupe);
+      --footer-bg: var(--brand-ink);
 
-      /* Utility */
-      --color-border: #DDD9CF;
-      /* Derived: a linen/oatmeal blend that reads as "reserved media" against
-         every surrounding surface without becoming another palette colour. */
-      --color-placeholder: #EAE5DB;
+      /* On dark surfaces. Ivory is 14.3:1 on olive and 17.4:1 on ink;
+         taupe is 9.3:1 and 11.3:1 - both clear AA for body text. */
+      --on-dark: var(--brand-ivory);
+      --on-dark-muted: var(--brand-taupe);
+      --on-dark-line: color-mix(in srgb, var(--brand-taupe) 45%, transparent);
+      --on-dark-divider: color-mix(in srgb, var(--brand-taupe) 28%, transparent);
 
-      /* On dark surfaces. Solid rather than alpha so contrast is provable:
-         warm-white 12.3:1 and muted 6.9:1 on olive; 6.6:1 and 4.8:1 on
-         olive-soft. Alpha values below 0.8 failed AA on olive-soft. */
-      --color-on-dark: var(--color-warm-white);
-      --color-on-dark-muted: #DBDCD4;
-      --color-on-dark-line: rgba(252, 251, 248, 0.62);
-      --color-on-dark-divider: rgba(252, 251, 248, 0.28);
-
-      /* ---- Semantic aliases -----------------------------------------
-         Components reference these, so a palette change is a one-line edit. */
-      --surface: var(--color-warm-white);
-      --surface-muted: var(--color-linen);
-      --surface-warm: var(--color-linen);
-      --surface-placeholder: var(--color-placeholder);
-      --line: var(--color-border);
-      /* Interactive boundaries need >= 3:1; --line alone is 1.4:1 on warm
-         white, so it is for decorative hairlines only. */
-      --line-strong: var(--color-sage-dark);
-      --ink: var(--color-charcoal);
-      --ink-soft: var(--color-text-muted);
-      --accent: var(--color-olive);
-      --accent-soft: var(--color-olive-soft);
-
-      /* ---- Typography ------------------------------------------------ */
-      --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      /* ---- Typography ------------------------------------------------
+         The brand board specifies OKANA and ENRIQ. No licensed files for
+         either were supplied, so the display face remains the one the
+         approved mockup was signed off on. Swap --font-brand-display and
+         --font-brand-accent when the real files arrive. */
+      --font-brand-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-brand-accent: 'Oswald', 'Arial Narrow', 'Inter', system-ui, sans-serif;
       --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-      --font-condensed: 'Oswald', 'Arial Narrow', 'Inter', system-ui, sans-serif;
+      --font-display: var(--font-brand-display);
+      --font-condensed: var(--font-brand-accent);
 
-      /* ---- Container + rhythm (unchanged from Phase 1-B) ------------- */
+      /* ---- Container + rhythm (unchanged) --------------------------- */
       --shell-max: 82rem;
       --shell-gutter: clamp(1rem, 3.5vw, 2rem);
       --shell-content: calc(var(--shell-max) - (2 * var(--shell-gutter)));
@@ -173,24 +142,20 @@
       --section-space-tight: clamp(0.75rem, 1.5vw, 1.1rem);
       --grid-gap: clamp(0.85rem, 1.6vw, 1.25rem);
 
-      /* ---- Radius scale ---------------------------------------------- */
-      --radius-sm: 0.35rem;   /* buttons, inputs */
-      --radius-md: 0.6rem;    /* small panels */
-      --radius-lg: 0.9rem;    /* cards, bands, media */
+      --radius-sm: 0.35rem;
+      --radius-md: 0.6rem;
+      --radius-lg: 0.9rem;
       --radius-pill: 9999px;
 
-      /* ---- Depth ------------------------------------------------------
-         Editorial, not floating cards: exactly one shadow, used only where
-         an element genuinely sits above the page (the mobile nav sheet). */
-      --shadow-sheet: 0 18px 40px -30px rgba(36, 38, 31, 0.5);
+      --shadow-sheet: 0 18px 40px -30px color-mix(in srgb, var(--brand-ink) 45%, transparent);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-body);
-      color: var(--ink);
-      background: var(--surface);
+      color: var(--text-primary);
+      background: var(--surface-main);
       font-size: 1rem;
     }
 
@@ -202,14 +167,14 @@
     img, svg, video { max-width: 100%; height: auto; }
 
     :where(a, button, input, select, textarea, summary):focus-visible {
-      outline: 3px solid var(--color-olive);
+      outline: 3px solid var(--brand-olive);
       outline-offset: 2px;
       border-radius: var(--radius-sm);
     }
 
     .skip-link {
       position: absolute; left: 1rem; top: 1rem; z-index: 60; transform: translateY(-200%);
-      border-radius: var(--radius-sm); background: var(--color-olive); color: var(--color-on-dark);
+      border-radius: var(--radius-sm); background: var(--brand-olive); color: var(--on-dark);
       padding: 0.7rem 1rem; font-weight: 600; transition: transform 0.2s ease;
     }
     .skip-link:focus { transform: translateY(0); }
@@ -230,14 +195,14 @@
 
     .section { padding-block: var(--section-space); }
     .section--tight { padding-block: var(--section-space-tight); }
-    .rule-top { border-top: 1px solid var(--line); }
+    .rule-top { border-top: 1px solid var(--border-brand); }
 
     /* Narrow editorial intro column beside a wider content row.
        Used by Pricing and How It Works, per the mockup. */
     .lede { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); }
     @media (min-width: 62rem) {
       .lede { grid-template-columns: minmax(0, 0.72fr) minmax(0, 3fr); align-items: start; }
-      .lede--divided > .lede__body { border-left: 1px solid var(--line); padding-left: clamp(1.25rem, 2.6vw, 2.25rem); }
+      .lede--divided > .lede__body { border-left: 1px solid var(--border-brand); padding-left: clamp(1.25rem, 2.6vw, 2.25rem); }
     }
     .lede__intro { display: grid; gap: 0.5rem; align-content: start; justify-items: start; }
 
@@ -246,63 +211,52 @@
     .title-lg {
       font-family: var(--font-display);
       font-size: clamp(1.9rem, 3.1vw, 2.5rem);
-      font-weight: 400; line-height: 1.12; color: var(--color-olive);
+      font-weight: 400; line-height: 1.12; color: var(--brand-olive);
     }
     .title-md {
       font-family: var(--font-display);
       font-size: clamp(1.5rem, 2.3vw, 1.85rem);
-      font-weight: 400; line-height: 1.18; color: var(--color-olive);
+      font-weight: 400; line-height: 1.18; color: var(--brand-olive);
     }
-    .body-sm { font-size: 0.875rem; line-height: 1.6; color: var(--ink-soft); }
-    .body-xs { font-size: 0.8125rem; line-height: 1.55; color: var(--ink-soft); }
-    .text-ink { color: var(--ink); }
+    .body-sm { font-size: 0.875rem; line-height: 1.6; color: var(--text-muted); }
+    .body-xs { font-size: 0.8125rem; line-height: 1.55; color: var(--text-muted); }
+    .text-ink { color: var(--text-primary); }
     /* Eyebrows/labels use olive-soft (6.4:1). sage-dark and camel fail AA as
        text and are reserved for icons, borders and fills. */
     .label-xs {
       font-family: var(--font-condensed);
       font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent-soft);
+      text-transform: uppercase; color: var(--brand-olive);
     }
 
-    /* ---------------- Media placeholders ----------------
-       Every slot reserves its final dimensions before an image loads.
-       Phase 3 drops an <img class="media-slot__img"> inside: lifestyle
-       imagery crops with cover, bag products are contained so the whole
-       bag stays visible. */
+    /* ---------------- Photography ----------------
+       Every image declares width/height so its box is reserved before the
+       file arrives. Lifestyle photography crops with cover; the bag
+       products are contained so no strap or drawstring is ever cut. */
 
-    .media-slot {
-      position: relative;
-      display: grid; place-items: center;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--surface-placeholder);
-      border-radius: var(--radius-lg);
-      aspect-ratio: var(--media-ratio, 3 / 2);
-    }
-    .media-slot > * { max-width: 85%; text-align: center; }
-    .media-slot__label {
-      font-family: var(--font-condensed);
-      font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--color-olive);
-    }
-    /* Phase 3 image rules - already in place so inserting <img> shifts nothing. */
-    .media-slot__img {
-      position: absolute; inset: 0;
+    picture { display: block; }
+
+    .hero__media,
+    .band__media,
+    .gift-band__media,
+    .duo__media,
+    .bag-card__media { position: relative; overflow: hidden; }
+
+    .hero__media > img,
+    .band__media > img,
+    .gift-band__media > img,
+    .duo__media > img {
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
+      object-fit: cover;
+      object-position: center;
     }
-    .media-slot--contain .media-slot__img { object-fit: contain; padding: 6%; }
 
-    .media-slot--wide { --media-ratio: 16 / 9; }
-    .media-slot--flush { border-radius: 0; border: 0; }
-    @media (min-width: 62rem) { .media-slot--flush { border-left: 1px solid var(--line); } }
+    .duo__media {
+      border-radius: var(--radius-lg);
+      aspect-ratio: 3 / 2;
+    }
 
-    /* Product tints hinting at the eventual bag palette: cream, tan, sage. */
-    .bag-image-small  { background: var(--color-warm-white); }
-    .bag-image-medium { background: var(--color-oatmeal); }
-    .bag-image-large  { background: var(--color-sage-light); }
-
-    /* ---------------- Icons ----------------
+    /* ---------------- Icons ----------------    /* ---------------- Icons ----------------
        One family: thin line strokes, currentColor, consistent weight. */
 
     .icon {
@@ -313,11 +267,11 @@
     }
     .icon--sm { width: 1.15rem; height: 1.15rem; }
     .icon--lg { width: 1.75rem; height: 1.75rem; }
-    .icon-lead { color: var(--accent-soft); }
+    .icon-lead { color: var(--brand-olive); }
     .icon-circle {
       display: grid; place-items: center;
       width: 3rem; height: 3rem; border-radius: var(--radius-pill);
-      background: var(--color-sage-light); color: var(--color-olive);
+      background: var(--surface-main); color: var(--brand-olive);
       flex: 0 0 auto;
     }
 
@@ -333,27 +287,27 @@
       cursor: pointer; text-align: center;
       transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
-    .btn--primary { background: var(--color-olive); color: var(--color-on-dark); }
-    .btn--primary:hover { background: var(--color-olive-soft); }
-    .btn--primary:active { background: var(--color-olive); }
-    .btn--secondary { background: var(--color-warm-white); color: var(--color-olive); border-color: var(--line-strong); }
-    .btn--secondary:hover { background: var(--color-linen); border-color: var(--color-olive); }
-    .btn--secondary:active { background: var(--color-sage-light); }
-    .btn--on-dark { background: transparent; color: var(--color-on-dark); border-color: var(--color-on-dark-line); }
-    .btn--on-dark:hover { background: var(--color-on-dark); color: var(--color-olive-soft); border-color: var(--color-on-dark); }
+    .btn--primary { background: var(--brand-olive); color: var(--on-dark); }
+    .btn--primary:hover { background: var(--brand-olive); }
+    .btn--primary:active { background: var(--brand-olive); }
+    .btn--secondary { background: var(--surface-light); color: var(--brand-olive); border-color: var(--border-strong); }
+    .btn--secondary:hover { background: var(--surface-main); border-color: var(--brand-olive); }
+    .btn--secondary:active { background: var(--surface-main); }
+    .btn--on-dark { background: transparent; color: var(--on-dark); border-color: var(--on-dark-line); }
+    .btn--on-dark:hover { background: var(--on-dark); color: var(--brand-olive); border-color: var(--on-dark); }
     .btn--block { width: 100%; }
     .btn[disabled], .btn[aria-disabled="true"] {
-      background: var(--color-sage-light); color: var(--color-text-muted);
-      border-color: var(--line); cursor: not-allowed;
+      background: var(--surface-main); color: var(--text-muted);
+      border-color: var(--border-brand); cursor: not-allowed;
     }
 
     /* Links carry an underline as well as colour - never colour alone. */
     .link-arrow {
       display: inline-flex; align-items: center; gap: 0.35rem;
       min-height: 2rem;
-      font-size: 0.8125rem; font-weight: 500; color: var(--color-olive);
+      font-size: 0.8125rem; font-weight: 500; color: var(--brand-olive);
       text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
-      text-decoration-color: var(--color-sage-dark);
+      text-decoration-color: var(--border-strong);
     }
     .link-arrow::after { content: "\2192"; text-decoration: none; }
     .link-arrow:hover { text-decoration-color: currentColor; }
@@ -362,27 +316,19 @@
 
     .site-nav {
       position: sticky; top: 0; z-index: 50;
-      border-bottom: 1px solid var(--line);
-      background: var(--color-warm-white); /* fallback if color-mix is unsupported */
-      background: color-mix(in srgb, var(--color-warm-white) 94%, transparent);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-brand);
+      background: var(--surface-main);
     }
     .nav-inner { display: flex; align-items: center; gap: 1rem; padding-block: 0.9rem; }
 
-    .brand { display: inline-flex; align-items: center; gap: 0.6rem; flex: 0 0 auto; }
-    /* Phase 3: swap this boxed wordmark for the real Soapbox Caddie logo. */
-    .brand__mark {
-      display: grid; place-items: center;
-      min-width: 3.1rem; height: 3.1rem; padding-inline: 0.4rem;
-      border: 1px solid var(--color-olive); border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: 0.6rem; font-weight: 600; line-height: 1.25; letter-spacing: 0.06em;
-      color: var(--color-olive); text-transform: uppercase; text-align: center;
-    }
-    .brand__mark--sm { min-width: 2.7rem; height: 2.7rem; font-size: 0.55rem; }
-    /* Reserved box for the real logo asset - same footprint as the stand-in. */
-    .brand__logo { height: 3.1rem; width: auto; object-fit: contain; }
-    .site-footer .brand__logo { height: 2.7rem; }
+    .brand { display: inline-flex; align-items: center; flex: 0 0 auto; }
+    /* The mark is a boxed two-line lockup (1.51:1), so it is sized by width
+       and the header stays shallow. */
+    .brand__logo { width: 7.25rem; height: auto; }
+    @media (max-width: 67.999rem) { .brand__logo { width: 6.25rem; } }
+
+    /* Light horizontal lockup, sized for the near-black footer. */
+    .footer-logo { width: 11.5rem; height: auto; }
 
     .nav-links { display: none; }
     .nav-cta-desktop { display: none; }
@@ -393,9 +339,9 @@
       .nav-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; }
       .nav-links {
         display: flex; align-items: center; justify-content: center; gap: 0.1rem;
-        font-size: 0.8125rem; font-weight: 500; color: var(--ink-soft);
+        font-size: 0.8125rem; font-weight: 500; color: var(--text-muted);
       }
-      .nav-links a:hover { color: var(--color-olive); background: var(--color-linen); }
+      .nav-links a:hover { color: var(--brand-olive); background: var(--surface-main); }
       .nav-links .nav-cta { display: none; }
       .nav-cta-desktop { display: inline-flex; }
     }
@@ -404,10 +350,10 @@
       position: absolute; top: calc(100% + 0.5rem); right: var(--shell-gutter); left: var(--shell-gutter);
       z-index: 50;
       padding: 0.6rem;
-      border: 1px solid var(--line); border-radius: var(--radius-lg);
-      background: var(--color-warm-white);
+      border: 1px solid var(--border-brand); border-radius: var(--radius-lg);
+      background: var(--surface-light);
       box-shadow: var(--shadow-sheet);
-      font-weight: 500; color: var(--ink);
+      font-weight: 500; color: var(--text-primary);
     }
     .nav-links.is-open a { padding: 0.7rem 0.8rem; }
 
@@ -415,8 +361,8 @@
     .nav-toggle {
       display: inline-flex; align-items: center; justify-content: center;
       height: 2.6rem; width: 2.6rem; margin-inline-start: auto;
-      border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
-      background: var(--color-warm-white); color: var(--color-olive); cursor: pointer;
+      border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+      background: var(--surface-light); color: var(--brand-olive); cursor: pointer;
       flex: 0 0 auto;
     }
     .nav-toggle > span { display: flex; flex-direction: column; gap: 0.28rem; }
@@ -425,13 +371,13 @@
 
     /* ---------------- Hero ---------------- */
 
-    .hero { display: grid; background: var(--color-linen); }
+    .hero { display: grid; background: var(--surface-main); }
     .hero__content {
       display: grid; gap: clamp(0.9rem, 1.8vw, 1.35rem);
       align-content: center;
       padding: clamp(1.5rem, 3.2vw, 2.25rem) var(--shell-gutter);
     }
-    .hero__media { --media-ratio: 4 / 3; width: 100%; background: var(--color-oatmeal); }
+    .hero__media { width: 100%; aspect-ratio: 4 / 3; background: var(--surface-main); }
 
     @media (min-width: 62rem) {
       /* Full-bleed grid: copy aligns to the shell, media runs to the right
@@ -447,6 +393,9 @@
       }
       .hero__content { grid-column: content-start / content-mid; padding-inline: 0 clamp(1.5rem, 3vw, 2.5rem); }
       .hero__media { grid-column: content-mid / pad-end; aspect-ratio: auto; min-height: 33rem; }
+      /* Keeps the whole bear plus the linens and basket edge in frame;
+         a tighter crop lost the basket the alt text describes. */
+      .hero__media > img { object-position: 40% center; }
     }
 
     .hero__title {
@@ -455,40 +404,39 @@
       line-height: 1.02;
       font-weight: 400;
       letter-spacing: -0.005em;
-      color: var(--color-olive);
+      color: var(--brand-olive);
     }
-    /* Softer editorial second line - italic, lighter weight, same colour so
-       it stays as readable as the first. */
+    /* Softer editorial second line - italic, lighter weight, same colour. */
     .hero__title em { font-style: italic; font-weight: 400; }
 
-    .hero__copy { max-width: 26rem; font-size: 1rem; line-height: 1.7; color: var(--ink-soft); }
+    .hero__copy { max-width: 26rem; font-size: 1rem; line-height: 1.7; color: var(--text-muted); }
 
     /* ZIP checker - compact utility component inside the hero */
     .zip-panel {
-      border: 1px solid var(--line);
+      border: 1px solid var(--border-brand);
       border-radius: var(--radius-md);
-      background: var(--color-warm-white);
+      background: var(--surface-light);
       padding: 0.85rem;
       display: grid; gap: 0.5rem;
       max-width: 29rem;
     }
-    .zip-panel__title { font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--ink); }
+    .zip-panel__title { font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
     .zip-fields { display: grid; gap: 0.4rem; }
     @media (min-width: 26rem) { .zip-fields { grid-template-columns: minmax(0, 1fr) auto; } }
     .zip-input {
       width: 100%; min-height: 2.5rem;
-      border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
-      background: var(--color-white);
+      border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+      background: var(--surface-light);
       padding-inline: 0.7rem;
       font-family: var(--font-body);
-      font-size: 0.8125rem; color: var(--ink);
+      font-size: 0.8125rem; color: var(--text-primary);
     }
-    .zip-input::placeholder { color: var(--ink-soft); }
-    .zip-input:focus { border-color: var(--color-olive); }
-    .zip-note { font-size: 0.75rem; color: var(--ink-soft); }
+    .zip-input::placeholder { color: var(--text-muted); }
+    .zip-input:focus { border-color: var(--brand-olive); }
+    .zip-note { font-size: 0.75rem; color: var(--text-muted); }
     /* All three results render in the same charcoal: the outcome is carried
        by the wording and the aria-live announcement, never by colour. */
-    .zip-feedback { font-size: 0.75rem; font-weight: 500; color: var(--ink); }
+    .zip-feedback { font-size: 0.75rem; font-weight: 500; color: var(--text-primary); }
     .zip-feedback:empty { display: none; }
     .zip-actions { display: none; gap: 0.4rem; }
     .zip-actions.is-visible { display: grid; }
@@ -500,28 +448,37 @@
 
     .bag-card {
       display: grid;
-      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-      grid-template-rows: auto minmax(0, 1fr) auto;
-      gap: 0.5rem;
-      min-height: 15.5rem;
-      padding: 0.9rem;
-      border: 1px solid var(--line);
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+      column-gap: 0.5rem;
+      padding: 0.95rem;
+      border: 1px solid var(--border-brand);
       border-radius: var(--radius-lg);
-      background: var(--color-linen);
+      background: var(--surface-light);
     }
-    .bag-card__text { grid-column: 1; grid-row: 1; display: grid; gap: 0.1rem; align-content: start; }
-    .bag-card__name { font-size: 0.875rem; font-weight: 600; color: var(--ink); }
-    /* Prices take the editorial treatment - display face, used consistently
-       here and in the subscription stats. */
+    .bag-card__name {
+      grid-column: 1; grid-row: 1;
+      font-size: 0.875rem; font-weight: 600; color: var(--text-primary);
+    }
     .bag-card__price {
+      grid-column: 1; grid-row: 2;
       font-family: var(--font-display);
       font-size: clamp(2.25rem, 3.6vw, 2.9rem);
-      font-weight: 500; line-height: 1.05; color: var(--color-olive);
+      font-weight: 400; line-height: 1.05; color: var(--brand-olive);
     }
-    .bag-card__meta { font-size: 0.75rem; color: var(--ink-soft); }
-    /* Imagery dominates the card: it spans both content rows. */
-    .bag-card__media { grid-column: 2; grid-row: 1 / 3; aspect-ratio: auto; min-height: 9rem; border-color: var(--color-border); }
-    .bag-card__cta { grid-column: 2; grid-row: 3; }
+    .bag-card__meta {
+      grid-column: 1; grid-row: 3;
+      font-size: 0.75rem; color: var(--text-muted);
+    }
+    /* The product spans the full card height and is contained, never
+       cropped - straps and drawstrings stay whole. */
+    .bag-card__media { grid-column: 2; grid-row: 1 / 5; align-self: stretch; min-height: 10rem; }
+    .bag-card__media > img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    .bag-card__cta { grid-column: 2; grid-row: 5; margin-top: 0.5rem; }
 
     .price-note { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem; align-items: start; }
 
@@ -529,9 +486,9 @@
 
     .steps { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
     .steps > li { counter-increment: step; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.75rem; align-items: start; }
-    .step__title { font-size: 0.875rem; font-weight: 600; color: var(--ink); }
-    .step__title::before { content: counter(step) ". "; color: var(--accent-soft); }
-    .step__copy { font-size: 0.8125rem; line-height: 1.5; color: var(--ink-soft); }
+    .step__title { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
+    .step__title::before { content: counter(step) ". "; color: var(--brand-olive); }
+    .step__copy { font-size: 0.8125rem; line-height: 1.5; color: var(--text-muted); }
     @media (min-width: 48rem) {
       .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(0.75rem, 1.6vw, 1.25rem); }
       .steps > li { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; gap: 0.5rem; }
@@ -545,24 +502,23 @@
       display: grid;
       overflow: hidden;
       border-radius: var(--radius-lg);
-      background: var(--color-olive-soft);
-      color: var(--color-on-dark);
+      background: var(--brand-olive);
+      color: var(--on-dark);
     }
-    .band__media { border: 0; border-radius: 0; background: var(--color-oatmeal); }
-    .band__media .media-slot__label { color: var(--color-olive); }
+    .band__media { aspect-ratio: 16 / 10; background: var(--surface-main); }
     @media (min-width: 56rem) {
       .band { grid-template-columns: minmax(0, 0.52fr) minmax(0, 1fr); align-items: stretch; }
-      .band__media { aspect-ratio: auto; min-height: 100%; }
+      .band__media { aspect-ratio: auto; height: 100%; }
     }
     .band__body { display: grid; gap: 0.55rem; align-content: center; padding: clamp(1.1rem, 2.2vw, 1.65rem); }
-    .band__eyebrow { font-family: var(--font-condensed); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-on-dark-muted); }
+    .band__eyebrow { font-family: var(--font-condensed); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-muted); }
     .band__title {
       font-family: var(--font-display);
       font-size: clamp(1.75rem, 3vw, 2.35rem);
       font-weight: 400; line-height: 1.12;
     }
-    .band__sub { font-size: 0.875rem; color: var(--color-on-dark-muted); }
-    .band__note { font-size: 0.75rem; color: var(--color-on-dark-muted); }
+    .band__sub { font-size: 0.875rem; color: var(--on-dark-muted); }
+    .band__note { font-size: 0.75rem; color: var(--on-dark-muted); }
 
     .band__row { display: grid; gap: 0.85rem; align-items: center; margin-block: 0.15rem; }
     @media (min-width: 62rem) { .band__row { grid-template-columns: minmax(0, 1fr) auto; } }
@@ -570,32 +526,33 @@
     .stat-row { display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr)); }
     .stat { padding-inline: clamp(0.4rem, 1.2vw, 1rem); }
     .stat:first-child { padding-inline-start: 0; }
-    .stat:not(:first-child) { border-inline-start: 1px solid var(--color-on-dark-divider); }
+    .stat:not(:first-child) { border-inline-start: 1px solid var(--on-dark-divider); }
     .stat__value {
       font-family: var(--font-display);
       font-size: clamp(1.4rem, 2.4vw, 1.75rem);
       font-weight: 500; line-height: 1.15;
     }
-    .stat__label { font-size: 0.6875rem; color: var(--color-on-dark-muted); }
+    .stat__label { font-size: 0.6875rem; color: var(--on-dark-muted); }
 
     /* ---------------- Gift interruption ---------------- */
 
     .gift-band {
       display: grid; align-items: center;
       border-radius: var(--radius-lg);
-      background: var(--color-oatmeal);
+      background: var(--surface-light);
+      border: 1px solid var(--border-brand);
       overflow: hidden;
     }
     .gift-band__lead { display: flex; align-items: center; gap: 1rem; padding: clamp(1rem, 2.2vw, 1.4rem); }
     .gift-band__body { display: grid; gap: 0.3rem; }
     .gift-band__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
     /* text-muted is only 4.0:1 on oatmeal, so supporting copy here is charcoal. */
-    .gift-band__actions .body-sm { color: var(--ink); }
-    .gift-band .icon-circle { background: var(--color-warm-white); }
-    .gift-band__media { border: 0; border-radius: 0; background: var(--color-sand); }
+    .gift-band__actions .body-sm { color: var(--text-primary); }
+    .gift-band .icon-circle { background: var(--surface-main); }
+    .gift-band__media { border: 0; border-radius: 0; background: var(--surface-main); }
     @media (min-width: 56rem) {
-      .gift-band { grid-template-columns: minmax(0, 1fr) minmax(0, 0.32fr); }
-      .gift-band__media { aspect-ratio: auto; min-height: 100%; }
+      .gift-band { grid-template-columns: minmax(0, 1fr) minmax(0, 0.44fr); }
+      .gift-band__media { aspect-ratio: auto; height: 100%; }
     }
 
     /* ---------------- About + Business pair ----------------
@@ -605,57 +562,54 @@
     .duo { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); }
     @media (min-width: 60rem) {
       .duo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .duo > :last-child { border-left: 1px solid var(--line); padding-left: clamp(1.25rem, 2.5vw, 2rem); }
+      .duo > :last-child { border-left: 1px solid var(--border-brand); padding-left: clamp(1.25rem, 2.5vw, 2rem); }
     }
     .duo__item { display: grid; gap: clamp(0.9rem, 2vw, 1.25rem); align-items: center; }
     @media (min-width: 34rem) { .duo__item { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } }
     .duo__body { display: grid; gap: 0.5rem; justify-items: start; }
-    .about-media { background: var(--color-oatmeal); }
-    .business-media { background: var(--color-sage-light); }
 
     /* ---------------- Reassurance band ---------------- */
 
     .trust-box {
       display: grid; gap: clamp(0.85rem, 1.8vw, 1.4rem);
-      border: 1px solid var(--line); border-radius: var(--radius-lg);
-      background: var(--color-linen);
+      border: 1px solid var(--border-brand); border-radius: var(--radius-lg);
+      background: var(--surface-light);
       padding: clamp(0.85rem, 1.6vw, 1.15rem);
     }
     @media (min-width: 56rem) {
       .trust-box { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .trust-col:not(:first-child) { border-inline-start: 1px solid var(--color-border); padding-inline-start: clamp(1rem, 2.2vw, 1.75rem); }
+      .trust-col:not(:first-child) { border-inline-start: 1px solid var(--border-brand); padding-inline-start: clamp(1rem, 2.2vw, 1.75rem); }
     }
     .trust-col { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.5rem 0.85rem; align-content: start; }
     .trust-col__body { display: grid; gap: 0.25rem; justify-items: start; }
-    .trust-col__title { font-size: 0.875rem; font-weight: 600; color: var(--ink); }
+    .trust-col__title { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
 
     /* ---------------- Footer ---------------- */
 
     .site-footer {
-      border-top: 1px solid var(--line);
-      background: var(--color-olive);
-      color: var(--color-on-dark);
+      background: var(--footer-bg);
+      color: var(--on-dark);
       padding-block: clamp(1.5rem, 2.6vw, 2rem);
     }
-    .site-footer .brand__mark { border-color: var(--color-on-dark-line); color: var(--color-on-dark); }
-    .site-footer .body-xs { color: var(--color-on-dark-muted); }
+    .site-footer .brand__mark { border-color: var(--on-dark-line); color: var(--on-dark); }
+    .site-footer .body-xs { color: var(--on-dark-muted); }
     .footer-grid { display: grid; gap: clamp(1rem, 2vw, 1.4rem); }
     @media (min-width: 44rem) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (min-width: 68rem) { .footer-grid { grid-template-columns: 1fr 0.75fr 0.85fr 0.9fr 1.5fr; } }
     .footer-col { display: grid; gap: 0.4rem; align-content: start; }
-    .footer-title { font-family: var(--font-condensed); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-on-dark); }
-    .footer-list { display: grid; gap: 0.25rem; font-size: 0.8125rem; color: var(--color-on-dark-muted); }
+    .footer-title { font-family: var(--font-condensed); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark); }
+    .footer-list { display: grid; gap: 0.25rem; font-size: 0.8125rem; color: var(--on-dark-muted); }
     .footer-list a { padding-block: 0.15rem; }
-    .footer-list a:hover { color: var(--color-on-dark); text-decoration: underline; text-underline-offset: 3px; }
-    .footer-social { display: flex; gap: 0.65rem; margin-top: 0.35rem; color: var(--color-on-dark-muted); }
-    .footer-legal { display: flex; flex-wrap: wrap; gap: 0.9rem; font-size: 0.6875rem; color: var(--color-on-dark-muted); }
+    .footer-list a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-social { display: flex; gap: 0.65rem; margin-top: 0.35rem; color: var(--on-dark-muted); }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: 0.9rem; font-size: 0.6875rem; color: var(--on-dark-muted); }
     .footer-legal a { padding-block: 0.3rem; }
-    .footer-legal a:hover { color: var(--color-on-dark); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-legal a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; }
     @media (min-width: 68rem) { .footer-legal { justify-content: flex-end; } }
     /* A light card on the olive footer, matching the mockup. */
     .zip-panel--footer {
       max-width: none; padding: 0.7rem; gap: 0.35rem;
-      border-color: var(--line); background: var(--color-warm-white);
+      border-color: var(--border-brand); background: var(--surface-light);
     }
 
     /* ---------------- Motion ---------------- */
@@ -668,8 +622,8 @@
 
     .mobile-sticky-cta {
       position: fixed; inset-inline: 0; bottom: 0; z-index: 40;
-      border-top: 1px solid var(--line);
-      background: var(--color-warm-white);
+      border-top: 1px solid var(--border-brand);
+      background: var(--surface-main);
       padding: 0.6rem var(--shell-gutter);
     }
     .mobile-sticky-cta__inner {
@@ -718,15 +672,9 @@
     <nav class="site-nav" aria-label="Main navigation">
       <div class="shell shell--relative">
         <div class="nav-inner">
-          <a href="index.html" class="brand" aria-label="Soapbox Caddie - go to homepage">
-            <!-- PLACEHOLDER - NOT THE BRAND MARK.
-                 The official Soapbox Caddie logo asset has not been supplied,
-                 so this is a neutral type stand-in, deliberately not an
-                 attempt to reproduce the logo. Phase 3 replaces this span with
-                 <img class="brand__logo" src="assets/images/logo/soapbox-caddie-logo.svg" alt="Soapbox Caddie">
-                 which is sized to the same box, so the swap shifts nothing. -->
-            <span class="brand__mark" aria-hidden="true">Soapbox<br>Caddie</span>
-            <span class="sr-only">Soapbox Caddie</span>
+          <a href="index.html" class="brand" aria-label="Soapbox Caddie homepage">
+            <img class="brand__logo" src="assets/img/soapbox-caddie-logo-header.png"
+                 alt="Soapbox Caddie" width="3100" height="2050">
           </a>
 
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
@@ -787,10 +735,12 @@
         </div>
       </div>
 
-      <!-- Phase 2: image placeholder treatment. Phase 3: real hero photography. -->
-      <div class="media-slot media-slot--flush hero__media hero-media reveal-group">
-        <p class="media-slot__label">Hero Lifestyle Image</p>
-      </div>
+      <picture class="hero__media">
+        <source srcset="assets/img/hero-soapbox-caddie.webp" type="image/webp">
+        <img src="assets/img/hero-soapbox-caddie.png" width="1824" height="1026"
+             alt="Teddy bear resting in a wicker laundry basket filled with soft white linens."
+             loading="eager" fetchpriority="high" decoding="async">
+      </picture>
     </section>
 
     <!-- 4. BAG PRICING -------------------------------------------------- -->
@@ -811,41 +761,41 @@
 
           <div class="lede__body bag-grid reveal-group">
             <article class="bag-card" aria-labelledby="bag-small-name">
-              <div class="bag-card__text">
-                <h3 id="bag-small-name" class="bag-card__name">Small Bag</h3>
-                <p class="bag-card__price">$45</p>
-                <p class="bag-card__meta">Fill to the line</p>
-              </div>
-              <!-- Phase 3: real Small bag product photograph -->
-              <div class="media-slot media-slot--contain bag-card__media bag-image-small">
-                <p class="media-slot__label">Small Bag Image</p>
-              </div>
+              <h3 id="bag-small-name" class="bag-card__name">Small Bag</h3>
+              <p class="bag-card__price">$45</p>
+              <p class="bag-card__meta">Fill to the line</p>
+              <picture class="bag-card__media">
+                <source srcset="assets/img/bag-small.webp" type="image/webp">
+                <img src="assets/img/bag-small.png" width="1122" height="1402"
+                     alt="Soapbox Caddie small bag, taupe with a shoulder strap and drawstring top."
+                     loading="lazy" decoding="async">
+              </picture>
               <a class="btn btn--primary bag-card__cta" href="schedule.html?bag=small">Book Now</a>
             </article>
 
             <article class="bag-card" aria-labelledby="bag-medium-name">
-              <div class="bag-card__text">
-                <h3 id="bag-medium-name" class="bag-card__name">Medium Bag</h3>
-                <p class="bag-card__price">$60</p>
-                <p class="bag-card__meta">Fill to the line</p>
-              </div>
-              <!-- Phase 3: real Medium bag product photograph -->
-              <div class="media-slot media-slot--contain bag-card__media bag-image-medium">
-                <p class="media-slot__label">Medium Bag Image</p>
-              </div>
+              <h3 id="bag-medium-name" class="bag-card__name">Medium Bag</h3>
+              <p class="bag-card__price">$60</p>
+              <p class="bag-card__meta">Fill to the line</p>
+              <picture class="bag-card__media">
+                <source srcset="assets/img/bag-medium.webp" type="image/webp">
+                <img src="assets/img/bag-medium.png" width="1122" height="1402"
+                     alt="Soapbox Caddie medium bag, taupe with a shoulder strap and drawstring top."
+                     loading="lazy" decoding="async">
+              </picture>
               <a class="btn btn--primary bag-card__cta" href="schedule.html?bag=medium">Book Now</a>
             </article>
 
             <article class="bag-card" aria-labelledby="bag-large-name">
-              <div class="bag-card__text">
-                <h3 id="bag-large-name" class="bag-card__name">Large Bag</h3>
-                <p class="bag-card__price">$80</p>
-                <p class="bag-card__meta">Fill to the line</p>
-              </div>
-              <!-- Phase 3: real Large bag product photograph -->
-              <div class="media-slot media-slot--contain bag-card__media bag-image-large">
-                <p class="media-slot__label">Large Bag Image</p>
-              </div>
+              <h3 id="bag-large-name" class="bag-card__name">Large Bag</h3>
+              <p class="bag-card__price">$80</p>
+              <p class="bag-card__meta">Fill to the line</p>
+              <picture class="bag-card__media">
+                <source srcset="assets/img/bag-large.webp" type="image/webp">
+                <img src="assets/img/bag-large.png" width="1122" height="1402"
+                     alt="Soapbox Caddie large bag, taupe with a shoulder strap and drawstring top."
+                     loading="lazy" decoding="async">
+              </picture>
               <a class="btn btn--primary bag-card__cta" href="schedule.html?bag=large">Book Now</a>
             </article>
           </div>
@@ -865,7 +815,6 @@
 
           <ol class="lede__body steps reveal-group">
             <li>
-              <!-- Phase 3: final icon set -->
               <svg class="icon icon--lg icon-lead" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
               <div>
                 <h3 class="step__title">Book</h3>
@@ -902,10 +851,12 @@
     <section id="subscriptions" class="section--tight" aria-labelledby="subscription-heading">
       <div class="shell">
         <div class="band reveal">
-          <!-- Phase 3: supporting subscription photography -->
-          <div class="media-slot media-slot--wide band__media subscription-media">
-            <p class="media-slot__label">Subscription Image</p>
-          </div>
+          <picture class="band__media">
+            <source srcset="assets/img/subscription-folded-laundry.webp" type="image/webp">
+            <img src="assets/img/subscription-folded-laundry.png" width="1824" height="1025"
+                 alt="Freshly folded neutral linens arranged for laundry service."
+                 loading="lazy" decoding="async">
+          </picture>
 
           <div class="band__body">
             <p class="band__eyebrow">Most Popular</p>
@@ -946,7 +897,6 @@
       <div class="shell">
         <div class="gift-band reveal">
           <div class="gift-band__lead">
-            <!-- Phase 3: final gift icon -->
             <span class="icon-circle" aria-hidden="true"><svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="9.5" width="17" height="10.5" rx="1.5"/><path d="M3.5 9.5h17M12 9.5V20"/><path d="M12 9.5S10.6 4.5 8.2 4.5a2.2 2.2 0 0 0 0 5M12 9.5s1.4-5 3.8-5a2.2 2.2 0 0 1 0 5"/></svg></span>
             <div class="gift-band__body">
               <h2 id="gift-heading" class="title-md">Because time is the best gift.</h2>
@@ -958,10 +908,12 @@
             </div>
           </div>
 
-          <!-- Phase 3: gift card photography -->
-          <div class="media-slot media-slot--wide gift-band__media gift-media">
-            <p class="media-slot__label">Gift Laundry Image</p>
-          </div>
+          <picture class="gift-band__media">
+            <source srcset="assets/img/gift-laundry-pile.webp" type="image/webp">
+            <img src="assets/img/gift-laundry-pile.png" width="1080" height="608"
+                 alt="Soft neutral laundry gathered together for pickup and cleaning."
+                 loading="lazy" decoding="async">
+          </picture>
         </div>
       </div>
     </section>
@@ -970,10 +922,12 @@
     <div class="shell section--tight">
       <div class="duo reveal-group">
         <section id="about" class="duo__item" aria-labelledby="about-heading">
-          <!-- Phase 3: local team / brand photography -->
-          <div class="media-slot about-media">
-            <p class="media-slot__label">About Image</p>
-          </div>
+          <picture class="duo__media">
+            <source srcset="assets/img/about-soapbox-caddie.webp" type="image/webp">
+            <img src="assets/img/about-soapbox-caddie.png" width="1080" height="675"
+                 alt="Laundry basket with fresh neutral linens in a calm home setting."
+                 loading="lazy" decoding="async">
+          </picture>
           <div class="duo__body">
             <h2 id="about-heading" class="title-md">About Soapbox Caddie</h2>
             <p class="body-sm">
@@ -984,10 +938,12 @@
         </section>
 
         <section id="business" class="duo__item" aria-labelledby="business-heading">
-          <!-- Phase 3: commercial linen photography -->
-          <div class="media-slot business-media">
-            <p class="media-slot__label">Business Image</p>
-          </div>
+          <picture class="duo__media">
+            <source srcset="assets/img/business-commercial-linens.webp" type="image/webp">
+            <img src="assets/img/business-commercial-linens.png" width="950" height="675"
+                 alt="Clean folded white towels and linens prepared for professional service."
+                 loading="lazy" decoding="async">
+          </picture>
           <div class="duo__body">
             <h2 id="business-heading" class="title-md">Business &amp; Contracting</h2>
             <p class="body-sm">
@@ -1051,10 +1007,8 @@
     <div class="shell">
       <div class="footer-grid">
         <div class="footer-col">
-          <span class="brand">
-            <span class="brand__mark brand__mark--sm" aria-hidden="true">Soapbox<br>Caddie</span>
-            <span class="sr-only">Soapbox Caddie</span>
-          </span>
+          <img class="footer-logo" src="assets/img/soapbox-caddie-logo-footer.png"
+               alt="Soapbox Caddie" width="4392" height="987" loading="lazy" decoding="async">
           <p class="body-xs">Laundry care, delivered across the River Region.</p>
           <p class="footer-legal">&copy; 2026 Soapbox Caddie. All rights reserved.</p>
         </div>
@@ -1083,8 +1037,8 @@
 
         <div class="footer-col" id="footer-connect">
           <h2 class="footer-title">Connect</h2>
-          <!-- TODO: publish the real email, phone and social profiles in Phase 3.
-               Deliberately unset so no placeholder contact details ship. -->
+          <!-- TODO: real email, phone and social profiles are still outstanding.
+               Deliberately unset so no invented contact details ship. -->
           <div class="footer-list">
             <p>Email: to be published</p>
             <p>Phone: to be published</p>

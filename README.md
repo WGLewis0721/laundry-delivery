@@ -95,25 +95,29 @@ Structural conventions:
 The palette lives as custom properties in the same `:root` block; **no hex value
 appears anywhere else in the file**, so a rebrand is a token edit.
 
-| Group | Tokens |
-|---|---|
-| Light surfaces (~60%) | `--color-linen`, `--color-warm-white`, `--color-white` |
-| Sage (~30% with tans) | `--color-sage`, `--color-sage-light`, `--color-sage-dark` |
-| Natural tans | `--color-camel`, `--color-sand`, `--color-oatmeal` |
-| Brand greens (~10%) | `--color-olive`, `--color-olive-soft` |
-| Text | `--color-charcoal`, `--color-text-muted` |
-| On dark | `--color-on-dark`, `--color-on-dark-muted`, `--color-on-dark-line` |
+| Token | Value | Role |
+|---|---|---|
+| `--brand-ivory` | `#F7F2F0` | dominant page surface |
+| `--brand-ink` | `#0E0E10` | body text, footer |
+| `--brand-olive` | `#1E2509` | actions, headings, icons |
+| `--brand-taupe` | `#CFC5B8` | dividers, on-dark secondary text |
 
-Semantic aliases (`--surface`, `--line`, `--ink`, `--accent`) sit on top, so
-components never name a palette colour directly.
+Two derived neutrals carry the load the four brand colours cannot:
+`--text-muted` (`#6B696A`, 4.9:1 on ivory) and `--border-strong` (`#8B857D`,
+3.3:1) for control boundaries.
 
-**Contrast rules that are not negotiable** — these were measured, not guessed:
+Semantic aliases (`--surface-main`, `--border-brand`, `--text-primary`,
+`--action-primary`) sit on top, so components never name a brand colour directly.
 
-- `--color-sage-dark` is 3.5:1 on warm white: **icons and borders only, never text.**
-- `--color-camel` is 3.0:1: **decoration only, never text and never a control boundary.**
-- `--color-text-muted` is only 4.0:1 on oatmeal, so the gift band uses charcoal.
-- `--color-border` is 1.4:1: decorative hairlines only. Interactive boundaries use `--line-strong`.
-- On-dark muted text must stay at `#DBDCD4` or lighter; darker values fail AA on the subscription band.
+**Contrast rules that are not negotiable** — these were measured on the rendered
+page, not guessed:
+
+- `--brand-taupe` is **1.5:1 on ivory**: a decorative divider only. Never a control
+  boundary (use `--border-strong`) and never text on a light surface.
+- Muted body text must be `--text-muted` or darker; anything lighter drops under 4.5:1.
+- On the olive and ink surfaces, ivory (14.3:1 / 17.4:1) and taupe (9.3:1 / 11.3:1)
+  are both safe. Avoid translucent white — every alpha below ~0.8 fails.
+- Every sampled text pairing on the homepage currently passes AA.
 
 ### Fonts
 
@@ -122,9 +126,14 @@ Three variable fonts are **self-hosted from `assets/fonts/`** — no CDN, no
 
 | Token | Family | Used for | Source |
 |---|---|---|---|
-| `--font-display` | Cormorant Garamond (roman + italic) | h1, h2, prices | [google/fonts](https://github.com/google/fonts/tree/main/ofl/cormorantgaramond) |
+| `--font-brand-display` | Cormorant Garamond (roman + italic) | h1, h2, prices | [google/fonts](https://github.com/google/fonts/tree/main/ofl/cormorantgaramond) |
 | `--font-body` | Inter | body, nav, forms, buttons, footer | [rsms/inter](https://github.com/rsms/inter) |
-| `--font-condensed` | Oswald | uppercase micro-labels only | [google/fonts](https://github.com/google/fonts/tree/main/ofl/oswald) |
+| `--font-brand-accent` | Oswald | uppercase micro-labels only | [google/fonts](https://github.com/google/fonts/tree/main/ofl/oswald) |
+
+> The brand board specifies **OKANA** and **ENRIQ**. No licensed files for either
+> were supplied, so the display and accent faces above are stand-ins held behind
+> `--font-brand-display` and `--font-brand-accent` — swapping them is a two-line
+> change once the real files arrive. Nothing was sourced from an unverified site.
 
 All three are variable fonts with real `wght` ranges (Cormorant 300–700, Inter
 100–900, Oswald 200–700), so every weight is a genuine instance rather than a
@@ -259,10 +268,8 @@ laundry-delivery/
 ├── .github/
 │   └── copilot-instructions.md   Working agreement for this repo
 ├── assets/
-│   ├── images/              Client branding, logo and photography (see its README)
-│   │   ├── logo/            Brand mark
-│   │   ├── bags/            The three bag product shots
-│   │   └── lifestyle/       Homepage photography
+│   ├── img/                 Client branding, logo and photography
+│   │                        PNG sources + optimised .webp derivatives
 │   ├── icons/               Inline-able SVGs
 │   └── fonts/               Self-hosted variable fonts (served by every page)
 │       ├── cormorant-garamond/  Roman + Italic woff2
@@ -380,7 +387,8 @@ The homepage has no test suite, so verify by hand:
 
 ## Pre-launch checklist
 
-- [ ] Apply Phase 3 branding, photography and the final icon set
+- [ ] Supply licensed OKANA and ENRIQ font files (the brand board specifies them; none were provided)
+- [ ] Propagate the finalised homepage brand system to the other 14 pages
 - [ ] Recalibrate the 3KD estimator for bag pricing (needs confirmed bag capacities)
 - [ ] Consolidate the homepage tokens into `css/tokens.css` once branding is final
 - [ ] Supply real footer contact details and social links
@@ -390,8 +398,6 @@ The homepage has no test suite, so verify by hand:
 - [ ] Replace all four hard-coded ZIP sets with the TRA3 service-area API
 - [ ] Integrate Acuity for booking
 - [ ] Review and finalise `privacy.html` and `terms.html` with legal counsel
-- [ ] Supply the official Soapbox Caddie logo asset (the header/footer mark is a type stand-in) &mdash; drop it in `assets/images/logo/`
-- [ ] Supply bag product shots and lifestyle photography &mdash; see `assets/images/README.md` for the slot list, ratios and crop behaviour
 - [ ] Add a favicon (none exists in the repo)
 - [ ] Refresh `docs/project-overview.md` for the Soapbox Caddie build
 - [ ] Run Lighthouse (target: 95+ Performance, 100 Accessibility / Best Practices / SEO) and an axe or WAVE audit
