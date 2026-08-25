@@ -19,6 +19,22 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Patch one-shot updater
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('scripts/apply_mockup_decor.py')
+          s = p.read_text(encoding='utf-8')
+          needle = "t = remove_picture_with(t, 'assets/img/decor-towels-pitcher.webp', count=1)"
+          first = s.find(needle)
+          second = s.find(needle, first + 1)
+          if first < 0 or second < 0:
+              raise SystemExit('expected two towels-pitcher removal calls')
+          replacement = '''step3_pattern = re.compile(r'<picture class="brand-media brand-media--wide interior-photo">\\s*<img src="assets/img/decor-towels-pitcher\\.webp".*?</picture>', re.S)\nt, n = step3_pattern.subn('', t, count=1)\nif n != 1:\n    raise SystemExit('how-it-works step 3 image not found')'''
+          s = s[:second] + replacement + s[second + len(needle):]
+          p.write_text(s, encoding='utf-8')
+          PY
+
       - name: Apply mockup-matched interior design
         run: python3 scripts/apply_mockup_decor.py
 
