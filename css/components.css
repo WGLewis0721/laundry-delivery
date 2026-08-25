@@ -1639,3 +1639,133 @@
   .brand-strip { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .brand-strip--media-first > .brand-media { order: -1; }
 }
+
+/* ──────────────────────────────────────────────────────────
+   DECORATIVE ACCENTS
+   Extends the homepage's visual language ("living room") to
+   the interior pages so the whole site reads as one furnished
+   home rather than a styled front door and plain rooms behind
+   it. Every rule here is decorative only: aria-hidden markup,
+   never load-bearing, kept to one or two touches per page.
+   ────────────────────────────────────────────────────────── */
+
+/* Positioning context for an absolutely-placed accent. */
+.deco-context { position: relative; }
+
+/* Soft botanical sprig (inline SVG, currentColor). Placed inside a
+   .deco-context and clipped by it where the context has overflow:
+   hidden, so it can safely bleed past a card's rounded corner. */
+.deco-sprig {
+  position: absolute;
+  width: 108px;
+  height: auto;
+  color: var(--brand-olive);
+  opacity: 0.26;
+  pointer-events: none;
+  z-index: 0;
+}
+.deco-sprig--sm      { width: 78px; }
+.deco-sprig--lg      { width: 150px; }
+.deco-sprig--on-dark { color: var(--brand-taupe); opacity: 0.3; }
+.deco-sprig--flip    { transform: scaleX(-1); }
+.deco-sprig--flip-y  { transform: scaleY(-1); }
+.deco-sprig--flip-xy { transform: scale(-1, -1); }
+
+/* Page-header accents sit beside a centred text column rather than
+   inside a clipped card, so they only appear once there is enough
+   side margin to clear the text at any width - verified at 64rem+. */
+.deco-sprig--header {
+  top: -1.5rem;
+  right: clamp(0px, 3vw, 2rem);
+  display: none;
+}
+@media (min-width: 64rem) {
+  .deco-sprig--header { display: block; }
+}
+
+/* Soft framed panel - "elevates" a container without a heavy
+   shadow. Used for the booking wizard and other supporting blocks
+   that were plain background before. */
+.deco-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Editorial photo mat - a soft border "frame" around a photograph,
+   used on the About page for a more intentional, personal feel. */
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3);
+}
+.photo-frame > .brand-media { border-radius: var(--radius-xl); }
+
+@media (max-width: 36rem) {
+  .deco-sprig--lg { width: 92px; }
+}
+
+/* Corner placement for a sprig inside a clipped panel - bleeds
+   slightly past the panel's own padding so it reads as tucked into
+   the rounded corner rather than floating inside it. */
+.deco-sprig--panel-corner {
+  top: -1.25rem;
+  right: -1.25rem;
+}
+
+/* Tighter corner offset for narrower cards (e.g. the About
+   testimonial), so the sprig clears the text column instead of
+   crossing it. */
+.deco-sprig--corner-tight {
+  top: -0.75rem;
+  right: -1.75rem;
+}
+
+/* Wider corner offset for panels with their own busy top row (the
+   booking wizard's progress stepper), so the vine clears it instead
+   of grazing the last pip. */
+.deco-sprig--corner-wide {
+  top: -1.25rem;
+  right: -2.75rem;
+}
+
+/* Generic clip context for panels that already carry their own
+   background/border via inline styles (subscription CTA, the "how
+   pricing works" panel, the About testimonial). */
+.deco-clip { position: relative; overflow: hidden; }
+
+/* Elevate the booking wizard into a soft framed card instead of
+   floating directly on the page background. */
+.booking-wrap.deco-frame {
+  padding: clamp(1.75rem, 4vw, 3rem);
+}
+
+/* Step 2 header: room for a small supporting product/linen thumbnail
+   beside "Choose your bag" without ever overlapping the copy - flex
+   layout, so it simply drops out on narrow screens rather than risk
+   an absolute-position collision. */
+.step2-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+.step2-header .booking-step-desc { margin-bottom: 0; }
+.step2-accent {
+  flex-shrink: 0;
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  display: none;
+}
+@media (min-width: 40rem) {
+  .step2-accent { display: block; }
+}

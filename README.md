@@ -119,6 +119,33 @@ page, not guessed:
   are both safe. Avoid translucent white — every alpha below ~0.8 fails.
 - Every sampled text pairing on the homepage currently passes AA.
 
+### Decorative accents
+
+Interior pages (booking, pricing, about, FAQ, services, how it works, service
+area) carry a small, restrained decorative layer so the whole site reads as
+one furnished home rather than a styled homepage with plain rooms behind it.
+Rules live at the bottom of `css/components.css`.
+
+- **`.deco-sprig`** — an inline SVG olive sprig (`currentColor`, so it tints
+  itself to `--brand-olive` on light surfaces or `--brand-taupe` on dark ones
+  via `.deco-sprig--on-dark`). It is decorative only — `aria-hidden`,
+  `pointer-events: none` — never load-bearing. The canonical source is
+  `assets/img/decor-olive-sprig.svg`; edit that file and regenerate the
+  inline copies if the motif itself needs to change.
+- **`.deco-frame`** / **`.photo-frame`** / **`.deco-clip`** — soft panel
+  framing (border + radius + a light `--shadow-sm`, never a heavy shadow)
+  used to elevate the booking wizard and mat-frame the About page photo.
+  All three set `overflow: hidden`, so a `.deco-sprig--panel-corner` inside
+  them safely bleeds past the rounded corner instead of needing viewport-width
+  math to avoid the panel's own content.
+- **`.deco-sprig--header`** is different: it sits beside a centred page-header
+  text column with no clipping container, so it is gated to `≥ 64rem` where
+  the numbers guarantee it can never reach the text. Below that width it is
+  simply hidden rather than repositioned — mobile stays calm on purpose.
+
+One or two accents per page, never one per card — the explicit brief here was
+"support the layout, don't overpower it."
+
 ### Fonts
 
 Three variable fonts are **self-hosted from `assets/fonts/`** — no CDN, no
