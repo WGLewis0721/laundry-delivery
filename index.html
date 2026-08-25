@@ -489,6 +489,36 @@
     }
     .bag-card__cta { grid-column: 2; grid-row: 5; margin-top: 0.5rem; }
 
+    /* Narrow screens: the portrait bag is 1122x1402, so letting it span four
+       auto rows made the flexible row 4 resolve to the image's leftover
+       height (~142px at 390px wide) and left that much dead space beside the
+       price. Below 48rem the product gets its own fixed frame spanning only
+       the three text rows, and the CTA goes full width underneath. */
+    @media (max-width: 47.999rem) {
+      .bag-card {
+        grid-template-columns: minmax(0, 1fr) 38%;
+        grid-template-rows: auto auto auto auto;
+        column-gap: 0.9rem;
+        padding: 1.1rem;
+        align-items: start;
+      }
+      .bag-card__name { grid-row: 1; font-size: 1rem; }
+      .bag-card__price { grid-row: 2; font-size: clamp(2.4rem, 11vw, 2.9rem); }
+      .bag-card__meta { grid-row: 3; font-size: 0.8125rem; }
+      .bag-card__media {
+        grid-column: 2;
+        grid-row: 1 / 4;
+        align-self: center;
+        min-height: 0;
+        height: 7.5rem;
+      }
+      .bag-card__cta {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        margin-top: 0.9rem;
+      }
+    }
+
     .price-note { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem; align-items: start; }
 
     /* ---------------- How it works ---------------- */
@@ -501,6 +531,18 @@
     @media (min-width: 48rem) {
       .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(0.75rem, 1.6vw, 1.25rem); }
       .steps > li { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; gap: 0.5rem; }
+    }
+    /* Narrow screens: the step copy sat at 13px and stopped well short of the
+       right edge, which read as an empty second column. Slightly larger type
+       and tighter gaps let each row use the full width. */
+    @media (max-width: 47.999rem) {
+      #how-it-works .lede { gap: 1rem; }
+      #how-it-works .lede__intro { gap: 0.45rem; }
+      #how-it-works .lede__cta { margin-top: 0.35rem; }
+      .steps { gap: 0.9rem; }
+      .steps > li { gap: 0.7rem; }
+      .step__title { font-size: 0.95rem; }
+      .step__copy { font-size: 0.875rem; line-height: 1.45; }
     }
 
     /* ---------------- Subscription banner ----------------

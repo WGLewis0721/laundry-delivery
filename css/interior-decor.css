@@ -676,3 +676,212 @@ body:not([data-page="schedule"]):not([data-page="plans"]):not([data-page="about"
   body[data-page="schedule"] .schedule-bag-card .plan-badge { top: -1.05rem; font-size: .78rem; letter-spacing: .02em; }
   body[data-page="schedule"] .schedule-bag-media img { max-width: 72%; }
 }
+
+/* ============================================================
+   INTERIOR MOBILE COMPOSITION REFINEMENT
+   This stylesheet is loaded by every interior page and by NO other
+   page — index.html links no external CSS at all — so everything
+   below is inherently homepage-safe.
+
+   Desktop is unchanged: the rules that restate former inline styles
+   reproduce their exact values, and every density change is inside a
+   max-width media query.
+   ============================================================ */
+
+/* --- Former inline styles, now cascade-addressable (desktop parity) --- */
+.page-intro,
+.pricing-intro { background: var(--off-white); }
+.page-intro--tight { padding-bottom: var(--space-12); }
+
+.page-intro__inner,
+.pricing-intro__inner {
+  max-width: 680px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.page-intro__title,
+.pricing-intro__title {
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl));
+  margin-bottom: var(--space-4);
+}
+.about-hero__title {
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl));
+  margin-bottom: var(--space-6);
+}
+
+body[data-page="how-it-works"] .hiw-step { align-items: center; margin-bottom: var(--space-16); }
+body[data-page="how-it-works"] .hiw-step--last { margin-bottom: 0; }
+body[data-page="how-it-works"] .hiw-step__title {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-4);
+}
+body[data-page="how-it-works"] .hiw-step__p { margin-top: var(--space-4); }
+body[data-page="how-it-works"] .hiw-step__cta { margin-top: var(--space-6); }
+
+/* ------------------------------------------------------------------
+   MOBILE (<=700px) — tighten the vertical rhythm.
+   Root cause of the original gaps: tokens.css defines --section-y as a
+   flat 5rem with no media query, so every interior section carried
+   80px top AND bottom padding on a phone. Consecutive sections
+   therefore compounded to 160px of empty background between blocks.
+   ------------------------------------------------------------------ */
+@media (max-width: 700px) {
+  /* Section rhythm: 80/80 -> 48/48, so a section boundary lands ~48px
+     rather than ~160px. */
+  .section { padding-block: var(--space-12); }
+  .section--lg { padding-block: var(--space-12); }
+  .closing-cta { padding-block: var(--space-14, 3.5rem); }
+
+  /* Use more of the screen: gutters track viewport instead of a flat 24px. */
+  .wrap { padding-inline: clamp(1.25rem, 5vw, 1.5rem); }
+
+  /* Fluid interior headings (scoped to main so nav/footer are untouched). */
+  main .page-intro__title,
+  main .pricing-intro__title,
+  main .about-hero__title {
+    font-size: clamp(2.1rem, 9vw, 2.9rem);
+    line-height: 1.04;
+    margin-bottom: var(--space-4);
+  }
+  main h2 { font-size: clamp(1.7rem, 7vw, 2.25rem); line-height: 1.1; }
+  main .section-desc { font-size: clamp(1rem, 4.2vw, 1.125rem); line-height: 1.5; }
+  .section-label { margin-bottom: var(--space-3); }
+
+  /* Centred section headers no longer reserve a desktop-sized 48px. */
+  .section-header,
+  .section-header--center { margin-bottom: var(--space-6); }
+
+  /* The intro hero and the block beneath it are one composition: collapse
+     the seam between them instead of stacking two full paddings. */
+  .page-intro,
+  .pricing-intro { padding-bottom: var(--space-2); }
+  .page-intro--tight { padding-bottom: var(--space-2); }
+  .page-intro + .section,
+  .pricing-intro + .section { padding-top: var(--space-8); }
+
+  /* Sticky CTA clearance — applied once, at page level. */
+  body { padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px)); }
+  body[data-page="schedule"],
+  body[data-page="confirmation"],
+  body[data-page="status"] { padding-bottom: var(--space-8); }
+}
+
+/* ------------------------------------------------------------------
+   PLANS — compact product cards.
+   The card keeps every element (image, name, price, tagline, features,
+   CTA); it just stops laying them out as a tall desktop column.
+   ------------------------------------------------------------------ */
+@media (max-width: 700px) {
+  body[data-page="plans"] .pricing-bag-wrap { gap: var(--space-6); }
+  body[data-page="plans"] .plans-grid { gap: var(--space-4); }
+
+  body[data-page="plans"] .plan-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 38%;
+    grid-template-areas:
+      "name     image"
+      "price    image"
+      "tagline  image"
+      "features features"
+      "cta      cta";
+    align-items: start;
+    column-gap: var(--space-4);
+    min-height: 0;
+    padding: 1.4rem;
+  }
+
+  body[data-page="plans"] .plan-card .plan-name    { grid-area: name; margin-bottom: var(--space-2); }
+  body[data-page="plans"] .plan-card .plan-price   { grid-area: price; margin-bottom: var(--space-1); }
+  body[data-page="plans"] .plan-card .plan-tagline { grid-area: tagline; margin-bottom: 0; }
+  body[data-page="plans"] .plan-card .plan-features{ grid-area: features; flex: none; margin: var(--space-4) 0 var(--space-5); }
+  body[data-page="plans"] .plan-card > .btn        { grid-area: cta; margin-top: 0; }
+
+  /* Product frame sits beside the text and spans only those rows, so the
+     bag never dictates the height of the whole card. */
+  body[data-page="plans"] .bag-product-visual {
+    grid-area: image;
+    align-self: start;
+    width: 100%;
+    height: 132px;
+    min-height: 0;
+    margin: 0;
+    padding: var(--space-1);
+  }
+  body[data-page="plans"] .bag-product-visual img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 124px;
+    object-fit: contain;
+  }
+
+  /* Type proportionate to a phone. */
+  body[data-page="plans"] .plan-card .plan-name { font-size: 0.9rem; letter-spacing: 0.05em; }
+  body[data-page="plans"] .plan-card .plan-amount { font-size: 2.9rem; }
+  body[data-page="plans"] .plan-card .plan-tagline { font-size: 1rem; }
+  body[data-page="plans"] .plan-card .plan-features li {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    padding-block: var(--space-2);
+    gap: var(--space-2);
+  }
+
+  /* Supporting basket photo: a standalone block, not a half-screen slab. */
+  body[data-page="plans"] .pricing-side-basket {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    max-height: 300px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   HOW IT WORKS — true single column, restrained supporting photo.
+   ------------------------------------------------------------------ */
+@media (max-width: 700px) {
+  body[data-page="how-it-works"] .hiw-step { margin-bottom: var(--space-10); gap: var(--space-6); }
+  body[data-page="how-it-works"] .hiw-step--last { margin-bottom: 0; }
+  body[data-page="how-it-works"] .hiw-step__title { font-size: clamp(1.55rem, 6.4vw, 1.95rem); margin-bottom: var(--space-3); }
+  body[data-page="how-it-works"] .hiw-step__p { margin-top: var(--space-3); }
+  body[data-page="how-it-works"] .hiw-step__cta { margin-top: var(--space-5); }
+
+  /* Supporting photo keeps a sane frame instead of a 22rem min-height. */
+  body[data-page="how-it-works"] .hiw-feature-photo {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    max-height: 390px;
+  }
+  body[data-page="how-it-works"] .hiw-feature-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  body[data-page="how-it-works"] .hiw-trust-accent {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    margin: 0 0 var(--space-5);
+  }
+  body[data-page="how-it-works"] .bento { gap: var(--space-3); }
+  body[data-page="how-it-works"] .bento-cell { padding: var(--space-5); }
+}
+
+/* ------------------------------------------------------------------
+   REMAINING INTERIOR PAGES — same density pass, no layout redesign.
+   ------------------------------------------------------------------ */
+@media (max-width: 700px) {
+  .deco-clip { padding: var(--space-5) !important; }
+
+  body[data-page="about"] .about-hero-grid { gap: var(--space-6); }
+  body[data-page="about"] .about-hero-photo { min-height: 0; aspect-ratio: 4 / 3; max-height: 340px; }
+  body[data-page="about"] .about-lower-scene { margin-block: var(--space-2); }
+
+  body[data-page="faq"] .faq-support-photo,
+  body[data-page="services"] .services-support-photo,
+  body[data-page="service-area"] .service-area-support-photo {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    margin: var(--space-6) 0 var(--space-2);
+  }
+
+  body[data-page="schedule"] .schedule-bag-media { height: 9rem; }
+  body[data-page="schedule"] .schedule-bag-media img { max-width: 68%; max-height: 8rem; }
+  body[data-page="schedule"] .schedule-support-photo { width: min(220px, 60%); }
+}
