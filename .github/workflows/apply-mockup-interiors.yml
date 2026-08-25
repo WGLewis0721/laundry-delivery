@@ -1,0 +1,32 @@
+name: Apply mockup-matched Soapbox interiors
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-mockup-interiors.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply mockup-matched interior design
+        run: python3 scripts/apply_mockup_decor.py
+
+      - name: Commit and push site update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add css/interior-decor.css schedule.html plans.html about.html how-it-works.html faq.html services.html service-area.html
+          git diff --cached --quiet && { echo "No changes to commit"; exit 0; }
+          git commit -m "Match interior pages to Soapbox decorative mockup"
+          git push origin main
