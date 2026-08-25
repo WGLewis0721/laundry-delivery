@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Track Your Order — FOLD</title>
+  <title>Track Your Order — Soapbox Caddie</title>
   <meta name="robots" content="noindex">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <!-- Self-hosted variable fonts - no CDN, no runtime third-party requests. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/cormorant-garamond/CormorantGaramond-Variable.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/inter/InterVariable.woff2">
 
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -23,12 +26,22 @@
 
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="wrap nav-inner">
-    <a href="/laundry-delivery/index.html" class="nav-logo" aria-label="Go to homepage">
-      <span class="logo-text">FOLD</span>
+    <a href="index.html" class="nav-logo" aria-label="Soapbox Caddie - go to homepage">
+      <span class="logo-mark" aria-hidden="true">Soapbox<br>Caddie</span>
+      <span class="sr-only">Soapbox Caddie</span>
     </a>
-    <div style="margin-left: auto; display: flex; gap: var(--space-4); align-items: center;">
-      <a href="account.html" style="font-size: var(--text-sm); color: var(--ink-light); text-decoration: none;">My account</a>
-    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="plans.html">Pricing</a></li>
+      <li><a href="plans.html#subscription">Subscriptions</a></li>
+      <li><a href="index.html#gift-laundry">Gift Laundry</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="index.html#business">Business &amp; Contracting</a></li>
+      <li><a href="service-area.html" class="btn btn--primary btn--sm nav-cta">Check Your ZIP</a></li>
+    </ul>
   </div>
 </nav>
 
@@ -81,63 +94,36 @@
     <!-- ── Delivery date notice ───────────────────────── -->
     <div class="booking-notice" role="status" aria-live="polite" style="margin-bottom: var(--space-8);">
       <strong>Estimated delivery:</strong>
-      Thursday, June 5 — confirmed by text after weigh-in.
+      Thursday, June 5 &mdash; confirmed by text after pickup.
       You'll receive an SMS when your order is out for delivery.
     </div>
 
-    <!-- ── Weigh-in breakdown ─────────────────────────── -->
-    <section aria-labelledby="weighin-heading" style="margin-bottom: var(--space-10);">
-      <h2 id="weighin-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-4);">
-        Weigh-in breakdown
+    <!-- ── Order summary ──────────────────────────────── -->
+    <section aria-labelledby="order-summary-heading" style="margin-bottom: var(--space-10);">
+      <h2 id="order-summary-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-4);">
+        Order summary
       </h2>
       <p style="font-size: var(--text-sm); color: var(--ink-lighter); margin-bottom: var(--space-4);">
-        Weighed at pickup on June 3, 9:14 am · Household plan (12 lb cap per bag)
+        Collected June 3, 9:14 am &middot; charged by the bag
       </p>
 
       <div style="overflow-x: auto;">
-        <table class="weighin-table" aria-label="Per-bag weigh-in breakdown">
+        <table class="weighin-table" aria-label="Bags in this order">
           <thead>
             <tr>
               <th scope="col">Bag</th>
-              <th scope="col">Weight</th>
-              <th scope="col">Cap</th>
-              <th scope="col">Status</th>
-              <th scope="col" style="text-align: right;">Overage charge</th>
+              <th scope="col">Size</th>
+              <th scope="col" style="text-align: right;">Price</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Bag 1</td>
-              <td>10.5 lb</td>
-              <td>12 lb</td>
-              <td><span class="weighin-pill weighin-pill--within">Within cap</span></td>
-              <td style="text-align: right;">—</td>
-            </tr>
-            <tr>
-              <td>Bag 2</td>
-              <td>14.2 lb</td>
-              <td>12 lb</td>
-              <td><span class="weighin-pill weighin-pill--over">Over by 2.2 lb</span></td>
-              <td style="text-align: right;">$5.50</td>
-            </tr>
-            <tr>
-              <td>Bag 3</td>
-              <td>8.8 lb</td>
-              <td>12 lb</td>
-              <td><span class="weighin-pill weighin-pill--within">Within cap</span></td>
-              <td style="text-align: right;">—</td>
-            </tr>
+            <tr><td>Bag 1</td><td>Medium</td><td style="text-align: right;">$60.00</td></tr>
+            <tr><td>Bag 2</td><td>Small</td><td style="text-align: right;">$45.00</td></tr>
           </tbody>
           <tfoot>
             <tr class="weighin-total">
-              <td colspan="4"><strong>Total overage</strong></td>
-              <td style="text-align: right;"><strong>$5.50</strong></td>
-            </tr>
-            <tr>
-              <td colspan="4" style="font-size: var(--text-xs); color: var(--ink-lighter); padding-top: var(--space-2);">
-                Charged to card on file (•••• 4242) at delivery
-              </td>
-              <td></td>
+              <td colspan="2"><strong>Total</strong></td>
+              <td style="text-align: right;"><strong>$105.00</strong></td>
             </tr>
           </tfoot>
         </table>
@@ -153,44 +139,43 @@
       <div class="sms-feed" role="log" aria-live="polite" aria-label="SMS message history">
 
         <div class="sms-bubble sms-bubble--outgoing"
-             aria-label="FOLD sent: Monday Jun 2 8:05 pm">
-          <span class="sms-sender">FOLD</span>
+             aria-label="Soapbox Caddie sent: Monday Jun 2 8:05 pm">
+          <span class="sms-sender">Soapbox Caddie</span>
           <p class="sms-body">
-            Hi Jane! Reminder: your FOLD pickup is tomorrow (Tue Jun 3)
-            between 8–10 am. Leave your bag by the door — we'll handle the rest. 🧺
+            Hi Jane! Reminder: your Soapbox Caddie pickup is tomorrow (Tue Jun 3)
+            between 8–10 am. Leave your bag by the door — we'll handle the rest. <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9.5h16l-1.4 10H5.4L4 9.5Z"/><path d="m8.5 9.5 2.2-5M15.5 9.5l-2.2-5"/></svg>
           </p>
           <span class="sms-time">Mon Jun 2 · 8:05 pm</span>
         </div>
 
         <div class="sms-bubble sms-bubble--outgoing"
-             aria-label="FOLD sent: Tuesday Jun 3 9:17 am">
-          <span class="sms-sender">FOLD</span>
+             aria-label="Soapbox Caddie sent: Tuesday Jun 3 9:17 am">
+          <span class="sms-sender">Soapbox Caddie</span>
           <p class="sms-body">
-            ✓ Picked up! We've got 3 bags. Weighing now — you'll receive a
-            breakdown text in a few minutes.
+            &#10003; Picked up! We've got 2 bags. You'll receive your receipt
+            and confirmed delivery date shortly.
           </p>
           <span class="sms-time">Tue Jun 3 · 9:17 am</span>
         </div>
 
         <div class="sms-bubble sms-bubble--outgoing"
-             aria-label="FOLD sent: Tuesday Jun 3 9:22 am">
-          <span class="sms-sender">FOLD</span>
+             aria-label="Soapbox Caddie sent: Tuesday Jun 3 9:22 am">
+          <span class="sms-sender">Soapbox Caddie</span>
           <p class="sms-body">
-            ⚖️ Weigh-in complete:<br>
-            • Bag 1: 10.5 lb (within cap ✓)<br>
-            • Bag 2: 14.2 lb (over cap by 2.2 lb → $5.50 overage)<br>
-            • Bag 3: 8.8 lb (within cap ✓)<br><br>
-            Total overage: $5.50, charged to card on file at delivery.
-            No action needed — we'll get started!
+            &#128230; Bags collected:<br>
+            &bull; Bag 1 &mdash; Medium ($60)<br>
+            &bull; Bag 2 &mdash; Small ($45)<br><br>
+            Total: $105.00, charged to your card on file at delivery.
+            No action needed &mdash; we'll get started!
           </p>
           <span class="sms-time">Tue Jun 3 · 9:22 am</span>
         </div>
 
         <div class="sms-bubble sms-bubble--outgoing"
-             aria-label="FOLD sent: Tuesday Jun 3 11:30 am">
-          <span class="sms-sender">FOLD</span>
+             aria-label="Soapbox Caddie sent: Tuesday Jun 3 11:30 am">
+          <span class="sms-sender">Soapbox Caddie</span>
           <p class="sms-body">
-            📅 Delivery confirmed: <strong>Thursday, June 5</strong>.
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg> Delivery confirmed: <strong>Thursday, June 5</strong>.
             We'll text you when we're on the way. See you then!
           </p>
           <span class="sms-time">Tue Jun 3 · 11:30 am</span>
@@ -211,7 +196,7 @@
 <footer style="border-top: 1px solid var(--border); padding-block: var(--space-6); text-align: center;">
   <div class="wrap">
     <p style="font-size: var(--text-xs); color: var(--ink-lighter);">
-      © 2025 FOLD Laundry · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+      &copy; 2026 Soapbox Caddie · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
     </p>
   </div>
 </footer>

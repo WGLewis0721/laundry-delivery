@@ -33,14 +33,14 @@
 }
 
 .section--dark {
-  background-color: var(--ink);
-  color: var(--white);
+  background-color: var(--color-olive-soft);
+  color: var(--color-on-dark);
 }
 
 .section--dark h2,
 .section--dark h3,
 .section--dark p {
-  color: var(--white);
+  color: var(--color-on-dark);
 }
 
 /* Section header block */
@@ -56,6 +56,7 @@
 }
 
 .section-label {
+  font-family: var(--font-condensed);
   display: inline-block;
   font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
@@ -66,7 +67,7 @@
 }
 
 .section--dark .section-label {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-on-dark-muted);
 }
 
 .section-title {
@@ -80,7 +81,7 @@
 }
 
 .section--dark .section-desc {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--color-on-dark-muted);
 }
 
 /* ── Sticky top nav ───────────────────────────────────────── */
@@ -117,13 +118,31 @@
   border-radius: var(--radius-md);
 }
 
-.nav-logo .logo-text {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
-  color: var(--ink);
-  letter-spacing: -0.02em;
+/* PLACEHOLDER, NOT THE BRAND MARK. The official Soapbox Caddie logo asset
+   has not been supplied, so this is a neutral type stand-in. Replace the
+   span with <img class="logo-img" src="assets/img/soapbox-caddie-logo.svg"
+   alt="Soapbox Caddie"> - it is sized to the same box, so nothing shifts. */
+.nav-logo .logo-mark,
+.footer-brand .logo-mark {
+  display: grid;
+  place-items: center;
+  min-width: 3.1rem;
+  height: 3.1rem;
+  padding-inline: 0.4rem;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
 }
+
+.nav-logo .logo-mark { color: var(--color-olive); }
+
+.logo-img { height: 3.1rem; width: auto; object-fit: contain; }
 
 /* Nav links */
 .nav-links {
@@ -149,6 +168,11 @@
 .nav-links .nav-cta {
   margin-left: var(--space-2);
 }
+
+/* The nav link rule outranks .btn--primary on specificity, so buttons in
+   the nav need their own colour restored. */
+.nav-links .btn--primary { color: var(--color-on-dark); }
+.nav-links .btn--primary:hover { color: var(--color-on-dark); }
 
 /* Current page indicator */
 .nav-links a[aria-current="page"] {
@@ -251,8 +275,8 @@
 /* ── Footer ───────────────────────────────────────────────── */
 
 .site-footer {
-  background: var(--ink);
-  color: var(--white);
+  background: var(--color-olive);
+  color: var(--color-on-dark);
   padding-block: var(--space-16) var(--space-8);
 }
 
@@ -263,15 +287,13 @@
   margin-bottom: var(--space-12);
 }
 
-.footer-brand .logo-text {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
-  color: var(--white);
+.footer-brand .logo-mark {
+  color: var(--color-on-dark-line);
+  justify-self: start;
 }
 
 .footer-brand p {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--color-on-dark-muted);
   margin-top: var(--space-3);
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
@@ -283,13 +305,13 @@
   font-weight: var(--weight-semibold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--color-on-dark-muted);
   margin-bottom: var(--space-4);
 }
 
 .footer-col a {
   display: block;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-on-dark-muted);
   text-decoration: none;
   font-size: var(--text-sm);
   padding-block: var(--space-1);
@@ -302,7 +324,7 @@
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--color-on-dark-line);
   padding-top: var(--space-6);
   display: flex;
   align-items: center;
@@ -313,13 +335,13 @@
 
 .footer-bottom p,
 .footer-bottom a {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--color-on-dark-muted);
   font-size: var(--text-xs);
   text-decoration: none;
 }
 
 .footer-bottom a:hover {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-on-dark-muted);
 }
 
 .footer-bottom-links {

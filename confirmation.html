@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking Confirmed — FOLD</title>
+  <title>Booking Confirmed — Soapbox Caddie</title>
   <meta name="robots" content="noindex">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <!-- Self-hosted variable fonts - no CDN, no runtime third-party requests. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/cormorant-garamond/CormorantGaramond-Variable.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/inter/InterVariable.woff2">
 
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -23,9 +26,22 @@
 
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="wrap nav-inner">
-    <a href="/laundry-delivery/index.html" class="nav-logo" aria-label="Go to homepage">
-      <span class="logo-text">FOLD</span>
+    <a href="index.html" class="nav-logo" aria-label="Soapbox Caddie - go to homepage">
+      <span class="logo-mark" aria-hidden="true">Soapbox<br>Caddie</span>
+      <span class="sr-only">Soapbox Caddie</span>
     </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="plans.html">Pricing</a></li>
+      <li><a href="plans.html#subscription">Subscriptions</a></li>
+      <li><a href="index.html#gift-laundry">Gift Laundry</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="index.html#business">Business &amp; Contracting</a></li>
+      <li><a href="service-area.html" class="btn btn--primary btn--sm nav-cta">Check Your ZIP</a></li>
+    </ul>
   </div>
 </nav>
 
@@ -58,14 +74,14 @@
           <span class="next-step-num" aria-hidden="true">1</span>
           <div class="next-step-content">
             <h4>Evening before pickup</h4>
-            <p>We text you a reminder with the exact pickup window. Leave your FOLD bag by the door — no need to be home.</p>
+            <p>We text you a reminder with the exact pickup window. Leave your Soapbox Caddie bag by the door — no need to be home.</p>
           </div>
         </li>
         <li class="next-step-item">
           <span class="next-step-num" aria-hidden="true">2</span>
           <div class="next-step-content">
-            <h4>Pickup &amp; weigh-in</h4>
-            <p>We collect your bag and weigh it on our certified scale. You get a text with the exact weight, your cap, and any overage calculation — before we process anything.</p>
+            <h4>Pickup</h4>
+            <p>We collect your bag from your door during your pickup window and text you as soon as it is on its way.</p>
           </div>
         </li>
         <li class="next-step-item">
@@ -79,7 +95,7 @@
           <span class="next-step-num" aria-hidden="true">4</span>
           <div class="next-step-content">
             <h4>Fresh &amp; folded at your door</h4>
-            <p>We text you when we're on the way, and again when it's delivered. Your FOLD bags come back ready to fill again.</p>
+            <p>We text you when we're on the way, and again when it's delivered. Your Soapbox Caddie bags come back ready to fill again.</p>
           </div>
         </li>
       </ol>
@@ -118,7 +134,7 @@
 <footer style="border-top: 1px solid var(--border); padding-block: var(--space-6); text-align: center;">
   <div class="wrap">
     <p style="font-size: var(--text-xs); color: var(--ink-lighter);">
-      © 2025 FOLD Laundry · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+      &copy; 2026 Soapbox Caddie · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
     </p>
   </div>
 </footer>
@@ -148,7 +164,7 @@
       return;
     }
 
-    const planNames = { solo: 'Solo ($39/mo)', household: 'Household ($69/mo)', estate: 'Estate ($119/mo)' };
+    const planNames = { small: 'Small Bag ($45)', medium: 'Medium Bag ($60)', large: 'Large Bag ($80)', subscription: 'Subscription ($55/week)' };
 
     setText('order-id-display', 'Order ID: ' + (booking.orderId || '—'));
     setText('cs-order-id',      booking.orderId || '—');

@@ -144,8 +144,14 @@ function initBooking() {
 
   // ── Summary card (step 5) ──────────────────────────────
   function updateSummary() {
-    const planNames = { solo: 'Solo', household: 'Household', estate: 'Estate' };
-    const planPrices = { solo: '$39', household: '$69', estate: '$119' };
+    const planNames = {
+      small: 'Small Bag', medium: 'Medium Bag', large: 'Large Bag',
+      subscription: 'Subscription',
+    };
+    const planPrices = {
+      small: '$45', medium: '$60', large: '$80',
+      subscription: '$55/week + $75 startup',
+    };
 
     setText('summary-plan',    planNames[state.plan]  || '—');
     setText('summary-price',   planPrices[state.plan] || '—');
@@ -225,7 +231,7 @@ function initBooking() {
     }
     if (step === 2) {
       if (!state.plan) {
-        alert('Please choose a plan to continue.');
+        alert('Please choose a bag or the subscription to continue.');
         ok = false;
       }
     }

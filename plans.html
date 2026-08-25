@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plans &amp; Pricing — FOLD Laundry</title>
-  <meta name="description" content="FOLD subscription plans for Montgomery, AL. Solo $39/mo · Household $69/mo · Estate $119/mo. Weighed by the bag, no surprise fees.">
+  <title>Plans &amp; Pricing — Soapbox Caddie</title>
+  <meta name="description" content="Soapbox Caddie bag pricing for the River Region. Small $45, Medium $60, Large $80. Fill to the line and pay by the bag, or subscribe for two bags a week.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <!-- Self-hosted variable fonts - no CDN, no runtime third-party requests. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/cormorant-garamond/CormorantGaramond-Variable.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/inter/InterVariable.woff2">
 
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -20,11 +23,11 @@
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "FOLD Subscription Plans",
+    "name": "Soapbox Caddie Subscription Plans",
     "itemListElement": [
-      { "@type": "Offer", "position": 1, "name": "Solo", "price": "39", "priceCurrency": "USD" },
-      { "@type": "Offer", "position": 2, "name": "Household", "price": "69", "priceCurrency": "USD" },
-      { "@type": "Offer", "position": 3, "name": "Estate", "price": "119", "priceCurrency": "USD" }
+      { "@type": "Offer", "position": 1, "name": "Small Bag", "price": "45", "priceCurrency": "USD" },
+      { "@type": "Offer", "position": 2, "name": "Medium Bag", "price": "60", "priceCurrency": "USD" },
+      { "@type": "Offer", "position": 3, "name": "Large Bag", "price": "80", "priceCurrency": "USD" }
     ]
   }
   </script>
@@ -36,17 +39,21 @@
 
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="wrap nav-inner">
-    <a href="/laundry-delivery/index.html" class="nav-logo" aria-label="Go to homepage"><span class="logo-text">FOLD</span></a>
+    <a href="index.html" class="nav-logo" aria-label="Soapbox Caddie - go to homepage">
+      <span class="logo-mark" aria-hidden="true">Soapbox<br>Caddie</span>
+      <span class="sr-only">Soapbox Caddie</span>
+    </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
       <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
     <ul class="nav-links" id="nav-menu" role="list">
-      <li><a href="how-it-works.html">How it works</a></li>
-      <li><a href="plans.html" aria-current="page">Plans</a></li>
-      <li><a href="service-area.html">Service area</a></li>
-      <li><a href="estimate.html">Get an Estimate</a></li>
-      <li><a href="login.html">Sign in</a></li>
-      <li><a href="schedule.html" class="btn btn--primary btn--sm nav-cta">Schedule a pickup</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="plans.html">Pricing</a></li>
+      <li><a href="plans.html#subscription">Subscriptions</a></li>
+      <li><a href="index.html#gift-laundry">Gift Laundry</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="index.html#business">Business &amp; Contracting</a></li>
+      <li><a href="service-area.html" class="btn btn--primary btn--sm nav-cta">Check Your ZIP</a></li>
     </ul>
   </div>
 </nav>
@@ -55,112 +62,130 @@
 
   <section class="section" style="background: var(--off-white);">
     <div class="wrap" style="text-align: center; max-width: 680px; margin-inline: auto;">
-      <span class="section-label">Transparent pricing</span>
+      <span class="section-label">Pricing</span>
       <h1 style="font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl)); margin-bottom: var(--space-4);">
-        Simple, honest plans
+        Simple pricing. Beautifully done.
       </h1>
       <p class="section-desc">
-        Monthly subscription with per-bag weight caps. Overage is shown before it's charged.
-        Cancel anytime.
+        Fill to the line. You're charged by the bag &mdash; no per-item counting and no weight math.
       </p>
     </div>
   </section>
 
-  <!-- Plans -->
-  <section class="section" aria-labelledby="plans-main-heading">
+  <!-- Bag pricing -->
+  <section class="section" aria-labelledby="bags-heading">
     <div class="wrap">
-      <h2 id="plans-main-heading" class="sr-only">Plan options</h2>
+      <h2 id="bags-heading" class="sr-only">Bag pricing</h2>
 
       <div class="plans-grid reveal-group">
 
-        <!-- Solo -->
-        <article class="plan-card" id="solo" aria-label="Solo plan">
-          <p class="plan-name">Solo</p>
-          <div class="plan-price"><span class="plan-amount">$39</span><span class="plan-period">/mo</span></div>
-          <p class="plan-tagline">For one person who values their time.</p>
-          <ul class="plan-features" aria-label="Solo plan features">
-            <li><span class="plan-check" aria-hidden="true">✓</span>2 FOLD bags included</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>10 lb cap per bag</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>2 pickups per month</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>Wash, fold &amp; deliver</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>SMS tracking at every step</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>Cancel anytime</li>
+        <article class="plan-card" id="small" aria-label="Small bag">
+          <p class="plan-name">Small Bag</p>
+          <div class="plan-price"><span class="plan-amount">$45</span><span class="plan-period">/bag</span></div>
+          <p class="plan-tagline">Fill to the line.</p>
+          <ul class="plan-features" aria-label="What every bag includes">
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Pickup from your door</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Washed, dried and folded</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Returned to your door</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>One flat price per bag</li>
           </ul>
-          <div class="plan-overage"><strong>Overage</strong>$2.50 per lb over the 10 lb cap — shown on weigh-in receipt, charged at delivery.</div>
-          <a href="schedule.html?plan=solo" class="btn btn--ghost btn--block">Choose Solo</a>
+          <a href="schedule.html?bag=small" class="btn btn--ghost btn--block">Book a Small Bag</a>
         </article>
 
-        <!-- Household -->
-        <article class="plan-card plan-card--featured" id="household" aria-label="Household plan — most popular">
-          <span class="plan-badge">Most popular</span>
-          <p class="plan-name">Household</p>
-          <div class="plan-price"><span class="plan-amount">$69</span><span class="plan-period">/mo</span></div>
-          <p class="plan-tagline">For families that never seem to catch up.</p>
-          <ul class="plan-features" aria-label="Household plan features">
-            <li><span class="plan-check" aria-hidden="true">✓</span>4 FOLD bags included</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>12 lb cap per bag</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>4 pickups per month</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>Wash, fold &amp; deliver</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>SMS tracking at every step</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>Delicates care available</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>Cancel anytime</li>
+        <article class="plan-card plan-card--featured" id="medium" aria-label="Medium bag, most popular">
+          <p class="plan-name">Medium Bag</p>
+          <div class="plan-price"><span class="plan-amount">$60</span><span class="plan-period">/bag</span></div>
+          <p class="plan-tagline">Fill to the line.</p>
+          <ul class="plan-features" aria-label="What every bag includes">
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Pickup from your door</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Washed, dried and folded</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Returned to your door</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>One flat price per bag</li>
           </ul>
-          <div class="plan-overage"><strong>Overage</strong>$2.50 per lb over the 12 lb cap — shown on weigh-in receipt, charged at delivery.</div>
-          <a href="schedule.html?plan=household" class="btn btn--primary btn--block">Choose Household</a>
+          <a href="schedule.html?bag=medium" class="btn btn--primary btn--block">Book a Medium Bag</a>
         </article>
 
-        <!-- Estate -->
-        <article class="plan-card" id="estate" aria-label="Estate plan">
-          <p class="plan-name">Estate</p>
-          <div class="plan-price"><span class="plan-amount">$119</span><span class="plan-period">/mo</span></div>
-          <p class="plan-tagline">For large households and short-term rentals.</p>
-          <ul class="plan-features" aria-label="Estate plan features">
-            <li><span class="plan-check" aria-hidden="true">✓</span>8 FOLD bags included</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>15 lb cap per bag</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>8 pickups per month</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>Wash, fold &amp; deliver</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>SMS tracking at every step</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>Delicates &amp; hang-dry care</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>Priority pickup windows</li>
-            <li><span class="plan-check" aria-hidden="true">✓</span>Cancel anytime</li>
+        <article class="plan-card" id="large" aria-label="Large bag">
+          <p class="plan-name">Large Bag</p>
+          <div class="plan-price"><span class="plan-amount">$80</span><span class="plan-period">/bag</span></div>
+          <p class="plan-tagline">Fill to the line.</p>
+          <ul class="plan-features" aria-label="What every bag includes">
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Pickup from your door</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Washed, dried and folded</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Returned to your door</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>One flat price per bag</li>
           </ul>
-          <div class="plan-overage"><strong>Overage</strong>$2.50 per lb over the 15 lb cap — shown on weigh-in receipt, charged at delivery.</div>
-          <a href="schedule.html?plan=estate" class="btn btn--ghost btn--block">Choose Estate</a>
+          <a href="schedule.html?bag=large" class="btn btn--ghost btn--block">Book a Large Bag</a>
         </article>
 
       </div>
-
-      <p class="text-center text-muted mt-8" style="font-size: var(--text-sm);">
-        Prices are placeholder — confirmed at launch. All plans include free FOLD pickup bags.
-      </p>
     </div>
   </section>
 
-  <!-- Overage explainer -->
-  <section class="section section--alt" aria-labelledby="overage-heading">
+  <!-- Subscription -->
+  <section class="section section--alt" id="subscription" aria-labelledby="subscription-heading">
+    <div class="wrap wrap--narrow">
+      <div class="section-header--center">
+        <span class="section-label">Most popular</span>
+        <h2 id="subscription-heading">The Subscription</h2>
+        <p class="section-desc">More ease. More time. Less laundry.</p>
+      </div>
+
+      <div style="background: var(--color-olive-soft); color: var(--color-on-dark); border-radius: var(--radius-2xl); padding: var(--space-8);">
+        <dl style="display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--space-5); margin: 0;">
+          <div>
+            <dt style="font-size: var(--text-xs); color: var(--color-on-dark-muted);">Startup fee</dt>
+            <dd style="font-family: var(--font-display); font-size: var(--text-3xl); margin: 0;">$75</dd>
+            <p style="font-size: var(--text-xs); color: var(--color-on-dark-muted); margin: 0;">One time, at sign-up</p>
+          </div>
+          <div>
+            <dt style="font-size: var(--text-xs); color: var(--color-on-dark-muted);">Included</dt>
+            <dd style="font-family: var(--font-display); font-size: var(--text-3xl); margin: 0;">2 bags</dd>
+            <p style="font-size: var(--text-xs); color: var(--color-on-dark-muted); margin: 0;">Per week</p>
+          </div>
+          <div>
+            <dt style="font-size: var(--text-xs); color: var(--color-on-dark-muted);">Weekly</dt>
+            <dd style="font-family: var(--font-display); font-size: var(--text-3xl); margin: 0;">$55</dd>
+            <p style="font-size: var(--text-xs); color: var(--color-on-dark-muted); margin: 0;">Per week</p>
+          </div>
+          <div>
+            <dt style="font-size: var(--text-xs); color: var(--color-on-dark-muted);">Additional bag</dt>
+            <dd style="font-family: var(--font-display); font-size: var(--text-3xl); margin: 0;">$25</dd>
+            <p style="font-size: var(--text-xs); color: var(--color-on-dark-muted); margin: 0;">Per extra bag, per week</p>
+          </div>
+        </dl>
+        <p style="margin-top: var(--space-6); color: var(--color-on-dark-muted); font-size: var(--text-sm);">
+          Pause, skip, or cancel anytime.
+        </p>
+        <a href="schedule.html?plan=subscription" class="btn btn--primary" style="margin-top: var(--space-5); background: var(--color-on-dark); color: var(--color-olive);">Start a subscription</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How bag pricing works -->
+  <section class="section" aria-labelledby="how-pricing-heading">
     <div class="wrap wrap--narrow">
       <div class="section-header--center">
         <span class="section-label">No surprise fees</span>
-        <h2 id="overage-heading">How overage works</h2>
+        <h2 id="how-pricing-heading">How bag pricing works</h2>
       </div>
       <div style="background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-2xl); padding: var(--space-8);">
         <p style="margin-bottom: var(--space-4);">
-          Every bag has a weight cap set by your plan. When we weigh your bag at pickup,
-          one of two things happens:
+          Every Soapbox Caddie bag has a fill line printed on it. Fill the bag to that line
+          and the price on this page is the price you pay.
         </p>
         <ul style="list-style: disc; padding-left: var(--space-5); color: var(--ink-light);">
           <li style="padding-block: var(--space-2);">
-            <strong style="color: var(--success);">Within cap</strong> — no extra charge. Your subscription covers it.
+            <strong>Pick your bag size</strong> &mdash; small, medium or large. The bag you choose sets the price.
           </li>
           <li style="padding-block: var(--space-2);">
-            <strong style="color: var(--error);">Over cap</strong> — we text you the exact overage in pounds and dollars.
-            You see the number before we process anything. The overage is charged to your
-            card on file at delivery, not before.
+            <strong>Fill it to the line</strong> &mdash; no sorting, no counting items, no weighing.
+          </li>
+          <li style="padding-block: var(--space-2);">
+            <strong>Need more room?</strong> &mdash; book a second bag, or move to the subscription
+            where extra bags are $25 each.
           </li>
         </ul>
-        <p style="margin-top: var(--space-4);">
-          Overage rate: <strong>$2.50 per lb</strong> over your bag's weight cap.
-        </p>
       </div>
     </div>
   </section>
@@ -168,10 +193,10 @@
   <!-- CTA -->
   <section class="section section--dark closing-cta">
     <div class="wrap">
-      <h2>Ready to never do laundry again?</h2>
-      <p>Check your ZIP and schedule your first pickup in under 3 minutes.</p>
+      <h2>Choose peace, not laundry.</h2>
+      <p>Check your ZIP and book your first pickup.</p>
       <div class="closing-cta-btns">
-        <a href="schedule.html" class="btn btn--primary btn--lg">Schedule a pickup</a>
+        <a href="schedule.html" class="btn btn--primary btn--lg">Book a pickup</a>
         <a href="how-it-works.html" class="btn btn--ghost-light btn--lg">How it works</a>
       </div>
     </div>
@@ -182,15 +207,16 @@
 <footer class="site-footer" role="contentinfo">
   <div class="wrap">
     <div class="footer-grid">
-      <div class="footer-brand"><span class="logo-text">FOLD</span><p>Laundry pickup and delivery for Montgomery, AL.</p></div>
-      <div class="footer-col"><h4>Service</h4><a href="how-it-works.html">How it works</a><a href="plans.html">Plans &amp; pricing</a><a href="services.html">Services</a><a href="service-area.html">Service area</a></div>
-      <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="faq.html">FAQ</a></div>
-      <div class="footer-col"><h4>Members</h4><a href="login.html">Sign in</a><a href="status.html">Track order</a><h4 style="margin-top: var(--space-5);">Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+      <div class="footer-brand">
+        <span class="logo-mark" aria-hidden="true">Soapbox<br>Caddie</span>
+        <span class="sr-only">Soapbox Caddie</span>
+        <p>Laundry care, delivered across the River Region.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><a href="how-it-works.html">How It Works</a><a href="plans.html">Pricing</a><a href="plans.html#subscription">Subscriptions</a><a href="index.html#gift-laundry">Gift Laundry</a><a href="services.html">Pickup &amp; Delivery</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="index.html#business">Business &amp; Contracting</a><a href="faq.html">FAQs</a><a href="terms.html">Protections</a><a href="terms.html">Waivers</a></div>
+      <div class="footer-col"><h4>Members</h4><a href="login.html">Sign in</a><a href="status.html">Track order</a><a href="service-area.html">Check Your ZIP</a></div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 FOLD Laundry. Montgomery, AL.</p>
-      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Soapbox Caddie. River Region. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div>
   </div>
 </footer>
 

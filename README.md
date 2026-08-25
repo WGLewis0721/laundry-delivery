@@ -6,7 +6,7 @@ Live site: [https://wglewis0721.github.io/laundry-delivery/index.html](https://w
 
 Hosted on **GitHub Pages** — no build step, no framework, no bundler. Backend integration points are marked `// TODO: TRA3` (serverless backend) and `// TODO: 3KD` (Vision Engine estimator); both are separate specs.
 
-> **Current state:** the **homepage is Soapbox Caddie**; every other page is still the **earlier "FOLD / Montgomery" build**. That inconsistency is live and intentional — the redesign is being rolled out homepage-first. See [Brand rollout status](#brand-rollout-status).
+> **Current state:** every page is Soapbox Caddie. The homepage is the fully realised design; the inner pages share the same palette, typography, iconography and chrome through the `css/*` token system. See [Design systems](#css-architecture) for how the two builds relate.
 
 ---
 
@@ -182,29 +182,46 @@ Footer contact details read "to be published" on purpose — no real phone or em
 
 ---
 
-## Brand rollout status
+## Two builds, one design system
 
-| Page | Brand | Design system |
+| | Homepage (`index.html`) | Inner pages (14) |
 |---|---|---|
-| `index.html` | **Soapbox Caddie** | Self-contained inline tokens |
-| all other pages | FOLD / Montgomery (pre-redesign) | `css/*` token system |
+| CSS | Inline `<style>`, self-contained | `css/*` cascade |
+| Palette | Inline tokens | `css/tokens.css` |
+| Fonts | Inline `@font-face` | `css/fonts.css` |
+| Runtime deps | None | None, except the Leaflet map |
 
-Consequences worth knowing before you touch anything:
+Both builds use the **same palette values, the same three fonts and the same
+line-icon family**, so they read as one site. No page loads fonts, CSS or a
+framework from a CDN. The one external runtime dependency left anywhere on the
+site is `service-area.html`, which pulls Leaflet from unpkg and map tiles from
+OpenStreetMap — inherent to showing a map, and it fails gracefully to the ZIP
+checker beside it. The duplication is in *where the
+declarations live*, not in what they say — changing a brand colour means editing
+two token blocks, and both are labelled.
 
-- Navigating from the homepage to any inner page changes both the brand and the visual language.
-- The homepage's `Our Story`, `View FAQs`, `Pickup & Delivery` and policy links all land on FOLD-era pages.
-- `Protections` and `Waivers` both point at `terms.html` until dedicated pages exist.
-- `Partner With Us` and `Gift Laundry` point at `#zip-check` until their flows exist.
+Consolidating them (promoting the homepage tokens into `css/tokens.css` and
+migrating the homepage onto the shared cascade) is a worthwhile follow-up, but
+it is a refactor with no visual payoff, so it has been left until the branding
+is final.
 
----
+**Known gaps:**
+
+- The **3KD estimator** (`estimate.html`) still runs on the retired weight-and-tier
+  model — it computes a weight range and maps it to plans that no longer exist. The
+  page now says so and points at `plans.html` as the pricing authority. Recalibrating
+  it needs client-confirmed bag capacities, which do not exist yet.
+- `account.html` carries two `h1`s because it holds the signed-out and signed-in
+  views in one document, toggled by JS. Pre-existing, and only one is ever visible.
+- The header and footer brand mark is a type stand-in, not the logo.
 
 ## Pages
 
 | File | URL | Description |
 |---|---|---|
-| `index.html` | `/` | **Homepage — Soapbox Caddie redesign** |
+| `index.html` | `/` | **Homepage — the fully realised design** |
 | `how-it-works.html` | `/how-it-works` | Three-step explainer |
-| `plans.html` | `/plans` | Pricing tiers + overage explainer |
+| `plans.html` | `/plans` | Bag pricing ($45/$60/$80) + the subscription |
 | `services.html` | `/services` | Service detail (Wash & Fold, Hang-Dry, Delicates) |
 | `service-area.html` | `/service-area` | ZIP checker + Leaflet map |
 | `about.html` | `/about` | Brand story and values |
@@ -212,7 +229,7 @@ Consequences worth knowing before you touch anything:
 | `estimate.html` | `/estimate` | Photo-based laundry estimator (3KD Vision Engine) |
 | `schedule.html` | `/schedule` | 5-step booking wizard |
 | `confirmation.html` | `/confirmation` | Post-booking confirmation |
-| `status.html` | `/status` | Order tracking + weigh-in breakdown |
+| `status.html` | `/status` | Order tracking + order summary |
 | `account.html` | `/account` | Member dashboard |
 | `login.html` | `/login` | Sign-in entry point |
 | `privacy.html` | `/privacy` | Privacy policy (pre-launch placeholder) |
@@ -249,6 +266,7 @@ laundry-delivery/
 │       ├── inter/               InterVariable.woff2
 │       └── oswald/              Oswald-Variable.woff2
 ├── css/                     Token-first system — used by every page EXCEPT index.html
+│   ├── fonts.css            @font-face for the three self-hosted variable fonts
 │   ├── tokens.css           Custom properties — palette, type, spacing
 │   ├── base.css             Reset, typography, focus styles
 │   ├── layout.css           Nav, footer, section rhythm, grid, mobile CTA bar
@@ -275,11 +293,20 @@ laundry-delivery/
 **Two systems currently coexist.** This is a known divergence, not an accident:
 
 1. **`index.html`** — a single inline `<style>` block owning a minimal reset, the colour/type/radius tokens, the layout system and every component. No CSS framework and no CDN.
-2. **Every other page** — token-first ITCSS cascade: `tokens.css` → `base.css` → `layout.css` → `components.css` → `utilities.css`, with all colour, spacing and type values as custom properties in `css/tokens.css`.
+2. **Every other page** — token-first ITCSS cascade: `fonts.css` → `tokens.css` → `base.css` → `layout.css` → `components.css` → `utilities.css`.
 
-Reconciling the two is a post-Phase-3 task: once the Soapbox Caddie palette is final, promote the homepage tokens into `css/tokens.css` and migrate the inner pages.
+`css/tokens.css` now carries the same Soapbox Caddie palette as the homepage. The
+brand values are declared once under "Brand palette"; everything else in that file
+is a **semantic alias** (`--ink`, `--border`, `--green-btn` and friends), which is
+why the rebrand did not require touching a single component rule.
 
-**Accessibility note (`css/*` system):** the accent palette (`--gold`, `--green`, `--sky`, `--blush`) is for fills and decoration only — it does not meet WCAG AA contrast for text. Body text uses `--ink: #2D3748`; button fills use `--green-btn: #2E7D32` (5.0:1 on white).
+**Accessibility note:** the decorative aliases (`--gold`, `--green`, `--sky`, `--blush`)
+map to camel, sage, sage-light and oatmeal. They are fills only — camel is 3.0:1 and
+sage-dark 3.5:1 on white, so neither may be used for text. Body text uses `--ink`
+(charcoal, 14.8:1); interactive fills use `--green-btn` (olive, 12.3:1 with warm-white).
+Every translucent-white text colour on dark surfaces was replaced with
+`--color-on-dark-muted`, because at 35–75% alpha they measured 2.9–4.2:1 on the new
+olive surfaces.
 
 ---
 
@@ -350,8 +377,9 @@ The homepage has no test suite, so verify by hand:
 
 ## Pre-launch checklist
 
-- [ ] Roll the Soapbox Caddie brand onto the remaining 14 pages
-- [ ] Apply Phase 2 palette, then Phase 3 branding, photography and icons
+- [ ] Apply Phase 3 branding, photography and the final icon set
+- [ ] Recalibrate the 3KD estimator for bag pricing (needs confirmed bag capacities)
+- [ ] Consolidate the homepage tokens into `css/tokens.css` once branding is final
 - [ ] Supply real footer contact details and social links
 - [ ] Confirm bag capacity wording (currently `TODO` in each bag card)
 - [ ] Build dedicated Protections and Waivers pages; repoint the reassurance band

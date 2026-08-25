@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ — FOLD Laundry</title>
-  <meta name="description" content="Answers to common questions about FOLD laundry service — turnaround, overage, cancellation, and more.">
+  <title>FAQ — Soapbox Caddie</title>
+  <meta name="description" content="Answers to common questions about Soapbox Caddie laundry service — turnaround, overage, cancellation, and more.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <!-- Self-hosted variable fonts - no CDN, no runtime third-party requests. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/cormorant-garamond/CormorantGaramond-Variable.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/inter/InterVariable.woff2">
 
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -21,8 +24,8 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "How long does delivery take?", "acceptedAnswer": { "@type": "Answer", "text": "Typically 1–2 business days after pickup. We set your delivery date after weighing your bags and send it by text." } },
-      { "@type": "Question", "name": "What if I go over my bag's weight cap?", "acceptedAnswer": { "@type": "Answer", "text": "You receive a text with the exact overage and dollar amount before your card is charged. Overage is $2.50/lb." } },
+      { "@type": "Question", "name": "How long does delivery take?", "acceptedAnswer": { "@type": "Answer", "text": "Typically 1-2 business days after pickup. We confirm your delivery date by text once your bag is collected." } },
+      { "@type": "Question", "name": "How does bag pricing work?", "acceptedAnswer": { "@type": "Answer", "text": "You fill your Soapbox Caddie bag to the line printed on it and are charged by the bag: $45 small, $60 medium, $80 large." } },
       { "@type": "Question", "name": "What if I'm not home for pickup?", "acceptedAnswer": { "@type": "Answer", "text": "Leave your bags in a safe spot — by the door, in a lobby, or at a gate. Add instructions when you schedule." } },
       { "@type": "Question", "name": "Can I cancel anytime?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. No contracts or fees. Cancel from your account dashboard at any time." } },
       { "@type": "Question", "name": "How do you handle delicates?", "acceptedAnswer": { "@type": "Answer", "text": "Items marked 'delicate' or 'hang dry' are separated and handled with extra care. Add a note when scheduling." } }
@@ -37,17 +40,21 @@
 
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="wrap nav-inner">
-    <a href="/laundry-delivery/index.html" class="nav-logo" aria-label="Go to homepage"><span class="logo-text">FOLD</span></a>
+    <a href="index.html" class="nav-logo" aria-label="Soapbox Caddie - go to homepage">
+      <span class="logo-mark" aria-hidden="true">Soapbox<br>Caddie</span>
+      <span class="sr-only">Soapbox Caddie</span>
+    </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
       <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
     <ul class="nav-links" id="nav-menu" role="list">
-      <li><a href="how-it-works.html">How it works</a></li>
-      <li><a href="plans.html">Plans</a></li>
-      <li><a href="service-area.html">Service area</a></li>
-      <li><a href="estimate.html">Get an Estimate</a></li>
-      <li><a href="login.html">Sign in</a></li>
-      <li><a href="schedule.html" class="btn btn--primary btn--sm nav-cta">Schedule a pickup</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="plans.html">Pricing</a></li>
+      <li><a href="plans.html#subscription">Subscriptions</a></li>
+      <li><a href="index.html#gift-laundry">Gift Laundry</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="index.html#business">Business &amp; Contracting</a></li>
+      <li><a href="service-area.html" class="btn btn--primary btn--sm nav-cta">Check Your ZIP</a></li>
     </ul>
   </div>
 </nav>
@@ -73,8 +80,8 @@
         </div>
 
         <div class="accordion-item" role="listitem">
-          <h2><button class="accordion-trigger" aria-expanded="false" aria-controls="q2">What if I go over my bag's weight cap?<span class="accordion-icon" aria-hidden="true">+</span></button></h2>
-          <div id="q2" class="accordion-panel" hidden><p>No surprises. If a bag is over its cap, we text you a weigh-in receipt showing the exact weight, your cap, the overage in pounds, and the dollar amount. We only charge your card on file after you've seen that receipt. Overage rate is $2.50 per lb.</p></div>
+          <h2><button class="accordion-trigger" aria-expanded="false" aria-controls="q2">How does bag pricing work?<span class="accordion-icon" aria-hidden="true">+</span></button></h2>
+          <div id="q2" class="accordion-panel" hidden><p>No surprises and no weighing. Every Soapbox Caddie bag has a fill line printed on it &mdash; fill to that line and you are charged for the bag you booked: $45 small, $60 medium, $80 large. If you need more room, book a second bag, or move to the subscription where extra bags are $25 each.</p></div>
         </div>
 
         <div class="accordion-item" role="listitem">
@@ -93,8 +100,8 @@
         </div>
 
         <div class="accordion-item" role="listitem">
-          <h2><button class="accordion-trigger" aria-expanded="false" aria-controls="q6">How do I get my FOLD bags?<span class="accordion-icon" aria-hidden="true">+</span></button></h2>
-          <div id="q6" class="accordion-panel" hidden><p>We mail your FOLD bags after you subscribe — typically arriving within 3–5 business days. They come back with your clean laundry after every pickup, ready to fill again.</p></div>
+          <h2><button class="accordion-trigger" aria-expanded="false" aria-controls="q6">How do I get my Soapbox Caddie bags?<span class="accordion-icon" aria-hidden="true">+</span></button></h2>
+          <div id="q6" class="accordion-panel" hidden><p>We mail your Soapbox Caddie bags after you subscribe — typically arriving within 3–5 business days. They come back with your clean laundry after every pickup, ready to fill again.</p></div>
         </div>
 
         <div class="accordion-item" role="listitem">
@@ -127,12 +134,16 @@
 <footer class="site-footer" role="contentinfo">
   <div class="wrap">
     <div class="footer-grid">
-      <div class="footer-brand"><span class="logo-text">FOLD</span><p>Laundry pickup and delivery for Montgomery, AL.</p></div>
-      <div class="footer-col"><h4>Service</h4><a href="how-it-works.html">How it works</a><a href="plans.html">Plans &amp; pricing</a><a href="services.html">Services</a><a href="service-area.html">Service area</a></div>
-      <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="faq.html">FAQ</a></div>
-      <div class="footer-col"><h4>Members</h4><a href="login.html">Sign in</a><a href="status.html">Track order</a><h4 style="margin-top: var(--space-5);">Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+      <div class="footer-brand">
+        <span class="logo-mark" aria-hidden="true">Soapbox<br>Caddie</span>
+        <span class="sr-only">Soapbox Caddie</span>
+        <p>Laundry care, delivered across the River Region.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><a href="how-it-works.html">How It Works</a><a href="plans.html">Pricing</a><a href="plans.html#subscription">Subscriptions</a><a href="index.html#gift-laundry">Gift Laundry</a><a href="services.html">Pickup &amp; Delivery</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="index.html#business">Business &amp; Contracting</a><a href="faq.html">FAQs</a><a href="terms.html">Protections</a><a href="terms.html">Waivers</a></div>
+      <div class="footer-col"><h4>Members</h4><a href="login.html">Sign in</a><a href="status.html">Track order</a><a href="service-area.html">Check Your ZIP</a></div>
     </div>
-    <div class="footer-bottom"><p>© 2025 FOLD Laundry. Montgomery, AL.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div>
+    <div class="footer-bottom"><p>&copy; 2026 Soapbox Caddie. River Region. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div>
   </div>
 </footer>
 

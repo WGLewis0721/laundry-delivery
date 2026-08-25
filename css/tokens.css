@@ -1,45 +1,77 @@
 /* ============================================================
-   FOLD — Design Tokens
+   Soapbox Caddie - Design Tokens
    Single source of truth for every colour, size, and value.
-   Import this file first in every page.
+   Import this file first in every page (after css/fonts.css).
+
+   The Soapbox Caddie palette is defined once under "Brand palette".
+   Everything below it is a semantic alias, so components never name a
+   palette colour directly and a rebrand is a change to this file only.
    ============================================================ */
 
 :root {
 
-  /* ── Palette ──────────────────────────────────────────── */
+  /* ── Brand palette ────────────────────────────────────── */
 
-  --white:         #FFFFFF;
-  --off-white:     #F8F9FA;
-  --ink:           #2D3748;
-  --ink-light:     #4A5568;
-  --ink-lighter:   #718096;
-  --border:        #E2E8F0;
-  --border-dark:   #CBD5E0;
+  --color-linen:       #F5F3ED;
+  --color-warm-white:  #FCFBF8;
+  --color-white:       #FFFFFF;
 
-  /* Brand accents — fills / decoration / large UI only.
-     These lighter shades FAIL AA as small text on white.
-     Never use as body text or small-text colour. */
-  --gold:          #D4AF37;   /* premium warmth   */
-  --green:         #5FAF6A;   /* freshness        */
-  --sky:           #A9D6F5;   /* trust / calm     */
-  --blush:         #F7D6DE;   /* warmth           */
+  --color-sage:        #B8B9AE;
+  --color-sage-light:  #D8DAD2;
+  --color-sage-dark:   #85897A;
 
-  /* AA-safe button / interactive fills (white text ≥ 4.5:1) */
-  --green-btn:     #2E7D32;   /* 5.0 : 1 on white */
-  --green-btn-hov: #256428;
+  --color-camel:       #B98A60;
+  --color-sand:        #D7B999;
+  --color-oatmeal:     #E5D8C8;
 
-  /* Semantic states */
-  --success:       #2E7D32;
-  --error:         #C53030;
-  --warning:       #B7791F;
-  --error-bg:      #FFF5F5;
-  --success-bg:    #F0FFF4;
+  --color-olive:       #30351F;
+  --color-olive-soft:  #596044;
+
+  --color-charcoal:    #24261F;
+  --color-text-muted:  #66685F;
+  --color-border:      #DDD9CF;
+
+  /* On dark surfaces - solid, so contrast is provable.
+     warm-white 12.3:1 and muted 9.2:1 on olive. */
+  --color-on-dark:       #FCFBF8;
+  --color-on-dark-muted: #DBDCD4;
+  --color-on-dark-line:  rgba(252, 251, 248, 0.62);
+
+  /* ── Semantic aliases ─────────────────────────────────── */
+
+  --white:         var(--color-white);
+  --off-white:     var(--color-linen);
+  --ink:           var(--color-charcoal);
+  --ink-light:     #3E4238;
+  --ink-lighter:   var(--color-text-muted);
+  --border:        var(--color-border);
+  --border-dark:   var(--color-sage-dark);
+
+  /* Decorative fills only. These FAIL AA as small text on white:
+     camel is 3.0:1 and sage-dark 3.5:1 - never use them for body copy. */
+  --gold:          var(--color-camel);
+  --green:         var(--color-sage);
+  --sky:           var(--color-sage-light);
+  --blush:         var(--color-oatmeal);
+
+  /* AA-safe interactive fills (warm-white text on olive is 12.3:1) */
+  --green-btn:     var(--color-olive);
+  --green-btn-hov: var(--color-olive-soft);
+
+  /* Semantic states - kept distinguishable rather than fully on-brand,
+     because an error must not read as decoration. */
+  --success:       #3F6B3A;
+  --error:         #A3342C;
+  --warning:       #8A6212;
+  --error-bg:      #FBF2F1;
+  --success-bg:    #F1F5EF;
 
   /* ── Typography ───────────────────────────────────────── */
 
-  --font-display:  'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-body:     'Inter', system-ui, -apple-system, BlinkMacSystemFont,
-                   'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-display:   'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body:      'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-condensed: 'Oswald', 'Arial Narrow', 'Inter', system-ui, sans-serif;
 
   /* Type scale */
   --text-xs:       0.75rem;    /*  12 px */

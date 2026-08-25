@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schedule a Pickup — FOLD</title>
-  <meta name="description" content="Schedule your laundry pickup with FOLD. Choose a plan, pick a window, and leave the rest to us.">
+  <title>Schedule a Pickup — Soapbox Caddie</title>
+  <meta name="description" content="Schedule your laundry pickup with Soapbox Caddie. Choose a plan, pick a window, and leave the rest to us.">
   <meta name="robots" content="noindex">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <!-- Self-hosted variable fonts - no CDN, no runtime third-party requests. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/cormorant-garamond/CormorantGaramond-Variable.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/inter/InterVariable.woff2">
 
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -25,13 +28,21 @@
 <!-- Nav (condensed — no mobile CTA bar on booking pages) -->
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="wrap nav-inner">
-    <a href="/laundry-delivery/index.html" class="nav-logo" aria-label="Go to homepage">
-      <span class="logo-text">FOLD</span>
+    <a href="index.html" class="nav-logo" aria-label="Soapbox Caddie - go to homepage">
+      <span class="logo-mark" aria-hidden="true">Soapbox<br>Caddie</span>
+      <span class="sr-only">Soapbox Caddie</span>
     </a>
-    <ul class="nav-links" id="nav-menu" role="list" style="margin-left: auto; display: flex; align-items: center; gap: var(--space-4);">
-      <li><a href="index.html" style="font-size: var(--text-sm); color: var(--ink-light); text-decoration: none;">← Back to home</a></li>
-      <li><a href="estimate.html" style="font-size: var(--text-sm); color: var(--ink-light); text-decoration: none;">Get an Estimate</a></li>
-      <li><a href="login.html" style="font-size: var(--text-sm); color: var(--ink-light); text-decoration: none;">Sign in</a></li>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="plans.html">Pricing</a></li>
+      <li><a href="plans.html#subscription">Subscriptions</a></li>
+      <li><a href="index.html#gift-laundry">Gift Laundry</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="index.html#business">Business &amp; Contracting</a></li>
+      <li><a href="service-area.html" class="btn btn--primary btn--sm nav-cta">Check Your ZIP</a></li>
     </ul>
   </div>
 </nav>
@@ -100,77 +111,82 @@
         </form>
       </section>
 
-      <!-- ── Step 2: Choose plan ───────────────────────── -->
+      <!-- ── Step 2: Choose your bag ───────────────────── -->
       <section class="booking-step" id="step-2" aria-labelledby="step2-title">
-        <h2 class="booking-step-title" id="step2-title">Choose your plan</h2>
-        <p class="booking-step-desc">Pick the tier that fits your household. Cancel anytime.</p>
+        <h2 class="booking-step-title" id="step2-title">Choose your bag</h2>
+        <p class="booking-step-desc">Fill to the line. You're charged by the bag.</p>
 
         <div class="plans-grid" style="margin-bottom: var(--space-8);">
 
-          <article class="plan-card" aria-label="Solo plan">
-            <p class="plan-name">Solo</p>
+          <article class="plan-card" aria-label="Small Bag">
+            <p class="plan-name">Small Bag</p>
             <div class="plan-price">
-              <span class="plan-amount">$39</span>
-              <span class="plan-period">/mo</span>
+              <span class="plan-amount">$45</span>
+              <span class="plan-period">/bag</span>
             </div>
             <ul class="plan-features">
-              <li><span class="plan-check" aria-hidden="true">✓</span>2 bags · 10 lb cap</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>2 pickups/month</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>Wash, fold &amp; deliver</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>SMS tracking</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Fill to the line</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Pickup from your door</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Washed, dried &amp; folded</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Returned to your door</li>
             </ul>
-            <div class="plan-overage">
-              <strong>Overage</strong>$2.50/lb over 10 lb cap
-            </div>
-            <button class="btn btn--ghost btn--block js-select-plan" data-plan="solo">
-              Choose Solo
+            <button class="btn btn--ghost btn--block js-select-plan" data-plan="small">
+              Choose Small Bag
             </button>
           </article>
 
-          <article class="plan-card plan-card--featured" aria-label="Household plan — most popular">
+          <article class="plan-card plan-card--featured" aria-label="Medium Bag">
             <span class="plan-badge">Most popular</span>
-            <p class="plan-name">Household</p>
+            <p class="plan-name">Medium Bag</p>
             <div class="plan-price">
-              <span class="plan-amount">$69</span>
-              <span class="plan-period">/mo</span>
+              <span class="plan-amount">$60</span>
+              <span class="plan-period">/bag</span>
             </div>
             <ul class="plan-features">
-              <li><span class="plan-check" aria-hidden="true">✓</span>4 bags · 12 lb cap</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>4 pickups/month</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>Wash, fold &amp; deliver</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>SMS tracking</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>Delicates care</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Fill to the line</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Pickup from your door</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Washed, dried &amp; folded</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Returned to your door</li>
             </ul>
-            <div class="plan-overage">
-              <strong>Overage</strong>$2.50/lb over 12 lb cap
-            </div>
-            <button class="btn btn--primary btn--block js-select-plan" data-plan="household">
-              Choose Household
+            <button class="btn btn--primary btn--block js-select-plan" data-plan="medium">
+              Choose Medium Bag
             </button>
           </article>
 
-          <article class="plan-card" aria-label="Estate plan">
-            <p class="plan-name">Estate</p>
+          <article class="plan-card" aria-label="Large Bag">
+            <p class="plan-name">Large Bag</p>
             <div class="plan-price">
-              <span class="plan-amount">$119</span>
-              <span class="plan-period">/mo</span>
+              <span class="plan-amount">$80</span>
+              <span class="plan-period">/bag</span>
             </div>
             <ul class="plan-features">
-              <li><span class="plan-check" aria-hidden="true">✓</span>8 bags · 15 lb cap</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>8 pickups/month</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>Wash, fold &amp; deliver</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>SMS tracking</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>Delicates &amp; hang-dry</li>
-              <li><span class="plan-check" aria-hidden="true">✓</span>Priority windows</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Fill to the line</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Pickup from your door</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Washed, dried &amp; folded</li>
+              <li><span class="plan-check" aria-hidden="true">&#10003;</span>Returned to your door</li>
             </ul>
-            <div class="plan-overage">
-              <strong>Overage</strong>$2.50/lb over 15 lb cap
-            </div>
-            <button class="btn btn--ghost btn--block js-select-plan" data-plan="estate">
-              Choose Estate
+            <button class="btn btn--ghost btn--block js-select-plan" data-plan="large">
+              Choose Large Bag
             </button>
           </article>
 
+        </div>
+
+        <div class="plan-card" style="max-width: 34rem;">
+          <p class="plan-name">Or subscribe</p>
+          <div class="plan-price">
+            <span class="plan-amount">$55</span>
+            <span class="plan-period">/week</span>
+          </div>
+          <ul class="plan-features">
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Two bags collected every week</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>$75 one-time startup fee</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Each additional bag $25</li>
+            <li><span class="plan-check" aria-hidden="true">&#10003;</span>Pause, skip or cancel anytime</li>
+          </ul>
+          <button class="btn btn--ghost btn--block js-select-plan" data-plan="subscription">
+            Choose the Subscription
+          </button>
         </div>
       </section>
 
@@ -223,8 +239,8 @@
                    placeholder="Card details (Square payment — coming soon)"
                    aria-describedby="card-hint" disabled>
             <span id="card-hint" class="form-hint">
-              Your card is stored securely via Square. It is only charged for overage,
-              shown on your weigh-in receipt before any charge is processed.
+              Your card is stored securely via Square and charged for the bags you book.
+              You see the total before anything is processed.
               No subscription charge today — billing starts after first pickup.
             </span>
           </div>
@@ -240,8 +256,8 @@
 
         <!-- Security trust badge -->
         <div class="booking-notice" role="note">
-          🔒 <strong>Secure payment via Square.</strong>
-          Your card is stored for overage only — never charged without a receipt.
+          <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.2 10.5V7.8a3.8 3.8 0 0 1 7.6 0v2.7"/></svg> <strong>Secure payment via Square.</strong>
+          Your card is stored securely and never charged without a receipt.
         </div>
 
       </section>
@@ -256,9 +272,9 @@
         <!-- Capacity-honest delivery notice -->
         <div class="booking-notice" role="note">
           <strong>About your delivery date:</strong>
-          We weigh each bag at pickup, then set your delivery date based on this week's
-          capacity. You'll receive a text with your confirmed delivery date once we've
-          processed your order — typically within 1 business day of pickup.
+          We set your delivery date based on this week's capacity once your bag is
+          collected. You'll receive a text with your confirmed delivery date once we've
+          processed your order &mdash; typically within 1 business day of pickup.
         </div>
 
         <fieldset style="border: none;">
@@ -383,10 +399,10 @@
         </div>
 
         <div class="booking-notice" role="note">
-          <strong>Delivery date confirmed after weigh-in.</strong>
-          We'll text your delivery date once we've weighed your bags —
-          typically within 1 business day of pickup. You'll see the full
-          weigh-in breakdown and any overage before your card is charged.
+          <strong>Delivery date confirmed after pickup.</strong>
+          We'll text your delivery date once your bag is collected &mdash;
+          typically within 1 business day. You'll see your itemised receipt
+          before your card is charged.
         </div>
 
         <p style="font-size: var(--text-xs); color: var(--ink-lighter); margin-top: var(--space-4);">
@@ -414,7 +430,7 @@
 <footer style="border-top: 1px solid var(--border); padding-block: var(--space-6); text-align: center;">
   <div class="wrap">
     <p style="font-size: var(--text-xs); color: var(--ink-lighter);">
-      © 2025 FOLD Laundry · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+      &copy; 2026 Soapbox Caddie · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
     </p>
   </div>
 </footer>
@@ -437,8 +453,9 @@
       if (input) input.value = urlZip;
     }
 
-    // Pre-select plan from URL
-    const urlPlan = params.get('plan');
+    // Pre-select from URL. The homepage and pricing page link with ?bag=,
+    // the subscription CTAs with ?plan=.
+    const urlPlan = params.get('bag') || params.get('plan');
     if (urlPlan) {
       const btn = document.querySelector(`.js-select-plan[data-plan="${urlPlan}"]`);
       if (btn) btn.closest('.plan-card')?.classList.add('plan-card--selected');

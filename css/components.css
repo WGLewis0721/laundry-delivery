@@ -75,7 +75,7 @@
 .btn--ghost-light {
   background: transparent;
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: var(--color-on-dark-line);
 }
 
 .btn--ghost-light:hover {
@@ -1089,7 +1089,9 @@
 
 .service-area-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* minmax(0, 1fr) rather than 1fr: a bare fr track floors at min-content,
+     which let a wide child push this grid past the viewport on mobile. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--space-12);
   align-items: center;
 }
@@ -1134,7 +1136,7 @@
 
 @media (max-width: 700px) {
   .service-area-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1500,7 +1502,7 @@
 }
 
 .closing-cta p {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-on-dark-muted);
   font-size: var(--text-lg);
   margin-bottom: var(--space-8);
   max-width: 480px;
@@ -1592,3 +1594,27 @@
   font-size: var(--text-sm);
   color: var(--ink-lighter);
 }
+
+
+/* ──────────────────────────────────────────────────────────
+   LINE ICONS
+   One family, matching the homepage: thin strokes, currentColor,
+   consistent weight. Replaces the emoji the old build used.
+   ────────────────────────────────────────────────────────── */
+
+.ui-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+  color: var(--color-olive-soft);
+}
+
+.bento-accent .ui-icon,
+.value-icon .ui-icon { color: var(--color-olive); }
+
+.section--dark .ui-icon { color: var(--color-on-dark); }
