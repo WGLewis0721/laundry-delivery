@@ -86,8 +86,10 @@ function initBooking() {
       // Highlight selected
       document.querySelectorAll('.js-select-plan').forEach(b => {
         b.closest('.plan-card').classList.remove('plan-card--selected');
+        b.setAttribute('aria-pressed', 'false');
       });
       btn.closest('.plan-card').classList.add('plan-card--selected');
+      btn.setAttribute('aria-pressed', 'true');
 
       // Auto-advance to step 3 after brief moment
       setTimeout(() => goToStep(3), 300);
@@ -301,8 +303,25 @@ function initBooking() {
   const urlZip = params.get('zip');
   if (urlZip && /^\d{5}$/.test(urlZip)) {
     state.zip = urlZip;
-    store.set('fold_booking', state);
   }
 
+  // Preserve the bag choice handed off by pricing links such as ?bag=small.
+  // Do not skip ZIP qualification; simply keep the choice ready for step 2.
+  const requestedPlan = params.get('bag') || params.get('plan');
+  const validPlans = new Set(['small', 'medium', 'large', 'subscription']);
+  if (requestedPlan && validPlans.has(requestedPlan)) {
+    state.plan = requestedPlan;
+  }
+  store.set('fold_booking', state);
+
   goToStep(state.step);
+
+  // Restore selected-card styling on refresh and when arriving with ?bag=...
+  if (state.plan) {
+    const selectedButton = document.querySelector(`.js-select-plan[data-plan="${state.plan}"]`);
+    if (selectedButton) {
+      selectedButton.closest('.plan-card')?.classList.add('plan-card--selected');
+      selectedButton.setAttribute('aria-pressed', 'true');
+    }
+  }
 }
