@@ -377,7 +377,7 @@
       align-content: center;
       padding: clamp(1.5rem, 3.2vw, 2.25rem) var(--shell-gutter);
     }
-    .hero__media { width: 100%; aspect-ratio: 751 / 986; background: var(--surface-main); }
+    .hero__media { width: 100%; aspect-ratio: 4 / 5; background: var(--surface-main); }
 
     @media (min-width: 62rem) {
       /* Full-bleed grid: copy aligns to the shell, media runs to the right
@@ -398,7 +398,7 @@
       .hero__media {
         grid-column: content-mid / pad-end;
         align-self: start;
-        aspect-ratio: 751 / 986;
+        aspect-ratio: 4 / 5;
         min-height: 0;
       }
       .hero__media > img { object-position: center; }
@@ -743,8 +743,8 @@
 
       <picture class="hero__media">
         <source srcset="assets/img/hero-soapbox-caddie.webp" type="image/webp">
-        <img src="assets/img/hero-soapbox-caddie.png" width="751" height="986"
-             alt="Teddy bear sitting on a wicker laundry basket filled with soft folded linens."
+        <img src="assets/img/hero-soapbox-caddie.png" width="1080" height="1350"
+             alt="Teddy bear sitting in a wicker laundry basket filled with soft folded linens."
              loading="eager" fetchpriority="high" decoding="async">
       </picture>
     </section>
