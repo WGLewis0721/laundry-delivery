@@ -1,0 +1,55 @@
+name: Upload renamed high-resolution Soapbox assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/upload-renamed-assets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  upload-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download full-resolution assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/img
+          curl -L --fail --retry 3 'https://at.adobe.com/f16L2Sj0PaCYvC07' -o 'assets/img/laundry-bag-lifestyle.png'
+          curl -L --fail --retry 3 'https://at.adobe.com/If9RE302IMBxrUjo' -o 'assets/img/olive-branch-right.png'
+          curl -L --fail --retry 3 'https://at.adobe.com/Qk2k3Sf2cN6cyJxF' -o 'assets/img/olive-branch-wide.png'
+          curl -L --fail --retry 3 'https://at.adobe.com/uihRDpYHHrz3TchL' -o 'assets/img/laundry-basket-towels-hero.png'
+          curl -L --fail --retry 3 'https://at.adobe.com/2gr3UYelCTE4Otco' -o 'assets/img/olive-branch-accent.png'
+          curl -L --fail --retry 3 'https://at.adobe.com/I3FlhkNOPjj01o7Q' -o 'assets/img/folded-towels-olive-vase.png'
+          curl -L --fail --retry 3 'https://at.adobe.com/UEp7cDflBcUb9Bpi' -o 'assets/img/folded-towels-tall-olive-vase.png'
+
+          for f in \
+            assets/img/laundry-bag-lifestyle.png \
+            assets/img/olive-branch-right.png \
+            assets/img/olive-branch-wide.png \
+            assets/img/laundry-basket-towels-hero.png \
+            assets/img/olive-branch-accent.png \
+            assets/img/folded-towels-olive-vase.png \
+            assets/img/folded-towels-tall-olive-vase.png; do
+              test -s "$f"
+              file "$f"
+          done
+
+      - name: Commit assets and remove one-shot workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f .github/workflows/upload-renamed-assets.yml
+          git add assets/img .github/workflows/upload-renamed-assets.yml
+          git commit -m 'Add renamed high-resolution Soapbox lifestyle assets'
+          git push origin main
