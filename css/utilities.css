@@ -1,5 +1,5 @@
 /* ============================================================
-   FOLD — Utilities
+   Soapbox Caddie — Utilities
    Single-purpose helper classes
    ============================================================ */
 
@@ -68,16 +68,16 @@
 .rounded-full { border-radius: var(--radius-full); }
 
 /* ── Width ────────────────────────────────────────────────── */
-.w-full  { width: 100%; }
+.w-full   { width: 100%; }
 .max-w-sm { max-width: 480px; }
 .max-w-md { max-width: 640px; }
 .max-w-lg { max-width: 800px; }
 
-/* ── Reveal animation (JS-driven via reveal.js) ───────────── */
+/* ── Reveal animation ─────────────────────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity  var(--dur-slow) var(--ease-out),
+  transition: opacity var(--dur-slow) var(--ease-out),
               transform var(--dur-slow) var(--ease-out);
 }
 
@@ -86,11 +86,10 @@
   transform: none;
 }
 
-/* Stagger children */
 .reveal-group > * {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity  var(--dur-slow) var(--ease-out),
+  transition: opacity var(--dur-slow) var(--ease-out),
               transform var(--dur-slow) var(--ease-out);
 }
 
@@ -113,7 +112,6 @@
 }
 
 /* ── No-JS safety ─────────────────────────────────────────── */
-/* If JS is disabled, reveal elements stay visible */
 .no-js .reveal,
 .no-js .reveal-group > * {
   opacity: 1;
