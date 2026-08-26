@@ -22,6 +22,7 @@
         href="assets/fonts/cormorant-garamond/CormorantGaramond-Italic-Variable.woff2">
   <link rel="preload" as="image" type="image/webp"
         href="assets/img/hero-banner-soapbox-caddie.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/chrome.css">
   <style>
 
     /* ---------------- Self-hosted variable fonts ----------------
@@ -331,62 +332,6 @@
     .link-arrow::after { content: "\2192"; text-decoration: none; }
     .link-arrow:hover { text-decoration-color: currentColor; }
 
-    /* ---------------- Header ---------------- */
-
-    .site-nav {
-      position: sticky; top: 0; z-index: 50;
-      border-bottom: 1px solid var(--border-brand);
-      background: var(--surface-main);
-    }
-    .nav-inner { display: flex; align-items: center; gap: 1rem; padding-block: 0.9rem; }
-
-    .brand { display: inline-flex; align-items: center; flex: 0 0 auto; }
-    /* The mark is a boxed two-line lockup (1.51:1), so it is sized by width
-       and the header stays shallow. */
-    .brand__logo { width: 7.25rem; height: auto; }
-    @media (max-width: 67.999rem) { .brand__logo { width: 6.25rem; } }
-
-    /* Light horizontal lockup, sized for the near-black footer. */
-    .footer-logo { width: 11.5rem; height: auto; }
-
-    .nav-links { display: none; }
-    .nav-cta-desktop { display: none; }
-    .nav-links a { display: block; border-radius: var(--radius-sm); padding: 0.5rem 0.7rem; }
-    @media (min-width: 68rem) {
-      /* Logo | centred links | CTA - a 3-track grid centres the links on
-         the page rather than in the space left over beside the CTA. */
-      .nav-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; }
-      .nav-links {
-        display: flex; align-items: center; justify-content: center; gap: 0.1rem;
-        font-size: 0.8125rem; font-weight: 500; color: var(--text-muted);
-      }
-      .nav-links a:hover { color: var(--brand-olive); background: var(--surface-main); }
-      .nav-links .nav-cta { display: none; }
-      .nav-cta-desktop { display: inline-flex; }
-    }
-    .nav-links.is-open {
-      display: grid; gap: 0.15rem;
-      position: absolute; top: calc(100% + 0.5rem); right: var(--shell-gutter); left: var(--shell-gutter);
-      z-index: 50;
-      padding: 0.6rem;
-      border: 1px solid var(--border-brand); border-radius: var(--radius-lg);
-      background: var(--surface-light);
-      box-shadow: var(--shadow-sheet);
-      font-weight: 500; color: var(--text-primary);
-    }
-    .nav-links.is-open a { padding: 0.7rem 0.8rem; }
-
-    /* Owned by one rule so utility load order cannot re-show it on desktop. */
-    .nav-toggle {
-      display: inline-flex; align-items: center; justify-content: center;
-      height: 2.6rem; width: 2.6rem; margin-inline-start: auto;
-      border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
-      background: var(--surface-light); color: var(--brand-olive); cursor: pointer;
-      flex: 0 0 auto;
-    }
-    .nav-toggle > span { display: flex; flex-direction: column; gap: 0.28rem; }
-    .nav-toggle span span { display: block; height: 1.5px; width: 1.15rem; border-radius: var(--radius-pill); background: currentColor; }
-    @media (min-width: 68rem) { .nav-toggle { display: none; } }
 
     /* ---------------- Hero ---------------- */
 
@@ -654,33 +599,6 @@
     .trust-col__body { display: grid; gap: 0.25rem; justify-items: start; }
     .trust-col__title { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
 
-    /* ---------------- Footer ---------------- */
-
-    .site-footer {
-      background: var(--footer-bg);
-      color: var(--on-dark);
-      padding-block: clamp(1.5rem, 2.6vw, 2rem);
-    }
-    .site-footer .brand__mark { border-color: var(--on-dark-line); color: var(--on-dark); }
-    .site-footer .body-xs { color: var(--on-dark-muted); }
-    .footer-grid { display: grid; gap: clamp(1rem, 2vw, 1.4rem); }
-    @media (min-width: 44rem) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (min-width: 68rem) { .footer-grid { grid-template-columns: 1fr 0.75fr 0.85fr 0.9fr 1.5fr; } }
-    .footer-col { display: grid; gap: 0.4rem; align-content: start; }
-    .footer-title { font-family: var(--font-condensed); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark); }
-    .footer-list { display: grid; gap: 0.25rem; font-size: 0.8125rem; color: var(--on-dark-muted); }
-    .footer-list a { padding-block: 0.15rem; }
-    .footer-list a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; }
-    .footer-social { display: flex; gap: 0.65rem; margin-top: 0.35rem; color: var(--on-dark-muted); }
-    .footer-legal { display: flex; flex-wrap: wrap; gap: 0.9rem; font-size: 0.6875rem; color: var(--on-dark-muted); }
-    .footer-legal a { padding-block: 0.3rem; }
-    .footer-legal a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; }
-    @media (min-width: 68rem) { .footer-legal { justify-content: flex-end; } }
-    /* A light card on the olive footer, matching the mockup. */
-    .zip-panel--footer {
-      max-width: none; padding: 0.7rem; gap: 0.35rem;
-      border-color: var(--border-brand); background: var(--surface-light);
-    }
 
     /* ---------------- Motion ---------------- */
 
@@ -738,34 +656,30 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- 1. HEADER / NAVIGATION ------------------------------------------ -->
-  <header>
-    <nav class="site-nav" aria-label="Main navigation">
-      <div class="shell shell--relative">
-        <div class="nav-inner">
-          <a href="index.html" class="brand" aria-label="Soapbox Caddie homepage">
-            <img class="brand__logo" src="assets/img/soapbox-caddie-logo-header.png"
-                 alt="Soapbox Caddie" width="3100" height="2050">
-          </a>
-
-          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
-            <span aria-hidden="true"><span></span><span></span><span></span></span>
-          </button>
-
-          <ul class="nav-links" id="nav-menu" role="list">
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#subscriptions">Subscriptions</a></li>
-            <li><a href="#gift-laundry">Gift Laundry</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#business">Business &amp; Contracting</a></li>
-            <li class="nav-cta"><a class="btn btn--secondary" href="#zip-check">Check Your ZIP</a></li>
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Soapbox Caddie - go to homepage">
+        <img class="logo-img" src="assets/img/soapbox-caddie-logo-header.png"
+             alt="Soapbox Caddie" width="3100" height="2050">
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li class="nav-has-sub">
+          <a href="plans.html">Pricing</a>
+          <ul class="nav-sub" role="list">
+            <li><a href="plans.html#subscription">Subscriptions</a></li>
           </ul>
-
-          <a class="btn btn--secondary nav-cta-desktop" href="#zip-check">Check Your ZIP</a>
-        </div>
-      </div>
-    </nav>
-  </header>
+        </li>
+        <li><a href="index.html#gift-laundry">Gift Laundry</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#business">Business &amp; Contracting</a></li>
+        <li><a href="service-area.html" class="btn btn--primary btn--sm nav-cta">Check Your ZIP</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <main id="main-content">
 
@@ -827,6 +741,8 @@
                 <strong class="text-ink">Fill to the line</strong> on any of our bags.<br>You're charged by the bag.
               </p>
             </div>
+
+            <p class="lede__cta"><a class="btn btn--secondary" href="plans.html">See Full Pricing &amp; Subscriptions</a></p>
           </div>
 
           <div class="lede__body bag-grid reveal-group">
@@ -1077,84 +993,21 @@
   </div>
 
   <!-- 10. FOOTER --------------------------------------------------------- -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="shell">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <img class="footer-logo" src="assets/img/soapbox-caddie-logo-footer.png"
-               alt="Soapbox Caddie" width="4392" height="987" loading="lazy" decoding="async">
-          <p class="body-xs">Laundry care, delivered across the River Region.</p>
-          <p class="footer-legal">&copy; 2026 Soapbox Caddie. All rights reserved.</p>
-        </div>
-
-        <div class="footer-col">
-          <h2 class="footer-title">Services</h2>
-          <div class="footer-list">
-            <a href="#how-it-works">How It Works</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#subscriptions">Subscriptions</a>
-            <a href="#gift-laundry">Gift Laundry</a>
-            <a href="how-it-works.html">Pickup &amp; Delivery</a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h2 class="footer-title">Company</h2>
-          <div class="footer-list">
-            <a href="about.html">About Us</a>
-            <a href="#business">Business &amp; Contracting</a>
-            <a href="faq.html">FAQs</a>
-            <a href="#protections">Protections</a>
-            <a href="#footer-connect">Contact</a>
-          </div>
-        </div>
-
-        <div class="footer-col" id="footer-connect">
-          <h2 class="footer-title">Connect</h2>
-          <!-- TODO: real email, phone and social profiles are still outstanding.
-               Deliberately unset so no invented contact details ship. -->
-          <div class="footer-list">
-            <p>Email: to be published</p>
-            <p>Phone: to be published</p>
-          </div>
-          <div class="footer-social" aria-hidden="true">
-            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="4.6"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"/></svg>
-            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.4 8.6h2.4V5.5h-2.6c-2.1 0-3.5 1.4-3.5 3.5v1.7H8.4v3.1h2.3v6.7h3.1v-6.7h2.4l.4-3.1h-2.8V9.5c0-.6.3-.9.6-.9Z"/></svg>
-            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.2 7.2 7.8 6 7.8-6"/></svg>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <div class="zip-panel zip-panel--footer">
-            <h2 class="zip-panel__title">Check Your ZIP</h2>
-            <p class="zip-note">See if we service your area.</p>
-
-            <form class="js-zip-form stack-2" role="search" aria-label="Check service availability by ZIP code" novalidate>
-              <div class="zip-fields">
-                <div>
-                  <label class="sr-only" for="footer-zip">ZIP code</label>
-                  <input id="footer-zip" class="zip-input" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5"
-                         placeholder="Enter ZIP code" autocomplete="postal-code" aria-describedby="footer-zip-msg">
-                </div>
-                <button class="btn btn--primary" type="submit">Check ZIP</button>
-              </div>
-
-              <p id="footer-zip-msg" class="zip-feedback" role="status" aria-live="polite"></p>
-
-              <div class="zip-actions" data-zip-actions>
-                <a class="btn btn--primary" href="schedule.html">Book a pickup</a>
-              </div>
-            </form>
-          </div>
-
-          <p class="footer-legal footer-legal--stacked">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Service</a>
-          </p>
-        </div>
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/img/soapbox-caddie-logo-footer.png"
+             alt="Soapbox Caddie" width="4392" height="987" loading="lazy" decoding="async">
+        <p>Laundry care, delivered across the River Region.</p>
       </div>
+      <div class="footer-col"><h4>Services</h4><a href="how-it-works.html">How It Works</a><a href="plans.html">Pricing</a><a href="plans.html#subscription">Subscriptions</a><a href="index.html#gift-laundry">Gift Laundry</a><a href="services.html">Pickup &amp; Delivery</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="index.html#business">Business &amp; Contracting</a><a href="faq.html">FAQs</a><a href="terms.html">Protections</a><a href="terms.html">Waivers</a></div>
+      <div class="footer-col"><h4>Members</h4><a href="login.html">Sign in</a><a href="status.html">Track order</a><a href="service-area.html">Check Your ZIP</a></div>
     </div>
-  </footer>
+    <div class="footer-bottom"><p>&copy; 2026 Soapbox Caddie. River Region. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div>
+  </div>
+</footer>
 
   <script>
     /* Mobile navigation toggle */
