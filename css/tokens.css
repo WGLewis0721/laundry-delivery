@@ -20,6 +20,10 @@
   --brand-ivory:   #F7F2F0;
   --brand-ink:     #0E0E10;
   --brand-olive:   #1E2509;
+  /* The two sage greens. Both are light, so anything placed on them takes
+     dark ink - white or ivory would be 1.4:1 and 1.8:1 respectively. */
+  --whisper-sage:  #D1E0D1;   /* buttons + dark bands -> ink 14.04:1 */
+  --olive-sage:    #A9BFA0;   /* footer       -> ink  9.78:1 */
   --brand-taupe:   #CFC5B8;
 
   /* ── Derived neutrals ─────────────────────────────────────
@@ -50,13 +54,28 @@
 
   /* AA-safe interactive fills (ivory text on olive is 14.3:1) */
   --green-btn:     var(--brand-olive);
+  /* Filled buttons are Whispering Sage with ink labels; white/outline
+     buttons fill with the same sage on hover. --green-btn itself is left
+     alone because ~10 rules use it as green TEXT, where Whispering Sage
+     would be 1.4:1 on ivory. */
+  --btn-fill:      var(--whisper-sage);
+  --btn-fill-text: var(--brand-ink);
+  --btn-fill-hov:  #BCD3BC;
   --green-btn-hov: #2C3610;
 
   /* On dark surfaces: ivory is 14.3:1 on olive and 17.4:1 on ink;
      taupe is 9.3:1 and 11.3:1. Both clear AA for body text. */
-  --on-dark:       var(--brand-ivory);
-  --on-dark-muted: var(--brand-taupe);
-  --on-dark-line:  color-mix(in srgb, var(--brand-taupe) 45%, transparent);
+  --footer-bg:       var(--olive-sage);
+  --on-footer:       var(--brand-ink);        /* on olive sage -> 9.78:1 */
+  --on-footer-muted: #3E4A39;                 /* on olive sage -> 4.75:1 */
+  --on-footer-line:  color-mix(in srgb, var(--brand-ink) 26%, transparent);
+  /* The former "dark" bands are Whispering Sage now, so everything that
+     sits on them takes ink. The names are kept so the 15 pages and their
+     shared rules do not have to change. */
+  --band-bg:       var(--whisper-sage);
+  --on-dark:       var(--brand-ink);          /* on whisper sage -> 14.04:1 */
+  --on-dark-muted: #3E4A39;   /* on whisper sage -> 6.82:1 */
+  --on-dark-line:  color-mix(in srgb, var(--brand-ink) 26%, transparent);
 
   /* Semantic states remain distinct for accessibility and meaning. */
   --success:       #3F6B3A;

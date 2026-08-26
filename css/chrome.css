@@ -62,7 +62,15 @@
 .logo-img { width: 7.25rem; height: auto; }
 @media (max-width: 48rem) { .logo-img { width: 6.25rem; } }
 
-.footer-logo { width: 11.5rem; height: auto; }
+/* The footer lockup is a light monochrome wordmark drawn for the old
+   near-black footer. On the Olive Sage surface it has to invert; the mark
+   is white-on-transparent, so brightness(0) renders it as solid ink and
+   leaves the transparency intact. */
+.footer-logo {
+  width: 11.5rem;
+  height: auto;
+  filter: brightness(0);
+}
 
 /* Nav links */
 .nav-links {
@@ -195,8 +203,8 @@
 /* ── Footer ───────────────────────────────────────────────── */
 
 .site-footer {
-  background: var(--brand-ink, #0E0E10);
-  color: var(--on-dark, #F7F2F0);
+  background: var(--footer-bg, #A9BFA0);
+  color: var(--on-footer, #0E0E10);
   padding-block: var(--space-16, 4rem) var(--space-8, 2rem);
 }
 
@@ -209,7 +217,7 @@
 
 
 .footer-brand p {
-  color: var(--on-dark-muted, #CFC5B8);
+  color: var(--on-footer-muted, #3E4A39);
   margin-top: var(--space-3, 0.75rem);
   font-size: var(--text-sm, 0.875rem);
   line-height: var(--leading-relaxed, 1.65);
@@ -221,13 +229,13 @@
   font-weight: var(--weight-semibold, 600);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--on-dark-muted, #CFC5B8);
+  color: var(--on-footer-muted, #3E4A39);
   margin-bottom: var(--space-4, 1rem);
 }
 
 .footer-col a {
   display: block;
-  color: var(--on-dark-muted, #CFC5B8);
+  color: var(--on-footer-muted, #3E4A39);
   text-decoration: none;
   font-size: var(--text-sm, 0.875rem);
   padding-block: var(--space-1, 0.25rem);
@@ -236,11 +244,11 @@
 }
 
 .footer-col a:hover {
-  color: var(--white, #FFFFFF);
+  color: var(--on-footer, #0E0E10);
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--on-dark-line, color-mix(in srgb, #CFC5B8 45%, transparent));
+  border-top: 1px solid var(--on-footer-line, color-mix(in srgb, #0E0E10 26%, transparent));
   padding-top: var(--space-6, 1.5rem);
   display: flex;
   align-items: center;
@@ -251,13 +259,13 @@
 
 .footer-bottom p,
 .footer-bottom a {
-  color: var(--on-dark-muted, #CFC5B8);
+  color: var(--on-footer-muted, #3E4A39);
   font-size: var(--text-xs, 0.75rem);
   text-decoration: none;
 }
 
 .footer-bottom a:hover {
-  color: var(--on-dark-muted, #CFC5B8);
+  color: var(--on-footer-muted, #3E4A39);
 }
 
 .footer-bottom-links {
@@ -346,17 +354,17 @@ body[data-page="status"] .mobile-cta-bar {
   line-height: 1;
   white-space: nowrap;
   text-decoration: none;
-  border: 2px solid var(--green-btn, #1E2509);
+  border: 2px solid var(--btn-fill, #D1E0D1);
   border-radius: var(--radius-full, 9999px);
-  background: var(--green-btn, #1E2509);
-  color: var(--white, #FFFFFF);
+  background: var(--btn-fill, #D1E0D1);
+  color: var(--btn-fill-text, #0E0E10);
   cursor: pointer;
   transition: background 150ms, border-color 150ms, color 150ms;
 }
 .site-nav .nav-cta:hover {
-  background: var(--green-btn-hov, #2C3610);
-  border-color: var(--green-btn-hov, #2C3610);
-  color: var(--white, #FFFFFF);
+  background: var(--btn-fill-hov, #BCD3BC);
+  border-color: var(--btn-fill-hov, #BCD3BC);
+  color: var(--btn-fill-text, #0E0E10);
 }
 
 /* ------------------------------------------------------------------
