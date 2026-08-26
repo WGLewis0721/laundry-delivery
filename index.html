@@ -79,7 +79,26 @@
     .stack-2 { display: grid; gap: 0.5rem; }
     .stack-3 { display: grid; gap: 0.75rem; }
     .price-note { margin-top: 0.75rem; }
-    .lede__cta { margin-top: 0.5rem; }
+    /* Paired CTA: "Book Your Laundry" and the How It Works page, split by a
+       rule. The intro column is only ~180-235px once .lede goes two-column at
+       62rem, so the pair stacks with a horizontal rule there and only turns
+       into a row (with a vertical rule) while the column is full width. */
+    .lede__cta {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.7rem;
+    }
+    .lede__cta-rule {
+      align-self: stretch;
+      height: 1px;
+      background: var(--border-brand);
+    }
+    @media (min-width: 30rem) and (max-width: 61.999rem) {
+      .lede__cta { flex-direction: row; align-items: center; gap: 1rem; }
+      .lede__cta-rule { align-self: center; width: 1px; height: 2.25rem; }
+    }
     .trust-heading { text-align: center; }
     .footer-legal--stacked { margin-top: 0.5rem; }
     .text-ink { color: var(--text-primary); font-weight: 600; }
@@ -861,7 +880,11 @@
           <div class="lede__intro">
             <h2 id="how-heading" class="title-lg">How it works</h2>
             <p class="body-sm">Impossibly convenient.<br>Impeccably clean.</p>
-            <p class="lede__cta"><a class="btn btn--primary" href="schedule.html">Book Your Laundry</a></p>
+            <p class="lede__cta">
+              <a class="btn btn--primary" href="schedule.html">Book Your Laundry</a>
+              <span class="lede__cta-rule" aria-hidden="true"></span>
+              <a class="btn btn--secondary" href="how-it-works.html">How It Works</a>
+            </p>
           </div>
 
           <ol class="lede__body steps reveal-group">

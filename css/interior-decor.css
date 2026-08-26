@@ -14,7 +14,7 @@
 /* Existing utility-page banners stay restrained instead of becoming giant posters. */
 .interior-page-banner {
   width: min(720px, calc(100% - 2 * var(--space-6)));
-  margin: var(--space-7) auto var(--space-10);
+  margin: var(--space-8) auto var(--space-10);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--decor-taupe) 62%, transparent);
   border-radius: var(--radius-2xl);
@@ -884,4 +884,169 @@ body[data-page="how-it-works"] .hiw-step__cta { margin-top: var(--space-6); }
   body[data-page="schedule"] .schedule-bag-media { height: 9rem; }
   body[data-page="schedule"] .schedule-bag-media img { max-width: 68%; max-height: 8rem; }
   body[data-page="schedule"] .schedule-support-photo { width: min(220px, 60%); }
+}
+
+/* ============================================================
+   DESKTOP COMPOSITION FIXES
+   ============================================================ */
+
+/* --- 1. Bag select buttons clipped their own label -------------------
+   The cause was the panel, not the type: .booking-wrap caps at 720px
+   inside a 1200px container, so after 48px of panel padding the three
+   bag cards got 194px each and their buttons only 149px of content box.
+   "Choose Medium Bag" needs ~152px at 16px with white-space: nowrap, so
+   it overflowed its pill, and "Choose the Subscription" landed exactly
+   on its 176px edge. Giving the panel the room it already had spare
+   fixes the labels and closes the dead space flanking the cards. */
+body[data-page="schedule"] .booking-wrap { max-width: 880px; }
+/* Slightly tighter inline padding keeps long labels comfortable at the
+   narrower widths where the panel cannot grow. */
+body[data-page="schedule"] .schedule-bag-card .js-select-plan,
+body[data-page="schedule"] .schedule-subscription-card .js-select-plan {
+  padding-inline: var(--space-4);
+}
+
+/* --- 2. Subscription support photo was sized twice ------------------
+   The figure sat in a grid column already capped at 270px, then took
+   width: min(28rem, 42%) — and that 42% resolves against the column,
+   not the row, collapsing it to ~113px and leaving the rest of the
+   column empty. The column now carries the sizing and the figure
+   simply fills it. */
+@media (min-width: 801px) {
+  body[data-page="schedule"] .schedule-subscription-row {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 330px);
+  }
+  body[data-page="schedule"] .schedule-support-photo {
+    width: 100%;
+    max-width: 330px;
+  }
+}
+
+/* --- 3. About hero left a band of empty cream -----------------------
+   .about-hero-photo set only min-height, so the img's height: 100% had
+   no definite parent height to resolve against and fell back to its
+   intrinsic ratio (449px inside a 662px frame at 1440px). The frame
+   kept the difference as blank background and the oversized grid row
+   pushed the next section down. A definite height lets the photo cover
+   its frame and brings the row back to the content. */
+@media (min-width: 701px) {
+  body[data-page="about"] .about-hero-photo {
+    min-height: 0;
+    height: clamp(24rem, 32vw, 32rem);
+  }
+  body[data-page="about"] .about-hero-photo img { height: 100%; }
+  body[data-page="about"] .about-hero-section { padding-bottom: var(--space-12); }
+  body[data-page="about"] .about-hero-section + .section { padding-top: var(--space-12); }
+}
+
+/* --- 4. "Our values" cards read small and misaligned ----------------
+   The section wrapper carried text-align: center for its heading, which
+   also centred each card's title and copy while the icon tile stayed
+   left — and the type (18px title / 14px copy) was far too small for a
+   ~400x190px card. Cards now align left with the icon and use type
+   proportionate to the box. */
+.about-values__inner {
+  max-width: 840px;
+  margin-inline: auto;
+  text-align: center;
+}
+.about-values__title {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-6);
+}
+.about-values .bento-cell {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-6) var(--space-8);
+}
+/* The icon tile is the only child that must not stretch to the column;
+   the text blocks stay full width so long copy wraps inside the card. */
+.about-values .bento-accent {
+  align-self: flex-start;
+  margin-bottom: var(--space-1);
+}
+.about-values__name {
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+.about-values__copy {
+  font-size: clamp(1rem, 1.1vw, 1.0625rem);
+  line-height: 1.55;
+  color: var(--ink-light);
+  margin: 0;
+}
+@media (max-width: 700px) {
+  .about-values .bento-cell { padding: var(--space-5); gap: var(--space-2); }
+  .about-values__name { font-size: 1.2rem; }
+  .about-values__copy { font-size: 1rem; }
+}
+
+/* On the narrowest phones "Choose the Subscription" lands exactly on its
+   available width; trimming the inline padding restores real slack. */
+@media (max-width: 540px) {
+  body[data-page="schedule"] .schedule-bag-card .js-select-plan,
+  body[data-page="schedule"] .schedule-subscription-card .js-select-plan {
+    padding-inline: var(--space-2);
+  }
+}
+@media (max-width: 540px) {
+  body[data-page="schedule"] .schedule-subscription-card { padding: var(--space-5); }
+}
+
+/* ------------------------------------------------------------------
+   HOW IT WORKS — alternating editorial steps.
+   Steps 2 and 3 previously carried .hiw-single (a single centred 760px
+   column) and no photograph at all, so their copy sat adrift in a
+   half-empty row while only step 1 had an image. Every step is now a
+   real two-column row, and the photo side alternates:
+   step 1 right, step 2 left, step 3 right.
+   Text stays first in the DOM for all three so the mobile stack order
+   (heading -> copy -> CTA -> photo) is consistent; the flip is done
+   with `order` only once the grid actually has two columns.
+   ------------------------------------------------------------------ */
+@media (min-width: 601px) {
+  body[data-page="how-it-works"] .hiw-step--reverse > .hiw-feature-photo { order: -1; }
+}
+body[data-page="how-it-works"] .hiw-feature-photo {
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  max-height: none;
+}
+body[data-page="how-it-works"] .hiw-feature-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+body[data-page="how-it-works"] .hiw-step { gap: clamp(var(--space-6), 4vw, var(--space-10)); }
+
+/* The trust accent was width: min(300px,42%) with margin-left:auto, which
+   parked a small square photo against the right edge under a centred
+   heading — reading as a stray float rather than part of the section.
+   It now sits centred as a proportionate supporting band. */
+body[data-page="how-it-works"] .hiw-trust-accent {
+  width: min(560px, 100%);
+  aspect-ratio: 16 / 10;
+  margin: 0 auto var(--space-8);
+}
+@media (max-width: 700px) {
+  body[data-page="how-it-works"] .hiw-trust-accent {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    margin: 0 0 var(--space-6);
+  }
+}
+
+/* Trust cards sat at 20px/16px inside a 568px-wide box, the same
+   out-of-scale look as the About values cards. */
+body[data-page="how-it-works"] .bento-cell h3 {
+  font-size: clamp(1.25rem, 1.5vw, 1.4rem);
+  line-height: 1.25;
+  margin-bottom: var(--space-2);
+}
+body[data-page="how-it-works"] .bento-cell p {
+  font-size: clamp(1rem, 1.1vw, 1.0625rem);
+  line-height: 1.55;
 }
