@@ -1,4 +1,4 @@
-# FOLD / 3KD — Copilot working agreement
+# Soapbox Caddie / 3KD — Copilot working agreement
 
 ## Git
 - Work on branch `main`. Never commit, push, or create branches. The human reviews and commits.

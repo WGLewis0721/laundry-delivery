@@ -321,9 +321,7 @@ laundry-delivery/
 │   ├── estimate.js          Estimator flow module
 │   └── estimate-data.js     Weight/pricing model + pure helpers
 ├── TRA3/backend-integration/  AWS serverless package (Terraform, Lambda, scripts)
-├── docs/
-│   └── project-overview.md  ⚠️ Still describes the FOLD-era site
-└── prompts/results/         Agent build reports
+└── Archives/                Retired FOLD-era docs, build logs and superseded/unused image assets
 ```
 
 ---
@@ -428,7 +426,7 @@ The homepage has no test suite, so verify by hand:
 - [ ] Integrate Acuity for booking
 - [ ] Review and finalise `privacy.html` and `terms.html` with legal counsel
 - [ ] Add a favicon (none exists in the repo)
-- [ ] Refresh `docs/project-overview.md` for the Soapbox Caddie build
+- [x] Refresh project overview docs for the Soapbox Caddie build — the FOLD-era `docs/project-overview.md` has been retired to `Archives/legacy-fold-docs/`; this README is now the source of truth
 - [ ] Run Lighthouse (target: 95+ Performance, 100 Accessibility / Best Practices / SEO) and an axe or WAVE audit
 
 ---

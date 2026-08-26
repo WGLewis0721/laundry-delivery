@@ -1,5 +1,5 @@
 /**
- * FOLD — store.js
+ * Soapbox Caddie — store.js
  * Safe sessionStorage wrapper. Never throws, degrades gracefully
  * in sandboxed environments or when storage is blocked.
  */
@@ -60,7 +60,7 @@ const store = (() => {
   }
 
   /**
-   * Clear all FOLD keys (prefixed with 'fold_').
+   * Clear all pre-rebrand session keys (prefixed with 'fold_'; see README).
    */
   function clear() {
     if (!_available) return;

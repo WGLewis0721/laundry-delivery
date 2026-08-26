@@ -1,5 +1,5 @@
 /**
- * FOLD - estimate.js
+ * Soapbox Caddie - estimate.js
  * 3KD Vision Engine - front-end scaffold (mock build).
  *
  * Flow: photo upload -> mock recognition -> weight estimate -> Q&A refinement -> book CTA.
@@ -79,7 +79,7 @@ function renderUploadSection() {
 
     <!-- Capture tip -->
     <p style="font-size: var(--text-sm); color: var(--ink-lighter); margin-bottom: var(--space-6);">
-      <strong>Tip:</strong> Photograph your laundry in or next to a FOLD bag; it helps us
+      <strong>Tip:</strong> Photograph your laundry in or next to a Soapbox Caddie bag; it helps us
       gauge the load size and gives a more accurate estimate.
     </p>
 
@@ -432,7 +432,7 @@ function buildQuoteCardHTML(lowLb, highLb, planId, plan, quote, blend, fillLevel
           <dt>Mix</dt>
           <dd>Light ${pct(blend.light)}%, Medium ${pct(blend.medium)}%, Heavy ${pct(blend.heavy)}%</dd>
           <dt>Fill level</dt>
-          <dd>${Math.round(fillLevel * 100)}% of a standard FOLD bag</dd>
+          <dd>${Math.round(fillLevel * 100)}% of a standard Soapbox Caddie bag</dd>
           <dt>Mid estimate</dt>
           <dd>${fmtLb((lowLb + highLb) / 2)} lb (+/-15% band applied)</dd>
           <dt>Plan cap</dt>

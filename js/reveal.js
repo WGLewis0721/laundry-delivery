@@ -1,5 +1,5 @@
 /**
- * FOLD — reveal.js
+ * Soapbox Caddie — reveal.js
  * IntersectionObserver-driven scroll reveals.
  * Respects prefers-reduced-motion.
  * Targets elements with .reveal and .reveal-group.

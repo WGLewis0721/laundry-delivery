@@ -1,5 +1,5 @@
 /**
- * FOLD — booking.js
+ * Soapbox Caddie — booking.js
  * Multi-step booking wizard:
  *   1. ZIP qualify  →  2. Plan  →  3. Account + payment
  *   →  4. Pickup window  →  5. Confirm

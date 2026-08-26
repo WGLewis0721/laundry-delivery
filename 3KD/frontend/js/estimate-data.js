@@ -1,5 +1,5 @@
 /**
- * FOLD — estimate-data.js
+ * Soapbox Caddie — estimate-data.js
  * 3KD Vision Engine — single source of truth for garment weights and pricing.
  *
  * Weights are APPROXIMATE dry weights in pounds (lb).
@@ -69,7 +69,7 @@ export const BILLING = {
 };
 
 // ── Density assumptions (lb at 100% fill, per blend category) ─────────────
-// A standard FOLD bag fully packed with items from each category:
+// A standard Soapbox Caddie bag fully packed with items from each category:
 const DENSITY_LB_FULL = {
   light:  10, // fluffy, low-density clothing
   medium: 15, // everyday mix

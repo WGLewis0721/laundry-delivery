@@ -1,5 +1,5 @@
 /**
- * FOLD — map.js
+ * Soapbox Caddie — map.js
  * Lazy-initialise the service-area map only when its
  * container is scrolled into view.
  *
@@ -65,12 +65,12 @@
       weight:      2,
       fillColor:   '#5FAF6A',
       fillOpacity: 0.15,
-    }).addTo(map).bindPopup('FOLD service area — Montgomery, AL');
+    }).addTo(map).bindPopup('Soapbox Caddie service area — Montgomery, AL');
 
     // Centre marker
     L.marker(CENTER)
       .addTo(map)
-      .bindPopup('<strong>FOLD</strong><br>Montgomery, AL');
+      .bindPopup('<strong>Soapbox Caddie</strong><br>Montgomery, AL');
   }
 
   // Observe map container — only load Leaflet when visible
