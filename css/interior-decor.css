@@ -1059,11 +1059,14 @@ body[data-page="how-it-works"] .bento-cell p {
    dissolves into the cream on its LEFT, this one on its RIGHT, so the
    two images bookend the page.
    ------------------------------------------------------------------ */
-@media (min-width: 901px) {
+/* Side by side from 701px up, matching the site's mobile breakpoint, so
+   the pairing survives a half-width desktop window and tablets — the
+   previous 901px floor left common laptop widths stacked. */
+@media (min-width: 701px) {
   body[data-page="about"] .about-lower-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    gap: clamp(var(--space-8), 4vw, var(--space-12));
+    gap: clamp(var(--space-6), 3.2vw, var(--space-12));
     align-items: center;
   }
   body[data-page="about"] .about-lower-grid > .about-lower-scene {
@@ -1090,9 +1093,9 @@ body[data-page="about"] .about-believe__title {
   font-size: var(--text-2xl);
   margin-bottom: var(--space-4);
 }
-@media (max-width: 900px) {
-  body[data-page="about"] .about-believe { margin-top: var(--space-8); }
-  body[data-page="about"] .about-quote { margin-top: var(--space-8); }
+@media (max-width: 700px) {
+  body[data-page="about"] .about-believe { margin-top: var(--space-6); }
+  body[data-page="about"] .about-quote { margin-top: var(--space-6); }
 }
 
 /* ------------------------------------------------------------------
