@@ -33,7 +33,7 @@
 }
 
 .section--dark {
-  background-color: var(--brand-olive);
+  background-color: var(--band-bg);
   color: var(--on-dark);
 }
 

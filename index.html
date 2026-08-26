@@ -113,6 +113,8 @@
       --brand-ivory: #F7F2F0;
       --brand-ink: #0E0E10;
       --brand-olive: #1E2509;
+      --whisper-sage: #D1E0D1;
+      --olive-sage: #A9BFA0;
       --brand-taupe: #CFC5B8;
 
       /* ---- Derived neutrals -----------------------------------------
@@ -134,14 +136,21 @@
       --action-primary-text: var(--brand-ivory);
 
       --border-brand: var(--brand-taupe);
-      --footer-bg: var(--brand-ink);
+      --footer-bg: var(--olive-sage);
+      --on-footer: var(--brand-ink);
+      --on-footer-muted: #3E4A39;
+      --on-footer-line: color-mix(in srgb, var(--brand-ink) 26%, transparent);
+      --band-bg: var(--whisper-sage);
+      --btn-fill: var(--whisper-sage);
+      --btn-fill-text: var(--brand-ink);
+      --btn-fill-hov: #BCD3BC;
 
       /* On dark surfaces. Ivory is 14.3:1 on olive and 17.4:1 on ink;
          taupe is 9.3:1 and 11.3:1 - both clear AA for body text. */
-      --on-dark: var(--brand-ivory);
-      --on-dark-muted: var(--brand-taupe);
-      --on-dark-line: color-mix(in srgb, var(--brand-taupe) 45%, transparent);
-      --on-dark-divider: color-mix(in srgb, var(--brand-taupe) 28%, transparent);
+      --on-dark: var(--brand-ink);
+      --on-dark-muted: #3E4A39;
+      --on-dark-line: color-mix(in srgb, var(--brand-ink) 26%, transparent);
+      --on-dark-divider: color-mix(in srgb, var(--brand-ink) 20%, transparent);
 
       /* ---- Typography ------------------------------------------------
          The brand board specifies OKANA and ENRIQ. No licensed files for
@@ -194,7 +203,7 @@
 
     .skip-link {
       position: absolute; left: 1rem; top: 1rem; z-index: 60; transform: translateY(-200%);
-      border-radius: var(--radius-sm); background: var(--brand-olive); color: var(--on-dark);
+      border-radius: var(--radius-sm); background: var(--band-bg); color: var(--on-dark);
       padding: 0.7rem 1rem; font-weight: 600; transition: transform 0.2s ease;
     }
     .skip-link:focus { transform: translateY(0); }
@@ -307,14 +316,14 @@
       cursor: pointer; text-align: center;
       transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
-    .btn--primary { background: var(--brand-olive); color: var(--on-dark); }
-    .btn--primary:hover { background: var(--brand-olive); }
-    .btn--primary:active { background: var(--brand-olive); }
+    .btn--primary { background: var(--btn-fill); color: var(--btn-fill-text); border-color: var(--btn-fill); }
+    .btn--primary:hover { background: var(--btn-fill-hov); color: var(--btn-fill-text); border-color: var(--btn-fill-hov); }
+    .btn--primary:active { background: var(--btn-fill-hov); color: var(--btn-fill-text); }
     .btn--secondary { background: var(--surface-light); color: var(--brand-olive); border-color: var(--border-strong); }
-    .btn--secondary:hover { background: var(--surface-main); border-color: var(--brand-olive); }
-    .btn--secondary:active { background: var(--surface-main); }
-    .btn--on-dark { background: transparent; color: var(--on-dark); border-color: var(--on-dark-line); }
-    .btn--on-dark:hover { background: var(--on-dark); color: var(--brand-olive); border-color: var(--on-dark); }
+    .btn--secondary:hover { background: var(--btn-fill); border-color: var(--btn-fill); color: var(--btn-fill-text); }
+    .btn--secondary:active { background: var(--btn-fill-hov); color: var(--btn-fill-text); }
+    .btn--on-dark { background: transparent; color: var(--brand-ink); border-color: var(--on-dark-line); }
+    .btn--on-dark:hover { background: var(--btn-fill); color: var(--btn-fill-text); border-color: var(--btn-fill); }
     .btn--block { width: 100%; }
     .btn[disabled], .btn[aria-disabled="true"] {
       background: var(--surface-main); color: var(--text-muted);
@@ -517,7 +526,7 @@
       display: grid;
       overflow: hidden;
       border-radius: var(--radius-lg);
-      background: var(--brand-olive);
+      background: var(--band-bg);
       color: var(--on-dark);
     }
     .band__media { aspect-ratio: 16 / 10; background: var(--surface-main); }

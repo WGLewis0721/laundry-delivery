@@ -40,17 +40,17 @@
 
 /* Primary */
 .btn--primary {
-  background: var(--green-btn);
-  color: var(--white);
-  border-color: var(--green-btn);
+  background: var(--btn-fill);
+  color: var(--btn-fill-text);
+  border-color: var(--btn-fill);
 }
 
 .btn--primary:hover {
-  background: var(--green-btn-hov);
-  border-color: var(--green-btn-hov);
+  background: var(--btn-fill-hov);
+  border-color: var(--btn-fill-hov);
+  color: var(--btn-fill-text);
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
-  color: var(--white);
 }
 
 .btn--primary:active {
@@ -66,22 +66,22 @@
 }
 
 .btn--ghost:hover {
-  border-color: var(--ink);
-  background: var(--off-white);
-  color: var(--ink);
+  border-color: var(--btn-fill);
+  background: var(--btn-fill);
+  color: var(--btn-fill-text);
 }
 
 /* Ghost on dark backgrounds */
 .btn--ghost-light {
   background: transparent;
-  color: var(--white);
+  color: var(--brand-ink);
   border-color: var(--on-dark-line);
 }
 
 .btn--ghost-light:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--white);
-  color: var(--white);
+  background: var(--btn-fill);
+  border-color: var(--btn-fill);
+  color: var(--btn-fill-text);
 }
 
 /* Full-width block */
@@ -1472,7 +1472,7 @@
 }
 
 .closing-cta h2 {
-  color: var(--white);
+  color: var(--on-dark);
   font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
   margin-bottom: var(--space-4);
 }
@@ -1768,4 +1768,20 @@
 }
 @media (min-width: 40rem) {
   .step2-accent { display: block; }
+}
+
+
+/* The bands are Whispering Sage, so a sage-filled primary would disappear
+   into them. On those surfaces the primary inverts to ink. */
+.section--dark .btn--primary,
+.closing-cta .btn--primary {
+  background: var(--brand-ink);
+  border-color: var(--brand-ink);
+  color: var(--brand-ivory);
+}
+.section--dark .btn--primary:hover,
+.closing-cta .btn--primary:hover {
+  background: var(--ink-light);
+  border-color: var(--ink-light);
+  color: var(--brand-ivory);
 }
