@@ -73,15 +73,15 @@
 
 /* Ghost on dark backgrounds */
 .btn--ghost-light {
-  background: transparent;
-  color: var(--brand-ink);
+  background: var(--btn-fill);
+  color: var(--btn-fill-text);
   border-color: var(--on-dark-line);
 }
 
 .btn--ghost-light:hover {
-  background: var(--btn-fill);
-  border-color: var(--btn-fill);
-  color: var(--btn-fill-text);
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--brand-ink);
 }
 
 /* Full-width block */
