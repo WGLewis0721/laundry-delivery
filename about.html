@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/chrome.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/interior-decor.css">
@@ -36,8 +37,12 @@
     </button>
     <ul class="nav-links" id="nav-menu" role="list">
       <li><a href="how-it-works.html">How It Works</a></li>
-      <li><a href="plans.html">Pricing</a></li>
-      <li><a href="plans.html#subscription">Subscriptions</a></li>
+      <li class="nav-has-sub">
+        <a href="plans.html">Pricing</a>
+        <ul class="nav-sub" role="list">
+          <li><a href="plans.html#subscription">Subscriptions</a></li>
+        </ul>
+      </li>
       <li><a href="index.html#gift-laundry">Gift Laundry</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="index.html#business">Business &amp; Contracting</a></li>
@@ -70,6 +75,7 @@
   </section>
   <section class="section">
     <div class="wrap">
+      <div class="about-lower-grid">
       <div class="photo-frame about-lower-scene">
         <svg class="deco-sprig deco-sprig--panel-corner" viewBox="0 0 220 340" aria-hidden="true" focusable="false"><path d="M38 322C14 192 152 150 178 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><g fill="currentColor"><path d="M0 0C6.1 -7.2 23.6 -7.2 38.0 0C23.6 7.2 6.1 7.2 0 0Z" transform="translate(35.4 285.5) rotate(-41.2)"/><path d="M0 0C5.8 -6.8 22.4 -6.8 36.1 0C22.4 6.8 5.8 6.8 0 0Z" transform="translate(40.0 256.2) rotate(-121.0)"/><path d="M0 0C5.5 -6.4 21.2 -6.4 34.2 0C21.2 6.4 5.5 6.4 0 0Z" transform="translate(49.9 229.6) rotate(-18.5)"/><path d="M0 0C5.2 -6.1 20.0 -6.1 32.3 0C20.0 6.1 5.2 6.1 0 0Z" transform="translate(64.0 204.8) rotate(-102.8)"/><path d="M0 0C4.9 -5.7 18.9 -5.7 30.4 0C18.9 5.7 4.9 5.7 0 0Z" transform="translate(81.0 181.1) rotate(-6.3)"/><path d="M0 0C4.6 -5.4 17.7 -5.4 28.5 0C17.7 5.4 4.6 5.4 0 0Z" transform="translate(99.8 157.7) rotate(-96.7)"/><path d="M0 0C4.3 -5.0 16.5 -5.0 26.6 0C16.5 5.0 4.3 5.0 0 0Z" transform="translate(119.2 133.9) rotate(-5.8)"/><path d="M0 0C4.0 -4.7 15.3 -4.7 24.7 0C15.3 4.7 4.0 4.7 0 0Z" transform="translate(137.8 108.7) rotate(-101.4)"/><path d="M0 0C3.7 -4.3 14.2 -4.3 22.8 0C14.2 4.3 3.7 4.3 0 0Z" transform="translate(154.7 81.6) rotate(-15.4)"/><path d="M0 0C3.4 -4.0 13.1 -4.0 21.1 0C13.1 4.0 3.4 4.0 0 0Z" transform="translate(167.1 55.1) rotate(-114.5)"/><path d="M0 0C2.6 -3.2 9.9 -3.2 16.0 0C9.9 3.2 2.6 3.2 0 0Z" transform="translate(175.4 29.6) rotate(-75.6)"/></g></svg>
         <picture class="brand-media brand-media--wide interior-photo">
@@ -77,9 +83,8 @@
         </picture>
       </div>
 
-      <div class="grid-2" style="align-items: start; gap: var(--space-10); margin-top: var(--space-10);">
-        <div>
-          <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">What we believe</h2>
+        <div class="about-believe">
+          <h2 class="about-believe__title">What we believe</h2>
           <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-5);">
             <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
               <span style="color: var(--green-btn); font-weight: var(--weight-bold); flex-shrink: 0;">—</span>
@@ -99,7 +104,9 @@
             </li>
           </ul>
         </div>
-        <div class="bento-cell reveal deco-clip" style="background: var(--off-white);">
+      </div>
+
+      <div class="bento-cell reveal deco-clip about-quote" style="background: var(--off-white);">
           <svg class="deco-sprig deco-sprig--sm deco-sprig--corner-tight" viewBox="0 0 220 340" aria-hidden="true" focusable="false"><path d="M38 322C14 192 152 150 178 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><g fill="currentColor"><path d="M0 0C6.1 -7.2 23.6 -7.2 38.0 0C23.6 7.2 6.1 7.2 0 0Z" transform="translate(35.4 285.5) rotate(-41.2)"/><path d="M0 0C5.8 -6.8 22.4 -6.8 36.1 0C22.4 6.8 5.8 6.8 0 0Z" transform="translate(40.0 256.2) rotate(-121.0)"/><path d="M0 0C5.5 -6.4 21.2 -6.4 34.2 0C21.2 6.4 5.5 6.4 0 0Z" transform="translate(49.9 229.6) rotate(-18.5)"/><path d="M0 0C5.2 -6.1 20.0 -6.1 32.3 0C20.0 6.1 5.2 6.1 0 0Z" transform="translate(64.0 204.8) rotate(-102.8)"/><path d="M0 0C4.9 -5.7 18.9 -5.7 30.4 0C18.9 5.7 4.9 5.7 0 0Z" transform="translate(81.0 181.1) rotate(-6.3)"/><path d="M0 0C4.6 -5.4 17.7 -5.4 28.5 0C17.7 5.4 4.6 5.4 0 0Z" transform="translate(99.8 157.7) rotate(-96.7)"/><path d="M0 0C4.3 -5.0 16.5 -5.0 26.6 0C16.5 5.0 4.3 5.0 0 0Z" transform="translate(119.2 133.9) rotate(-5.8)"/><path d="M0 0C4.0 -4.7 15.3 -4.7 24.7 0C15.3 4.7 4.0 4.7 0 0Z" transform="translate(137.8 108.7) rotate(-101.4)"/><path d="M0 0C3.7 -4.3 14.2 -4.3 22.8 0C14.2 4.3 3.7 4.3 0 0Z" transform="translate(154.7 81.6) rotate(-15.4)"/><path d="M0 0C3.4 -4.0 13.1 -4.0 21.1 0C13.1 4.0 3.4 4.0 0 0Z" transform="translate(167.1 55.1) rotate(-114.5)"/><path d="M0 0C2.6 -3.2 9.9 -3.2 16.0 0C9.9 3.2 2.6 3.2 0 0Z" transform="translate(175.4 29.6) rotate(-75.6)"/></g></svg>
           <p style="font-style: italic; font-size: var(--text-lg); line-height: 1.7; color: var(--ink-light);">
             "We built Soapbox Caddie because we kept seeing services lead with a turnaround promise
@@ -108,7 +115,6 @@
           <p style="margin-top: var(--space-4); font-weight: var(--weight-semibold);">
             &mdash; The Soapbox Caddie team, River Region
           </p>
-        </div>
       </div>
     </div>
   </section>

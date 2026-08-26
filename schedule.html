@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/chrome.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/interior-decor.css">
@@ -38,8 +39,12 @@
     </button>
     <ul class="nav-links" id="nav-menu" role="list">
       <li><a href="how-it-works.html">How It Works</a></li>
-      <li><a href="plans.html">Pricing</a></li>
-      <li><a href="plans.html#subscription">Subscriptions</a></li>
+      <li class="nav-has-sub">
+        <a href="plans.html">Pricing</a>
+        <ul class="nav-sub" role="list">
+          <li><a href="plans.html#subscription">Subscriptions</a></li>
+        </ul>
+      </li>
       <li><a href="index.html#gift-laundry">Gift Laundry</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="index.html#business">Business &amp; Contracting</a></li>
@@ -449,11 +454,19 @@
   </div><!-- /wrap -->
 </main>
 
-<footer style="border-top: 1px solid var(--border); padding-block: var(--space-6); text-align: center;">
+<footer class="site-footer" role="contentinfo">
   <div class="wrap">
-    <p style="font-size: var(--text-xs); color: var(--ink-lighter);">
-      &copy; 2026 Soapbox Caddie · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
-    </p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/img/soapbox-caddie-logo-footer.png"
+             alt="Soapbox Caddie" width="4392" height="987" loading="lazy" decoding="async">
+        <p>Laundry care, delivered across the River Region.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><a href="how-it-works.html">How It Works</a><a href="plans.html">Pricing</a><a href="plans.html#subscription">Subscriptions</a><a href="index.html#gift-laundry">Gift Laundry</a><a href="services.html">Pickup &amp; Delivery</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="index.html#business">Business &amp; Contracting</a><a href="faq.html">FAQs</a><a href="terms.html">Protections</a><a href="terms.html">Waivers</a></div>
+      <div class="footer-col"><h4>Members</h4><a href="login.html">Sign in</a><a href="status.html">Track order</a><a href="service-area.html">Check Your ZIP</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Soapbox Caddie. River Region. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div>
   </div>
 </footer>
 

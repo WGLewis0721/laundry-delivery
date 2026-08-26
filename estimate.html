@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/chrome.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/interior-decor.css">
@@ -544,8 +545,12 @@
     </button>
     <ul class="nav-links" id="nav-menu" role="list">
       <li><a href="how-it-works.html">How It Works</a></li>
-      <li><a href="plans.html">Pricing</a></li>
-      <li><a href="plans.html#subscription">Subscriptions</a></li>
+      <li class="nav-has-sub">
+        <a href="plans.html">Pricing</a>
+        <ul class="nav-sub" role="list">
+          <li><a href="plans.html#subscription">Subscriptions</a></li>
+        </ul>
+      </li>
       <li><a href="index.html#gift-laundry">Gift Laundry</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="index.html#business">Business &amp; Contracting</a></li>

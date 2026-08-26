@@ -1050,3 +1050,47 @@ body[data-page="how-it-works"] .bento-cell p {
   font-size: clamp(1rem, 1.1vw, 1.0625rem);
   line-height: 1.55;
 }
+
+/* ------------------------------------------------------------------
+   ABOUT — lower scene reads as one composition: the basket photograph
+   on the left with "What we believe" beside it, rather than a lone
+   photo with the copy stranded underneath.
+   The photo carries the mirror of the hero's edge fade: the hero
+   dissolves into the cream on its LEFT, this one on its RIGHT, so the
+   two images bookend the page.
+   ------------------------------------------------------------------ */
+@media (min-width: 901px) {
+  body[data-page="about"] .about-lower-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(var(--space-8), 4vw, var(--space-12));
+    align-items: center;
+  }
+  body[data-page="about"] .about-lower-grid > .about-lower-scene {
+    width: 100%;
+    margin: 0;
+  }
+  /* Mirrored fade: cream at the right edge, clearing by ~48%. */
+  body[data-page="about"] .about-lower-scene::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(270deg, var(--decor-cream) 0%, rgba(247,242,240,.90) 8%, rgba(247,242,240,.34) 24%, transparent 48%);
+  }
+  body[data-page="about"] .about-quote {
+    max-width: 46rem;
+    margin-top: var(--space-10);
+  }
+}
+body[data-page="about"] .about-lower-scene { position: relative; }
+body[data-page="about"] .about-believe__title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
+}
+@media (max-width: 900px) {
+  body[data-page="about"] .about-believe { margin-top: var(--space-8); }
+  body[data-page="about"] .about-quote { margin-top: var(--space-8); }
+}
