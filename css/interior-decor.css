@@ -1094,3 +1094,78 @@ body[data-page="about"] .about-believe__title {
   body[data-page="about"] .about-believe { margin-top: var(--space-8); }
   body[data-page="about"] .about-quote { margin-top: var(--space-8); }
 }
+
+/* ------------------------------------------------------------------
+   ABOUT — "Our values" gets an olive branch in its left margin.
+   The card grid is capped at 840px inside a 1200px wrap, leaving ~300px
+   of bare cream either side. A single branch on the left fills that
+   column and gives the eye a starting point that leads into the first
+   card, rather than sitting symmetrically and reading as wallpaper.
+   Decorative only: absolutely positioned, behind content, no layout
+   height, and clipped by the section so it cannot cause overflow.
+   ------------------------------------------------------------------ */
+body[data-page="about"] .about-values {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+body[data-page="about"] .about-values::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -5rem;
+  top: 50%;
+  width: 26rem;
+  height: 30rem;
+  transform: translateY(-50%) rotate(-6deg);
+  pointer-events: none;
+  background: url("../assets/img/olive-branch-wide.png") center / cover no-repeat;
+  opacity: .16;
+  filter: saturate(.85) contrast(.95);
+  /* The source is a photograph on a cream field, so the fade has to start
+     well inside the box or its rectangle stays visible. */
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 18%, rgba(0,0,0,.5) 44%, rgba(0,0,0,.16) 62%, transparent 76%);
+  mask-image: radial-gradient(ellipse at center, #000 18%, rgba(0,0,0,.5) 44%, rgba(0,0,0,.16) 62%, transparent 76%);
+}
+@media (max-width: 1100px) {
+  body[data-page="about"] .about-values::before {
+    left: -9rem;
+    width: 22rem;
+    height: 26rem;
+    opacity: .10;
+  }
+}
+@media (max-width: 700px) {
+  /* On a phone the branch sits behind the cards instead of beside them,
+     washed back far enough that the copy stays dominant. */
+  body[data-page="about"] .about-values::before {
+    left: auto;
+    right: -8rem;
+    top: 0;
+    transform: none;
+    width: 20rem;
+    height: 24rem;
+    opacity: .09;
+  }
+}
+
+/* Type scaled to the card: the previous 23px/16px still read small in a
+   ~390px-wide box. */
+body[data-page="about"] .about-values__name {
+  font-size: clamp(1.45rem, 1.9vw, 1.7rem);
+  line-height: 1.15;
+}
+body[data-page="about"] .about-values__copy {
+  font-size: clamp(1.05rem, 1.25vw, 1.1875rem);
+  line-height: 1.5;
+}
+body[data-page="about"] .about-values .bento-cell {
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-8) var(--space-8);
+}
+body[data-page="about"] .about-values .bento-accent { margin-bottom: var(--space-2); }
+@media (max-width: 700px) {
+  body[data-page="about"] .about-values .bento-cell { padding: var(--space-6); gap: var(--space-3); }
+  body[data-page="about"] .about-values__name { font-size: 1.35rem; }
+  body[data-page="about"] .about-values__copy { font-size: 1.05rem; }
+}
