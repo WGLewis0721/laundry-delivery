@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking Confirmed — Soapbox Caddie</title>
+  <title>Request Received — Soapbox Caddie</title>
   <meta name="robots" content="noindex">
 
   <!-- Self-hosted variable fonts - no CDN, no runtime third-party requests. -->
@@ -60,13 +60,12 @@
 
     <!-- Confirmation hero -->
     <div class="confirm-hero">
-      <div class="confirm-check" role="img" aria-label="Booking confirmed">✓</div>
+      <div class="confirm-check" role="img" aria-label="Request received">✓</div>
       <h1 style="font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl)); margin-bottom: var(--space-3);">
-        You're all set.
+        Request received.
       </h1>
       <p style="font-size: var(--text-lg); color: var(--ink-light); max-width: 500px; margin-inline: auto;">
-        Your pickup is scheduled. We'll text you a reminder the evening before —
-        just leave your bag by the door.
+        Nothing has been charged. We'll text you to confirm your pickup window. Once confirmed, leave your bag by the door.
       </p>
       <div class="order-id-badge" id="order-id-display" aria-label="Order ID">
         Loading…
@@ -164,7 +163,7 @@
 
     // Try sessionStorage
     try {
-      const raw = sessionStorage.getItem('fold_booking_confirmed');
+      const raw = sessionStorage.getItem('sc_booking_confirmed');
       if (raw) booking = JSON.parse(raw);
     } catch (_) {}
 
@@ -178,7 +177,7 @@
     }
 
     if (!booking) {
-      document.getElementById('order-id-display').textContent = 'FLD-DEMO0000';
+      document.getElementById('order-id-display').textContent = 'SC-DEMO0000';
       return;
     }
 
