@@ -2,11 +2,13 @@ name: Design reference previews
 on:
   push:
     branches:
-      - design/soapbox-visual-system-v1-20261113
+      - 'design/**'
     paths:
-      - 'design/wireframes/*.svg'
-      - 'design/evidence/**/*.svg'
+      - 'design/**/*.svg'
       - 'scripts/render-design-assets.py'
+      - 'scripts/check-design-assets.py'
+      - 'scripts/check-design-parity.py'
+      - 'scripts/check-icon-registry.py'
       - '.github/workflows/design-reference-previews.yml'
   workflow_dispatch:
 

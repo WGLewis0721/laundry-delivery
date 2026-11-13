@@ -15,8 +15,10 @@ REQUIRED = {
     "--brand-ink": "#0e0e10",
     "--brand-olive": "#1e2509",
     "--brand-taupe": "#cfc5b8",
-    "--band-bg": "#d1e0d1",
-    "--footer-bg": "#a9bfa0",
+    "--whisper-sage": "#d1e0d1",
+    "--olive-sage": "#a9bfa0",
+    "--band-bg": "var(--whisper-sage)",
+    "--footer-bg": "var(--olive-sage)",
 }
 
 
