@@ -5,6 +5,8 @@
 **Deliverable:** consistent brand kit, client-approved brand board, implemented UI kit, icons, typography, complete screen coverage and design QA.  
 **Method:** [Gray Matter client design audit](https://github.com/WGLewis0721/Graymattertechllc-/blob/chatgpt/wd-reference-client-design-audit-20261113/app-design/CLIENT_SITE_DESIGN_SYSTEM_AUDIT.md); [WD inspected design reference](https://github.com/WGLewis0721/WD-AutoDetailing/blob/main/Documentation/BUILD_NOTES.md). New Gray Matter docs are still in draft [PR #38](https://github.com/WGLewis0721/Graymattertechllc-/pull/38).
 
+**Second pass (2026-11-13):** Read [DEEP_BRAND_AUDIT.md](DEEP_BRAND_AUDIT.md) before executing any phase. The documented client-requested fonts are OKANA (display) and ENRIQ (accent), but current self-hosted production fallback files are Cormorant Garamond, Oswald and Inter. Additionally, the current six-color sage-inclusive palette comes from PRs #14/#15; the homepage/interior radius tokens differ, several inline error-state colors remain, and no favicon exists. Treat these as concrete design acceptance criteria, not a reason to overwrite approved UI.
+
 ## Scope / constraints
 
 Preserve the Soapbox Caddie brand, 15 HTML pages, the static HTML/CSS/JS architecture and live customer flow. Design work is separate from Square API integration, real order/request submission and policies. Only approved business facts can become production copy. Do not treat the unverified client Google resources as synchronized. Do not write to `main`; stage each phase in a draft PR. Owner/client approval precedes live visual changes.
