@@ -1,12 +1,12 @@
 # Design QA and Release Gates
 
-**Current status:** Reference files and structural validations are deliverables of this PR. **No running-site browser QA or client approval is claimed.**
+**Current status:** Design exports and repository checks verified on 2026-11-13. No running-site browser QA or client approval is claimed. [View successful design checks](https://github.com/WGLewis0721/laundry-delivery/actions/runs/43495556938).
 
 ## Structural checks
-- [ ] Run `python3 scripts/check-design-parity.py` and examine documented differences before changing CSS.
-- [ ] Run `python3 scripts/check-icon-registry.py` to ensure all expected SVG assets exist and parse.
-- [ ] Run `python3 scripts/render-design-assets.py` if any SVG changes; commit matching PNG previews.
-- [ ] Verify 15 screen specs and 30 desktop/mobile SVGs + corresponding PNGs exist.
+- [x] `python3 scripts/check-design-parity.py`: brand values and aliases match; four known non-brand variances documented (three radii and one font fallback).
+- [x] `python3 scripts/check-icon-registry.py`: 14 valid SVG reference icons.
+- [x] `python3 scripts/render-design-assets.py`: 33 PNGs rendered from source SVG files and committed.
+- [x] `python3 scripts/check-design-assets.py`: 15 page specifications, 30 desktop/mobile SVG and PNG pairs, 3 additional proof sheets; zero missing/dimension errors.
 
 ## Brand review
 - [ ] Compare brand-board palette to actual site tokens.
