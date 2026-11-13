@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="930" viewBox="0 0 1440 930" role="img" aria-label="Soapbox Caddie proposed visual brand board; current site tokens, font fallbacks and approved font requests">
+<defs><clipPath id="c"><rect x="38" y="38" width="1364" height="854" rx="26"/></clipPath></defs>
+<rect width="1440" height="930" fill="#EAE5DE"/><g clip-path="url(#c)">
+<rect x="38" y="38" width="1364" height="854" fill="#F7F2F0"/>
+<rect x="38" y="38" width="545" height="854" fill="#1E2509"/>
+<path d="M166 724C263 621 306 520 395 398M266 613c-44-29-74-60-75-104 58 14 73 37 75 104M320 536c66-43 104-38 146-28-28 46-77 52-146 28M376 440c-20-56-17-88 3-123 36 31 41 72-3 123" stroke="#A9BFA0" stroke-width="3" fill="none" opacity=".54"/>
+<text x="88" y="104" font-family="Inter,Arial,sans-serif" font-size="14" letter-spacing="4" fill="#A9BFA0">BRAND SYSTEM  /  2026</text>
+<text x="88" y="290" font-family="Georgia,serif" font-size="90" fill="#F7F2F0">Soapbox</text>
+<text x="88" y="378" font-family="Georgia,serif" font-size="90" fill="#F7F2F0">Caddie</text>
+<rect x="90" y="418" width="100" height="5" fill="#A9BFA0"/>
+<text x="90" y="473" font-family="Georgia,serif" font-style="italic" font-size="30" fill="#F7F2F0">Choose peace,</text>
+<text x="90" y="514" font-family="Georgia,serif" font-style="italic" font-size="30" fill="#F7F2F0">not laundry.</text>
+<text x="89" y="839" font-family="Inter,Arial,sans-serif" font-size="12" letter-spacing="1.4" fill="#A9BFA0">WORDMARK EXAMPLE / NOT A REPLACEMENT FOR THE LOGO PNGS</text>
+<text x="628" y="101" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="3" fill="#1E2509">01  /  EXISTING PALETTE</text>
+<text x="628" y="146" font-family="Georgia,serif" font-size="38" fill="#0E0E10">An understated, restorative identity.</text>
+<rect x="628" y="187" width="220" height="88" rx="9" fill="#F7F2F0" stroke="#B1B8AE"/><text x="628" y="294" font-family="Inter,Arial,sans-serif" font-size="15" fill="#0E0E10" font-weight="600">Ivory</text><text x="628" y="313" font-family="monospace" font-size="12" fill="#6B696A">#F7F2F0</text><rect x="870" y="187" width="220" height="88" rx="9" fill="#0E0E10" stroke="#B1B8AE"/><text x="870" y="294" font-family="Inter,Arial,sans-serif" font-size="15" fill="#0E0E10" font-weight="600">Ink</text><text x="870" y="313" font-family="monospace" font-size="12" fill="#6B696A">#0E0E10</text><rect x="1112" y="187" width="220" height="88" rx="9" fill="#1E2509" stroke="#B1B8AE"/><text x="1112" y="294" font-family="Inter,Arial,sans-serif" font-size="15" fill="#0E0E10" font-weight="600">Olive</text><text x="1112" y="313" font-family="monospace" font-size="12" fill="#6B696A">#1E2509</text><rect x="628" y="327" width="220" height="88" rx="9" fill="#CFC5B8" stroke="#B1B8AE"/><text x="628" y="434" font-family="Inter,Arial,sans-serif" font-size="15" fill="#0E0E10" font-weight="600">Taupe</text><text x="628" y="453" font-family="monospace" font-size="12" fill="#6B696A">#CFC5B8</text><rect x="870" y="327" width="220" height="88" rx="9" fill="#D1E0D1" stroke="#B1B8AE"/><text x="870" y="434" font-family="Inter,Arial,sans-serif" font-size="15" fill="#0E0E10" font-weight="600">Whispering Sage</text><text x="870" y="453" font-family="monospace" font-size="12" fill="#6B696A">#D1E0D1</text><rect x="1112" y="327" width="220" height="88" rx="9" fill="#A9BFA0" stroke="#B1B8AE"/><text x="1112" y="434" font-family="Inter,Arial,sans-serif" font-size="15" fill="#0E0E10" font-weight="600">Olive Sage</text><text x="1112" y="453" font-family="monospace" font-size="12" fill="#6B696A">#A9BFA0</text>
+<path d="M628 481h725" stroke="#CFC5B8" stroke-width="2"/>
+<text x="628" y="529" font-family="Inter,Arial,sans-serif" font-size="13" letter-spacing="3" fill="#1E2509">02  /  TYPOGRAPHIC VOICE</text>
+<text x="628" y="596" font-family="Georgia,serif" font-size="51" fill="#1E2509">The weekend is yours.</text>
+<text x="630" y="624" font-family="Inter,Arial,sans-serif" font-size="12" fill="#6B696A">CURRENT DISPLAY  /  CORMORANT GARAMOND (ON SITE)</text>
+<text x="630" y="680" font-family="Arial,sans-serif" font-size="20" fill="#0E0E10">Simple pricing, thoughtfully delivered.</text>
+<text x="630" y="707" font-family="Inter,Arial,sans-serif" font-size="12" fill="#6B696A">BODY &amp; INTERFACE  /  INTER</text>
+<text x="630" y="760" font-family="Arial Narrow,Arial,sans-serif" font-size="24" font-weight="600" letter-spacing="4" fill="#1E2509">PICKUP · CLEAN RETURN · PEACE</text>
+<text x="630" y="785" font-family="Inter,Arial,sans-serif" font-size="12" fill="#6B696A">CURRENT ACCENT  /  OSWALD</text>
+<rect x="615" y="816" width="737" height="44" rx="7" fill="#D1E0D1"/>
+<text x="632" y="843" font-family="Inter,Arial,sans-serif" font-size="13" fill="#1E2509">CLIENT-REQUESTED: OKANA + ENRIQ  ·  FONT FILES / RIGHTS PENDING</text>
+</g></svg>
