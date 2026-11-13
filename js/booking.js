@@ -195,6 +195,7 @@ function initBooking() {
     setText('summary-name',    state.name    || '—');
     setText('summary-address', state.address || '—');
     setText('summary-window',  state.window  || '—');
+    setText('summary-price-total', 'Not charged. We\'ll confirm payment by text.');
   }
 
   // ── Booking submission ─────────────────────────────────
