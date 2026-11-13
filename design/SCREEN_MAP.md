@@ -24,6 +24,6 @@
 Home → ZIP eligibility → Plans / How It Works → Schedule → Confirmation. Service Area verifies coverage; FAQ/Services/About answer questions; Login/Account and Status are separate utility routes. This does **not** establish live booking delivery or payments.
 
 ## Breakpoints and evidence
-- Desktop drafting canvas: 1200×800; mobile drafting canvas: 390×844.
+- Desktop drafting canvas: 1200×900; mobile drafting canvas: 390×1120.
 - Structural layout and hierarchy are illustrative, grayscale and sourced from actual pages.
 - Viewport screenshots of running code, behavior, accessibility and business integration must be checked separately before shipping.

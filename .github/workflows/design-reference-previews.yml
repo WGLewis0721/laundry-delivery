@@ -29,6 +29,11 @@ jobs:
         run: python -m pip install "CairoSVG>=2.7,<3"
       - name: Render PNG previews
         run: python scripts/render-design-assets.py
+      - name: Verify design reference files and tokens
+        run: |
+          python scripts/check-design-assets.py
+          python scripts/check-icon-registry.py
+          python scripts/check-design-parity.py
       - name: Commit updated preview exports
         run: |
           git add design/wireframes/exports/*.png design/evidence/*/*.png
