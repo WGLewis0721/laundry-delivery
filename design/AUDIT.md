@@ -35,4 +35,6 @@
 - Existing booking/ZIP components as they actually work in preview.
 - Gray Matter reusable design contracts and WD's *process* (tokens, icons, 3 approval gates, clear limitations), **not** WD's aesthetic or tech stack.
 
+**Second-pass verification:** [DEEP_BRAND_AUDIT.md](DEEP_BRAND_AUDIT.md) confirms client-requested OKANA/ENRIQ versus deployed Cormorant/Oswald, records the six current brand colors and Aug 2026 PR #14/#15, identifies real radius token mismatches across home/interior, hardcoded error colors, missing favicon on all 15 pages, and stale README/Copilot language. Use it before approving typography or regenerating assets.
+
 See [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for proposed artifacts, sequencing and acceptance.
