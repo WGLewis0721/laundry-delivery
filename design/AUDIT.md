@@ -15,18 +15,18 @@
 | Responsive behavior | **Reported; new proof needed** | README records 375–1440px checks and homepage source order | Fresh dated mobile/tablet/desktop captures of all 15 pages and state coverage |
 | Wireframes | **Missing from active design package** | No current top-level `design/` screen/wireframe package was found in inspected `main` tree | Page-by-page grayscale SVG + PNG wireframes, screen map and interaction sequence |
 | Formal brand board and kit | **Missing as active deliverables** | Branding is described in README/tokens, not in reviewable `design/BRAND_BOARD.md` and rendered proofs | Genuine board and exportable client brand kit |
-| Design verification | **Partial** | README reports past responsive and color checks; previous Claude/Notion booking smoke tests | Repeatable design token/icon/style checks, current screenshots/contrast/keyboard/focus tests |
-| Live customer request flow | **Not production-connected** | `CLAUDE.md`, README, Notion log describe client-side booking/session and unresolved delivery | Do not claim real business receipt/charge; coordinate integration separately |
+| Design verification | **Partial** | README reports past responsive and color checks; earlier documented booking smoke tests | Repeatable design token/icon/style checks, current screenshots/contrast/keyboard/focus tests |
+| Live customer request flow | **Not production-connected** | `CLAUDE.md` and README describe client-side booking/session and unresolved delivery | Do not claim real business receipt/charge; coordinate integration separately |
 
 ## Specific conflicts and risks
 
-1. **Outdated Copilot guidance:** `.github/copilot-instructions.md` says Playfair Display and work on `main`; current source uses Cormorant/Inter/Oswald and `CLAUDE.md` + Notion require a branch and draft PR. Plan to update guidance after owner review; **do not** follow its obsolete font or Git directions.
+1. **Outdated Copilot guidance:** `.github/copilot-instructions.md` says Playfair Display and work on `main`; current source uses Cormorant/Inter/Oswald; design changes should go through a reviewable branch and PR. Plan to update guidance after owner review; **do not** follow its obsolete font or Git directions.
 2. **Two token authorities:** `index.html` defines visual tokens and component CSS inline; inner pages use `css/tokens.css` and shared files. Both use similar palette but can drift on future changes. First inventory actual computed tokens and screenshots; then build a parity check and a reversible migration proposal if needed.
 3. **No central icon package:** utility icons live in markup and decorative sprigs have a distinct art direction; `assets/icons/` has no actual icons. Extract from real usage and normalize with a small consistent system rather than inventing 40 generic icons.
 4. **Font licensing gap:** repo says external board specifies OKANA/ENRIQ yet they are not supplied. Keep current accessible self-hosted fallbacks until verified rights and approval are obtained.
 5. **README mixed history:** it documents completed rebrand but still includes older 'redesign Phase 2/3 not started' wording, legacy token/booking references. Update status only with verified evidence; archive superseded text without silently changing active prices/flows.
 6. **Client Google context unavailable:** linked Doc is 403, Drive folder 404; branding approval and client direction cannot be asserted from those sources.
-7. **Checkout/status language:** Notion documents browser-only request state and some legacy payment statements. Design QA must distinguish demo, request sent and paid, but payment functionality is a separate blocked integration track.
+7. **Checkout/status language:** Current source and prior functional review show browser-only request state and some legacy payment statements. Design QA must distinguish demo, request sent and paid, but payment functionality is a separate blocked integration track.
 
 ## What should be reused
 
