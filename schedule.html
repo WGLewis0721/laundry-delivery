@@ -257,21 +257,6 @@
                    placeholder="123 Main Street, Montgomery, AL 36104">
           </div>
 
-          <!-- Card on file (Square — placeholder) -->
-          <div class="form-group">
-            <label class="form-label" for="field-card">
-              Card on file <span aria-hidden="true">*</span>
-            </label>
-            <input id="field-card" class="form-input" type="text"
-                   placeholder="Card details (Square payment — coming soon)"
-                   aria-describedby="card-hint" disabled>
-            <span id="card-hint" class="form-hint">
-              Your card is stored securely via Square and charged for the bags you book.
-              You see the total before anything is processed.
-              No subscription charge today — billing starts after first pickup.
-            </span>
-          </div>
-
           <div class="form-group">
             <label class="form-label" for="field-instructions">
               Special instructions <span style="font-weight: var(--weight-normal); color: var(--ink-lighter);">(optional)</span>
@@ -283,8 +268,8 @@
 
         <!-- Security trust badge -->
         <div class="booking-notice" role="note">
-          <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.2 10.5V7.8a3.8 3.8 0 0 1 7.6 0v2.7"/></svg> <strong>Secure payment via Square.</strong>
-          Your card is stored securely and never charged without a receipt.
+          <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.2 10.5V7.8a3.8 3.8 0 0 1 7.6 0v2.7"/></svg> <strong>Nothing is charged today.</strong>
+          Sending this request does not take payment. We'll text you to confirm your pickup and how you'll pay.
         </div>
 
       </section>
@@ -395,7 +380,7 @@
       <!-- ── Step 5: Confirm ───────────────────────────── -->
       <section class="booking-step" id="step-5" aria-labelledby="step5-title">
         <h2 class="booking-step-title" id="step5-title">Confirm your order</h2>
-        <p class="booking-step-desc">Review your details before we lock you in.</p>
+        <p class="booking-step-desc">Review your details. We'll text you to confirm your pickup.</p>
 
         <div class="booking-summary">
           <h3>Order summary</h3>
@@ -404,7 +389,7 @@
             <span class="summary-value" id="summary-plan">—</span>
           </div>
           <div class="summary-row">
-            <span class="summary-label">Monthly subscription</span>
+            <span class="summary-label">Price</span>
             <span class="summary-value" id="summary-price">—</span>
           </div>
           <div class="summary-row">
@@ -420,7 +405,7 @@
             <span class="summary-value" id="summary-window">—</span>
           </div>
           <div class="summary-row summary-total">
-            <span class="summary-label">Charged today</span>
+            <span class="summary-label">Payment</span>
             <span class="summary-value" id="summary-price-total">—</span>
           </div>
         </div>
@@ -428,8 +413,7 @@
         <div class="booking-notice" role="note">
           <strong>Delivery date confirmed after pickup.</strong>
           We'll text your delivery date once your bag is collected &mdash;
-          typically within 1 business day. You'll see your itemised receipt
-          before your card is charged.
+          typically within 1 business day. Nothing is charged when you send this request.
         </div>
 
         <p style="font-size: var(--text-xs); color: var(--ink-lighter); margin-top: var(--space-4);">

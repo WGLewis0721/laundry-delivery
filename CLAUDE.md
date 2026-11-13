@@ -45,3 +45,22 @@ Note: `netlify-skills`, `vercel`, and `publishing-astro-websites` are also insta
 - **JS:** ES modules for `store.js`, `booking.js`, `estimate.js`; IIFEs for `reveal.js`, `map.js`
 - **Backend stubs:** TRA3 integration points marked `// TODO: TRA3`; 3KD Vision Engine stubs marked `// TODO: 3KD`
 - **Live site:** https://wglewis0721.github.io/laundry-delivery/index.html
+
+## Notion coordination hub
+
+Project status, decisions and handoffs live on the Soapbox Caddie Notion page:
+https://app.notion.com/p/41706d5325758132a86ef29a440c8218
+
+Before starting any task:
+1. Read the page's "Operating rules (read first)" section, the task tracker and the "Decisions needed" list.
+2. If the task depends on an open decision or a Blocked task, stop and add a one-line note under "Decisions needed". Do not proceed.
+3. If the page says to plan before changing code, do the plan first.
+
+When finishing a task:
+- Append one entry under "Working notes and decision log" in the format given on the page. Never overwrite existing content.
+- Mark a task complete only when there is evidence. A plan is never "completed."
+- Work on the designated branch and open a draft PR. Never push to `main`.
+- If Notion is unavailable, say "not synced" and print the entry.
+
+Never put secrets, tokens, card data or customer personal data in Notion, commits or replies.
+The `NOTION_SYNC` keyword is optional. These rules apply to every task.

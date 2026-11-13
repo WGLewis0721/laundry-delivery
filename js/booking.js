@@ -5,9 +5,9 @@
  *   →  4. Pickup window  →  5. Confirm
  *
  * All state is kept in sessionStorage via store.js so it
- * survives a soft refresh.  No actual API calls in this
- * Phase 1 build; the TRA3 integration points are clearly
- * marked with TODO comments.
+ * survives a soft refresh. Nothing is charged: the last step
+ * saves a request. The Square payment and booking backend is
+ * deferred (see 09-decisions ADR-001); its hook points are marked TODO.
  */
 
 import store from './store.js';
@@ -54,7 +54,7 @@ function initScheduleNav() {
 
 function initBooking() {
   // ── State ──────────────────────────────────────────────
-  const state = store.get('fold_booking', {
+  const state = store.get('sc_booking', {
     step: 1,
     zip: '',
     plan: null,
@@ -86,7 +86,7 @@ function initBooking() {
         return;
       }
 
-      // TODO: Replace with a real TRA3 endpoint call
+      // TODO: Square — check the ZIP via the service-area API (deferred)
       //   POST /api/check-zip { zip }  →  { served: bool }
       const served = isZipServed(zip);
 
@@ -94,7 +94,7 @@ function initBooking() {
         showZipState(input, msg, 'valid',
           '✓ Great news — we serve your area!');
         state.zip = zip;
-        store.set('fold_booking', state);
+        store.set('sc_booking', state);
 
         // Auto-advance to schedule page if on homepage
         if (document.body.dataset.page === 'home') {
@@ -116,7 +116,7 @@ function initBooking() {
     btn.addEventListener('click', () => {
       const planId = btn.dataset.plan;
       state.plan = planId;
-      store.set('fold_booking', state);
+      store.set('sc_booking', state);
 
       // Highlight selected
       document.querySelectorAll('.js-select-plan').forEach(b => {
@@ -145,7 +145,7 @@ function initBooking() {
   document.querySelectorAll('.window-tile input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
       state.window = radio.value;
-      store.set('fold_booking', state);
+      store.set('sc_booking', state);
     });
   });
 
@@ -161,7 +161,7 @@ function initBooking() {
         state.email   = getVal('field-email');
         state.address = getVal('field-address');
         state.instructions = getVal('field-instructions');
-        store.set('fold_booking', state);
+        store.set('sc_booking', state);
       }
 
       if (state.step === 5) {
@@ -195,22 +195,23 @@ function initBooking() {
     setText('summary-name',    state.name    || '—');
     setText('summary-address', state.address || '—');
     setText('summary-window',  state.window  || '—');
+    setText('summary-price-total', 'Not charged. We\'ll confirm payment by text.');
   }
 
   // ── Booking submission ─────────────────────────────────
   function submitBooking() {
     if (btnNext) {
       btnNext.setAttribute('data-loading', '');
-      btnNext.textContent = 'Confirming…';
+      btnNext.textContent = 'Sending…';
     }
 
-    // TODO: Replace with real TRA3 POST /api/bookings call
+    // TODO: Square — replace with the booking request call (deferred, ADR-001)
     //   { zip, plan, name, mobile, email, address, instructions, window }
     //   Response: { orderId, confirmationAt }
     setTimeout(() => {
-      const orderId = 'FLD-' + Math.random().toString(36).substr(2, 8).toUpperCase();
-      store.set('fold_booking_confirmed', { orderId, ...state });
-      store.remove('fold_booking');
+      const orderId = 'SC-' + Math.random().toString(36).substr(2, 8).toUpperCase();
+      store.set('sc_booking_confirmed', { orderId, ...state });
+      store.remove('sc_booking');
       window.location.href = `/confirmation.html?order=${orderId}`;
     }, 1200);
   }
@@ -218,7 +219,7 @@ function initBooking() {
   // ── Navigation helpers ─────────────────────────────────
   function goToStep(n) {
     state.step = n;
-    store.set('fold_booking', state);
+    store.set('sc_booking', state);
 
     // Show correct step panel
     steps.forEach((el, i) => {
@@ -243,7 +244,7 @@ function initBooking() {
 
     // Next/Back label
     if (btnNext) {
-      btnNext.textContent = n === 5 ? 'Confirm & pay' : 'Continue';
+      btnNext.textContent = n === 5 ? 'Send my request' : 'Continue';
     }
     if (btnBack) {
       btnBack.style.visibility = n === 1 ? 'hidden' : 'visible';
@@ -304,7 +305,7 @@ function initBooking() {
   }
 
   /**
-   * Placeholder ZIP check — replace with TRA3 call.
+   * Placeholder ZIP check — replace with the service-area API when available.
    * Returns true for all Montgomery, AL area ZIP codes.
    */
   function isZipServed(zip) {
@@ -347,7 +348,7 @@ function initBooking() {
   if (requestedPlan && validPlans.has(requestedPlan)) {
     state.plan = requestedPlan;
   }
-  store.set('fold_booking', state);
+  store.set('sc_booking', state);
 
   goToStep(state.step);
 
