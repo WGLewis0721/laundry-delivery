@@ -69,7 +69,7 @@ The paths above are **intended locations**, not claims that the proposed deliver
 
 - Obtain access/approved export for the supplied Google Doc (403) and Drive folder (404). Record current title, date/revision, owner, actual content and decision authority. Do **not** change sharing or infer content.
 - Validate actual approved name, palette, logo master/rights, OKANA/ENRIQ font licensing or deliberate use of Cormorant/Inter/Oswald, imagery consent and website copy.
-- Compare site price/coverage/service/contract claims with client and Square source of truth; keep technical/payment questions on the separate Notion track.
+- Compare site price/coverage/service/contract claims with client and Square source of truth; keep technical/payment questions in a separate integration workstream.
 - Output: `design/BRIEF.md`, `design/REFERENCES.md`, `design/references.json`, `design/PREBUILD_PLAN.md` and decisions in `design/CONTEXT_SOURCES.md`.
 - **Gate:** product owner reviews the approved facts/assets; design exploration may be drafted beforehand but must not be labeled client-approved.
 
@@ -121,7 +121,7 @@ The paths above are **intended locations**, not claims that the proposed deliver
 - **Review PR C — screen proofs:** P3, page map, 15 page specs + responsive wireframes.
 - **Review PR D — restrained UI hardening:** P4 + P5, parity/visual regression/accessibility evidence.
 
-Work on branches, use draft PRs, and log verified progress to [the Notion coordination hub](https://app.notion.com/p/41706d5325758132a86ef29a440c8218), append-only. Keep Square implementation in its existing workstream.
+Work on branches and use reviewable PRs for design changes. Keep Square implementation in its separate workstream. This repository's design folder holds only product/design assets, specifications, proofs and tests—not external coordination records.
 
 ## Definition of done
 
