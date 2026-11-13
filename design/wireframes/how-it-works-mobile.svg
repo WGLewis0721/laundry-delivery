@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1120" viewBox="0 0 390 1120" role="img" aria-label="HOW IT WORKS mobile structural wireframe">
+<title>HOW IT WORKS — mobile low-fidelity layout</title>
+<desc>Grayscale structural design reference, not a screenshot or production state.</desc>
+<rect x="0" y="0" width="390" height="54" rx="0" fill="rgb(255,255,255)"/>
+<rect x="0" y="53" width="390" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="20" y="15" width="112" height="23" rx="2" fill="rgb(35,39,36)"/>
+<text x="33" y="33" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(255,255,255)">LOGO</text>
+<rect x="343" y="17" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<rect x="343" y="24" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<rect x="343" y="31" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<text x="22" y="105" font-size="22.200000000000003" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="1" fill="rgb(35,39,36)">HOW IT WORKS</text>
+<rect x="22" y="121" width="346" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="136" width="242" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="196" width="346" height="166" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="196" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="361" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="196" width="1" height="166" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="196" width="1" height="166" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="210" width="318" height="66" rx="7" fill="rgb(236,235,233)"/>
+<rect x="36" y="210" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="275" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="210" width="1" height="66" rx="0" fill="rgb(215,216,213)"/>
+<rect x="353" y="210" width="1" height="66" rx="0" fill="rgb(215,216,213)"/>
+<line x1="45" y1="219" x2="345" y2="267.4" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="345" y1="219" x2="45" y2="267.4" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="160" y="250.2" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="38" y="305.4" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">BOOK</text>
+<rect x="38" y="321" width="310" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="38" y="336" width="217" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="379" width="346" height="166" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="379" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="544" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="379" width="1" height="166" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="379" width="1" height="166" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="393" width="318" height="66" rx="7" fill="rgb(236,235,233)"/>
+<rect x="36" y="393" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="458" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="393" width="1" height="66" rx="0" fill="rgb(215,216,213)"/>
+<rect x="353" y="393" width="1" height="66" rx="0" fill="rgb(215,216,213)"/>
+<line x1="45" y1="402" x2="345" y2="450.4" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="345" y1="402" x2="45" y2="450.4" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="160" y="433.2" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="38" y="488.4" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">FILL</text>
+<rect x="38" y="504" width="310" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="38" y="519" width="217" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="562" width="346" height="166" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="562" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="727" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="562" width="1" height="166" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="562" width="1" height="166" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="576" width="318" height="66" rx="7" fill="rgb(236,235,233)"/>
+<rect x="36" y="576" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="641" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="576" width="1" height="66" rx="0" fill="rgb(215,216,213)"/>
+<rect x="353" y="576" width="1" height="66" rx="0" fill="rgb(215,216,213)"/>
+<line x1="45" y1="585" x2="345" y2="633.4" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="345" y1="585" x2="45" y2="633.4" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="160" y="616.2" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="38" y="671.4" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">PICKUP</text>
+<rect x="38" y="687" width="310" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="38" y="702" width="217" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="745" width="346" height="166" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="745" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="910" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="745" width="1" height="166" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="745" width="1" height="166" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="759" width="318" height="66" rx="7" fill="rgb(236,235,233)"/>
+<rect x="36" y="759" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="824" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="759" width="1" height="66" rx="0" fill="rgb(215,216,213)"/>
+<rect x="353" y="759" width="1" height="66" rx="0" fill="rgb(215,216,213)"/>
+<line x1="45" y1="768" x2="345" y2="816.4" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="345" y1="768" x2="45" y2="816.4" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="160" y="799.2" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="38" y="854.4" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">CLEAN RETURN</text>
+<rect x="38" y="870" width="310" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="38" y="885" width="217" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="0" y="1045" width="390" height="75" rx="0" fill="rgb(236,235,233)"/>
+<text x="23" y="1075" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">SOAPBOX CADDIE</text>
+<rect x="23" y="1093" width="180" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="23" y="1105" width="126" height="8" rx="3" fill="rgb(215,216,213)"/>
+</svg>

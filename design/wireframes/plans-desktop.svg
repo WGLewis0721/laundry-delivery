@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="PLANS AND PRICING desktop structural wireframe">
+<title>PLANS AND PRICING — desktop low-fidelity layout</title>
+<desc>Grayscale structural design reference, not a screenshot or production state.</desc>
+<rect x="0" y="0" width="1200" height="62" rx="0" fill="rgb(255,255,255)"/>
+<rect x="0" y="61" width="1200" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="40" y="19" width="132" height="24" rx="2" fill="rgb(35,39,36)"/>
+<text x="57" y="38" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(255,255,255)">LOGO</text>
+<rect x="750" y="27" width="60" height="8" rx="2" fill="rgb(215,216,213)"/>
+<rect x="850" y="27" width="60" height="8" rx="2" fill="rgb(215,216,213)"/>
+<rect x="950" y="27" width="60" height="8" rx="2" fill="rgb(215,216,213)"/>
+<rect x="1050" y="27" width="60" height="8" rx="2" fill="rgb(215,216,213)"/>
+<rect x="1125" y="18" width="32" height="25" rx="2" fill="rgb(113,117,112)"/>
+<text x="48" y="132" font-size="29.6" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="1.3333333333333333" fill="rgb(35,39,36)">PLANS AND PRICING</text>
+<rect x="48" y="147" width="400" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="48" y="165" width="280" height="8" rx="3" fill="rgb(215,216,213)"/>
+<text x="48" y="230" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">BAG PRICING</text>
+<rect x="48" y="265" width="350" height="320" rx="6" fill="rgb(255,255,255)"/>
+<rect x="48" y="265" width="350" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="48" y="584" width="350" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="48" y="265" width="1" height="320" rx="0" fill="rgb(215,216,213)"/>
+<rect x="397" y="265" width="1" height="320" rx="0" fill="rgb(215,216,213)"/>
+<rect x="62" y="279" width="322" height="105" rx="7" fill="rgb(236,235,233)"/>
+<rect x="62" y="279" width="322" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="62" y="383" width="322" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="62" y="279" width="1" height="105" rx="0" fill="rgb(215,216,213)"/>
+<rect x="383" y="279" width="1" height="105" rx="0" fill="rgb(215,216,213)"/>
+<line x1="71" y1="288" x2="375" y2="375" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="375" y1="288" x2="71" y2="375" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="188" y="338.5" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="64" y="413" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">SMALL BAG</text>
+<rect x="64" y="429" width="314" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="64" y="444" width="220" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="422" y="265" width="350" height="320" rx="6" fill="rgb(255,255,255)"/>
+<rect x="422" y="265" width="350" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="422" y="584" width="350" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="422" y="265" width="1" height="320" rx="0" fill="rgb(215,216,213)"/>
+<rect x="771" y="265" width="1" height="320" rx="0" fill="rgb(215,216,213)"/>
+<rect x="436" y="279" width="322" height="105" rx="7" fill="rgb(236,235,233)"/>
+<rect x="436" y="279" width="322" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="436" y="383" width="322" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="436" y="279" width="1" height="105" rx="0" fill="rgb(215,216,213)"/>
+<rect x="757" y="279" width="1" height="105" rx="0" fill="rgb(215,216,213)"/>
+<line x1="445" y1="288" x2="749" y2="375" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="749" y1="288" x2="445" y2="375" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="562" y="338.5" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="438" y="413" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">MEDIUM BAG</text>
+<rect x="438" y="429" width="314" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="438" y="444" width="220" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="796" y="265" width="350" height="320" rx="6" fill="rgb(255,255,255)"/>
+<rect x="796" y="265" width="350" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="796" y="584" width="350" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="796" y="265" width="1" height="320" rx="0" fill="rgb(215,216,213)"/>
+<rect x="1145" y="265" width="1" height="320" rx="0" fill="rgb(215,216,213)"/>
+<rect x="810" y="279" width="322" height="105" rx="7" fill="rgb(236,235,233)"/>
+<rect x="810" y="279" width="322" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="810" y="383" width="322" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="810" y="279" width="1" height="105" rx="0" fill="rgb(215,216,213)"/>
+<rect x="1131" y="279" width="1" height="105" rx="0" fill="rgb(215,216,213)"/>
+<line x1="819" y1="288" x2="1123" y2="375" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="1123" y1="288" x2="819" y2="375" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="936" y="338.5" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="812" y="413" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">LARGE BAG</text>
+<rect x="812" y="429" width="314" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="812" y="444" width="220" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="48" y="624" width="1100" height="154" rx="0" fill="rgb(215,216,213)"/>
+<text x="74" y="663" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">SUBSCRIPTION</text>
+<rect x="74" y="689" width="450" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="74" y="709" width="392" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="74" y="729" width="315" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="796" y="683" width="216" height="42" rx="21" fill="rgb(35,39,36)"/>
+<text x="811" y="707" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">VIEW DETAILS</text>
+<rect x="0" y="836" width="1200" height="64" rx="0" fill="rgb(236,235,233)"/>
+<rect x="0" y="836" width="1200" height="1" rx="0" fill="rgb(215,216,213)"/>
+<text x="42" y="874" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">SOAPBOX CADDIE</text>
+<rect x="925" y="857" width="215" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="925" y="873" width="151" height="8" rx="3" fill="rgb(215,216,213)"/>
+</svg>
