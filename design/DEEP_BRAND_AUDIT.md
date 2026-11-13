@@ -20,7 +20,7 @@ The repository **explicitly says** the brand board specifies **OKANA and ENRIQ**
 
 The deployed face declarations in `css/fonts.css` have font-display swap and weight ranges: Cormorant 300–700 (roman/italic), Inter 100–900, Oswald 200–700. The homepage duplicates these `@font-face` rules within `index.html` for its intentionally self-contained design. **Do not silently substitute OKANA/ENRIQ with random internet downloads or assume licenses from the names.** An actual externally sourced brand board has **not been recovered from this GitHub tree**; only code/README references to it exist. The linked client Google Doc/Drive are inaccessible to the connected account, so brand-board content, revisions and legal approvals cannot be independently checked yet.
 
-**Obsolete contradiction:** [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) instructs `Inter + Playfair Display`; archived FOLD material also mentions Playfair. This is **not** the currently deployed Soapbox type system. The latest [CLAUDE.md](../CLAUDE.md) + Notion coordination require feature branches/draft PRs, contrary to that Copilot file's old `main` instructions. Update the obsolete guidance only in a separate approved change.
+**Obsolete contradiction:** [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) instructs `Inter + Playfair Display`; archived FOLD material also mentions Playfair. This is **not** the currently deployed Soapbox type system. The current design workflow uses reviewable feature branches and PRs, contrary to that Copilot file's old `main` instructions. Update the obsolete guidance only in a separate approved change.
 
 ## 2 — Verified implemented brand colors (do not accidentally undo later changes)
 
