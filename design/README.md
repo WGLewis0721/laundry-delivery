@@ -8,14 +8,14 @@
 
 1. [AUDIT.md](AUDIT.md) — what exists, what is partially documented, what is absent, exact source evidence and conflicts.
 2. [DEEP_BRAND_AUDIT.md](DEEP_BRAND_AUDIT.md) — second-pass verification of the actual client-requested OKANA/ENRIQ fonts, sage-brand decisions, token mismatches, logo/icons, absent favicon and stale docs.
-2. [CONTEXT_SOURCES.md](CONTEXT_SOURCES.md) — provenance, today's Notion status, blocked client Google sources, open decisions.
-3. [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) — phased plan, proposed file layout, review gates, no-code-change boundaries and acceptance.
+3. [CONTEXT_SOURCES.md](CONTEXT_SOURCES.md) — design reference provenance, blocked client Google sources, open approval questions.
+4. [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) — phased plan, proposed file layout, review gates, no-code-change boundaries and acceptance.
 
 The plan intentionally does **not** claim brand board renderings, UI kit galleries, icons, editable wireframes or QA screenshots have been produced. Those require execution and approval.
 
 ## Authority order
 
-Client-approved artwork, copy, type licensing, service/price rules and current signed decisions > currently shipped site and tests > current Notion working log > repo README > legacy/archived drafts > generalized design-library guidance. When authorities conflict, record it; do not guess.
+Client-approved artwork, copy, type licensing, service/price rules and current signed decisions > currently shipped site and tests > repo README > legacy/archived drafts > generalized design-library guidance. When authorities conflict, record it; do not guess.
 
 ## Project guardrails
 
