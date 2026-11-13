@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1120" viewBox="0 0 390 1120" role="img" aria-label="SERVICES mobile structural wireframe">
+<title>SERVICES — mobile low-fidelity layout</title>
+<desc>Grayscale structural design reference, not a screenshot or production state.</desc>
+<rect x="0" y="0" width="390" height="54" rx="0" fill="rgb(255,255,255)"/>
+<rect x="0" y="53" width="390" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="20" y="15" width="112" height="23" rx="2" fill="rgb(35,39,36)"/>
+<text x="33" y="33" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(255,255,255)">LOGO</text>
+<rect x="343" y="17" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<rect x="343" y="24" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<rect x="343" y="31" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<text x="22" y="105" font-size="22.200000000000003" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="1" fill="rgb(35,39,36)">SERVICES</text>
+<rect x="22" y="121" width="346" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="136" width="242" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="196" width="346" height="222" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="196" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="417" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="196" width="1" height="222" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="196" width="1" height="222" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="210" width="318" height="89" rx="7" fill="rgb(236,235,233)"/>
+<rect x="36" y="210" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="298" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="210" width="1" height="89" rx="0" fill="rgb(215,216,213)"/>
+<rect x="353" y="210" width="1" height="89" rx="0" fill="rgb(215,216,213)"/>
+<line x1="45" y1="219" x2="345" y2="289.8" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="345" y1="219" x2="45" y2="289.8" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="160" y="261.4" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="38" y="327.8" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">WASH AND FOLD</text>
+<rect x="38" y="344" width="310" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="38" y="359" width="217" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="437" width="346" height="222" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="437" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="658" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="437" width="1" height="222" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="437" width="1" height="222" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="451" width="318" height="89" rx="7" fill="rgb(236,235,233)"/>
+<rect x="36" y="451" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="539" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="451" width="1" height="89" rx="0" fill="rgb(215,216,213)"/>
+<rect x="353" y="451" width="1" height="89" rx="0" fill="rgb(215,216,213)"/>
+<line x1="45" y1="460" x2="345" y2="530.8" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="345" y1="460" x2="45" y2="530.8" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="160" y="502.4" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="38" y="568.8" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">HANG DRY</text>
+<rect x="38" y="585" width="310" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="38" y="600" width="217" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="678" width="346" height="222" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="678" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="899" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="678" width="1" height="222" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="678" width="1" height="222" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="692" width="318" height="89" rx="7" fill="rgb(236,235,233)"/>
+<rect x="36" y="692" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="780" width="318" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="36" y="692" width="1" height="89" rx="0" fill="rgb(215,216,213)"/>
+<rect x="353" y="692" width="1" height="89" rx="0" fill="rgb(215,216,213)"/>
+<line x1="45" y1="701" x2="345" y2="771.8" stroke="rgb(215,216,213)" stroke-width="1"/>
+<line x1="345" y1="701" x2="45" y2="771.8" stroke="rgb(215,216,213)" stroke-width="1"/>
+<text x="160" y="743.4" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PHOTO</text>
+<text x="38" y="809.8" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">DELICATES</text>
+<rect x="38" y="826" width="310" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="38" y="841" width="217" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="0" y="1045" width="390" height="75" rx="0" fill="rgb(236,235,233)"/>
+<text x="23" y="1075" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">SOAPBOX CADDIE</text>
+<rect x="23" y="1093" width="180" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="23" y="1105" width="126" height="8" rx="3" fill="rgb(215,216,213)"/>
+</svg>

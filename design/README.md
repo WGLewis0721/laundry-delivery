@@ -1,25 +1,48 @@
-# Soapbox Caddie — design system workspace
+# Soapbox Caddie — Design System
 
-**Status: audit and implementation PLAN only (not yet a completed brand-board/UI-kit package).**  
-**Audit date:** 2026-11-13. **Working branch:** `chatgpt/soapbox-brand-ui-kit-audit-plan-20261113`.  
-**Source:** existing `main` site and [Gray Matter design library](https://github.com/WGLewis0721/Graymattertechllc-/tree/main/app-design). WD Auto Detailing is an **engineering/design-method reference only**, not Soapbox branding.
+A single starting point for Soapbox Caddie's visual identity, responsive layouts and component changes. Built from the **existing website**, not a replacement design.
 
-## Read in this order
+**Status:** Review package completed; client approvals, font licensing and live browser checks remain separate.
+**Website stack:** Existing static HTML/CSS/JavaScript, unchanged by this design package.
+**Method reference:** [Gray Matter Design Library](https://github.com/WGLewis0721/Graymattertechllc-/tree/main/app-design).
 
-1. [AUDIT.md](AUDIT.md) — what exists, what is partially documented, what is absent, exact source evidence and conflicts.
-2. [DEEP_BRAND_AUDIT.md](DEEP_BRAND_AUDIT.md) — second-pass verification of the actual client-requested OKANA/ENRIQ fonts, sage-brand decisions, token mismatches, logo/icons, absent favicon and stale docs.
-3. [CONTEXT_SOURCES.md](CONTEXT_SOURCES.md) — design reference provenance, blocked client Google sources, open approval questions.
-4. [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) — phased plan, proposed file layout, review gates, no-code-change boundaries and acceptance.
+## Open the visual references
 
-The plan intentionally does **not** claim brand board renderings, UI kit galleries, icons, editable wireframes or QA screenshots have been produced. Those require execution and approval.
+| Artifact | Open | Source / exports |
+| --- | --- | --- |
+| Brand board | [Visual brand board](brand/brand-board.html) | [SVG](evidence/brand-board/brand-board.svg) · [PNG](evidence/brand-board/brand-board.png) |
+| UI kit | [Interactive component gallery](ui-kit/gallery.html) | [Component specification](UI_KIT.md) · [SVG](evidence/ui-kit/component-sheet.svg) · [PNG](evidence/ui-kit/component-sheet.png) |
+| Icon system | [Utility icon gallery](icons/index.html) | [Icon guidelines](brand/ICONOGRAPHY.md) · [SVG catalog](evidence/icons/icon-sheet.svg) · [PNG catalog](evidence/icons/icon-sheet.png) · [14 SVG sources](brand/assets/icons/) |
+| Page wireframes | [All 15 pages](SCREEN_MAP.md) | [Wireframe index](wireframes/index.md) · 30 editable SVGs and 30 PNG previews |
+| Developer handoff | [Implementation guide](IMPLEMENTATION_HANDOFF.md) | [Change request](CHANGE_REQUEST.md) · [QA gate](QA.md) |
 
-## Authority order
+## Source-of-truth documentation
 
-Client-approved artwork, copy, type licensing, service/price rules and current signed decisions > currently shipped site and tests > repo README > legacy/archived drafts > generalized design-library guidance. When authorities conflict, record it; do not guess.
+- [Brief](BRIEF.md): audience, identity, conversion path and constraints.
+- [Brand kit](brand/BRAND_KIT.md): existing logo assets, asset provenance and pending masters.
+- [Colors and tokens](brand/COLORS_AND_TOKENS.md): six live brand colors, component usage, drift inventory.
+- [Typography](brand/TYPOGRAPHY.md): requested OKANA/ENRIQ, current Cormorant/Inter/Oswald, licensing gates.
+- [Iconography](brand/ICONOGRAPHY.md): reusable 24px reference family, aria/size rules and source inventory.
+- [Page map](SCREEN_MAP.md): all 15 production pages with individual specs and desktop/mobile exports.
+- [References](REFERENCES.md): inspected source files and professional methodology.
+- [QA](QA.md): automated structural checks and pending browser/client review.
+- [Implementation status](IMPLEMENTATION_PLAN.md): completed deliverables and prerequisites for future changes.
 
-## Project guardrails
+## How to request a website change
 
-- Preserve static HTML/CSS/JS and GitHub Pages; no Astro/React/Tailwind migration is implied.
-- Keep the current homepage and booking interactions untouched during the documentation stage.
-- Do not represent browser-only booking confirmation as an actual business-received request or pretend Square payments are wired.
-- A separate design PR must not merge to `main` without owner review. Any future integration work follows its own decisions and tests.
+1. Open [CHANGE_REQUEST.md](CHANGE_REQUEST.md) and describe the client feedback and exact page/section.
+2. Review the [brand board](brand/brand-board.html), [UI gallery](ui-kit/gallery.html), and matching [page specification](screens/).
+3. Prepare updated desktop/mobile visuals; review **before implementation**. Keep unrelated sections unchanged.
+4. Build approved differences in a separate PR. Compare real running-site screenshots; test responsiveness, keyboard, accessibility and the booking journey.
+5. Update the affected visual assets and implementation docs with the approved result.
+
+## Distinguish reference from approval
+
+The site already includes working fonts, logos, imagery and many components. This package documents them and adds **review-ready** references; it does not certify new brand approval or backend behavior.
+
+- OKANA and ENRIQ are client-requested but no licensed web font files are present. Do not replace current fonts without approval.
+- Utility icon SVGs are **reference exports**, not silently installed live-page icons.
+- The wireframes depict structure, not actual browser screenshots.
+- Booking, payments, authentication, service eligibility and legal promises must be validated independently.
+
+Previous evidence: [original audit](AUDIT.md) · [second-pass source audit](DEEP_BRAND_AUDIT.md).

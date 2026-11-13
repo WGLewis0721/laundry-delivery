@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1120" viewBox="0 0 390 1120" role="img" aria-label="SCHEDULE PICKUP mobile structural wireframe">
+<title>SCHEDULE PICKUP — mobile low-fidelity layout</title>
+<desc>Grayscale structural design reference, not a screenshot or production state.</desc>
+<rect x="0" y="0" width="390" height="54" rx="0" fill="rgb(255,255,255)"/>
+<rect x="0" y="53" width="390" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="20" y="15" width="112" height="23" rx="2" fill="rgb(35,39,36)"/>
+<text x="33" y="33" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(255,255,255)">LOGO</text>
+<rect x="343" y="17" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<rect x="343" y="24" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<rect x="343" y="31" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<text x="22" y="105" font-size="22.200000000000003" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="1" fill="rgb(35,39,36)">SCHEDULE PICKUP</text>
+<rect x="22" y="121" width="346" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="136" width="242" height="8" rx="3" fill="rgb(215,216,213)"/>
+<text x="22" y="209" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">STEP 1 OF 5</text>
+<rect x="22" y="229" width="62" height="6" rx="0" fill="rgb(35,39,36)"/>
+<rect x="93" y="229" width="62" height="6" rx="0" fill="rgb(215,216,213)"/>
+<rect x="164" y="229" width="62" height="6" rx="0" fill="rgb(215,216,213)"/>
+<rect x="235" y="229" width="62" height="6" rx="0" fill="rgb(215,216,213)"/>
+<rect x="306" y="229" width="62" height="6" rx="0" fill="rgb(215,216,213)"/>
+<text x="22" y="289" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">ZIP CODE</text>
+<rect x="22" y="300" width="346" height="42" rx="5" fill="rgb(255,255,255)"/>
+<rect x="22" y="300" width="346" height="1" rx="0" fill="rgb(178,181,176)"/>
+<rect x="22" y="341" width="346" height="1" rx="0" fill="rgb(178,181,176)"/>
+<rect x="22" y="300" width="1" height="42" rx="0" fill="rgb(178,181,176)"/>
+<rect x="367" y="300" width="1" height="42" rx="0" fill="rgb(178,181,176)"/>
+<text x="22" y="399" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">PICKUP ADDRESS</text>
+<rect x="22" y="410" width="346" height="42" rx="5" fill="rgb(255,255,255)"/>
+<rect x="22" y="410" width="346" height="1" rx="0" fill="rgb(178,181,176)"/>
+<rect x="22" y="451" width="346" height="1" rx="0" fill="rgb(178,181,176)"/>
+<rect x="22" y="410" width="1" height="42" rx="0" fill="rgb(178,181,176)"/>
+<rect x="367" y="410" width="1" height="42" rx="0" fill="rgb(178,181,176)"/>
+<text x="22" y="509" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">BAG SIZE</text>
+<rect x="22" y="520" width="346" height="42" rx="5" fill="rgb(255,255,255)"/>
+<rect x="22" y="520" width="346" height="1" rx="0" fill="rgb(178,181,176)"/>
+<rect x="22" y="561" width="346" height="1" rx="0" fill="rgb(178,181,176)"/>
+<rect x="22" y="520" width="1" height="42" rx="0" fill="rgb(178,181,176)"/>
+<rect x="367" y="520" width="1" height="42" rx="0" fill="rgb(178,181,176)"/>
+<text x="22" y="619" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(113,117,112)">YOUR DETAILS</text>
+<rect x="22" y="630" width="346" height="42" rx="5" fill="rgb(255,255,255)"/>
+<rect x="22" y="630" width="346" height="1" rx="0" fill="rgb(178,181,176)"/>
+<rect x="22" y="671" width="346" height="1" rx="0" fill="rgb(178,181,176)"/>
+<rect x="22" y="630" width="1" height="42" rx="0" fill="rgb(178,181,176)"/>
+<rect x="367" y="630" width="1" height="42" rx="0" fill="rgb(178,181,176)"/>
+<rect x="22" y="724" width="346" height="190" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="724" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="913" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="724" width="1" height="190" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="724" width="1" height="190" rx="0" fill="rgb(215,216,213)"/>
+<text x="38" y="758" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">ORDER SUMMARY</text>
+<rect x="38" y="774" width="310" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="38" y="789" width="217" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="946" width="346" height="52" rx="7" fill="rgb(35,39,36)"/>
+<text x="37" y="978" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(255,255,255)">CONTINUE</text>
+<rect x="0" y="1045" width="390" height="75" rx="0" fill="rgb(236,235,233)"/>
+<text x="23" y="1075" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">SOAPBOX CADDIE</text>
+<rect x="23" y="1093" width="180" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="23" y="1105" width="126" height="8" rx="3" fill="rgb(215,216,213)"/>
+</svg>

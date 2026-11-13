@@ -1,0 +1,49 @@
+name: Design reference previews
+on:
+  push:
+    branches:
+      - 'design/**'
+    paths:
+      - 'design/**/*.svg'
+      - 'scripts/render-design-assets.py'
+      - 'scripts/check-design-assets.py'
+      - 'scripts/check-design-parity.py'
+      - 'scripts/check-icon-registry.py'
+      - '.github/workflows/design-reference-previews.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export-previews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out design branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install SVG renderer
+        run: python -m pip install "CairoSVG>=2.7,<3"
+      - name: Render PNG previews
+        run: python scripts/render-design-assets.py
+      - name: Verify design reference files and tokens
+        run: |
+          python scripts/check-design-assets.py
+          python scripts/check-icon-registry.py
+          python scripts/check-design-parity.py
+      - name: Commit updated preview exports
+        run: |
+          git add design/wireframes/exports/*.png design/evidence/*/*.png
+          if git diff --cached --quiet; then
+            echo "Previews already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "design: refresh rendered PNG reference exports"
+          git push

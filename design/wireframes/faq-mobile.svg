@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1120" viewBox="0 0 390 1120" role="img" aria-label="QUESTIONS AND ANSWERS mobile structural wireframe">
+<title>QUESTIONS AND ANSWERS — mobile low-fidelity layout</title>
+<desc>Grayscale structural design reference, not a screenshot or production state.</desc>
+<rect x="0" y="0" width="390" height="54" rx="0" fill="rgb(255,255,255)"/>
+<rect x="0" y="53" width="390" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="20" y="15" width="112" height="23" rx="2" fill="rgb(35,39,36)"/>
+<text x="33" y="33" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(255,255,255)">LOGO</text>
+<rect x="343" y="17" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<rect x="343" y="24" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<rect x="343" y="31" width="24" height="2" rx="0" fill="rgb(35,39,36)"/>
+<text x="22" y="105" font-size="22.200000000000003" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="1" fill="rgb(35,39,36)">QUESTIONS AND ANSW</text>
+<rect x="22" y="121" width="346" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="136" width="242" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="22" y="194" width="346" height="76" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="194" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="269" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="194" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="194" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<text x="40" y="230" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">TIMING</text>
+<rect x="331" y="224" width="16" height="3" rx="0" fill="rgb(35,39,36)"/>
+<rect x="22" y="285" width="346" height="76" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="285" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="360" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="285" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="285" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<text x="40" y="321" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">BAG PRICING</text>
+<rect x="331" y="315" width="16" height="3" rx="0" fill="rgb(35,39,36)"/>
+<rect x="22" y="376" width="346" height="76" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="376" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="451" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="376" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="376" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<text x="40" y="412" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">PICKUP</text>
+<rect x="331" y="406" width="16" height="3" rx="0" fill="rgb(35,39,36)"/>
+<rect x="22" y="467" width="346" height="76" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="467" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="542" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="467" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="467" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<text x="40" y="503" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">CANCELLATION</text>
+<rect x="331" y="497" width="16" height="3" rx="0" fill="rgb(35,39,36)"/>
+<rect x="22" y="558" width="346" height="76" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="558" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="633" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="558" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="558" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<text x="40" y="594" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">DELICATES</text>
+<rect x="331" y="588" width="16" height="3" rx="0" fill="rgb(35,39,36)"/>
+<rect x="22" y="649" width="346" height="76" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="649" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="724" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="649" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="649" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<text x="40" y="685" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">GET A BAG</text>
+<rect x="331" y="679" width="16" height="3" rx="0" fill="rgb(35,39,36)"/>
+<rect x="22" y="740" width="346" height="76" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="740" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="815" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="740" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="740" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<text x="40" y="776" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">CHANGE PLAN</text>
+<rect x="331" y="770" width="16" height="3" rx="0" fill="rgb(35,39,36)"/>
+<rect x="22" y="831" width="346" height="76" rx="6" fill="rgb(255,255,255)"/>
+<rect x="22" y="831" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="906" width="346" height="1" rx="0" fill="rgb(215,216,213)"/>
+<rect x="22" y="831" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<rect x="367" y="831" width="1" height="76" rx="0" fill="rgb(215,216,213)"/>
+<text x="40" y="867" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">GIFT</text>
+<rect x="331" y="861" width="16" height="3" rx="0" fill="rgb(35,39,36)"/>
+<rect x="0" y="1045" width="390" height="75" rx="0" fill="rgb(236,235,233)"/>
+<text x="23" y="1075" font-size="14.8" font-family="Arial,Helvetica,sans-serif" font-weight="700" letter-spacing="0.6666666666666666" fill="rgb(35,39,36)">SOAPBOX CADDIE</text>
+<rect x="23" y="1093" width="180" height="8" rx="3" fill="rgb(215,216,213)"/>
+<rect x="23" y="1105" width="126" height="8" rx="3" fill="rgb(215,216,213)"/>
+</svg>
