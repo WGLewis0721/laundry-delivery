@@ -1,25 +1,27 @@
-# Soapbox Caddie — design system workspace
+# Soapbox Caddie — design system
 
-**Status: audit and implementation PLAN only (not yet a completed brand-board/UI-kit package).**  
-**Audit date:** 2026-11-13. **Working branch:** `chatgpt/soapbox-brand-ui-kit-audit-plan-20261113`.  
-**Source:** existing `main` site and [Gray Matter design library](https://github.com/WGLewis0721/Graymattertechllc-/tree/main/app-design). WD Auto Detailing is an **engineering/design-method reference only**, not Soapbox branding.
+**Status:** Actual design deliverables created for review; production website unchanged. This design kit includes a [rendered SVG brand board](evidence/brand-board/soapbox-brand-board.svg), an [interactive visual UI component gallery](gallery/index.html), [21 SVG utility icons](brand/ICONOGRAPHY.md), [30 responsive SVG wireframes and 15 screen specs](SCREEN_MAP.md), along with PNG raster exports and [QA](QA.md).
 
-## Read in this order
+## Start here
 
-1. [AUDIT.md](AUDIT.md) — what exists, what is partially documented, what is absent, exact source evidence and conflicts.
-2. [DEEP_BRAND_AUDIT.md](DEEP_BRAND_AUDIT.md) — second-pass verification of the actual client-requested OKANA/ENRIQ fonts, sage-brand decisions, token mismatches, logo/icons, absent favicon and stale docs.
-3. [CONTEXT_SOURCES.md](CONTEXT_SOURCES.md) — design reference provenance, blocked client Google sources, open approval questions.
-4. [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) — phased plan, proposed file layout, review gates, no-code-change boundaries and acceptance.
+- [Visual brand board](BRAND_BOARD.md), [brand kit](BRAND_KIT.md) and [live HTML gallery](gallery/index.html).
+- [Typography guide](brand/TYPOGRAPHY.md): requested **OKANA/ENRIQ**; installed **Cormorant Garamond / Inter / Oswald**. Licensed request fonts pending.
+- [Color/tokens guide](brand/COLORS_AND_TOKENS.md): existing six-color palette, including Whispering Sage / Olive Sage.
+- [Icon gallery](evidence/icons/soapbox-utility-icon-sheet.svg) and 21 source SVG assets in `assets/icons/`.
+- [UI kit](UI_KIT.md) with [SVG component board](evidence/ui-kit/component-gallery.svg) and interactive real-font HTML proof.
+- [Screen map](SCREEN_MAP.md), [desktop/mobile wireframes](wireframes/index.md) and [15 screen specifications](screens/).
+- [Corrections workflow](CORRECTIVE_ACTION.md), [design QA](QA.md), [deep audit](DEEP_BRAND_AUDIT.md).
 
-The plan intentionally does **not** claim brand board renderings, UI kit galleries, icons, editable wireframes or QA screenshots have been produced. Those require execution and approval.
+## Regenerate PNG previews
 
-## Authority order
+```bash
+python -m pip install cairosvg==2.8.2
+python scripts/design/render-png.py
+python scripts/design/check-assets.py
+```
 
-Client-approved artwork, copy, type licensing, service/price rules and current signed decisions > currently shipped site and tests > repo README > legacy/archived drafts > generalized design-library guidance. When authorities conflict, record it; do not guess.
+GitHub Actions automatically renders 33 SVG previews as PNG on this branch when the workflow runs. SVGs are editable originals and PNGs are generated viewable copies.
 
-## Project guardrails
+## Boundaries
 
-- Preserve static HTML/CSS/JS and GitHub Pages; no Astro/React/Tailwind migration is implied.
-- Keep the current homepage and booking interactions untouched during the documentation stage.
-- Do not represent browser-only booking confirmation as an actual business-received request or pretend Square payments are wired.
-- A separate design PR must not merge to `main` without owner review. Any future integration work follows its own decisions and tests.
+This design package does **not** change site HTML/CSS/JS, live customer booking or Square. Original shipped logo PNGs are displayed in the HTML gallery and linked from the brand kit; the board's illustrated wordmark is not a replacement logo. Wireframes are **structural studies, not live browser screenshots**. Client approval, authentic font licenses, original logo master and actual browser QA remain future gates.

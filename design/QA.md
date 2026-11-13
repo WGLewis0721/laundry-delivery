@@ -1,21 +1,15 @@
-# Soapbox Caddie — design QA status
+# Design QA — PR #18
 
-## Verified in this design PR
-- 15 current pages mapped to screen specs and 2 responsive SVG wireframes each.
-- Rendered SVG brand board, 21 consistent original line icons and sheet, HTML UI proof gallery, SVG UI component board.
-- Referenced source PNG logo and site-owned images; no font binaries added.
-- Documentation and CSS token labels are based on readback of current repository.
+## Produced
+- 30 source-derived responsive SVG structural wireframes covering 15 current HTML routes; one page-specific screen spec per route.
+- Rendered SVG brand board, responsive HTML UI kit using existing actual logo images and font files, styled SVG component proof.
+- 21 original utility SVG icon sources and a rendered icon sheet, separated from the existing decorative olive sprig.
+- 33 companion PNG previews rendered from those SVGs by the bundled Python/CairoSVG renderer and a repeatable coverage check.
 
-## Not yet verified / not claimed as passing
-- Original client brandboard/font licenses or final design approval (OKANA/ENRIQ absent).
-- Actual browser screenshots, accessibility scans, live computed token parity, comprehensive route/keyboard/mobile/checkout smoke tests.
-- Pricing/business policies against current Square; server-side request delivery or payment.
-- Automated view-diff against live website (wireframes are designs, not screenshots).
+## Not yet demonstrated
+- Original client approval and licensed OKANA/ENRIQ files; original editable logo master.
+- Live website browser screenshots, automated visual diff, runtime accessibility/contrast tests, and full feature smoke tests.
+- Approved customer prices/legal terms or functioning booking receipt/payment.
 
-## Follow-up browser QA checklist
-- Viewports 360/390/430/768/1024/1440; screenshot each critical page and visual state; no clipping/overflow.
-- Focus order, visible focus indicators, input labels/errors, WCAG AA text and non-text contrast; reduced motion.
-- All 15 links, SVG/icon requests, logo/photo loading, self-hosted font files, meaningful alt/aria.
-- ZIP invalid/unserved/served; complete booking wizard demo; form state persistence, clear statements that requests are not delivered to the business until integration.
-
-**Gate:** Treat this PR as **design-assets delivery**, not production-ready website redesign approval.
+## Production gate
+Before changing live UI, test desktop/mobile 360/390/430/768/1024/1440, keyboard/focus order and form errors, WCAG AA, reduced motion, ZIP service states, five-step booking and clear browser-local/demo claims. Capture actual browser before/after and request client/owner approval. Nothing in this design-only PR certifies a live checkout.

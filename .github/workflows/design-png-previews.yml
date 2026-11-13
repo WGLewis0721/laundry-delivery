@@ -1,0 +1,33 @@
+name: Soapbox design PNG previews
+on:
+  push:
+    branches: ['chatgpt/soapbox-design-system-assets-*']
+    paths: ['design/**', 'scripts/design/**', '.github/workflows/design-png-previews.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install SVG renderer
+        run: python -m pip install 'cairosvg==2.8.2'
+      - name: Render 33 PNG assets
+        run: python scripts/design/render-png.py
+      - name: Verify completeness
+        run: python scripts/design/check-assets.py
+      - name: Commit rendered previews
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add design/wireframes/exports/ design/evidence/brand-board/*.png design/evidence/ui-kit/*.png design/evidence/icons/*.png
+          if ! git diff --cached --quiet; then
+            git commit -m "design: render 33 PNG previews"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
