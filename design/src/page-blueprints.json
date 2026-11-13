@@ -1,0 +1,224 @@
+{
+  "status": "source-derived structural study; not client-approved",
+  "date": "2026-11-13",
+  "pages": [
+    {
+      "id": "index",
+      "title": "Choose peace, not laundry.",
+      "kind": "home",
+      "sections": [
+        "ZIP availability",
+        "Small bag $45",
+        "Medium bag $60",
+        "Large bag $80",
+        "How it works",
+        "The Subscription",
+        "About / gift",
+        "FAQs"
+      ],
+      "cta": "Check your ZIP",
+      "states": "invalid/served/unserved ZIP; mobile menu"
+    },
+    {
+      "id": "how-it-works",
+      "title": "How Soapbox Caddie works",
+      "kind": "steps",
+      "sections": [
+        "Book and get your bag",
+        "Schedule a pickup",
+        "We clean and return",
+        "No surprises",
+        "Final CTA"
+      ],
+      "cta": "Schedule a pickup",
+      "states": "contactless process; mobile cards"
+    },
+    {
+      "id": "plans",
+      "title": "Simple pricing. Beautifully done.",
+      "kind": "pricing",
+      "sections": [
+        "Small bag $45",
+        "Medium bag $60",
+        "Large bag $80",
+        "The Subscription",
+        "Pricing explainer"
+      ],
+      "cta": "Choose a bag",
+      "states": "pricing needs client/Square confirmation"
+    },
+    {
+      "id": "services",
+      "title": "Services",
+      "kind": "services",
+      "sections": [
+        "Wash & Fold",
+        "Hang-Dry Care",
+        "Delicates Handling",
+        "Final CTA"
+      ],
+      "cta": "Get started",
+      "states": "service image crops; service CTA"
+    },
+    {
+      "id": "service-area",
+      "title": "Service area",
+      "kind": "map",
+      "sections": [
+        "ZIP checker",
+        "Service map",
+        "Currently serving",
+        "Fallback area list"
+      ],
+      "cta": "Check your ZIP",
+      "states": "invalid/served/unserved ZIP; map offline"
+    },
+    {
+      "id": "about",
+      "title": "We built what we wished existed.",
+      "kind": "story",
+      "sections": [
+        "Brand story",
+        "What we believe",
+        "Relief",
+        "Honesty",
+        "Reliability",
+        "Care"
+      ],
+      "cta": "Explore the service",
+      "states": "editorial image crop; mobile reading"
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "kind": "faq",
+      "sections": [
+        "Turnaround",
+        "Bag pricing",
+        "Missed pickup",
+        "Cancellation",
+        "Delicates",
+        "Soapbox bags",
+        "Plan changes",
+        "Safety",
+        "Gifts"
+      ],
+      "cta": "Schedule a pickup",
+      "states": "accordion closed/expanded; keyboard access"
+    },
+    {
+      "id": "estimate",
+      "title": "Drop the bags. Keep the weekend.",
+      "kind": "estimate",
+      "sections": [
+        "Photo upload",
+        "Preview estimate",
+        "Laundry type",
+        "Towels / sheets",
+        "Fill level",
+        "Mock result disclaimer"
+      ],
+      "cta": "Continue",
+      "states": "upload validation; mock engine"
+    },
+    {
+      "id": "schedule",
+      "title": "Schedule your pickup",
+      "kind": "wizard",
+      "sections": [
+        "Check address",
+        "Choose bag",
+        "Your details",
+        "Pickup window",
+        "Confirm request",
+        "Order summary"
+      ],
+      "cta": "Continue",
+      "states": "five step flow; validation; browser-local request"
+    },
+    {
+      "id": "confirmation",
+      "title": "Request received.",
+      "kind": "success",
+      "sections": [
+        "Request details",
+        "What happens next",
+        "Reference",
+        "Go home"
+      ],
+      "cta": "View request",
+      "states": "browser-local confirmation not business delivery"
+    },
+    {
+      "id": "status",
+      "title": "Order status",
+      "kind": "tracker",
+      "sections": [
+        "Progress timeline",
+        "Order summary",
+        "SMS updates"
+      ],
+      "cta": "Check status",
+      "states": "demo tracking / missing order"
+    },
+    {
+      "id": "account",
+      "title": "Good to see you.",
+      "kind": "dashboard",
+      "sections": [
+        "Current plan",
+        "Order history",
+        "Account summary",
+        "Sign-in state"
+      ],
+      "cta": "Sign in",
+      "states": "demo account; empty history"
+    },
+    {
+      "id": "login",
+      "title": "Sign in",
+      "kind": "login",
+      "sections": [
+        "Email address",
+        "Password",
+        "Validation",
+        "Sign in"
+      ],
+      "cta": "Sign in",
+      "states": "mock authentication; error/required"
+    },
+    {
+      "id": "privacy",
+      "title": "Privacy Policy",
+      "kind": "legal",
+      "sections": [
+        "Information we collect",
+        "How we use it",
+        "SMS communications",
+        "Payment data",
+        "Cookies and analytics",
+        "Retention",
+        "Contact"
+      ],
+      "cta": "Contact",
+      "states": "legal approval pending; mobile paragraphs"
+    },
+    {
+      "id": "terms",
+      "title": "Terms of Service",
+      "kind": "legal",
+      "sections": [
+        "Service description",
+        "Pricing and billing",
+        "Pickup and delivery",
+        "Contactless pickup",
+        "Cancellation",
+        "Liability",
+        "Changes",
+        "Contact"
+      ],
+      "cta": "Contact",
+      "states": "legal approval pending; mobile paragraphs"
+    }
+  ]
+}
